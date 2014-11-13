@@ -1,0 +1,23 @@
+input {
+  margin: 10px 0 10px 0;
+}
+
+
+#dropdown-wrapper {
+  width: 200px;
+  background-color: lightblue;
+  margin: 0 auto;
+}
+
+ul {
+  padding: 5px 0;
+}
+li {
+  font-family: "Helvetica", sans-serif;
+  color: darkblue;
+  font-weight: bold;
+  list-style-type: none;
+  margin: 10px 0;
+  text-align: center;
+  display: block;
+}
