@@ -1,3 +1,7 @@
 .error-field {
   border-color: red;
 }
+
+.selected {
+  background-color: #aaa;
+}

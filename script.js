@@ -32,10 +32,10 @@ $( document ).ready(function() {
   var validateLength = function(field) {
     if (field.val().length > field.data('max'))
       { field.addClass("error-field");
-      field.next().text("Too long"); }
+        field.next().text("Too long"); }
     else if (field.val().length < field.data('min'))
       { field.addClass("error-field");
-      field.next().text("Too short"); }
+        field.next().text("Too short"); }
     else
       { field.removeClass("error-field"); }
   };
@@ -45,10 +45,29 @@ $( document ).ready(function() {
     $fields.each(function(index, field){ validateLength($(field)); });
     if($confirm.val() != $pass.val())
       { $confirm.addClass("error-field");
-      $pass.addClass("error-field");
-      $pass.next().text("Confirmation does not match");
-      $confirm.next().text("Password does not match"); }
+        $pass.addClass("error-field");
+        $pass.next().text("Confirmation does not match");
+        $confirm.next().text("Password does not match"); }
+  });
 
+  $(".dropdown li").css( 'cursor', 'pointer' );
+  $(".dropdown li").hover( function(e){ $(e.target).css("background-color", "#ddd"); }, function(e){ $(e.target).css("background-color", "#fff"); } );
+
+  $(".dropdown div").hide();
+
+  $(".dropdown li").click(function(e){
+    $(".dropdown div").slideUp();
+    $(".dropdown li").removeClass("selected");
+
+    var idValue = "#" + $(e.target).attr("id");
+    var $selected = $($('div').filter(idValue));
+
+    $(e.target).addClass("selected");
+
+    if(!$selected.is(":visible"))
+      { setTimeout(function()
+        { $selected.slideDown(); }, 500);
+      }
   });
 
 });
