@@ -10,22 +10,23 @@
   <form>
     <label>
       Text Field
-      <input type="text"></input><span id="text-counter"></span>
+      <input class="meaningless-input" data-max="32" data-min="4" type="text"></input><span></span>
     </label><br>
 
     <label>
       Textarea
-      <textarea></textarea><span id="textarea-counter"></span>
+      <textarea class="meaningless-input" data-max="140" data-min="4"></textarea><span></span>
     </label><br>
 
     <label>
       Password
-      <input type="password" id="pw"></input><span id="password-counter"></span>
+      <input class="meaningless-input" data-max="16" data-min="6" type="password"></input><span></span>
     </label><br>
 
     <label>
       Confirm Password
-      <input type="password" id="confirm"></input><span id="confirm-counter"></span>
+      <input class="meaningless-input" data-max="16" data-min="6" type="password"></input><span></span>
+      <p id="confirm-password"></p>
     </label><br>
 
     <input type="submit" value="Submit">
