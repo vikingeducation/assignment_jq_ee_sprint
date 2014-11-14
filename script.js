@@ -1,11 +1,15 @@
 
 $(document).ready(function(){
   
-  $('input[type="text"]').on('keypress', function(e){
+  $('input[type="text"]').on('keyup', function(e){
     var $target = $(e.target);
-    var textLength = ($target.value).length;
-    var max = 32
-    $validationDiv = $('<span class = "validation">' + textLength +' characters remaining(out of ' + max + ')</span>');
+    var maxLength = 32;
+    var textLength = ($target.val()).length;
+    var remainingChars = maxLength - textLength
+
+    $validationDiv = $('<span class = "validation">' + remainingChars +' characters remaining(out of ' + maxLength + ')</span>');
+
+
     
     if ($target.next().filter('.validation').length && textLength) {
       $target.next().replaceWith($validationDiv);
