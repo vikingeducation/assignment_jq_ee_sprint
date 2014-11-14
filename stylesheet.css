@@ -9,6 +9,10 @@ input {
   margin: 0 auto;
 }
 
+.validation {
+  color: red;
+}
+
 ul {
   padding: 5px 0;
 }
