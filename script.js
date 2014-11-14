@@ -52,15 +52,19 @@ $( document ).ready(function() {
 
   $(".dropdown li").css( 'cursor', 'pointer' );
   $(".dropdown li").hover( function(e){ $(e.target).css("background-color", "#ddd"); }, function(e){ $(e.target).css("background-color", "#fff"); } );
+  $(".dropdown").hover( function(){ $(".dropdown ul").slideDown(); }, function(){ $(".dropdown ul").slideUp(); } );
 
-  $(".dropdown div").hide();
+  $("section div").hide();
 
   $(".dropdown li").click(function(e){
-    $(".dropdown div").slideUp();
+    $("section div").slideUp();
     $(".dropdown li").removeClass("selected");
 
     var idValue = "#" + $(e.target).attr("id");
     var $selected = $($('div').filter(idValue));
+    $(".dropdown ul").slideUp();
+
+    $(".dropdown h1").text($($('li').filter(idValue)).text());
 
     $(e.target).addClass("selected");
 
