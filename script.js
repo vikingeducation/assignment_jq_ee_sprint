@@ -66,8 +66,6 @@ $( document ).ready(function() {
 
     $(".dropdown h1").text($($('li').filter(idValue)).text());
 
-    $(e.target).addClass("selected");
-
     if(!$selected.is(":visible"))
       { setTimeout(function()
         { $selected.slideDown(); }, 500);
