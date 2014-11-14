@@ -2,6 +2,10 @@ input {
   margin: 10px 0 10px 0;
 }
 
+#form-wrapper {
+  width: 450px;
+  margin: 0 auto;
+}
 
 #dropdown-wrapper {
   width: 200px;
@@ -11,11 +15,22 @@ input {
 
 .validation {
   color: red;
+  margin-left: 10px;
+}
+
+.validation-match {
+  color: red;
+  margin-left: 10px;
+}
+
+.field_with_errors {
+  border: 1px solid red;
 }
 
 ul {
   padding: 5px 0;
 }
+
 li {
   font-family: "Helvetica", sans-serif;
   color: darkblue;
