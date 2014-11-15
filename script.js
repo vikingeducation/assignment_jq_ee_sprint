@@ -127,19 +127,4 @@ $(document).ready(function(){
 
   });
 
-
-
-// The top-level element should start out blank (so the menu has nothing selected yet). XX
-// It should contain at least 3 example elements within it to choose between XX
-// It should smoothly slide open and closed
-// The sub-elements should change background color when the menu is opened and they are hovered over
-// The sub-elements should be clickable (the mouse should be a pointer when hovering). When clicked, the menu closes and that element becomes the top-level element to indicate it has been selected.
-
-
-
-
-
-
-
-
 });
