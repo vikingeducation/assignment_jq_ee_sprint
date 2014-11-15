@@ -1,0 +1,56 @@
+input {
+  margin: 10px 0 10px 0;
+}
+
+#form-wrapper {
+  width: 450px;
+  margin: 0 auto;
+}
+
+.validation {
+  color: red;
+  margin-left: 10px;
+}
+
+.validation-match {
+  color: red;
+  margin-left: 10px;
+}
+
+.field_with_errors {
+  border: 1px solid red;
+}
+
+
+#dropdown-wrapper {
+  width: 200px;
+  height: 60px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+ul {
+  height: 100%;
+  width: 100%;
+}
+
+li {
+  font-family: "Helvetica", sans-serif;
+  color: darkblue;
+  font-weight: bold;
+  list-style-type: none;
+  background-color: lightblue;
+  margin: 0;
+  text-align: center;
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding-top: 40%;
+  vertical-align: middle;
+}
+
+li.highlighted {
+  background-color: darkblue;
+  color: lightblue;
+  height: 100%;
+}
