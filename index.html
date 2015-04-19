@@ -10,29 +10,76 @@
   <script>
   $( document).ready(function() {
     $('h1').text("so schwaddy yoooo");
-    if ($("#fieldone")[0].value === "textfield"){
-    } else if ($("#fieldone")[0].value.length < 4) {
-       //FINISH VALIDATIONS THEN SEE IF LISTENING NEEDS APPLIED
-    } else if (//something) {
 
-    }
+    $("#textfield").keyup(function(){
+      if ($("#textfield")[0].value === "textfield"){
+      } else if ($("#textfield")[0].value.length < 4) {
+        $("h4 strong")[0].innerHTML = "You need " + (4 - $("#textfield")[0].value.length) + " more characters in field one";
+        $("h4 strong")[0].addClass("sad");
+      } else if ($("#textfield")[0].value.length < 33) {
+        $("h4 strong")[0].innerHTML = "You may have " + (32 - $("#textfield")[0].value.length) + " more characters in field one";
+      } else if ($("#textfield")[0].value.length > 32) {
+        $("h4 strong")[0].innerHTML = "You have " + ($("#textfield")[0].value.length - 32) + " too many characters in field one";
+        $("h4 strong")[0].addClass("sad");
+      }
+    });
 
+    $("#textarea").keyup(function(){
+      if ($("#textarea")[0].value === "textarea"){
+      } else if ($("#textarea")[0].value.length < 4) {
+        $("h4 strong")[1].innerHTML = "You need " + (4 - $("#textarea")[0].value.length) + " more characters in field two";
+        $("h4 strong")[1].addClass("sad");
+      } else if ($("#textarea")[0].value.length < 141) {
+        $("h4 strong")[1].innerHTML = "You may have " + (140 - $("#textarea")[0].value.length) + " more characters in field two";
+      } else if ($("#textarea")[0].value.length > 140) {
+        $("h4 strong")[1].innerHTML = "You have " + ($("#textarea")[0].value.length - 140) + " too many characters in field two";
+        $("h4 strong")[1].addClass("sad");
+      }
+    });
+
+    $("#password").keyup(function(){
+      if ($("#password")[0].value === "password"){
+      } else if ($("#password")[0].value.length < 6) {
+        $("h4 strong")[2].innerHTML = "You need " + (6 - $("#password")[0].value.length) + " more characters in field three";
+        $("h4 strong")[2].addClass("sad");
+      } else if ($("#password")[0].value.length < 17) {
+        $("h4 strong")[2].innerHTML = "You may have " + (16 - $("#password")[0].value.length) + " more characters in field three";
+      } else if ($("#password")[0].value.length > 16) {
+        $("h4 strong")[2].innerHTML = "You have " + ($("#password")[0].value.length - 16) + " too many characters in field three";
+        $("h4 strong")[2].addClass("sad");
+      }
+    });
+
+    $("#password-confirmation").keyup(function(){
+      if ($("#password-confirmation")[0].value === "password confirmation"){
+      } else if ($("#password")[0].value === $("#password-confirmation")[0].value) {
+        $("h4 strong")[3].innerHTML = "Passwords Match";
+      } else {
+        $("h4 strong")[3].innerHTML = "Passwords do not match";
+        $("h4 strong")[3].addClass("sad");
+      }
+    });
   });
   </script>
   <header>
     <h1>Schwaddys Test jQuery Page</h1>
   </header>
   <h2>This is my form</h2>
+  <!-- validation bit -->
+  <h4><strong></strong></h4>
+  <h4><strong></strong></h4>
+  <h4><strong></strong></h4>
+  <h4><strong></strong></h4>
   <form>
     <fieldset>
       Field One
-      <input id="fieldone" type="text" value="textfield">
+      <input id="textfield" type="text" value="textfield">
       Field Two
-      <input id="fieldtwo" type="textarea" value="textarea">
+      <input id="textarea" type="textarea" value="textarea">
       <br>Password
-      <input id="fieldthree" type="password" value="password">
+      <input id="password" type="password" value="password">
       Password Confirmation
-      <input id="fieldfour" type="password" value="password confirmation">
+      <input id="password-confirmation" type="password" value="password confirmation">
     </fieldset>
     <input type="submit" value="Submit">
   </form>
