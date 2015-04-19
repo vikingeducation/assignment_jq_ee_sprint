@@ -10,26 +10,34 @@
   <script>
   $( document).ready(function() {
     $('h1').text("so schwaddy yoooo");
-  $('div h4').html('<ol><li>one</li><li>two</li><li>three</li></ol>');
-  $( '.sad' ).addClass( 'happy' );
-  $( '.sad' ).removeClass( 'sad' );
-  $( '#annoying-popup a' )[0].href = "http://www.cashcats.biz";
-  $( '#annoying-popup' ).css( {'margin-top': '30px'} );
-  //right align fail
-  $('ul').children()[6].innerHTML = "hi";
-  $( 'input[type="text"]' ).val( 'new value' );
-  $('input[type="text"]').attr({type:"textarea"});
+    if ($("#fieldone")[0].value === "textfield"){
+    } else if ($("#fieldone")[0].value.length < 4) {
+       //FINISH VALIDATIONS THEN SEE IF LISTENING NEEDS APPLIED
+    } else if (//something) {
+
+    }
+
   });
   </script>
   <header>
-    <h1>
-      Traverse and Manipulate
-    </h1>
-    <p>
-      <em>Admirable objectives for a jQuery Padwan</em>
-    </p>
+    <h1>Schwaddys Test jQuery Page</h1>
   </header>
+  <h2>This is my form</h2>
+  <form>
+    <fieldset>
+      Field One
+      <input id="fieldone" type="text" value="textfield">
+      Field Two
+      <input id="fieldtwo" type="textarea" value="textarea">
+      <br>Password
+      <input id="fieldthree" type="password" value="password">
+      Password Confirmation
+      <input id="fieldfour" type="password" value="password confirmation">
+    </fieldset>
+    <input type="submit" value="Submit">
+  </form>
 
+  <h2>This is my dropdown</h2>
 
 </body>
 
