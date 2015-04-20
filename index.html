@@ -1,12 +1,8 @@
 <!doctype html>
 <html>
 <head>
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-  <a href="http://jquery.com/">jQuery</a>
-  <script src="jquery-1.11.2.js"></script>
   <script>
   $( document).ready(function() {
     $('h1').text("so schwaddy yoooo");
@@ -59,11 +55,37 @@
         $("h4 strong")[3].addClass("sad");
       }
     });
+
+    $(".dropdown").click(function(){
+      if($("li.drop-select")[0].style.display === ""){
+        $(".dropdown li").slideUp();
+      } else if ($("li.drop-select")[0].style.display === "none") {
+        $(".dropdown li").slideDown();
+      } else if ($("li.drop-select")[0].style.display === "list-item") {
+        $(".dropdown li").slideUp();
+      } else {
+        console.log("you got an error on dropdown slide");
+      }
+    });
+    $(function(){
+      $("li.drop-select").hover(function(){
+        $(this).css("background-color", "pink");
+        }, function() {
+          $(this).css("background-color", "none");
+      });
+    });
   });
   </script>
+</head>
+<body>
+
   <header>
     <h1>Schwaddys Test jQuery Page</h1>
   </header>
+  <h4><em>notes:</em></h4>
+  <p class="testtickles">select clicky is working....</p>
+  <p>css changes not working and hover not working</p>
+  <p>hover on textfield working</p>
   <h2>This is my form</h2>
   <!-- validation bit -->
   <h4><strong></strong></h4>
@@ -85,7 +107,12 @@
   </form>
 
   <h2>This is my dropdown</h2>
+  <div class="dropdown">
+    <li class="drop-select first">Pears</li>
+    <li class="drop-select">Tomatoes</li>
+    <li class="drop-select">Grapes</li>
+    <li class="drop-select">Bears</li>
+  </div>
 
 </body>
-
 </html>
