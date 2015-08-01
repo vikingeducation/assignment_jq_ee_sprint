@@ -7,19 +7,60 @@
 </head>
 <body>
 
-  <form>
-    Name:<br />
-    <input type="text" name="name" id="name-form">
-    <div id="char-count-name"></div><br />
-    Comments:<br />
-    <textarea rows="4" cols="50" name="comment" id="comment-form"></textarea>
-    <div id="char-count-comment"></div><br />
-    Password:<br />
-    <input type="password" name="password" id="password-form"><br />
-    Password confirmation:<br />
-    <input type="password" name="password_confirmation" id="password-confirmation-form"><br />
-    <input type="submit" value="Submit">
+  <form id="test-form">
+    <div id="name-section">
+      Name:<br />
+      <input type="text" name="name" id="form-name"><span class="error-hidden">Must enter a username between 4 and 32 chars!</span>
+      <div id="char-count-name"></div><br />
+    </div>
+    <div>
+      Comments:<br />
+      <textarea rows="4" cols="50" name="comment" id="form-comment"></textarea><span class="error-hidden">Must enter a comment between 4 and 140 chars!</span>
+      <div id="char-count-comment"></div><br />
+    </div>
+    <div>
+      Password:<br />
+      <input type="password" name="password" id="form-password"><span class="error-hidden">Password needs to be between 6 and 16 chars!</span>
+      <div id="char-count-pass"></div><br />
+    </div>
+    <div>
+      Password confirmation:<br />
+      <input type="password" name="password-confirmation" id="form-password-confirmation"><span class="error-hidden">Must match previous password!</span>
+      <div id="char-count-pass-conf"></div><br />
+      <div id="pass-validation"></div><br />
+    </div>
+    <input type="submit" value="Submit" id="form-submit">
   </form>
+
+  <div id="dropdown-menu">
+    <ul>
+      <li class="active">
+        <h3>Dashboard</h3>
+        <ul>
+          <li><a href="#">Reports</a></li>
+          <li><a href="#">Reports</a></li>
+          <li><a href="#">Reports</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <h3>Posts</h3>
+        <ul>
+          <li><a href="#">Reports</a></li>
+          <li><a href="#">Reports</a></li>
+          <li><a href="#">Reports</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <h3>Favorites</h3>
+        <ul>
+          <li><a href="#">Reports</a></li>
+          <li><a href="#">Reports</a></li>
+          <li><a href="#">Reports</a></li>
+        </ul>
+      </li>
+    </ul>
 
 </body>
 
