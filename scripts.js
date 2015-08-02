@@ -5,7 +5,7 @@ $( document ).ready( function() {
     var max = 32;
     var currentLength = $(this).val().length;
 
-    if (currentLength == 0) {
+    if (currentLength === 0) {
        $("#char-count-name").text('');
     } else if (currentLength > max) {
       $("#char-count-name").text('too many characters!');
@@ -23,7 +23,7 @@ $( document ).ready( function() {
     var max = 140;
     var currentLength = $(this).val().length;
 
-    if (currentLength == 0) {
+    if (currentLength === 0) {
        $("#char-count-comment").text('');
        $(this).removeClass('valid').addClass('invalid');
     } else if (currentLength > max) {
@@ -42,7 +42,7 @@ $( document ).ready( function() {
     var max = 16;
     var currentLength = $(this).val().length;
 
-    if (currentLength == 0) {
+    if (currentLength === 0) {
        $("#char-count-pass").text('');
        $(this).removeClass('valid').addClass('invalid');
     } else if (currentLength > max) {
@@ -61,7 +61,7 @@ $( document ).ready( function() {
     var max = 16;
     var currentLength = $(this).val().length;
 
-    if (currentLength == 0) {
+    if (currentLength === 0) {
        $("#char-count-pass-conf").text('');
        $(this).removeClass('valid').addClass('invalid');
     } else if (currentLength > max) {
@@ -89,7 +89,7 @@ $( document ).ready( function() {
     var no_errors = true;
 
     for (var input in form_data) {
-      var currentElement = $("#form-" + form_data[input]['name']);
+      var currentElement = $("#form-" + form_data[input].name);
 
       if (!currentElement.hasClass('valid')) {
         currentElement.addClass('error');
@@ -99,13 +99,13 @@ $( document ).ready( function() {
         currentElement.removeClass('error');
         $("span", currentElement.parent()).removeClass('error-displayed').addClass('error-hidden');
       }
-    };
+    }
 
     if (!no_errors) {
       event.preventDefault();
-    };
+    }
 
-  })
+  });
 
   $("#dropdown-menu h3").click(function() {
 
@@ -115,6 +115,6 @@ $( document ).ready( function() {
       $(this).next().slideDown();
     }
 
-  })
+  });
 
 });
