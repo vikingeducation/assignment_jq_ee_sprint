@@ -1,0 +1,28 @@
+.error {
+  border: 2px solid red;
+}
+
+.error-hidden {
+  display: none;
+}
+
+.error-displayed {
+  color: red;
+}
+
+#dropdown-menu ul ul {
+  display: none;
+}
+
+#dropdown-menu li.active ul {
+  display: block;
+}
+
+#dropdown-menu h3 {
+  cursor: pointer;
+}
+
+#dropdown-menu ul ul li a:hover {
+  background: lightgreen;
+  border-left: 5px solid lightblue;
+}
