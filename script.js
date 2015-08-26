@@ -19,11 +19,17 @@ $(document).ready(function(){
   $('.textarea-1').keyup(function() {charCount(this, 140, "#textarea_count")});
   $('.pwd-1').keyup(function() {charCount(this, 16, "#pwd_count")});
   $('.pwd-conf').keyup(function() {charCount(this, 16, "#pwd_conf_count")});
-  $('.pwd-conf').keyup(function() {
+  $('.pwds').keyup(function() {
     if ($('.pwd-conf').val() != $('.pwd-1').val()) {
       $('#pwd_match').html("Your password confirmation has to match your password!");
-    } else {
+      $('.pwd-conf').addClass('red-border');
+    }else if (($('.pwd-conf').val() == "" ) || ($('.pwd-1').val() == "") ){
+    	$('.pwd-conf').removeClass('red-border');
+    	$('#pwd_match').html("");
+    } 
+    else {
       $('#pwd_match').html("");
+      $('.pwd-conf').removeClass('red-border');
     }
   });
 
@@ -39,6 +45,21 @@ $(document).ready(function(){
       $('.submit-btn').attr('disabled', true);
     }
   };
+
+  // $("#dropper").hover(function(e){
+  //   e.preventDefault();
+  //   $(this).first().stop(true,true).slidedown();
+    
+  // });
+
+$('select').hover(function(){
+
+    var count = $(this).children().length;
+    $(this).attr('size', count);
+     $(this).slideUp(3000);
+},function(){
+    $(this).removeAttr('size');
+});
 
   $('.submit-btn').attr('disabled', true);
   $('.form-1').keyup(validate);
