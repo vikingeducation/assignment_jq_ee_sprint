@@ -1,0 +1,10 @@
+
+#tag-box {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  border: solid 2px green;
+  visibility: hidden;
+  z-index: 2;
+  /*display: none;*/
+}

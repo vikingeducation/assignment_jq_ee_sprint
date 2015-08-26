@@ -52,24 +52,25 @@ $(document).ready(function () {
 
   $("button").click(function(event) {
     passTextFieldValidation();
-      
+
 
     passTextAreaValidation();
-      
+
 
     passPasswordValidation();
-      
+
 
     passPasswordConfirmationValidation();
-      
+
 
     passwordsMatching();
-    
+
     event.preventDefault();
   });
 
 
   function passTextFieldValidation(){
+
     if( $("#input-field-counter input").val().length < 4 || $("#input-field-counter input").val().length > 32 ){
       $("#char-logger").addClass("alert-danger alert");
       $("#char-logger").html("input needs to be between 4 and 32 characters");
@@ -87,13 +88,13 @@ $(document).ready(function () {
       $("#textarea-logger").addClass("alert-danger alert");
       $("#textarea-logger").html("input needs to be between 4 and 140 characters");
       return false;
-    } 
+    }
     else{
       $("#textarea-logger").removeClass("alert-danger alert");
       $("#textarea-logger").html("");
       return true;
     }
-    
+
   }
 
   function passPasswordValidation() {
@@ -101,7 +102,7 @@ $(document).ready(function () {
       $("#password-logger").addClass("alert-danger alert");
       $("#password-logger").html("input needs to be between 6 and 16 characters");
       return false;
-    } 
+    }
     else{
       $("#password-logger").removeClass("alert-danger alert");
       $("#password-logger").html("");
@@ -114,7 +115,7 @@ $(document).ready(function () {
      $("#password-confirmation-logger").addClass("alert-danger alert");
       $("#password-confirmation-logger").html("input needs to be between 6 and 16 characters");
       return false;
-    } 
+    }
     else{
       $("#password-confirmation-logger").removeClass("alert-danger alert");
       $("#password-confirmation-logger").html("");
@@ -135,7 +136,53 @@ $(document).ready(function () {
     }
   }
 
+  $("#accordian h3").click(function() {
+    if ($("#accordian ul").is(":visible")) {
+      $("#accordian ul").slideUp();
+    } else{
+      $("#accordian ul").slideDown();
+    }
+  });
+
+  $("#accordian h3").mouseenter(function(){
+    $(event.target).css("cursor", "pointer");
+  });
+
+  $("#accordian ul li").mouseenter(function (event) {
+    $(event.target).addClass("bg-info");
+    $(event.target).css("cursor", "pointer");
+  });
+
+  $("#accordian ul li").mouseout(function (event) {
+    $(event.target).removeClass("bg-info");
+    // $(event.target).css("cursor", "default");
+  });
+
+  $("#accordian ul li").click(function (event) {
+    $(event.target).parent().prev().text($(event.target).text());
+    $("#accordian ul").slideUp();
+  });
+
+  var $photo = $('.image-wrapper');
+  var $tagBox = $('#tag-box');
+
+  $photo.mousemove(function (event){
+    console.log("on imge!");
+    $tagBox.css({
+      'visibility': 'visible',
+      'top': event.pageY - 16,
+      'left': event.pageX - 16
+    });
+    console.log(event.pageX);
+    console.log(event.pageY);
+
+  });
+
 });
+
+
+
+
 
 
 
