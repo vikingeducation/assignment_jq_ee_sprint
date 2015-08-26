@@ -70,7 +70,6 @@ $(document).ready(function () {
 
 
   function passTextFieldValidation(){
-    
     if( $("#input-field-counter input").val().length < 4 || $("#input-field-counter input").val().length > 32 ){
       $("#char-logger").addClass("alert-danger alert");
       $("#char-logger").html("input needs to be between 4 and 32 characters");
