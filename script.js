@@ -165,17 +165,71 @@ $(document).ready(function () {
 
   var $photo = $('.image-wrapper');
   var $tagBox = $('#tag-box');
+  var $img = $("img");
+  var $dropdown = $(".people-names");
 
   $photo.mousemove(function (event){
-    console.log("on imge!");
-    $tagBox.css({
-      'visibility': 'visible',
-      'top': event.pageY - 16,
-      'left': event.pageX - 16
-    });
-    console.log(event.pageX);
-    console.log(event.pageY);
+    // console.log("on imge!");
+    if (insideImage()) {
+      $tagBox.css({
+        'visibility': 'visible',
+        'top': event.pageY - 16,
+        'left': event.pageX - 16
+      });
+    } else {
+      $tagBox.css("visibility", "hidden");
+    };
 
+  });
+
+  var insideImage = function() {
+    if (event.pageY > $img.offset().top &&
+        event.pageY < ($img.offset().top + $img.height()) &&
+        event.pageX > $img.offset().left &&
+        event.pageX < ($img.offset().left + $img.width()) ) {
+      return true;
+    } else{
+      return false;
+    };
+  }
+
+  $photo.click(function (event){
+    if (insideImage()) {
+      $tagBox.clone().appendTo("body");
+      var $newDropdown = $dropdown.clone()
+      $newDropdown.css({
+        'top': event.pageY + 13,
+        'left': event.pageX - 50
+      });
+      $newDropdown.appendTo("body").slideDown();
+    } else {
+      // $tagBox.css("visibility", "hidden");
+    };
+  })
+
+  $("body").on("click", ".people-names h5", function (event){
+    if ($(".people-names ul").is(":visible")) {
+      $(".people-names ul").slideUp();
+    } else{
+      $(".people-names ul").slideDown();
+    }
+  });
+
+  $("body").on("mouseenter", ".people-names", function (event){
+    $(event.target).css("cursor", "pointer");
+  });
+
+  $("body").on("mouseenter", ".people-names ul li", function (event){
+    $(event.target).addClass("bg-info");
+  });
+
+  $("body").on("mouseout", ".people-names ul li", function (event){
+    $(event.target).removeClass("bg-info");
+  });
+
+  $("body").on("click", ".people-names ul li", function (event){
+    $(event.target).parent().prev().text($(event.target).text());
+    $(".people-names ul").slideUp();
   });
 
 });

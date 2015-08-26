@@ -2,9 +2,28 @@
 #tag-box {
   height: 30px;
   width: 30px;
-  position: absolute;
+  position: fixed;
   border: solid 2px green;
   visibility: hidden;
   z-index: 2;
   /*display: none;*/
+}
+
+.people-names {
+/*  height: 30px;
+  width: 30px;*/
+  position: fixed;
+  border: solid 2px green;
+  display: none;
+  background-color: #fff;
+  opacity: 0.8;
+}
+
+.people-names * {
+  z-index: 2;
+}
+
+.people-names li {
+  list-style: none;
+  /*left: 0;*/
 }
