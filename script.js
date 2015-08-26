@@ -1,26 +1,47 @@
 $(document).ready(function(){
-  // function charCount(identifier, maximum) {
-  //   var count = $(identifier).val().length;
-  //   console.log(count);
-  //   if (count < maximum) {
-  //     $("<p>test</p>").appendTo($(identifier)[0]);
-  //   }
-  // }
 
-  // $('.text-1').keyup(charCount('.text-1', 32));
-	var count = $('.text-1');
-	var in_max = 32;
-	$('.text-1').keyup(function(){
-		var count =  this.value.length;
-		console.log(count);
-		if (count > in_max ){
-			$(".text-1")[0].style.borderColor = "red";
-			$("#input_count").html("You are " + (count - in_max) + " characters over");
+  function charCount(ele, in_max, count_id) {
+		var count =  ele.value.length;
+    if (count === 0) {
+      $(count_id).html("");
+    } else if (count > in_max ){
+			ele.style.borderColor = "red";
+			$(count_id).html("You are " + (count - in_max) + " characters over");
 		}else{
-			$("#input_count").html((in_max - count) + " Characters remaining");
+			$(count_id).html((in_max - count) + " Characters remaining");
 		}
-	
-		
-	});
+
+  }
+
+  // var count = $('.text-1');
+  // var in_max = 3;
+  $('.text-1').keyup(function() {charCount(this, 32, "#input_count")});
+  $('.textarea-1').keyup(function() {charCount(this, 140, "#textarea_count")});
+  $('.pwd-1').keyup(function() {charCount(this, 16, "#pwd_count")});
+  $('.pwd-conf').keyup(function() {charCount(this, 16, "#pwd_conf_count")});
+  $('.pwd-conf').keyup(function() {
+    if ($('.pwd-conf').val() != $('.pwd-1').val()) {
+      $('#pwd_match').html("Your password confirmation has to match your password!");
+    } else {
+      $('#pwd_match').html("");
+    }
+  });
+
+  function validate() {
+    if(($('.text-1').val().length > 3 && $('.text-1').val().length < 33)          &&
+       ($('.textarea-1').val().length > 3 && $('.textarea-1').val().length < 141) &&
+       ($('.pwd-1').val().length > 5 && $('.pwd-1').val().length < 17)            &&
+       ($('.pwd-conf').val().length > 5 && $('.pwd-conf').val().length < 17)      &&
+       ($('.pwd-1').val() === $('.pwd-conf').val())
+      ) {
+      $('.submit-btn').attr('disabled', false);
+    } else {
+      $('.submit-btn').attr('disabled', true);
+    }
+  };
+
+  $('.submit-btn').attr('disabled', true);
+  $('.form-1').keyup(validate);
+
 
 });
