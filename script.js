@@ -50,4 +50,97 @@ $(document).ready(function () {
     }
   });
 
+  $("button").click(function(event) {
+    passTextFieldValidation();
+      
+
+    passTextAreaValidation();
+      
+
+    passPasswordValidation();
+      
+
+    passPasswordConfirmationValidation();
+      
+
+    passwordsMatching();
+    
+    event.preventDefault();
+  });
+
+
+  function passTextFieldValidation(){
+    
+    if( $("#input-field-counter input").val().length < 4 || $("#input-field-counter input").val().length > 32 ){
+      $("#char-logger").addClass("alert-danger alert");
+      $("#char-logger").html("input needs to be between 4 and 32 characters");
+      return false;
+    }
+    else{
+      $("#char-logger").removeClass("alert-danger alert");
+      $("#char-logger").html("");
+      return true;
+    }
+  }
+
+  function passTextAreaValidation(){
+    if( $("textarea").val().length < 4 || $("textarea").val().length > 140 ){
+      $("#textarea-logger").addClass("alert-danger alert");
+      $("#textarea-logger").html("input needs to be between 4 and 140 characters");
+      return false;
+    } 
+    else{
+      $("#textarea-logger").removeClass("alert-danger alert");
+      $("#textarea-logger").html("");
+      return true;
+    }
+    
+  }
+
+  function passPasswordValidation() {
+    if( $("#password").val().length < 6 || $("#password").val().length > 16 ){
+      $("#password-logger").addClass("alert-danger alert");
+      $("#password-logger").html("input needs to be between 6 and 16 characters");
+      return false;
+    } 
+    else{
+      $("#password-logger").removeClass("alert-danger alert");
+      $("#password-logger").html("");
+      return true;
+    }
+  }
+
+  function passPasswordConfirmationValidation() {
+    if( $("#password-confirmation").val().length < 6 || $("#password-confirmation").val().length > 16 ){
+     $("#password-confirmation-logger").addClass("alert-danger alert");
+      $("#password-confirmation-logger").html("input needs to be between 6 and 16 characters");
+      return false;
+    } 
+    else{
+      $("#password-confirmation-logger").removeClass("alert-danger alert");
+      $("#password-confirmation-logger").html("");
+      return true;
+    }
+  }
+
+  function passwordsMatching(){
+    if ( $('#password').val() != $("#password-confirmation").val() ){
+      $("#password-confirmation-feedback").addClass("alert-danger alert");
+      $("#password-confirmation-feedback").html("passwords dont match");
+      return false;
+    }
+    else{
+      $("#password-confirmation-feedback").removeClass("alert-danger alert");
+      $("#password-confirmation-feedback").html("");
+      return true;
+    }
+  }
+
 });
+
+
+
+
+
+
+
