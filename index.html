@@ -11,8 +11,19 @@
 
 </head>
 <body class="container">
-  <h1>Events practice</h1>
+  <h1 class="text-center">Events practice</h1>
   <div class="row">
+    <div class="col-sm-3">
+      <div id="accordian">
+        <h3><span class="icon-dashboard"></span>Dropdown</h3>
+        <ul>
+          <li>Sample text 1</li>
+          <li>Sample text 2</li>
+          <li>Sample text 3</li>
+          <li>Sample text 4</li>
+        </ul>
+      </div>
+    </div>
     <div class="col-sm-6">
       <form>
 
@@ -31,7 +42,14 @@
         <p id="password-confirmation-feedback"></p>
         <input type="password" class="form-control" name="password-confirmation" id="password-confirmation"><br>
 
-        <button class='btn btn-primary btn-lg' type="submit">Submit</button>
+        <select class = "form-control">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select><br>
+
+        <button class='btn btn-primary btn-lg btn-block' type="submit">Submit</button>
       </form>
 
     </div>
