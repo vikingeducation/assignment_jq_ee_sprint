@@ -1,12 +1,26 @@
 
-#tag-box {
+.tag-box {
   height: 30px;
   width: 30px;
   position: fixed;
-  border: solid 2px green;
+  border: solid 2px red;
   visibility: hidden;
-  z-index: 2;
+  z-index: 1;
   /*display: none;*/
+}
+
+.remove-tag {
+  background-color: green;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  border: solid 2px green;
+  color: white;
+  text-align: center;
+  z-index: 3;
+  display: none;
+  position: fixed;
+  cursor: pointer;
 }
 
 .people-names {
@@ -17,13 +31,18 @@
   display: none;
   background-color: #fff;
   opacity: 0.8;
+  z-index: 2;
 }
 
 .people-names * {
   z-index: 2;
 }
 
+.people-names ul {
+  padding-left: 0;
+}
+
 .people-names li {
-  list-style: none;
+  list-style-type: none;
   /*left: 0;*/
 }

@@ -164,9 +164,10 @@ $(document).ready(function () {
   });
 
   var $photo = $('.image-wrapper');
-  var $tagBox = $('#tag-box');
+  var $tagBox = $('.tag-box');
   var $img = $("img");
   var $dropdown = $(".people-names");
+  var $close = $('.remove-tag');
 
   $photo.mousemove(function (event){
     // console.log("on imge!");
@@ -195,27 +196,45 @@ $(document).ready(function () {
 
   $photo.click(function (event){
     if (insideImage()) {
-      $tagBox.clone().appendTo("body");
-      var $newDropdown = $dropdown.clone()
-      $newDropdown.css({
-        'top': event.pageY + 13,
-        'left': event.pageX - 50
-      });
-      $newDropdown.appendTo("body").slideDown();
-    } else {
+      if( $(".people-names h5").last().text() === "Select Name" && $(".people-names").length > 1 ) {
+        $(".people-names h5").last().parent().detach();
+        $(".tag-box").last().detach();
+      }
+      else{
+        $tagBox.clone().css("border-color", "green").appendTo("body");
+        //append close tag here?
+        var $newClose = $close.clone();
+        $newClose.css({
+          'top': event.pageY - 25,
+          'left': event.pageX,
+          'display': 'block'
+        });
+
+        $newClose.appendTo("body");
+
+        var $newDropdown = $dropdown.clone();
+        $newDropdown.css({
+          'top': event.pageY + 13,
+          'left': event.pageX -16
+        });
+        $newDropdown.appendTo("body").slideDown();
+      }
+    }
+    else {
       // $tagBox.css("visibility", "hidden");
     };
   })
 
   $("body").on("click", ".people-names h5", function (event){
-    if ($(".people-names ul").is(":visible")) {
-      $(".people-names ul").slideUp();
+    if ($(event.target).next().is(":visible")) {
+      $(event.target).next().slideUp();
     } else{
-      $(".people-names ul").slideDown();
+      $(event.target).next().slideDown();
     }
   });
 
   $("body").on("mouseenter", ".people-names", function (event){
+    $tagBox.css("visibility", "hidden");
     $(event.target).css("cursor", "pointer");
   });
 
@@ -231,6 +250,33 @@ $(document).ready(function () {
     $(event.target).parent().prev().text($(event.target).text());
     $(".people-names ul").slideUp();
   });
+
+  $("body").on("click", ".remove-tag", function (event){
+    $(event.target).prev().remove();
+    $(event.target).next().remove();
+    $(event.target).remove();
+  });
+
+  $("body").on("mouseenter", ".remove-tag",function() {
+    $tagBox.css("visibility", "hidden");
+  });
+
+  $("body").on("mouseenter", ".tag-box:not(:first)", function(event) {
+    $(event.target).css("visibility", "visible");
+    $tagBox.css("visibility", "hidden");
+    $(event.target).next().next().css("visibility", "visible");
+    
+  });
+
+  $("body").on("mouseleave", ".tag-box:not(:first)", function(event) {
+    $(event.target).css("visibility", "hidden");
+    $(event.target).next().css("visibility", "hidden");
+    // $(event.target).next().next().css("visibility", "hidden");
+
+
+  });
+
+
 
 });
 
