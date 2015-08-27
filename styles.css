@@ -6,7 +6,6 @@
   border: solid 2px red;
   visibility: hidden;
   z-index: 1;
-  /*display: none;*/
 }
 
 .remove-tag {
@@ -24,8 +23,6 @@
 }
 
 .people-names {
-/*  height: 30px;
-  width: 30px;*/
   position: fixed;
   border: solid 2px green;
   display: none;
@@ -44,5 +41,4 @@
 
 .people-names li {
   list-style-type: none;
-  /*left: 0;*/
 }

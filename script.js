@@ -52,17 +52,9 @@ $(document).ready(function () {
 
   $("button").click(function(event) {
     passTextFieldValidation();
-
-
     passTextAreaValidation();
-
-
     passPasswordValidation();
-
-
     passPasswordConfirmationValidation();
-
-
     passwordsMatching();
 
     event.preventDefault();
@@ -139,7 +131,7 @@ $(document).ready(function () {
   $("#accordian h3").click(function() {
     if ($("#accordian ul").is(":visible")) {
       $("#accordian ul").slideUp();
-    } else{
+    } else {
       $("#accordian ul").slideDown();
     }
   });
@@ -155,7 +147,6 @@ $(document).ready(function () {
 
   $("#accordian ul li").mouseout(function (event) {
     $(event.target).removeClass("bg-info");
-    // $(event.target).css("cursor", "default");
   });
 
   $("#accordian ul li").click(function (event) {
@@ -170,7 +161,6 @@ $(document).ready(function () {
   var $close = $('.remove-tag');
 
   $photo.mousemove(function (event){
-    // console.log("on imge!");
     if (insideImage()) {
       $tagBox.css({
         'visibility': 'visible',
@@ -197,12 +187,12 @@ $(document).ready(function () {
   $photo.click(function (event){
     if (insideImage()) {
       if( $(".people-names h5").last().text() === "Select Name" && $(".people-names").length > 1 ) {
-        $(".people-names h5").last().parent().detach();
+        $(".people-names").last().detach();
         $(".tag-box").last().detach();
+        $(".remove-tag").last().detach();
       }
       else{
-        $tagBox.clone().css("border-color", "green").appendTo("body");
-        //append close tag here?
+        $tagBox.clone().css("border-color", "green").appendTo("#tags-container");
         var $newClose = $close.clone();
         $newClose.css({
           'top': event.pageY - 25,
@@ -210,14 +200,14 @@ $(document).ready(function () {
           'display': 'block'
         });
 
-        $newClose.appendTo("body");
+        $newClose.appendTo("#tags-container");
 
         var $newDropdown = $dropdown.clone();
         $newDropdown.css({
           'top': event.pageY + 13,
           'left': event.pageX -16
         });
-        $newDropdown.appendTo("body").slideDown();
+        $newDropdown.appendTo("#tags-container").slideDown();
       }
     }
     else {
@@ -237,6 +227,14 @@ $(document).ready(function () {
     $tagBox.css("visibility", "hidden");
     $(event.target).css("cursor", "pointer");
   });
+
+  // $("body").on("mouseout", ".people-names", function (event){
+  //   $(event.target).css("visibility", "hidden");
+  // });
+
+  // $("body").on("mousemove", ".people-names", function (event){
+  //   $(event.target).css("visibility", "visible");
+  // });
 
   $("body").on("mouseenter", ".people-names ul li", function (event){
     $(event.target).addClass("bg-info");
@@ -264,16 +262,14 @@ $(document).ready(function () {
   $("body").on("mouseenter", ".tag-box:not(:first)", function(event) {
     $(event.target).css("visibility", "visible");
     $tagBox.css("visibility", "hidden");
-    $(event.target).next().next().css("visibility", "visible");
-    
+    // $(event.target).next().next().css("visibility", "visible");
+
   });
 
   $("body").on("mouseleave", ".tag-box:not(:first)", function(event) {
-    $(event.target).css("visibility", "hidden");
-    $(event.target).next().css("visibility", "hidden");
+    // $(event.target).css("visibility", "hidden");
+    // $(event.target).next().css("visibility", "hidden");
     // $(event.target).next().next().css("visibility", "hidden");
-
-
   });
 
 
