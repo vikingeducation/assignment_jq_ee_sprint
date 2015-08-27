@@ -29,7 +29,7 @@ $( document ).ready(function() {
       });
 
   $(this).click(function(e){
-      $(e.target).insertAfter('<div></div>').html(" <ul> <li class=dropdown> <a href=#>Checkout my list</a>  <p id=box></p> <ul class=dropdown-menu>  <li>Item 1</li>  </ul>  </li> </ul>");
+      $(e.target).append('<div></div>').html(" <ul> <li class=dropdown> <a href=#>Checkout my list</a>  <p id=box></p> <ul class=dropdown-menu>  <li>Item 1</li>  </ul>  </li> </ul>");
       });
 
   function createTaggingBox(x, y) {
