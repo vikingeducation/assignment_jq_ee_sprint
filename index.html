@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Events and Effects</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="script.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</head>
+<body class="container">
+  <h1 class="text-center">Events practice</h1>
+  <div class="row">
+    <div class="col-sm-3">
+      <div id="accordian">
+        <h3><span class="icon-dashboard"></span>Dropdown</h3>
+        <ul>
+          <li>Sample text 1</li>
+          <li>Sample text 2</li>
+          <li>Sample text 3</li>
+          <li>Sample text 4</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <form>
+
+        <div id="input-field-counter" class="control-group">
+          <p id="char-logger"></p>
+          <input type="text" class="form-control"><br>
+        </div>
+
+        <p id="textarea-logger"></p>
+        <textarea class="form-control"></textarea><br>
+
+        <p id="password-logger"></p>
+        <input type="password" class="form-control" name="password" id="password"><br>
+
+        <p id="password-confirmation-logger"></p>
+        <p id="password-confirmation-feedback"></p>
+        <input type="password" class="form-control" name="password-confirmation" id="password-confirmation"><br>
+
+        <select class = "form-control">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select><br>
+
+        <button class='btn btn-primary btn-lg btn-block' type="submit">Submit</button>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-push-3">
+
+      <div class="image-wrapper">
+        <div class = "tag-box"></div>
+        <div class="remove-tag">X</div>
+
+        <div class = "people-names">
+          <h5><span class="icon-dashboard"></span>Select Name</h5>
+          <ul>
+            <li>Alice</li>
+            <li>Alok</li>
+            <li>Dan</li>
+            <li>David</li>
+            <li>Donald</li>
+            <li>Erik</li>
+            <li>Garrett</li>
+            <li>Joseph</li>
+            <li>Michael</li>
+            <li>Mike</li>
+            <li>Nick</li>
+            <li>Olga</li>
+            <li>Xin</li>
+          </ul>
+        </div>
+        <img src="http://deepbreathministries.com/blog/wp-content/uploads/2010/12/people.jpg" class="img-responsive">
+      </div>
+
+      <div id="tags-container"></div>
+
+    </div>
+  </div>
+
+</body>
+</html>
+
