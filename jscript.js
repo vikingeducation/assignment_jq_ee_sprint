@@ -28,6 +28,10 @@ $( document ).ready(function() {
     box.appendTo($('body'));
       });
 
+  $(this).click(function(e){
+      $(e.target).insertAfter('<div></div>').html(" <ul> <li class=dropdown> <a href=#>Checkout my list</a>  <p id=box></p> <ul class=dropdown-menu>  <li>Item 1</li>  </ul>  </li> </ul>");
+      });
+
   function createTaggingBox(x, y) {
     var box = $('<div>').addClass('tagging');
     box.css({
@@ -36,6 +40,7 @@ $( document ).ready(function() {
       });
     return box;
   }
+
 
   var list = $("<ul></ul>");
 
