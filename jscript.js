@@ -1,18 +1,49 @@
-
+"use strict"
 
 $( document ).ready(function() {
-    $(document).on('mousemove', function(e){
-      $('#bob').css({
-         left:  e.pageX,
-         top:   e.pageY
-      });
-     
-    });
+  $('#bob').hide();
 
-  $("#mainphoto").click(function(e){
-    console.log(e.pageX )
-    alert("you have clicked me")  
+  $(".container").mousemove(
+    function(e){
+      $('#bob').show();
+      $('#bob').css({
+         left:  e.pageX - 40,
+         top:   e.pageY - 40
       });
+    }
+    // function() {
+    //   $('#bob').hide();
+    // }
+  );
+
+  $(".container").mouseout(
+    function() {
+      $('#bob').hide();
+    }
+    );
+
+  $("#bob").click(function(e){
+    // console.log("clicked");
+    var box = createTaggingBox(e.pageX, e.pageY);
+    box.appendTo($('body'));
+      });
+
+  function createTaggingBox(x, y) {
+    var box = $('<div>').addClass('tagging');
+    box.css({
+         left:  x - 40,
+         top:   y - 40
+      });
+    return box;
+  }
+
+  var list = $("<ul></ul>");
+
+
+
+
+
+
 
 
 });
