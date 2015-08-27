@@ -107,8 +107,7 @@ $(document).ready(function () {
      $("#password-confirmation-logger").addClass("alert-danger alert");
       $("#password-confirmation-logger").html("input needs to be between 6 and 16 characters");
       return false;
-    }
-    else{
+    } else {
       $("#password-confirmation-logger").removeClass("alert-danger alert");
       $("#password-confirmation-logger").html("");
       return true;
@@ -116,12 +115,11 @@ $(document).ready(function () {
   }
 
   function passwordsMatching(){
-    if ( $('#password').val() != $("#password-confirmation").val() ){
+    if ($('#password').val() !== $("#password-confirmation").val()) {
       $("#password-confirmation-feedback").addClass("alert-danger alert");
       $("#password-confirmation-feedback").html("passwords dont match");
       return false;
-    }
-    else{
+    } else {
       $("#password-confirmation-feedback").removeClass("alert-danger alert");
       $("#password-confirmation-feedback").html("");
       return true;
@@ -136,7 +134,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#accordian h3").mouseenter(function(){
+  $("#accordian h3").mouseenter(function (event) {
     $(event.target).css("cursor", "pointer");
   });
 
@@ -227,14 +225,6 @@ $(document).ready(function () {
     $tagBox.css("visibility", "hidden");
     $(event.target).css("cursor", "pointer");
   });
-
-  // $("body").on("mouseout", ".people-names", function (event){
-  //   $(event.target).css("visibility", "hidden");
-  // });
-
-  // $("body").on("mousemove", ".people-names", function (event){
-  //   $(event.target).css("visibility", "visible");
-  // });
 
   $("body").on("mouseenter", ".people-names ul li", function (event){
     $(event.target).addClass("bg-info");
