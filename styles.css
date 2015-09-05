@@ -22,3 +22,39 @@
 .invalid {
   border: 2px solid red;
 }
+
+
+.select-wrapper {
+  margin: 20px auto;
+}
+
+
+ul {
+  margin: 0 auto;
+  list-style-position: inside;
+}
+
+.selected-list {
+  list-style-type: none;
+}
+
+
+.selected, .list-option {
+  line-height: 28px;
+  min-height: 28px;
+  width: 200px;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: lightblue;
+  text-align: center;
+}
+
+.list-option {
+  background-color: lightgray;
+}
+
+.list-option:hover {
+  background-color: yellow;
+}

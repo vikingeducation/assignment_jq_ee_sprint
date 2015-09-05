@@ -15,28 +15,40 @@
 
     <div class='field-wrapper'>
       <label for='title'>Title:</label>
-      <input type='text' id='title'>
+      <input type='text' name='title' id='title'>
       <p class='field-text'></p>
     </div>
 
     <div class='field-wrapper'>
       <label for='body'>Body:</label>
-      <textarea id='body' rows='6' cols='60'></textarea>
+      <textarea name='body' id='body' rows='6' cols='60'></textarea>
       <p class='field-text'></p>
     </div>
 
     <div class='field-wrapper'>
       <label for='password'>Password:</label>
-      <input type='password' id='password'>
+      <input type='password' name='password' id='password'>
       <p class='field-text'></p>
     </div>
 
     <div class='field-wrapper'>
       <label for='confirm-password'>Confirm password:</label>
-      <input type='password' id='confirm-password'>
+      <input type='password' name='confirm-password' id='confirm-password'>
       <p class='field-text'></p>
       <br>
       <p class='field-text confirm-text'></p>
+    </div>
+
+
+    <div class='select-wrapper'>
+      <ul class='selected-list'>
+        <li class='selected'></li>
+      </ul>
+      <ul class='select-list hidden'>
+        <li class='list-option'>First Option</li>
+        <li class='list-option'>Terrible Option</li>
+        <li class='list-option'>Greatest Option</li>
+      </ul>
     </div>
 
     <input type='submit'>
