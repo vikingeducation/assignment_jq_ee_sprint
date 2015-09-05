@@ -58,3 +58,19 @@ ul {
 .list-option:hover {
   background-color: yellow;
 }
+
+
+
+.pic {
+  display: block;
+  margin: 36px auto;
+  border: 1px solid #aaa;
+}
+
+
+.tagger {
+  height: 64px;
+  width: 64px;
+  border: 2px solid red;
+  position: absolute;
+}
