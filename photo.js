@@ -2,28 +2,48 @@ $(document).ready( function() {
 
 
   var makeTagger = function() {
-    // create tag div
     $(event.target).after("<div class='tagger'></div>");
+    setTaggerPosition(event.pageX, event.pageY);
+    //$('.tagger').css('left', event.pageX - 32);
+    //$('.tagger').css('top', event.pageY - 32);
     trackMouse();
+  }
+
+  var setTaggerPosition = function(x, y) {
+    $('.tagger').css('left', x - 32);
+    $('.tagger').css('top', y - 32);
   }
 
 
   var deleteTagger = function() {
-    // delete tag div
     $('.tagger').remove();
     //stop tracking mouse
-    $(document).off("mousemove", mouse);
+    //$(document).off("mousemove", mouse);
   }
 
 
-  $('img').hover( makeTagger, deleteTagger );
+  $('img').mouseenter( makeTagger );
 
 
   // on mouse move make div follow mouse
   var trackMouse = function() {
+    $image = $('img');
+    var minX = $image.offset().left
+    var minY = $image.offset().top;
+    var maxX = minX + $image.width();
+    var maxY = minY + $image.height();
+
+    $('.tagger').mousemove( function() {
+      setTaggerPosition(event.pageX, event.pageY);
+
+      if (event.pageX < minX || event.pageX > maxX || event.pageY < minY || event.pageY > maxY) {
+        deleteTagger();
+      };
+    });
+
+    // smooth out very fast mouse moves
     $('img').mousemove( function() {
-      $('.tagger').css('left', event.pageX - 32);
-      $('.tagger').css('top', event.pageY - 32);
+      setTaggerPosition(event.pageX, event.pageY);
     });
   }
 
