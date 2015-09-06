@@ -1,31 +1,29 @@
 $(document).ready( function() {
 
 
-  var makeTagger = function() {
-    $(event.target).after("<div class='tagger'></div>");
-    setTaggerPosition(event.pageX, event.pageY);
-    //$('.tagger').css('left', event.pageX - 32);
-    //$('.tagger').css('top', event.pageY - 32);
-    trackMouse();
-  }
-
-  var setTaggerPosition = function(x, y) {
-    $('.tagger').css('left', x - 32);
-    $('.tagger').css('top', y - 32);
+// Create & Deleting functions
+  var makeActiveTagger = function() {
+    if ($('.active').length === 0) {
+      $(event.target).after("<div class='tagger active'></div>");
+      trackMouse();
+    }
   }
 
 
-  var deleteTagger = function() {
-    $('.tagger').remove();
-    //stop tracking mouse
-    //$(document).off("mousemove", mouse);
+  var deleteActiveTagger = function() {
+    $('.active').remove();
   }
 
 
-  $('img').mouseenter( makeTagger );
 
 
-  // on mouse move make div follow mouse
+// Movement functions
+  var setActivePosition = function(x, y) {
+    $('.active').css('left', x - 32);
+    $('.active').css('top', y - 32);
+  }
+
+
   var trackMouse = function() {
     $image = $('img');
     var minX = $image.offset().left
@@ -33,21 +31,39 @@ $(document).ready( function() {
     var maxX = minX + $image.width();
     var maxY = minY + $image.height();
 
-    $('.tagger').mousemove( function() {
-      setTaggerPosition(event.pageX, event.pageY);
+    $('.active').mousemove( function() {
+      setActivePosition(event.pageX, event.pageY);
 
       if (event.pageX < minX || event.pageX > maxX || event.pageY < minY || event.pageY > maxY) {
-        deleteTagger();
+        deleteActiveTagger();
       };
     });
 
     // smooth out very fast mouse moves
     $('img').mousemove( function() {
-      setTaggerPosition(event.pageX, event.pageY);
+      setActivePosition(event.pageX, event.pageY);
     });
+
+    $('.active').click( freezeActiveTagger );
   }
 
-  // on click, stop tracker mouse movement
+
+// Tagging functions
+  var freezeActiveTagger = function() {
+    $(document).off('mousemove');
+    // select name
+    confirmTag();
+    // confirmTag
+  }
+
+  var confirmTag = function() {
+    var $tagger = $('.active');
+    $tagger.removeClass('active');
+  }
+
+
+// Event listeners
+  $('img').mouseenter( makeActiveTagger );
 
 
 })
