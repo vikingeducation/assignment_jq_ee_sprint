@@ -1,6 +1,6 @@
 $(document).ready( function() {
 
-
+// bind ==> on
   $('.field-wrapper').bind('change paste keyup', 'input', function() {
     var $input = $(event.target);
     var maxCharacters = maxLength($input[0].id);
@@ -22,7 +22,7 @@ $(document).ready( function() {
   });
 
 
-
+// could add as data attributes to validate w/ global validation
   var maxLength = function(inputID) {
     switch(inputID) {
       case 'title':
