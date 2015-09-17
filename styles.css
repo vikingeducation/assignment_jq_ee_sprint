@@ -1,0 +1,95 @@
+.field-wrapper {
+  margin: 30px auto;
+}
+
+.field-text {
+  display: inline;
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+.success {
+  color: green;
+}
+
+.failure {
+  color: red;
+}
+
+.invalid {
+  border: 2px solid red;
+}
+
+
+.select-wrapper {
+  margin: 20px auto;
+}
+
+
+ul {
+  margin: 0 auto;
+  list-style-position: inside;
+}
+
+.selected-list {
+  list-style-type: none;
+}
+
+
+.selected, .list-option {
+  line-height: 28px;
+  min-height: 28px;
+  width: 200px;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: lightblue;
+  text-align: center;
+}
+
+.list-option {
+  background-color: lightgray;
+}
+
+.list-option:hover {
+  background-color: yellow;
+}
+
+
+
+.pic {
+  display: block;
+  margin: 36px auto;
+  border: 1px solid #aaa;
+}
+
+
+.tagger {
+  height: 64px;
+  width: 64px;
+  border: 2px solid red;
+  position: absolute;
+  font-weight: bold;
+}
+
+.dropdown {
+  width: 64px;
+  padding: 0;
+  border: 2px solid red;
+  position: absolute;
+  list-style: none inside;
+}
+
+.dropdown li {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.dropdown li:hover {
+  background-color: #999;
+}
+
