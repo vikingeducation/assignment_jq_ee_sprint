@@ -1,10 +1,57 @@
 <html>	
 	<head>
-		<script src="style.js"></script>
 		<link rel="stylesheet" href="style.css">
+		<!-- Add bootstrap to make things look OK -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	</head>
 
 	<body>
-		
+
+		<div class="col-sm-6 col-sm-offset-3">
+				<h2>Forms w/ jQuery:</h2>
+				<form action="" method="POST">
+					<div class="form-group">
+						<input class="form-control add-char-count" type="text" id="form-text" placeholder="Text Input">
+						<div class="char-count">
+							<p>Word Count</p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<textarea class="form-control add-char-count" id="text-area" placeholder="Text Area..."></textarea>
+						<div class="char-count">
+							<p>Word Count</p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<input class="form-control password-matching add-char-count" type="password" id="password" placeholder="Password">
+						<div class="char-count">
+							<p>Word Count</p>
+						</div>
+						<div class="matching-password non-matched">
+							<p>Passwords not matched.</p>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<input class="form-control password-matching add-char-count" type="password" id="password-confirmation" placeholder="Password confiramtion">
+						<div class="char-count">
+							<p>Word Count</p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-6 col-sm-offset-3">
+							<input class="form-control btn btn-primary" type="submit" value="Submit">
+						</div>
+					</div>
+				</form>	
+		</div>
+			
 	</body>
+
+	<!-- Add our jQuery and JS at the bottom -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="style.js"></script>
 </html>
