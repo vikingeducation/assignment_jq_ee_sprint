@@ -18,29 +18,101 @@ $( document ).ready(function(){
 	// Set up our validations trigger when the submit button is pressed
 	$('input[type="submit"]').click(function(e){
 		var trigger;
+		var errors = new Array;
+		var error_inputs = new Array;
+		var flash = new Array;
+		// Here are all of our validations. Any one of them hitting
+		// will set trigger to false and throwing our errors.
 		if($('#form-text').val().length < 4 || $('#form-text').val().length > 32 ){
 			trigger = false;
-		} else if ($('#text-area').val().length < 4 || $('#text-area').val().length > 140){
+			errors.push("Form text must be 4-32 characters long.");
+			error_inputs.push("#form-text");
+		} 
+
+		if ($('#text-area').val().length < 4 || $('#text-area').val().length > 140){
 			trigger = false;
-		} else if(!doPasswordsMatch($('#password'), $('#password').siblings('.matching-password'))){
+			errors.push("Text area must be 4-140 characters long.");
+			error_inputs.push("#text-area");
+		} 
+
+		if(!doPasswordsMatch($('#password'), $('#password').siblings('.matching-password'))){
 			trigger = false;
-		} else if($('#password').val().length < 6 || $('#password').val().length > 16){
+			errors.push("Passwords do not match.");
+			error_inputs.push("#password");
+			error_inputs.push("#password-confirmation");
+		} 
+
+		if($('#password').val().length < 6 || $('#password').val().length > 16){
 			trigger = false;
-		} else {
+			errors.push("Passwords must be 6-16 characters long.");
+			error_inputs.push("#password");
+			error_inputs.push("#password-confirmation");
+		} 
+
+		if(trigger != false){
 			trigger = true;
+			flash.push("Form valid and submitted!");
 		}
 
-		if(trigger == false){
-			alert(trigger);
+		if(errors.length != 0){
+			addErrorClass(error_inputs);
+			displayErrors(errors);
 			e.preventDefault();
+		} else {
+			displayFlash(flash);
 		}
 	})
+
+
+	var displayErrors = function(errors){
+		if(errors.length === 0){
+			$('#errors').hide();
+		} else {
+			$('#errors').show();
+			errors.forEach(function(message){
+				$('#errors').append('<div class="alert alert-danger alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>' + message + '</div>');
+			})
+		}
+	}
+
+
+	// Having errors with the flash getting removed 
+	// immediately when the form validates.
+	// TODO: Would need to incorporate some kind of 
+	// session, cookie, or GET variable into here but 
+	// will skip this for now.
+	var displayFlash = function(flash){
+		if(flash.length === 0){
+			$('#flash').hide();
+		} else {
+			$('#flash').show();
+			flash.forEach(function(message){
+				$('#flash').append('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>' + message + '</div>');
+			})
+		}
+	}
+
+	
+	var addErrorClass = function(error_inputs){
+		// Remove the error class from valid 
+		// input if the form is submitted again.
+		$('.has-error').removeClass('has-error');
+
+		$(error_inputs).each(function(i, el){
+			$(el).addClass('has-error');
+		});
+	}
 
 
 	var doPasswordsMatch = function(input, password_match_parent){
 		var input_length = $(input).val().length;
 		
 		hideIfEmpty(password_match_parent, input_length);
+		
+		// Return false if the password is empty
+		if($('#password').val().length === 0){
+			return false;
+		}
 
 		if($('#password').val() == $('#password-confirmation').val()){
 			password_match_parent.removeClass('non-matched').addClass('matched');

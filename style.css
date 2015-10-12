@@ -15,3 +15,13 @@
 .matched p{
 	color: green;
 }
+
+
+/* ERROR DISPLAYING */
+#errors{
+	display: none;
+}
+
+.has-error{
+	border: 1px solid red!important;
+}
