@@ -1,0 +1,27 @@
+.char-count, .matching-password{
+	display: none;
+}
+
+.matching-password p, .char-count p {
+	font-size: .75em;
+	color: #B6B6B6;
+	font-style: italic;
+}
+
+.non-matched p {
+	color: red;
+}
+
+.matched p{
+	color: green;
+}
+
+
+/* ERROR DISPLAYING */
+#errors{
+	display: none;
+}
+
+.has-error{
+	border: 1px solid red!important;
+}
