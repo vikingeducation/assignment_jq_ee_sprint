@@ -1,0 +1,11 @@
+/*
+  Form Validation
+*/
+
+.error {
+  color: red;
+}
+.field-with-errors {
+  border-color: red;
+}
+
