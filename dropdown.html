@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assignment jQuery Events and Effects Sprint</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <style>
+      .dropdown,
+      .dropdown * {
+        padding: 0;
+        margin: 0;
+      }
+      .dropdown button {
+        border: none;
+        cursor: pointer;
+      }
+      .dropdown .menu {
+        list-style: none;
+        display: none;
+      }
+      .dropdown li,
+      .dropdown a,
+      .dropdown button {
+        width: 100%;
+        display: flex;
+      }
+      .dropdown a,
+      .dropdown button {
+        font-size: 18px;
+        text-decoration: none;
+        background: #4A7493;
+        border: 0px solid #fff;
+        color: #fff;
+        padding: 12px;
+        -webkit-transition: 0.5s ease;
+        -moz-transition: 0.5s ease;
+        -ms-transition: 0.5s ease;
+        -o-transition: 0.5s ease;
+        transition: 0.5s ease;
+      }
+      .dropdown button:hover,
+      .dropdown a:hover {
+        background: #639BC6;
+        border-left-width: 8px;
+        border-left-color: #7CC2F9;
+      }
+      .dropdown .icon {
+        text-indent: 1em;
+      }
+      .dropdown a.selected:after {
+        text-indent: 1em;
+        content: "\2714";
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="/">
+          Assignment jQuery Events and Effects Sprint
+        </a>
+      </h1>
+      <ul>
+        <li>
+          <a href="/form-validation.html">
+            Form Validation
+          </a>
+        </li>
+
+        <li>
+          <a href="/dropdown.html">
+            Dropdown
+          </a>
+        </li>
+
+        <li>
+          <a href="/photo-tagging.html">
+            Photo Tagging
+          </a>
+        </li>
+      </ul>
+    </header>
+
+    <div class="dropdown">
+      <button class="toggle">
+        <span class="icon">&or;</span>
+      </button>
+      <ul class="menu">
+        <li>
+          <a href="#">
+            One
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Two
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Three
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Four
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Five
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <pre id="output"></pre>
+
+    <script src="/dropdown.js"></script>
+  </body>
+</html>
