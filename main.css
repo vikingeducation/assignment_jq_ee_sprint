@@ -12,3 +12,17 @@
 
 .topelement {
 }
+
+
+.photo-container {
+  position: relative;
+}
+
+.tag-container {
+  background-color:red;
+  width:50px;
+  height:50px;
+  position: absolute;
+  top:50%;
+  left:50%;
+}

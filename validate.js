@@ -75,6 +75,9 @@ $(document).ready(function() {
   $( ".submit-button" ).click(function(eventObj) {
     eventObj.preventDefault();
 
+
+    $(".list-select").val($(".topelement").val());
+    
     var max = $( ".sample-text" ).attr("maxlength");
     var len = $( ".sample-text" ).val().length;
 
@@ -133,6 +136,18 @@ $(document).ready(function() {
       'background-color': 'white'
     } );
   } );
+
+  $(".element").click(function(eventObj){
+    
+    var text = $(this).text();
+    
+    $(".topelement").text(text);
+    $(".topelement").val(text);
+
+    $dropdownLists = $(".element");
+    $dropdownLists.slideToggle(1000);
+  } );
+
 
 })
 
