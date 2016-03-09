@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="validate.js"></script>
+    <style>
+      h1,h2,h3,p{
+        text-align: center;
+      }
+      .output{
+        padding: 20px;
+        width: 300px;
+        margin: 20px auto;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+   
+   <form method="post" id="sample-form">
+
+    <p class="text"> 
+      <label for="sample-text">Text</label>
+      <span class="count"> </span>
+      <input type="text" class="sample-text" id="sample-text" maxlength="32">  
+    </p> 
+
+    <p class="textarea"> 
+      <label for="sample-textarea">Text Area</label>
+      <span class="count"> </span>
+      <textarea class="sample-textarea" id="sample-textarea" maxlength="140"></textarea>
+    </p> 
+
+    <p class="password"> 
+      <label for="sample-password">Password</label>
+      <span class="count"> </span>
+      <input type="password" class="sample-password" id="sample-password" maxlength="16"></input>
+    </p>
+
+    <p class="password-conf"> 
+      <label for="sample-password-conf">Password Confirmation</label>
+      <span class="count"> </span>
+      <input type="password" class="sample-password-conf" id="sample-password-conf" maxlength="16"></input>
+    </p> 
+
+   </form> 
+  </body>
+</html>
