@@ -4,15 +4,25 @@ $(document).ready(function() {
   $( ".sample-text" ).keyup(function() {
     var max = $( ".sample-text" ).attr("maxlength");
     var len = $( ".sample-text" ).val().length;
-    var diff = Number(max) - Number(len);
-    $(".text .count").text("Length " + diff );
-  }); 
+
+    if ( Number(len) === 0 ) {
+      $( ".text .count" ).text("");
+    } else {
+      var diff = Number(max) - Number(len);
+      $(".text .count").text("Length " + diff );
+    }
+  } ); 
 
   $( ".sample-textarea" ).keyup(function() {
     var max = $( ".sample-textarea" ).attr("maxlength");
     var len = $( ".sample-textarea" ).val().length;
     var diff = Number(max) - Number(len);
-    $(".textarea .count").text("Length " + diff );
+
+    if ( Number(len) === 0 ) {
+      $( ".textarea .count" ).text("");
+    } else {
+      $(".textarea .count").text("Length " + diff );
+    }
   }); 
 
   $( ".sample-password" ).keyup(function() {
