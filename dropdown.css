@@ -1,0 +1,27 @@
+.dropdown-container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dropdown-button {
+  cursor: pointer; border: 1px solid black; border-radius: 5px; background-color: #AAA; font-size: 200px; } 
+.dropdown-item {
+  font-size: 200px;
+  display: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #AAA;
+}
+
+.revealed:hover {
+  background-color: yellow;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: pink;
+}
+
+.dropdown-item.selected:hover {
+  background-color: pink;
+}
