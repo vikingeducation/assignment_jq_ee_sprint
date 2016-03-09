@@ -1,5 +1,3 @@
-var $warning;
-
 $( document ).ready( function(){
 
   $("form").on("keyup", function(e) {
