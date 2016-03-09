@@ -29,15 +29,51 @@ $(document).ready(function() {
     var max = $( ".sample-password" ).attr("maxlength");
     var len = $( ".sample-password" ).val().length;
     var diff = Number(max) - Number(len);
-    $(".password .count").text("Length " + diff );
+
+    if ( Number(len) === 0 ) {
+      $(".password .count").text("");
+    } else {
+      $(".password .count").text("Length " + diff );
+    }
+
   }); 
 
   $( ".sample-password-conf" ).keyup(function() {
     var max = $( ".sample-password-conf" ).attr("maxlength");
     var len = $( ".sample-password-conf" ).val().length;
+
+    var pwconfValue = $( ".sample-password-conf" ).val();
+    var pwValue = $(".sample-password" ).val();
+
     var diff = Number(max) - Number(len);
-    $(".password-conf .count").text("Length " + diff );
-  }); 
+
+    if ( Number(len) === 0 ) {
+      $(".password-conf .feedback").text("");
+    } else if ( pwconfValue !== pwValue ) {
+      $(".password-conf .feedback").text("Password does not match");
+    } else {
+      $(".password-conf .feedback").text("");
+    }
+
+    if ( Number(len) === 0 ) {
+      $(".password-conf .count").text("");
+    } else {
+      $(".password-conf .count").text("Length " + diff );
+    }
+
+  } );
+
+
+  $( ".button" ).click(function() {
+    console.log("is it here");
+    var textMax = $( ".sample-text" ).attr("maxlength");
+    var texLen = $( ".sample-text" ).val().length;
+
+    if ( Number(textLen) < 4 || Number(textLen) > Number(textMax) ) {
+      
+    }
+
+  } );
 
 })
 
