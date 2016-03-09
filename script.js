@@ -129,11 +129,21 @@ $(document).ready(function(){
   });
 
   // eventlistener for submenu color changer
-  $("#dropdown ul ul").on("hover", function() {
-    if(!$(this).is(":visible")) {
-      $(this).css("background-color", "yellow");
-		}
+  $("#dropdown ul ul li").on({
+    mouseover: function() {
+      if($(this).is(":visible")) {
+        $(this).css("background-color", "yellow");
+		  }
+    },
+    mouseleave: function(){
+      $(this).css("background-color", "#ddd");
+    }, 
+    click: function(){
+      $(this).prependTo($(this).parent()[0]);
+    }
   });
+
+  
 
 });
 
