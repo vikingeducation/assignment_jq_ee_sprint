@@ -126,6 +126,7 @@ $(document).ready(function() {
 
 
   $('#photo-container').on('mousemove', function(event) {
+
     if( !bSelectNameFocus ) {
         // create box around mouse cursor
       var mouseX = event.pageX;
