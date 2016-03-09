@@ -20,15 +20,16 @@ function Simon(element) {
   this.checkGuess = function(guess) {
     var correctAnswer = this.pattern[this.position];
     if (guess == correctAnswer) {
-      this.addToPattern();
-      this.playPattern();
       this.position += 1;
       if (this.position == this.pattern.length) {
         this.position == 0;
+        this.addToPattern();
+        this.playPattern();
       }
     } else {
-      alert('wrong')
-        this.reset();
+      console.log("wrong")
+      this.activateButton(guess);
+      this.reset();
     }
   }
 
@@ -39,22 +40,28 @@ function Simon(element) {
 
   this.playPattern = function() {
     var time = 0;
-    for (var i = 0; i < this.pattern.length; ++i) {
-      var active = this.pattern[i]
-      var current_button = $(this.buttons[active]);
-      var oldColor = current_button.css('borderColor');
-      setTimeout(function() {
-        self.catSounds[active].currentTime = 0;
-        self.catSounds[active].play();
-        current_button.animate({
-          borderColor: 'red'
-        }).animate({
-          borderColor: oldColor
-        });
-      }, time);
+    var active, current_button, oldColor;
+    for (var j = 0; j < self.pattern.length; ++j) {
+      active = self.pattern[j];
+      setTimeout(function() {self.activateButton(active)}, time);
       time += 500;
     }
   }
+
+  this.activateButton = function(active){
+
+    current_button = $(self.buttons[active]);
+    oldColor = current_button.css('borderColor');
+
+    self.catSounds[active].currentTime = 0;
+    self.catSounds[active].play();
+    current_button.animate({
+      borderColor: 'red'
+    }).animate({
+      borderColor: oldColor
+    });
+  }
+
 
   this.reset = function() {
     this.pattern = [];
