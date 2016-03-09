@@ -6,6 +6,7 @@
     <script text="text/javascript" src="script.js"></script>
   </head>
   <body>
+    <!-- form stuff -->
     <form>
       <input type="text" placeholder="Username" class="center" id="username" maxlength="32">
       <div class="center" id="username_counter"></div>
@@ -17,6 +18,38 @@
       <div class="center" id="password_confirm_counter"></div>
       <input type="submit" value="Create User!" class="center" id="submit">
     </form>
+
+    <!-- Dropdown menu -->
+    <div id="dropdown">
+      <h2><span class="menu-header">Menu</span></h3>
+    	<ul>
+    		<li>
+    			<h3><span class="menu-header">Home</span></h3>
+    			<ul>
+    				<li><a href="#">Weather</a></li>
+    				<li><a href="#">Search</a></li>
+    				<li><a href="#">Graphs</a></li>
+    			</ul>
+    		</li>
+    		<!-- we will keep this LI open by default -->
+    		<li>
+    			<h3><span class="menu-header">Calender</span></h3>
+    			<ul>
+    				<li><a href="#">Today's tasks</a></li>
+    				<li><a href="#">Urgent</a></li>
+    				<li><a href="#">Overdues</a></li>
+    			</ul>
+    		</li>
+    		<li>
+    			<h3><span class="menu-header">Todo</span></h3>
+    			<ul>
+    				<li><a href="#">Task 1</a></li>
+    				<li><a href="#">Task 2</a></li>
+    				<li><a href="#">Task 3</a></li>
+    			</ul>
+    		</li>
+    	</ul>
+    </div>
 
   </body>
 </html>

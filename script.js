@@ -116,6 +116,24 @@ $(document).ready(function(){
 
   });
 
+  //Initialize webpage load with slid up menu stuff
+  $("#dropdown ul ul").slideUp(0);
+
+  // Dropdown jQuery listener on menu for sliding
+  $("#dropdown h3").on("click", function() {
+    $("#dropdown ul ul").slideUp();
+    if(!$(this).next().is(":visible")) {
+			$(this).next().slideDown();
+      $(this).next().css("background-color", "#ddd");
+		}
+  });
+
+  // eventlistener for submenu color changer
+  $("#dropdown ul ul").on("hover", function() {
+    if(!$(this).is(":visible")) {
+      $(this).css("background-color", "yellow");
+		}
+  });
 
 });
 
