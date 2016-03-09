@@ -113,6 +113,27 @@ $(document).ready(function() {
 
   } );
 
+// =========================== Dropdowns ==========================================
+  
+
+  $(".toggle-dropdown").click(function(eventObj){
+    eventObj.preventDefault();
+    $dropdownLists = $(".dropdown li");
+    $dropdownLists.slideToggle(1000);
+  } );
+
+  $(".dropdown li").mouseenter(function(eventObj){
+    $(this).css({
+      'background-color': 'grey'
+    } );
+  } );
+
+  $(".dropdown li").mouseleave(function(eventObj){
+    $(this).css({
+      'background-color': 'white'
+    } );
+  } );
+
 })
 
 
