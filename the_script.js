@@ -1,3 +1,7 @@
+var bSelectNameFocus = false;
+var $currentTagObject;
+
+
 
 
 $(document).ready(function() {
@@ -104,22 +108,56 @@ $(document).ready(function() {
       $(this).css('color', 'black');
   });
 
-  $('#photo-container').on('mousemove', function(event) {
-      // create box around mouse cursor
-    var mouseX = event.pageX;
-    var mouseY = event.pageY;
+/////////////
 
-    var ele = $('#selector');
-    ele.css({left: mouseX - 25, top: mouseY - 25});
+
+
+  $('.names-content li').on('click', function(event) {
+    console.log('im here')
+    bSelectNameFocus = false;
+    event.stopPropagation();
+
+    $textDiv = $('<div class="name-text"></div>');
+    $textDiv.html( $(this).html() )
+
+    $currentTagObject.children().filter('.names-content').remove();
+    $currentTagObject.append( $textDiv );
+  });
+
+
+  $('#photo-container').on('mousemove', function(event) {
+    if( !bSelectNameFocus ) {
+        // create box around mouse cursor
+      var mouseX = event.pageX;
+      var mouseY = event.pageY;
+
+      var ele = $('#selector');
+      ele.css({left: mouseX - 25, top: mouseY - 25});
+      ele.append($('.names-content'));
+    }
   });
 
   $('#photo-container').on('click', function(event) {
-    var mouseX = event.pageX;
-    var mouseY = event.pageY;
+    if( !bSelectNameFocus ) {
 
-    var ele = $('<div class="tag"></div>');
-    ele.css({left: mouseX - 25, top: mouseY - 25});
-    $('#photo-container').append(ele);
+      var mouseX = event.pageX;
+      var mouseY = event.pageY;
+
+      var ele = $('<div class="tag"></div>');
+      ele.css({left: mouseX - 25, top: mouseY - 25});
+
+      ele.append($('.names-content'));
+      $('#photo-container').append(ele);
+
+      bSelectNameFocus = true;
+      $currentTagObject = ele;
+    }
   });
 });
+
+
+
+
+
+
 
