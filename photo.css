@@ -1,0 +1,29 @@
+#target {
+
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  border: 2px solid green;
+
+}
+
+#list {
+
+}
+
+ul {
+  top: 100px;
+
+  position: relative;
+  list-style-type: none;
+  background-color: white;
+}
+
+li {
+  position: relative;
+  left: -40px;
+}
+
+li:hover {
+  background-color: grey;
+}
