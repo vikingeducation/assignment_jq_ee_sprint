@@ -64,13 +64,43 @@ $(document).ready(function() {
   } );
 
 
-  $( ".button" ).click(function() {
-    console.log("is it here");
-    var textMax = $( ".sample-text" ).attr("maxlength");
-    var texLen = $( ".sample-text" ).val().length;
+  $( ".submit-button" ).click(function(eventObj) {
+    eventObj.preventDefault();
 
-    if ( Number(textLen) < 4 || Number(textLen) > Number(textMax) ) {
-      
+    var max = $( ".sample-text" ).attr("maxlength");
+    var len = $( ".sample-text" ).val().length;
+
+    if ( Number(len) < 4 || Number(len) > Number(max) ) {
+    
+        $(".text .count").text("Text should be between 4 and " + max + " characters").css({'color':'red'});
+        $(".sample-text").css({
+           'border': '1px solid red'
+        } );
+    }
+
+    var max = $( ".sample-textarea" ).attr("maxlength");
+    var len = $( ".sample-textarea" ).val().length;
+
+    if ( Number(len) < 4 || Number(len) > Number(max) ) {
+        $(".textarea .count").text("Textarea should be between 4 and " + max + " characters").css({'color':'red'});
+        $(".sample-textarea").css({
+           'border': '1px solid red'
+        } );
+    }
+
+    var max = $( ".sample-password" ).attr("maxlength");
+    var len = $( ".sample-password" ).val().length;
+
+    if ( Number(len) < 4 || Number(len) > Number(max) ) {
+        $(".password .count").text("Password should be between 4 and " + max + " characters").css({'color':'red'});
+        $(".sample-password").css({
+           'border': '1px solid red'
+        } );
+    } else if ($( ".sample-password-conf" ).val() !=  $(".sample-password" ).val()) {
+       $(".password .count").text("Passwords don't match!").css({'color':'red'});
+        $(".sample-textarea").css({
+           'border': '1px solid red'
+        } );     
     }
 
   } );
