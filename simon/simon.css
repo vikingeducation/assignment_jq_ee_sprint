@@ -1,0 +1,42 @@
+.simon {
+  width: 650px;
+  margin: 0 auto;
+}
+
+
+img {
+  height: 300px;
+}
+
+.btn {
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
+  border-radius: 150px;
+  border: 5px solid pink;
+  margin-bottom: 10px;
+}
+
+
+.top-right, .bottom-right {
+  float: right;
+}
+
+.top-left, .bottom-left {
+  float: left;
+}
+
+
+button {
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  height: 40px;
+  color: turquoise;
+  background-color: purple;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
