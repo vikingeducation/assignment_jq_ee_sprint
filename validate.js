@@ -1,68 +1,76 @@
 
 $(document).ready(function() {
 
-  $( ".sample-text" ).keyup(function() {
-    var max = $( ".sample-text" ).attr("maxlength");
-    var len = $( ".sample-text" ).val().length;
+// ======================= Helper methods =================================
 
-    if ( Number(len) === 0 ) {
-      $( ".text .count" ).text("");
-    } else {
-      var diff = Number(max) - Number(len);
-      $(".text .count").text("Length " + diff );
-    }
-  } ); 
+  function getMax($object){
+    return $object.attr("maxlength");
+  };
 
-  $( ".sample-textarea" ).keyup(function() {
-    var max = $( ".sample-textarea" ).attr("maxlength");
-    var len = $( ".sample-textarea" ).val().length;
+  function getLen($object){
+    return $object.val().length;
+  };
+
+  function validateLength($object, $displayObj, $passwordObj){
+    var max = getMax($object);
+    var len = getLen($object);
     var diff = Number(max) - Number(len);
-
-    if ( Number(len) === 0 ) {
-      $( ".textarea .count" ).text("");
-    } else {
-      $(".textarea .count").text("Length " + diff );
+    displayValidation($displayObj, len, diff)
+    if ( $passwordObj ) { 
+      passwordValidation($passwordObj, len, diff)
     }
-  }); 
+  };
 
-  $( ".sample-password" ).keyup(function() {
-    var max = $( ".sample-password" ).attr("maxlength");
-    var len = $( ".sample-password" ).val().length;
-    var diff = Number(max) - Number(len);
-
+  function displayValidation($displayObj, len, diff) {
     if ( Number(len) === 0 ) {
-      $(".password .count").text("");
+      $displayObj.text("");
     } else {
-      $(".password .count").text("Length " + diff );
+      $displayObj.text("Length " + diff );
     }
+  };
 
-  }); 
-
-  $( ".sample-password-conf" ).keyup(function() {
-    var max = $( ".sample-password-conf" ).attr("maxlength");
-    var len = $( ".sample-password-conf" ).val().length;
+  function passwordValidation($passwordObj, len, diff) {
 
     var pwconfValue = $( ".sample-password-conf" ).val();
     var pwValue = $(".sample-password" ).val();
 
-    var diff = Number(max) - Number(len);
-
     if ( Number(len) === 0 ) {
-      $(".password-conf .feedback").text("");
+      $passwordObj.text("");
     } else if ( pwconfValue !== pwValue ) {
-      $(".password-conf .feedback").text("Password does not match");
+      $passwordObj.text("Password does not match");
     } else {
-      $(".password-conf .feedback").text("");
+      $passwordObj.text("");
     }
+  };
 
-    if ( Number(len) === 0 ) {
-      $(".password-conf .count").text("");
-    } else {
-      $(".password-conf .count").text("Length " + diff );
-    }
+// ======================== validations =================================
+
+  $( ".sample-text" ).keyup(function(eventObj) {
+    var $displayObj = $(".text .count");
+    validateLength($(eventObj.target), $displayObj);
 
   } );
 
+  $( ".sample-textarea" ).keyup(function(eventObj) {
+    var $displayObj = $(".textarea .count");
+    validateLength($(eventObj.target), $displayObj);
+
+  }); 
+
+  $( ".sample-password" ).keyup(function(eventObj) {
+    var $displayObj = $(".password .count");
+    validateLength($(eventObj.target), $displayObj);
+
+  }); 
+
+  $( ".sample-password-conf" ).keyup(function(eventObj) {
+    var $displayObj = $(".password-conf .count");
+    var $passwordObj = $(".feedback");
+    validateLength($(eventObj.target), $displayObj, $passwordObj);
+
+  } );
+
+// ========================== submit validations =============================
 
   $( ".submit-button" ).click(function(eventObj) {
     eventObj.preventDefault();
