@@ -62,9 +62,28 @@ $(document).ready(function() {
 
     if (inputText.length < 4 || inputText.length > 32) {
       $('.remaining-characters').html('Invalid length');
-      $('.valid-text').addClass('.highlight')
+      $('.valid-text').addClass('.highlight');
     }
   });
+
+  $('.toggle').on('click', function(event) {
+    $('.dropdown-content').toggle(600);
+  });
+
+  $('.dropdown-content li').on('click', function(event) {
+    $('.dropdown-content').toggle(600);
+    $('.selection-text').html( $(this).html() )
+  });
+
+  $('.dropdown-content li').on('mouseenter', function(event) {
+      $(this).css('color', 'yellow');
+      $(this).css('cursor','pointer');
+  });
+
+  $('.dropdown-content li').on('mouseleave', function(event) {
+      $(this).css('color', 'black');
+  });
+
 
 });
 
