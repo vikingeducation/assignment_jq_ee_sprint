@@ -1,0 +1,34 @@
+.kittens {
+  height: 700px;
+  width: auto;
+}
+
+.target.active {
+  opacity: 1;
+}
+
+.target {
+  height: 100px;
+  width: 100px;
+  border: 10px solid purple;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.searching:hover {
+  cursor: none;
+}
+
+
+.dropdown {
+  display: none;
+  position: relative;
+  color: black;
+  background: white;
+  top: 100px;
+  left: -10px;
+  width: 100px;
+  border: 10px solid purple;
+}
