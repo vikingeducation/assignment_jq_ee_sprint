@@ -116,9 +116,9 @@ $(document).ready(function() {
 // =========================== Dropdowns ==========================================
   
 
-  $(".toggle-dropdown").click(function(eventObj){
+  $(".topelement").click(function(eventObj){
     eventObj.preventDefault();
-    $dropdownLists = $(".dropdown li");
+    $dropdownLists = $(".element");
     $dropdownLists.slideToggle(1000);
   } );
 
