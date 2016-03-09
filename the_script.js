@@ -104,24 +104,22 @@ $(document).ready(function() {
       $(this).css('color', 'black');
   });
 
-  $('img').on('mousemove', function(event) {
+  $('#photo-container').on('mousemove', function(event) {
       // create box around mouse cursor
     var mouseX = event.pageX;
     var mouseY = event.pageY;
 
-    var ele = $('<div>');
-    ele.css({width: '50px', height: '50px', border: '5px solid red', position: 'absolute', left: mouseX - 25, top: mouseY - 25});
-    $('div .selector').replaceWith(ele);
+    var ele = $('#selector');
+    ele.css({left: mouseX - 25, top: mouseY - 25});
   });
 
-  $('img').on('click', function(event) {
+  $('#photo-container').on('click', function(event) {
     var mouseX = event.pageX;
     var mouseY = event.pageY;
 
-    var ele = $('<div>');
-    ele.css({width: '50px', height: '50px', border: '5px solid red', position: 'absolute', left: mouseX - 25, top: mouseY - 25});
-    $('.dropdown-content').toggle();
-    $('div').append(ele);
+    var ele = $('<div class="tag"></div>');
+    ele.css({left: mouseX - 25, top: mouseY - 25});
+    $('#photo-container').append(ele);
   });
 });
 
