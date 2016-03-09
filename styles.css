@@ -18,22 +18,28 @@
 }
 
 .names-content {
-  width: 50px;
-  height: 50px;
+  width: 60px;
   background-color: white;
   position: absolute;
   top: 55px;
-  font-size: 4;
+  list-style: none;
+  left: -5px;
+  text-align: center;
 }
 
+.list-content {
+  padding: 0;
+}
 
 .names-text {
-  width: 50px;
+  width: 60px;
   height: 20px;
-  background-color: white;
+  background-color: green;
+  color: white;
   position: absolute;
-  top: 55px;
-  font-size: 10;
+  text-align: center;
+  top: 50px;
+  left: -5px;
 }
 
 

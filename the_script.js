@@ -2,8 +2,6 @@ var bSelectNameFocus = false;
 var $currentTagObject;
 
 
-
-
 $(document).ready(function() {
 
   $('.valid-text').on('change keyup paste keypress',  function() {
@@ -117,10 +115,12 @@ $(document).ready(function() {
     bSelectNameFocus = false;
     event.stopPropagation();
 
-    $textDiv = $('<div class="name-text"></div>');
+    $textDiv = $('<div class="names-text"></div>');
     $textDiv.html( $(this).html() )
 
-    $currentTagObject.children().filter('.names-content').remove();
+    $nameDropdown = $currentTagObject.children().filter('.names-content')
+    $nameDropdown.hide()
+    $('#selector').append($nameDropdown);
     $currentTagObject.append( $textDiv );
   });
 
@@ -134,6 +134,7 @@ $(document).ready(function() {
       var ele = $('#selector');
       ele.css({left: mouseX - 25, top: mouseY - 25});
       ele.append($('.names-content'));
+      $('#selector .names-content').hide();
     }
   });
 
@@ -146,11 +147,16 @@ $(document).ready(function() {
       var ele = $('<div class="tag"></div>');
       ele.css({left: mouseX - 25, top: mouseY - 25});
 
+      $('#selector .names-content').show();
       ele.append($('.names-content'));
       $('#photo-container').append(ele);
 
       bSelectNameFocus = true;
       $currentTagObject = ele;
+    } else {
+      bSelectNameFocus = false;
+      $('#selector').append($currentTagObject.children().filter('.names-content'));
+      $currentTagObject.remove();
     }
   });
 });
