@@ -1,0 +1,39 @@
+.center {
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.menu-header {
+  color: green;
+}
+
+.dropdown {
+  display: block;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+}
+
+img {
+
+  position: absolute;
+  height: 400px;
+  width: 600px;
+  display:block;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.photo-tag {
+  display: none;
+  pointer-events: none;
+  height: 100px;
+  width: 100px;
+  border: 3px solid red;
+  color: red;
+  z-index: 100;
+  position: absolute;
+}

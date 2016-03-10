@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script text="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <!-- form stuff -->
+    <form>
+      <input type="text" placeholder="Username" class="center" id="username" maxlength="32">
+      <div class="center" id="username_counter"></div>
+      <textarea placeholder="Description" class="center" id="description" maxlength="140"></textarea>
+      <div class="center" id="description_counter"></div>
+      <input type="password" placeholder="Password" class="center" id="password" maxlength="16">
+      <div class="center" id="password_counter"></div>
+      <input type="password" placeholder="Password Confirmation" class="center" id="password-confirmation" maxlength="16">
+      <div class="center" id="password_confirm_counter"></div>
+      <input type="submit" value="Create User!" class="center" id="submit">
+    </form>
+
+    <!-- Dropdown menu -->
+    <div id="dropdown" class="center">
+      <h2><span class="menu-header">Menu</span></h3>
+    	<ul>
+    		<li>
+    			<h3><span class="menu-header">Home</span></h3>
+    			<ul>
+    				<li><a href="#">Weather</a></li>
+    				<li><a href="#">Search</a></li>
+    				<li><a href="#">Graphs</a></li>
+    			</ul>
+    		</li>
+    		<!-- we will keep this LI open by default -->
+    		<li>
+    			<h3><span class="menu-header">Calender</span></h3>
+    			<ul>
+    				<li><a href="#">Today's tasks</a></li>
+    				<li><a href="#">Urgent</a></li>
+    				<li><a href="#">Overdues</a></li>
+    			</ul>
+    		</li>
+    		<li>
+    			<h3><span class="menu-header">Todo</span></h3>
+    			<ul>
+    				<li><a href="#">Task 1</a></li>
+    				<li><a href="#">Task 2</a></li>
+    				<li><a href="#">Task 3</a></li>
+    			</ul>
+    		</li>
+    	</ul>
+    </div>
+
+    <!-- Photo Tag -->
+    <img src="litter.jpg">
+    <div class="photo-tag"></div>
+
+  </body>
+</html>
