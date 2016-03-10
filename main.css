@@ -11,17 +11,11 @@
 }
 
 #photo-container {
-  width: 584px;
-  height: 329px;
-  background-image: url("happy-people.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
   position: relative;
 }
 
 #tag-container {
   border: 2px solid red;
+  display: none;
   position: absolute;
-  overflow: hidden;
-  display: none;  
 }

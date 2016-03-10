@@ -5,8 +5,9 @@ $(document).ready(function() {
   var $tagContainer = $("#tag-container");
   $tagContainer.css({"width": "100px", "height": "100px"});
   var getWidth = $tagContainer.width();
+  var $photoImage = $("img");
 
-  $photoContainer.mousemove(function(event){
+  $photoImage.mousemove(function(event){
 
     var x = event.pageX;
     var y = event.pageY;
@@ -20,10 +21,8 @@ $(document).ready(function() {
 
   } );
 
-  $photoContainer.hover(
-
-    function(event) {
-
+  $photoImage.hover(
+    function() {
       $tagContainer.toggle();
 
     } );
