@@ -1,22 +1,21 @@
 #target {
-
   position: absolute;
   height: 100px;
   width: 100px;
   border: 2px solid green;
-
+  display: none;
 }
 
-#list {
-
+#puppy-box {
+  position: relative;
 }
 
 ul {
   top: 100px;
-
   position: relative;
   list-style-type: none;
   background-color: white;
+  display: none;
 }
 
 li {

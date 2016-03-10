@@ -1,40 +1,42 @@
 $( document ).ready(function(){
   var clicked = false;
-
-  $('#puppy').on('mouseover', function(ePuppy){
-
-    $('#target').show();
-
-      $('#puppy').on('mousemove', function(eTarget){
-
-        if(!clicked){
-          $('#target').css('left', eTarget.pageX - 25)
-          $('#target').css('top', eTarget.pageY - 25)
-        }
-      })
-
-      $('#target').on('click', function(eDropdown){
-
-        $( "#options" ).toggle();
-        clicked = clicker(clicked);
-        //
-        // $( "ul" ).on("click", function(eUl) {
-        //   $( "#target" ).text( eUl.target.innerHTML );
-        // });
-        //
-        // $( "body" ).on("click", function(eBody) {
-        //   if (eBody.target.id != "selected" && eBody.target.id != "options" ) {
-        //     $( "#options" ).slideUp()
-        //   }
-        // })
-
-      })
-
-  })
-
-  var clicker = function(bool){
-    return !(bool)
-  }
+  var $puppyBox = $('#puppy-box');
+  var $targetBox = $('#target');
 
 
-})
+  $('#puppy').hover( function() {
+    $targetBox.toggle();
+  });
+
+
+  $('#puppy').on('mousemove', function(eTarget){
+    if(!clicked){
+      moveToMouse(eTarget);
+    }
+  });
+
+
+  $targetBox.on('click', function(eDropdown){
+    $( "#options" ).slideToggle();
+    clicked = clicker(clicked);
+  });
+
+
+  var clicker = function(bool) {
+    return !bool;
+  };
+
+
+  $( "ul" ).on("click", function(e) {
+    console.log(e.target);
+    $( "#target" ).attr( 'data-name', e.target.innerHTML );
+  });
+
+
+  var moveToMouse = function(evt) {
+    $targetBox.css('left', evt.pageX - 50);
+    $targetBox.css('top', evt.pageY - 50);
+  };
+
+
+});
