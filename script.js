@@ -143,7 +143,26 @@ $(document).ready(function(){
     }
   });
 
-  
+
+  $('img').on({
+    mousemove: function(event){
+
+      var $target_square = $('img').next();
+
+
+      // var $target_square = $("<div></div>");
+      // $target_square.addClass("photo_tag");
+      // $(this).after($target_square);
+
+      $target_square.css({
+        left: event.pageX,
+        top: event.pageY
+      });
+
+      $target_square.show();
+    }
+  });
+
 
 });
 
