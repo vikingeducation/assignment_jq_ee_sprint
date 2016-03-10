@@ -4,19 +4,21 @@ $( document ).ready(function(){
   var $targetBox = $('#target');
 
 
-  $('#puppy').hover( function() {
+
+  $('#puppy-box').hover( function() {
     $targetBox.toggle();
   });
 
 
-  $('#puppy').on('mousemove', function(eTarget){
+  $('#puppy-box').on('mousemove', function(eTarget){
     if(!clicked){
       moveToMouse(eTarget);
     }
   });
 
 
-  $targetBox.on('click', function(eDropdown){
+  $('#puppy-box').on('click', function(eDropdown){
+    console.log(eDropdown.target.id)
     $( "#options" ).slideToggle();
     clicked = clicker(clicked);
   });
@@ -30,6 +32,10 @@ $( document ).ready(function(){
   $( "ul" ).on("click", function(e) {
     console.log(e.target);
     $( "#target" ).attr( 'data-name', e.target.innerHTML );
+
+    $( "#puppy-box" ).append($("<div id='thetag' style='top: " + $targetBox.position().top + "; left: " + $targetBox.position().left + "; position: absolute;'></div>"))
+
+    $('#thetag').text(e.target.innerHTML)
   });
 
 
@@ -37,6 +43,7 @@ $( document ).ready(function(){
     $targetBox.css('left', evt.pageX - 50);
     $targetBox.css('top', evt.pageY - 50);
   };
+
 
 
 });
