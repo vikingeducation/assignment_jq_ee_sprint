@@ -17,8 +17,8 @@ ul {
   list-style-type: none;
 }
 
-.img {
-  position: absolute;
+img {
+  /*position: absolute;*/
   height:600px; 
   width: 800px; 
   display:block; 
@@ -33,6 +33,7 @@ ul {
   color: red;
   z-index: 9000;
   position: absolute;
+  pointer-events:none;
   /*top: 50%; */
   /*transform: translateY(-50%);*/
 }
