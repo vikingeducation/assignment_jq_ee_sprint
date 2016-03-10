@@ -137,7 +137,7 @@ $(document).ready(function(){
     },
     mouseleave: function(){
       $(this).css("background-color", "#ddd");
-    }, 
+    },
     click: function(){
       $(this).prependTo($(this).parent()[0]);
     }
@@ -148,18 +148,23 @@ $(document).ready(function(){
     mousemove: function(event){
 
       var $target_square = $('img').next();
-
+      var width_half = $target_square.width()/2;
+      var height_half = $target_square.height()/2;
 
       // var $target_square = $("<div></div>");
       // $target_square.addClass("photo_tag");
       // $(this).after($target_square);
 
       $target_square.css({
-        left: event.pageX,
-        top: event.pageY
+        left: event.clientX - width_half,
+        top: event.clientY - height_half
       });
 
       $target_square.show();
+    },
+    mouseleave: function(event){
+      var $target_square = $('img').next();
+      $target_square.hide();
     }
   });
 
