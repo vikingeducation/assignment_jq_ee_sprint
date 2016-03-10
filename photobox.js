@@ -2,11 +2,12 @@ $( document ).ready(function(){
   var clicked = false;
   var $puppyBox = $('#puppy-box');
   var $targetBox = $('#target');
-
+  var counter = 0;
 
 
   $('#puppy-box').hover( function() {
     $targetBox.toggle();
+    $targetBox.css('pointer-events', 'none')
   });
 
 
@@ -20,6 +21,7 @@ $( document ).ready(function(){
   $('#puppy-box').on('click', function(eDropdown){
     console.log(eDropdown.target.id)
     $( "#options" ).slideToggle();
+    $targetBox.css('pointer-events', 'auto')
     clicked = clicker(clicked);
   });
 
@@ -31,11 +33,12 @@ $( document ).ready(function(){
 
   $( "ul" ).on("click", function(e) {
     console.log(e.target);
+
     $( "#target" ).attr( 'data-name', e.target.innerHTML );
 
-    $( "#puppy-box" ).append($("<div id='thetag' style='top: " + $targetBox.position().top + "; left: " + $targetBox.position().left + "; position: absolute;'></div>"))
-
-    $('#thetag').text(e.target.innerHTML)
+    $( "#puppy-box" ).append($("<div id='thetag" + counter + "' style='top: " + $targetBox.position().top + "; left: " + $targetBox.position().left + "; position: absolute;'></div>"))
+    $('#thetag' + counter).text(e.target.innerHTML)
+    counter += 1;
   });
 
 
