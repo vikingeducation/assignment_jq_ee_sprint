@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="form.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+
+    <form>
+      <div class="char-count">
+        Name:
+        <span class='error-message'></span><br>
+        <input type="text" name="name" data-max="32" data-min='4'>
+        <span class='char-counter'></span><br>
+      </div>
+
+      <div class="char-count">
+        About me:
+        <span class='error-message'></span><br>
+        <textarea rows="10" name="aboutme" data-max="140" data-min='4'></textarea>
+        <span class='char-counter'></span><br>
+      </div>
+
+      <div class="char-count">
+        Password:
+        <span class='error-message'></span><br>
+        <input type="password" name="password" data-max="16" id="password" data-min='6'>
+        <span class='char-counter'></span><br>
+      </div>
+
+      <div class="char-count">
+        Password confirmation:
+        <span class='password-match-status'></span><br>
+        <input type="password" name="passwordconfirm" data-max="16" id="passwordconfirm" data-min='6'>
+        <span class='char-counter'></span><br>
+      </div>
+
+      <input type="submit">
+    </form>
+
+
+  </body>
+</html>

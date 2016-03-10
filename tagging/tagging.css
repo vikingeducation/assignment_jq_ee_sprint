@@ -1,0 +1,98 @@
+.kittens {
+  height: 700px;
+  width: auto;
+}
+
+.target.active {
+  opacity: 1;
+}
+
+.tag {
+  height: 100px;
+  width: 100px;
+  border: 10px solid chartreuse;
+  position: absolute;
+  transition: opacity 1s;
+}
+
+.faded {
+  opacity: 0.5;
+}
+
+.tag:hover {
+  opacity: 1;
+}
+
+.tagged-name {
+  text-align: center;
+  position: relative;
+  top: 100px;
+  background-color: chartreuse;
+  width: 100px;
+  padding: 10px 10px;
+  left: -10px;
+  font-weight: bold;
+}
+
+.delete-tag {
+  position: absolute;
+  font-family: sans-serif;
+  font-weight: bold;
+  right: -20px;
+  top: -20px;
+  background-color: chartreuse;
+  border-radius: 50%;
+  border: 10px solid chartreuse;
+}
+
+.delete-tag:hover {
+  pointer-events: auto;
+  cursor: pointer;
+  color: red;
+}
+
+.target {
+  z-index: 100;
+  height: 100px;
+  width: 100px;
+  border: 10px solid purple;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#tag-prototype {
+  display: none;
+}
+
+.target.clicked {
+  opacity: 1;
+}
+
+
+.searching:hover {
+  cursor: none;
+}
+
+
+.dropdown {
+  display: none;
+  position: relative;
+  color: black;
+  background: white;
+  top: 100px;
+  left: -10px;
+  width: 100px;
+  border: 10px solid purple;
+  pointer-events: all;
+}
+
+.name {
+  font-family: sans-serif;
+  padding: 3px;
+}
+
+.name:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
