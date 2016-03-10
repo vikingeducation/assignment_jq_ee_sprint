@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="validate.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+   
+   <form method="post" id="sample-form">
+
+    <p class="text"> 
+      <label for="sample-text">Text</label>
+      <span class="count"> </span>
+      <input type="text" class="sample-text" id="sample-text" maxlength="32">  
+    </p> 
+
+    <p class="textarea"> 
+      <label for="sample-textarea">Text Area</label>
+      <span class="count"> </span>
+      <textarea class="sample-textarea" id="sample-textarea" maxlength="140"></textarea>
+    </p> 
+
+    <p class="password"> 
+      <label for="sample-password">Password</label>
+      <span class="count"> </span>
+      <input type="password" class="sample-password" id="sample-password" maxlength="16"></input>
+    </p>
+
+    <p class="password-conf"> 
+      <label for="sample-password-conf">Password Confirmation</label>
+      <span class="count"> </span>
+      <input type="password" class="sample-password-conf" id="sample-password-conf" maxlength="16"></input><br>
+      <span class="feedback"> </span>
+    </p>
+
+    <p>
+  
+      <ul class="dropdown">
+        <input type="hidden" name="list-select" class="list-select">
+        <li class="topelement"></li>
+        <li class="element">List 1</a></li>
+        <li class="element">List 2</a></li>
+        <li class="element">List 3</a></li>
+      </ul>
+
+    </p>
+
+    <p>
+      <input type="submit" class="submit-button" value="Submit!">
+    </p>
+   </form>
+  </body>
+</html>
