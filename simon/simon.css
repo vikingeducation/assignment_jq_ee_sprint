@@ -18,13 +18,19 @@ img {
   cursor: pointer;
 }
 
-#counter {
+#counter{
   font-size: 50px;
   font-weight: bold;
   text-align: center;
   position: relative;
   top: 290px;
+}
 
+.timer {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
 }
 
 
