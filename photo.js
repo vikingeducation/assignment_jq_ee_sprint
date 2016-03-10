@@ -1,15 +1,31 @@
 
 $(document).ready(function() {
 
-  var height =  $(".tag-container").height();
-  var width =  $(".tag-container").width()
+  var $photoContainer = $('#photo-container');
+  var $tagContainer = $("#tag-container");
+  $tagContainer.css({"width": "100px", "height": "100px"});
+  var getWidth = $tagContainer.width();
 
-  $(".photo-container").mousemove(function(e){
-    var pageX = e.pageX - (height / 2);
-    var pageY = e.pageY - (width / 2);
-    //var newvalueX = width * pageX * -1 - 25;
-    //var newvalueY = height * pageY * -1 - 50;
-    $(".tag-container").css("top", newvalueX+"px");
-    $(".tag-container").css("left", newvalueX+"px");
-  });
-});
+  $photoContainer.mousemove(function(event){
+
+    var x = event.pageX;
+    var y = event.pageY;
+
+    var styles = {
+      "left": x - getWidth / 2,
+      "top": y - getWidth / 2
+    };
+
+    $tagContainer.css(styles);
+
+  } );
+
+  $photoContainer.hover(
+
+    function(event) {
+
+      $tagContainer.toggle();
+
+    } );
+
+} );
