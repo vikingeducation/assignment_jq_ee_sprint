@@ -60,7 +60,6 @@ function Simon(element) {
     } else {
       this.activateButton(guess, 0, 'red');
       this.incorrectAnimation();
-      console.log("wrong");
       this.reset();
     }
   }
@@ -71,7 +70,6 @@ function Simon(element) {
 
   // event listener for clicks
   this.buttons.click(function() {
-    console.log(self.position, self.pattern);
     var id = $(this).data('id');
     self.startTimer();
     self.checkGuess(id);
