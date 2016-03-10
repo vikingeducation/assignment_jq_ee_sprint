@@ -22,9 +22,14 @@ $(document).ready(function() {
   } );
 
   $photoImage.hover(
-    function() {
-      $tagContainer.toggle();
 
+    function() {
+      console.log("hello");
+      $tagContainer.show();
+
+    },
+    function() {
+      $tagContainer.hide();
     } );
 
 } );
