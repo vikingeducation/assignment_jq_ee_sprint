@@ -26,6 +26,7 @@ main {
   border-color: #86F66C;
 }
 #tagger {
+  pointer-events: none;
   display: none;
   border-color: #7CC2F9;
 }
@@ -37,6 +38,7 @@ main {
 }
 .tag p,
 #tagger .menu {
+  pointer-events: auto;
   position: absolute;
   top: 128px;
   left: -8px;
