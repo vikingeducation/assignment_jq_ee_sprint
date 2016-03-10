@@ -8,7 +8,7 @@ function Simon(element) {
     this.pattern.push(Math.floor(Math.random()*4));
   }
 
-  this.audioFiles = ['meow.mp3','meow3.mp3','meow4.mp3','meow5.mp3','meow6.mp3']
+  this.audioFiles = ['meow.mp3','hello.m4a','meow4.mp3','meow5.mp3','meow6.mp3']
   this.catSounds = []
 
   for (var i = 0; i < 4; ++i) {
