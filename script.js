@@ -22,12 +22,11 @@ var countdown = function(event){
   }
 };
 
-var passwordMatch = function(event){
+var passwordMatch = function(){
   var pass = $('#password').val(),
       conf = $('#password-confirmation').val();
 
-  if (pass === conf) {
-    console.log("password = " + pass + " and confirmation = " + conf);
+  if (pass === conf && conf.length > 0) {
     $('.password-no-match').hide();
     $('.password-match').show();
   } else if (conf.length === 0) {
@@ -38,6 +37,10 @@ var passwordMatch = function(event){
     $('.password-no-match').show();
   }
 };
+
+var runValidations = function(){
+
+}
 
 $(document).ready(function(){
   $('#name').keyup(countdown);
@@ -51,4 +54,6 @@ $(document).ready(function(){
   $('#password-confirmation')
     .keyup(countdown)
     .keyup(passwordMatch);
+
+  $('#submit').click(runValidations);
 });
