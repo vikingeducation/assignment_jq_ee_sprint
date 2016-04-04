@@ -22,9 +22,33 @@ var countdown = function(event){
   }
 };
 
+var passwordMatch = function(event){
+  var pass = $('#password').val(),
+      conf = $('#password-confirmation').val();
+
+  if (pass === conf) {
+    console.log("password = " + pass + " and confirmation = " + conf);
+    $('.password-no-match').hide();
+    $('.password-match').show();
+  } else if (conf.length === 0) {
+    $('.password-no-match').hide();
+    $('.password-match').hide();
+  } else {
+    $('.password-match').hide();
+    $('.password-no-match').show();
+  }
+};
+
 $(document).ready(function(){
   $('#name').keyup(countdown);
+
   $('#motto').keyup(countdown);
-  $('#password').keyup(countdown);
-  $('#password-confirmation').keyup(countdown);
+
+  $('#password')
+    .keyup(countdown)
+    .keyup(passwordMatch);
+
+  $('#password-confirmation')
+    .keyup(countdown)
+    .keyup(passwordMatch);
 });

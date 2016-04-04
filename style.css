@@ -1,0 +1,13 @@
+.character-count {
+  display: none;
+}
+
+.password-match {
+  display: none;
+  color: green;
+}
+
+.password-no-match {
+  display: none;
+  color: red;
+}
