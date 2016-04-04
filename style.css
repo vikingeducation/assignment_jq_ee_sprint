@@ -11,3 +11,11 @@
   display: none;
   color: red;
 }
+
+.validation-error {
+  color: red;
+}
+
+.in-error {
+  border-color: red;
+}

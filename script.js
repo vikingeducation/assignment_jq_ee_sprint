@@ -38,8 +38,47 @@ var passwordMatch = function(){
   }
 };
 
-var runValidations = function(){
+var showValidationError = function($target, message){
+  var $span = $('<span></span>')
+    .text(message)
+    .attr('class', 'validation-error');
 
+  $target.parent().append($span);
+  $target.addClass('in-error');
+}
+
+var runValidations = function(event){
+  event.preventDefault();
+  $('.validation-error').hide();
+  $('.in-error').removeClass('in-error');
+
+  var $name = $('#name'),
+      $motto = $('#motto'),
+      $pass = $('#password'),
+      $conf = $('#password-confirmation');
+
+  // Should refactor this
+  if ($name.val().length < 4) {
+    showValidationError($name, "Name too short.");
+  } else if ($name.val().length > maxValues[$name.attr('id')]) {
+    showValidationError($name, "Name too long.");
+  }
+
+  if ($motto.val().length < 4) {
+    showValidationError($motto, "Motto too short.");
+  } else if ($motto.val().length > maxValues[$motto.attr('id')]) {
+    showValidationError($motto, "Motto too long.");
+  }
+
+  if ($pass.val().length < 6) {
+    showValidationError($pass, "Password too short.");
+  } else if ($pass.val().length > maxValues[$pass.attr('id')]) {
+    showValidationError($pass, "Password too long.");
+  }
+
+  if ($pass.val() !== $conf.val()) {
+    showValidationError($conf, "Does not match password.");
+  }
 }
 
 $(document).ready(function(){
