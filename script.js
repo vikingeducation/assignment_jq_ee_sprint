@@ -1,5 +1,7 @@
 "use strict";
 
+// Change these to be attributes on the form
+// data-max-length = 32
 var maxValues = {
   name: 32,
   motto: 140,
@@ -79,9 +81,23 @@ var runValidations = function(event){
   if ($pass.val() !== $conf.val()) {
     showValidationError($conf, "Does not match password.");
   }
-}
+};
+
+var hoverIn = function(){
+  $(this).addClass('hover-option');
+};
+
+var hoverOut = function(){
+  $(this).removeClass('hover-option');
+};
+
+var selectOption = function(e){
+  $('.dropdown-input').text(e.target.firstChild.nodeValue);
+  $('ul').slideUp(500);
+};
 
 $(document).ready(function(){
+  // Form Validation
   $('#name').keyup(countdown);
 
   $('#motto').keyup(countdown);
@@ -95,4 +111,16 @@ $(document).ready(function(){
     .keyup(passwordMatch);
 
   $('#submit').click(runValidations);
+
+  // Dropdown
+  $('.dropdown')
+    .hide();
+
+  $('.dropdown-input').click(function(){
+    $('ul').slideDown(500);
+  });
+
+  $('li')
+    .hover(hoverIn, hoverOut)
+    .click(selectOption);
 });

@@ -19,3 +19,25 @@
 .in-error {
   border-color: red;
 }
+
+.dropdown {
+  list-style: none;
+  width: 30%;
+}
+
+.dropdown li {
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.dropdown .selected {
+  border-color: #333;
+}
+
+.dropdown .hidden {
+  display: none;
+}
+
+.hover-option {
+  background-color: #ddd;
+}
