@@ -41,15 +41,20 @@
     <main>
       <form id="form">
         <label for="text-field">Text Field</label>
-        <input id="text-field" type="text">
+        <input name="text-field" id="text-field" type="text" my-min-length="4" my-max-length="32">
+        <span class="error" my-invalid-message="text-field"></span>
         <br>
         <label for="textarea">Text Area</label>
-        <textarea id="textarea"></textarea>
+        <textarea name="textarea" id="textarea" my-min-length="4" my-max-length="140"></textarea>
+        <span class="error" my-invalid-message="textarea"></span>
         <br>
         <label for="password">Password</label>
-        <input id="password" type="password">
+        <input name="password" id="password" type="password" my-min-length="6" my-max-length="16">
+        <span class="error" my-invalid-message="password"></span>
+        <br>
         <label for="password-confirm">Password Confirm</label>
-        <input id="password-confirm" type="password">
+        <input name="password-confirm" id="password-confirm" type="password" my-matches="password">
+        <span class="error" my-invalid-message="password-confirm"></span>
         <br>
         <button type="submit">Submit</button>
       </form>

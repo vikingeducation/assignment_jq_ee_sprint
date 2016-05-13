@@ -1,133 +1,90 @@
 "use strict";
 
+
+var _validate = function($target, isValid, message) {
+  var id = $target.attr('id');
+  if (isValid) {
+    $target.removeClass('my-invalid');
+    !$target.val().length || $target.addClass('my-valid');
+  } else {
+    $target.removeClass('my-valid')
+      .addClass('my-invalid');
+  }
+  var $message = $('*[my-invalid-message="' + id + '"]');
+  message = isValid ? '' : message;
+  $message.text(message);
+};
+
+
+var _validationListener = function(e) {
+  var $target = $(e.target);
+  var attributes = Object.keys(_validationListeners);
+  var isValids = [];
+  var messages = [];
+  $.each(attributes, function(index, attribute) {
+    if ($target.attr('my-' + attribute)) {
+      var result = _validationListeners[attribute]($target);
+      isValids.push(result.isValid);
+      if (!result.isValid) {
+        messages.push(result.message);
+      }
+    }
+  });
+  var isValid = isValids.reduce(function(prev, current) { return prev && current; });
+  _validate($target, isValid, messages.join(', '));
+};
+
+
+var _minLength = function($target) {
+  var minLength = +$target.attr('my-min-length');
+  var length = $target.val().length;
+  return {
+    isValid: length >= minLength || !length,
+    message: (minLength - length) + ' characters left'
+  };
+};
+
+
+var _maxLength = function($target) {
+  var maxLength = +$target.attr('my-max-length');
+  var length = $target.val().length;
+  return {
+    isValid: length <= maxLength || !length,
+    message: (length - maxLength) + ' characters over limit'
+  };
+};
+
+
+var _matches = function($target) {
+  var referenceId = '#' + $target.attr('my-matches')
+  var $reference = $(referenceId);
+  var targetValue = $target.val();
+  var referenceValue = $reference.val();
+  return {
+    isValid: targetValue === referenceValue || !targetValue.length,
+    message: 'Must match: ' + referenceId.replace('#', '')
+  };
+};
+
+
+var _validationListeners = {
+  "min-length": _minLength,
+  "max-length": _maxLength,
+  "matches": _matches
+};
+
+
+function _registerEventListeners() {
+  $.each(['input', 'textarea'], function(tagNameIndex, tagName) {
+    $('body').on('keyup', tagName, _validationListener);
+  });
+}
+
+
 $(document).ready(function() {
-
-  var _registerEventListeners = function() {
-    var $form = $('#form');
-
-    $form.on('submit', function(e) {
-      e.preventDefault();
-
-      _removeErrors();
-      _validate();
-
-      return false;
-    });
-
-    $('#form input, #form textarea').on('keyup', _charCounter);
-  };
-
-  var _removeErrors = function() {
-    $('#form .field-with-errors').removeClass('field-with-errors');
-    $('#form .error').remove();
-  };
-
-  var _createError = function(message) {
-    var $errorMessage = $('<span class="error"></span>');
-    $errorMessage.text(message);
-    return $errorMessage;
-  };
-
-  var _charCounter = function(e) {
-    _removeErrors();
-
-    if (!_charCountWithinLimits(e.target)) {
-      _createError('Invalid number of characters: ' + $(e.target).val().length)
-        .insertAfter($(e.target));
-    }
-  };
-
-  var _charCountWithinLimits = function(element) {
-    var min = 4,
-        max = 16,
-        length = $(element).val().length;
-    if (!length) {
-      return true;
-    }
-    console.log(element.id);
-    if (element.id === 'text-field') {
-      max = 32;
-    } else if (element.id === 'textarea') {
-      max = 140;
-    }
-    return (length > min && length < max);
-  };
-
-  var _validate = function() {
-    _validateTextField();
-    _validateTextarea();
-    _validatePassword();
-    _validatePasswordConfirm();
-  };
-
-  var _validateTextField = function() {
-    var $textField = $('#text-field');
-    try {
-      _validatePresenceOf('Text field', $textField.val());
-      _validateLengthOf('Text field', $textField.val().length, 4, 32);
-    } catch (e) {
-      $textField.addClass('field-with-errors');
-      _createError(e).insertAfter($textField);
-    }
-  };
-
-  var _validateTextarea = function() {
-    var $textarea = $('#textarea');
-    try {
-      _validatePresenceOf('Text area', $textarea.val());
-      _validateLengthOf('Text area', $textarea.val().length, 4, 140);
-    } catch (e) {
-      $textarea.addClass('field-with-errors');
-      _createError(e).insertAfter($textarea);
-    }
-  };
-
-  var _validatePassword = function() {
-    var $password = $('#password');
-    try {
-      _validatePresenceOf('Password', $password.val());
-      _validateLengthOf('Password', $password.val().length, 4, 16);
-    } catch (e) {
-      $password.addClass('field-with-errors')
-      _createError(e).insertAfter($password);
-    }
-  };
-
-  var _validatePasswordConfirm = function() {
-    var $password = $('#password');
-    var $passwordConfirm = $('#password-confirm');
-    try {
-      _validatePresenceOf('Password confirm', $passwordConfirm.val());
-      _validateMatches('Password', 'Password confirm', $password.val(), $passwordConfirm.val());
-    } catch (e) {
-      $passwordConfirm.addClass('field-with-errors');
-      _createError(e).insertAfter($passwordConfirm);
-    }
-  };
-
-  var _validatePresenceOf = function(field, value) {
-    if (!value.length) {
-      throw new Error(field + " cannot be blank");
-    }
-  };
-
-  var _validateLengthOf = function(field, length, min, max) {
-    if (length < min) {
-      throw new Error(field + " is too short");
-    } else if (length > max) {
-      throw new Error(field + " is too long");
-    }
-  };
-
-  var _validateMatches = function(fieldA, fieldB, valueA, valueB) {
-    if (valueA !== valueB) {
-      throw new Error(fieldA + " must match " + fieldB);
-    }
-  };
-
-
   _registerEventListeners();
 });
+
 
 
 
