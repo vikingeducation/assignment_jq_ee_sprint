@@ -1,0 +1,14 @@
+/*
+  Form Validation
+*/
+
+.my-valid {
+  border-color: green;
+}
+.my-invalid {
+  border-color: red;
+}
+.error {
+  color: red;
+}
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assignment jQuery Events and Effects Sprint</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/styles/form-validation.css">
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="/">
+          Assignment jQuery Events and Effects Sprint
+        </a>
+      </h1>
+      <ul>
+        <li>
+          <a href="/form-validation">
+            Form Validation
+          </a>
+        </li>
+
+        <li>
+          <a href="/dropdown">
+            Dropdown
+          </a>
+        </li>
+
+        <li>
+          <a href="/photo-tagging">
+            Photo Tagging
+          </a>
+        </li>
+      </ul>
+    </header>
+
+    <main>
+      <form id="form">
+        <label for="text-field">Text Field</label>
+        <input name="text-field" id="text-field" type="text" my-min-length="4" my-max-length="32">
+        <span class="error" my-invalid-message="text-field"></span>
+        <br>
+        <label for="textarea">Text Area</label>
+        <textarea name="textarea" id="textarea" my-min-length="4" my-max-length="140"></textarea>
+        <span class="error" my-invalid-message="textarea"></span>
+        <br>
+        <label for="password">Password</label>
+        <input name="password" id="password" type="password" my-min-length="6" my-max-length="16">
+        <span class="error" my-invalid-message="password"></span>
+        <br>
+        <label for="password-confirm">Password Confirm</label>
+        <input name="password-confirm" id="password-confirm" type="password" my-matches="password">
+        <span class="error" my-invalid-message="password-confirm"></span>
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+
+    <script src="/assets/js/form-validation.js"></script>
+  </body>
+</html>

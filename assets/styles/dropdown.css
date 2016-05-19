@@ -1,0 +1,51 @@
+/*
+  Dropdown
+*/
+
+.dropdown,
+.dropdown * {
+  padding: 0;
+  margin: 0;
+}
+.dropdown button {
+  border: none;
+  cursor: pointer;
+}
+.dropdown .menu {
+  list-style: none;
+  display: none;
+}
+.dropdown li,
+.dropdown a,
+.dropdown button {
+  width: 100%;
+  display: flex;
+}
+.dropdown a,
+.dropdown button {
+  font-size: 18px;
+  text-decoration: none;
+  background: #4A7493;
+  border: 0px solid #fff;
+  color: #fff;
+  padding: 12px;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.dropdown button:hover,
+.dropdown a:hover {
+  background: #639BC6;
+  border-left-width: 8px;
+  border-left-color: #7CC2F9;
+}
+.dropdown .icon {
+  text-indent: 1em;
+}
+.dropdown a.selected:after {
+  text-indent: 1em;
+  content: "\2714";
+}
+
