@@ -46,3 +46,13 @@
 
 
 /**** Photo Taggin ****/
+.tag-image-container {
+  display: inline-block;
+}
+
+.tagger-box {
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  border: 3px solid yellow;
+}
