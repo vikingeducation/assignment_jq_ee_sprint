@@ -50,9 +50,35 @@
   display: inline-block;
 }
 
-.tagger-box {
+.box {
   height: 70px;
   width: 70px;
   position: absolute;
+}
+
+.tagger {
   border: 3px solid yellow;
+}
+
+.tagging {
+  border: 3px solid rebeccapurple;
+}
+
+.name-dropdown {
+  background-color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+}
+
+.name-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.name-dropdown ul li {
+  padding: 5px;
+}
+
+.name-dropdown ul li:hover {
+  background-color: rgba(200, 200, 200, 1);
 }
