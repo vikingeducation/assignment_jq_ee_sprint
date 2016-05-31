@@ -11,10 +11,10 @@ PHOTO.PhotoModule = (function(){
   }
 
   function _setHoverListener(){
-    $('.tag-image-container').hover(_hoverIn, _hoverOut);
+    $('.tag-image-container').hover(_addTaggerBox, _removeTaggerBox);
   }
 
-  function _hoverIn(event){
+  function _addTaggerBox(){
     // Create the tag div
     var $taggerBox = $('<div class="box"></div>')
       .addClass('tagger');
@@ -27,8 +27,12 @@ PHOTO.PhotoModule = (function(){
     $('.tagger').click(_setTag);
   }
 
-  function _hoverOut(event){
+  function _removeTaggerBox(){
     $('.tagger').remove();
+  }
+
+  function _removeTaggingBox(){
+    $('.tagging').remove();
   }
 
   function _setTagPosition(event){
@@ -64,6 +68,7 @@ PHOTO.PhotoModule = (function(){
       .slideDown(350);
 
     $('.name-dropdown ul li').click(_setTagName);
+    $('#photo').click(_cancelTagging);
   }
 
   function _setTagName(event){
@@ -78,7 +83,18 @@ PHOTO.PhotoModule = (function(){
       .addClass('tagged')
       .removeClass('tagging')
       .html($name);
+  }
 
+  function _cancelTagging(){
+    $('.name-dropdown').slideUp(350);
+
+    $('.tagging')
+      .addClass('tagger')
+      .removeClass('tagging');
+
+    // Reset listeners
+    $('#photo').mousemove(_setTagPosition);
+    $('.tagger').click(_setTag);
   }
 
   function _getNameDropdown(){
