@@ -23,7 +23,7 @@ PHOTO.PhotoModule = (function(){
     $('.tag-image-container').prepend($taggerBox);
 
     // Set listeners
-    $('#photo').mousemove(_setTagPosition);
+    $('.tag-image-container').mousemove(_setTagPosition);
     $('.tagger').click(_setTag);
   }
 
@@ -45,7 +45,7 @@ PHOTO.PhotoModule = (function(){
 
   function _setTag(event){
     // Remove mouse and click listeners
-    $('#photo').off("mousemove");
+    $('.tag-image-container').off("mousemove");
     $('.tagger').off("click");
 
     var $dropdown = _getNameDropdown();
@@ -93,7 +93,7 @@ PHOTO.PhotoModule = (function(){
       .removeClass('tagging');
 
     // Reset listeners
-    $('#photo').mousemove(_setTagPosition);
+    $('.tag-image-container').mousemove(_setTagPosition);
     $('.tagger').click(_setTag);
   }
 
