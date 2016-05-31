@@ -67,7 +67,7 @@ PHOTO.PhotoModule = (function(){
       })
       .slideDown(350);
 
-    $('.name-dropdown ul li').click(_setTagName);
+    $('.name-dropdown').on('click', 'li', _setTagName);
     $('#photo').click(_cancelTagging);
   }
 
