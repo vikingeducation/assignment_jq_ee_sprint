@@ -68,7 +68,17 @@ PHOTO.PhotoModule = (function(){
 
   function _setTagName(event){
     var name = $(event.target).text();
-    console.log(name);
+    var $name = $('<div></div>')
+      .attr('class', 'name')
+      .text(name);
+
+    $('.name-dropdown').slideUp(350);
+
+    $('.tagging')
+      .addClass('tagged')
+      .removeClass('tagging')
+      .html($name);
+
   }
 
   function _getNameDropdown(){

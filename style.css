@@ -61,16 +61,29 @@
 }
 
 .tagging {
+  border: 3px solid fuchsia;
+}
+
+.tagged {
   border: 3px solid rebeccapurple;
+}
+
+.tagged .name {
+  background-color: rebeccapurple;
+  font-size: 12px;
+  color: white;
 }
 
 .name-dropdown {
   background-color: rgba(255, 255, 255, 0.8);
+  border: 3px solid fuchsia;
   position: absolute;
 }
 
 .name-dropdown ul {
   list-style: none;
+  font-size: 12px;
+  width: 70px;
   padding: 0;
   margin: 0;
 }
