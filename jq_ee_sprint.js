@@ -35,10 +35,30 @@ var view = {
 			view.displayCharactersLeft(inputLength, event.target, "#confirm-characters-left", 16);
 		});
 
-		// Doing the same for the password
+		// Listener that will check whether the confirm-password field and the password fields are the same
 		$("#confirm-password").on( 'keyup', function(){
 			var inputLength = $(event.target).val().length;
 			view.comparePasswords(inputLength, event.target);
+		});
+
+		// Listener that will check when the submit button is clicked
+		// If it's clicked and the password and confirm-password values aren't the same
+		// we need to turn off the usual action of the submit button
+		// then highlight the offending field in red and display a red error message next to it indicating what went wrong.
+		$(":submit").on( 'click', function(event){
+			var password = $("#password").val();
+			var confirmPassword = $("#confirm-password").val();
+			if (password !== confirmPassword) {
+				event.preventDefault();
+				// This prevents adding more error classes and also prevents adding more paragraph messages
+				if (!$(".password").hasClass("error")){
+					$(".password").addClass("error");
+					$(".confirm-password").addClass("error");
+					$(".error").append("<p>password and confirmation have to match!<p>");
+				};
+			} else {
+				$(":sumbit").prop( {disabled: false} );
+			};
 		});
 	},
 
