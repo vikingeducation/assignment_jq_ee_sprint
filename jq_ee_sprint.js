@@ -14,25 +14,31 @@ var view = {
 		// if inputLength >32, retrieve the first 32 characters of the value and set the value to that. Display will say "0 characters left"
 		$(":text").on( 'keyup', function(){
 			var inputLength = $(event.target).val().length;
-			view.displayCharactersLeft(inputLength, event.target, "#input-message", 32);
+			view.displayCharactersLeft(inputLength, event.target, "#input-characters-left", 32);
 		});
 
 		// Doing the same for the text area.
 		$("textarea").on( 'keyup', function(){
 			var inputLength = $(event.target).val().length;
-			view.displayCharactersLeft(inputLength, event.target, "#textarea-message", 140)
+			view.displayCharactersLeft(inputLength, event.target, "#textarea-characters-left", 140)
 		});
 
 		// Doing the same for the password
 		$("#password").on( 'keyup', function(){
 			var inputLength = $(event.target).val().length;
-			view.displayCharactersLeft(inputLength, event.target, "#password-message", 16);
+			view.displayCharactersLeft(inputLength, event.target, "#password-characters-left", 16);
 		});
 
 		// Doing the same for the password
 		$("#confirm-password").on( 'keyup', function(){
 			var inputLength = $(event.target).val().length;
-			view.displayCharactersLeft(inputLength, event.target, "#confirm-message", 16);
+			view.displayCharactersLeft(inputLength, event.target, "#confirm-characters-left", 16);
+		});
+
+		// Doing the same for the password
+		$("#confirm-password").on( 'keyup', function(){
+			var inputLength = $(event.target).val().length;
+			view.comparePasswords(inputLength, event.target);
 		});
 	},
 
@@ -45,6 +51,18 @@ var view = {
 		} else {
 			$(target).val( $(target).val().substr(0, maxCharacters) );
 			$(divId).text("0 characters left.");
+		};
+	},
+
+	comparePasswords: function(inputLength, target){
+		var password = $("#password").val();
+		var confirmPassword = $(target).val();
+		if (inputLength === 0) {
+			$("#compare-passwords").text("");
+		} else if ( password !== confirmPassword ) {
+			$("#compare-passwords").text("Passwords don't match");
+		} else {
+			$("#compare-passwords").text("Matched!");
 		};
 	}
 }
