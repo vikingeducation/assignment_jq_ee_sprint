@@ -46,18 +46,50 @@ var view = {
 		// we need to turn off the usual action of the submit button
 		// then highlight the offending field in red and display a red error message next to it indicating what went wrong.
 		$(":submit").on( 'click', function(event){
-			var password = $("#password").val();
-			var confirmPassword = $("#confirm-password").val();
-			if (password !== confirmPassword) {
-				event.preventDefault();
-				// This prevents adding more error classes and also prevents adding more paragraph messages
-				if (!$(".password").hasClass("error")){
-					$(".password").addClass("error");
-					$(".confirm-password").addClass("error");
-					$(".error").append("<p>password and confirmation have to match!<p>");
-				};
+			var passwordDiv = $(".password").first();
+			var confirmPasswordDiv = $(".confirm-password").first();
+			var textDiv = $(".text").first();
+			var textareaDiv = $(".textarea").first();
+
+
+
+			// adding error class and message if text input is invalid
+			var textFieldInvalidMessage = 'Text field must be between 4 and 32 characters long.';
+			if ( !view.textFieldIsValid() ) {
+				view.addErrorClassAndMessage( textDiv, textFieldInvalidMessage );
 			} else {
-				$(":sumbit").prop( {disabled: false} );
+				view.removeErrorClassAndMessage( textDiv, textFieldInvalidMessage );
+			};
+
+			// adding error class and message if textarea is invalid
+			var textarrayInvalidMessage = "Text area must be between 4 and 140 characters long."; 
+			if ( !view.textareaIsValid() ) {
+				view.addErrorClassAndMessage( textareaDiv, textarrayInvalidMessage );
+			} else {
+				view.removeErrorClassAndMessage( textareaDiv, textarrayInvalidMessage );
+			};
+
+			// adding error class and message if password is invalid
+			var passwordInvalidMessage = "Password must be 6 and 16 characters long."; 
+			if ( !view.passwordIsValid() ) {
+				view.addErrorClassAndMessage( passwordDiv, passwordInvalidMessage );
+			} else {
+				view.removeErrorClassAndMessage( passwordDiv, passwordInvalidMessage );
+			};
+
+			// adding error class and message if confirm-password is invalid
+			var confirmationInvalidMessage = "Confirmation must be 6 and 16 characters long."
+			if ( !view.confirmPasswordIsValid() ) {
+				view.addErrorClassAndMessage( confirmPasswordDiv, confirmationInvalidMessage );
+			} else {
+				view.removeErrorClassAndMessage( confirmPasswordDiv, confirmationInvalidMessage );
+			};
+
+			// Disabling or enabling the submit button
+			if ( view.passwordConfirmed() && view.textFieldIsValid() && view.textareaIsValid() && view.passwordIsValid() ) {
+				$(":submit").prop( {disabled: false} );
+			} else {
+				event.preventDefault();
 			};
 		});
 	},
@@ -79,10 +111,77 @@ var view = {
 		var confirmPassword = $(target).val();
 		if (inputLength === 0) {
 			$("#compare-passwords").text("");
-		} else if ( password !== confirmPassword ) {
+		} else if ( !view.passwordConfirmed() ) {
 			$("#compare-passwords").text("Passwords don't match");
 		} else {
 			$("#compare-passwords").text("Matched!");
+		};
+	},
+
+	textFieldIsValid: function(){
+		var textValue = $(":text").first().val();
+		if ( textValue.length >= 4 && textValue.length <= 32 ) {
+			return true
+		} else {
+			return false
+		};
+	},
+
+	textareaIsValid: function(){
+		var textareaValue = $("textarea").first().val();
+		if ( textareaValue.length >= 4 && textareaValue.length <= 140 ) {
+			return true
+		} else {
+			return false
+		};
+	},
+
+	passwordIsValid: function(){
+		var password = $("#password").val();
+		if ( password.length >= 6 && password.length <= 16 ) {
+			return true
+		} else {
+			return false
+		};
+	},
+
+	confirmPasswordIsValid: function(){
+		var confirmPassword = $("#confirm-password").val();
+		if ( confirmPassword.length >= 6 && confirmPassword.length <= 16 ) {
+			return true
+		} else {
+			return false
+		};
+	},
+
+	passwordConfirmed: function(){
+		var password = $("#password").val();
+		var confirmPassword = $("#confirm-password").val();
+		if ( password === confirmPassword ) {
+			return true
+		} else {
+			return false
+		};
+	},
+
+	// Need to check all the p's inside if targetToAddTo has class "error"
+	addErrorClassAndMessage: function(targetToAddTo, message){
+		var errorMessage = "<p>" + message + "<p>";
+		if ( !$(targetToAddTo).hasClass("error") ){
+			$( targetToAddTo ).addClass("error");
+			$( targetToAddTo ).append( errorMessage );
+		};
+	},
+
+	removeErrorClassAndMessage: function(targetToRemoveFrom, message){
+		var pAll = $("p");
+		if ( $(targetToRemoveFrom).hasClass("error") ){
+			for (var i = 0; i < pAll.length; i++){
+				if (pAll[i].textContent === message){
+					pAll[i].remove();
+				};
+			};
+			$( targetToRemoveFrom ).removeClass("error");
 		};
 	}
 }
