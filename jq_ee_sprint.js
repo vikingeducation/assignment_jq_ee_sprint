@@ -167,6 +167,17 @@ var view = {
 					$("#tag-" + model.tagCount).css({ "top": model.tagSquare.y, "left": model.tagSquare.x });
 					$("#tag-options").css({ "top": model.tagSquare.y + 30, "left": model.tagSquare.x });
 					$("#tag-options").slideDown(1500);
+					$("#tag-options").children().hover( 
+						function(event){ $(event.target).addClass("hover");
+										 $(event.target).css( 'cursor', 'pointer' );
+											 }, 
+						function(event){ $(event.target).removeClass("hover");
+										 $(event.target).css( 'cursor', 'default' );
+					});
+					$("#tag-options").children().click(
+						function(event){ $("#tag-" + model.tagCount).text($(event.target).text());
+						$('#tag-options').remove();
+					});
 				};
 			}
 		);
