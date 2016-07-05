@@ -92,6 +92,23 @@ var view = {
 				event.preventDefault();
 			};
 		});
+
+		// Dropbox click events
+		// slideDown(2500);
+		// slideUp(2500);
+		// on click of #drop-down
+		// if height of #options is 0, slideUp
+		// else slideDown
+		// then change text of drop-down
+		$("#drop-down").on( 'click', function(event){
+			// Slide down the options if they're hidden
+			// otherwise slide it up
+			if ( $("#options").is( ":hidden" ) ){
+				$("#options").slideDown(1500)
+			} else { 
+				$("#options").slideUp(1500)
+			};
+		});
 	},
 
 	displayCharactersLeft: function(inputLength, target, divId, maxCharacters){
