@@ -26,9 +26,12 @@ img{
 }
 
 #cursor-square{
+  pointer-events:none;
+}
+
+.tag-square{
   border: 2px solid red;
   height: 30px;
   width: 30px;
-  pointer-events:none;
   position: absolute;
 }

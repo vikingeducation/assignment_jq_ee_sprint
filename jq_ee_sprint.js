@@ -1,10 +1,21 @@
 'use strict;'
 
+var model = {
+
+	tagCount: 0,
+
+	tagSquare: {
+		x: 0,
+		y: 0
+	}
+
+};
+
 var controller = {
 	init: function(){
 		view.init();
 	}
-}
+};
 
 var view = {
 	init: function(){
@@ -127,23 +138,29 @@ var view = {
 			$("#selected").text( $(event.target).text() );
 		});
 
-		// ????? WHY DOES THE DIV JUST DISAPPEAR AND WHAT ABOUT THIS CLICK DISAPPEAR AS WELL, THAT'S MESSED UP
-		// I think I get it, I think it's cycling between the div being there and the div not being there
 		// I want the position of the cursor square absolute to the image.
 		$( "img" ).first().mousemove(function( event ) {
 		  var elementPageX = $('img').first().offset().left;
 		  var elementPageY = $('img').first().offset().top;
-		  var absolutePositionX = event.pageX - elementPageX - 15;
-		  var absolutePositionY = event.pageY - elementPageY - 15;
-		  $("#cursor-square").css( { "top": (absolutePositionY + "px"), "left": (absolutePositionX + "px") } );
+		  model.tagSquare.x = event.pageX - elementPageX - 15;
+		  model.tagSquare.y = event.pageY - elementPageY - 15;
+		  $("#cursor-square").css( { "top": (model.tagSquare.y + "px"), "left": (model.tagSquare.x + "px") } );
 		});
 
 		// I want the cursor square to become visible on hover and hidden when mouse goes off.
 		$( "img" ).first().hover( 
-			function(event){ $("#image").prepend("<div id='cursor-square'></div>") },
+			function(event){ $("#image").prepend("<div class='tag-square' id='cursor-square'></div>") },
 			function(event){ $("#cursor-square").remove() }
 		);
 
+		// When the user clicks, the targeting outline becomes fixed at that location and a simple dropdown menu slides down below it. Pre-populate this menu with a few sample names to choose from.
+		$( "img" ).first().click(
+			function(event){ 
+				model.tagCount++;
+				$("#image").prepend("<div class='tag-square' id='tag-" + model.tagCount + "'></div>");
+				$("#tag-" + model.tagCount).css({ "top": model.tagSquare.y, "left": model.tagSquare.x });
+			}
+		);
 	},
 
 	displayCharactersLeft: function(inputLength, target, divId, maxCharacters){
@@ -236,7 +253,7 @@ var view = {
 			$( targetToRemoveFrom ).removeClass("error");
 		};
 	}
-}
+};
 
 
 $(document).ready(function(){
