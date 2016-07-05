@@ -35,3 +35,12 @@ img{
   width: 30px;
   position: absolute;
 }
+
+#tag-options{
+  position: absolute;
+}
+
+.name-box{
+  border: 1px solid white;
+  color: white;
+}

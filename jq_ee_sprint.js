@@ -155,10 +155,19 @@ var view = {
 
 		// When the user clicks, the targeting outline becomes fixed at that location and a simple dropdown menu slides down below it. Pre-populate this menu with a few sample names to choose from.
 		$( "img" ).first().click(
-			function(event){ 
-				model.tagCount++;
-				$("#image").prepend("<div class='tag-square' id='tag-" + model.tagCount + "'></div>");
-				$("#tag-" + model.tagCount).css({ "top": model.tagSquare.y, "left": model.tagSquare.x });
+			function(event){
+				if ($('#tag-options').length){
+					$('#tag-options').remove();
+					$('#tag-' + model.tagCount).remove();
+					// get rid of #tag-options
+					// get rid of the #tag box
+				} else {
+					model.tagCount++;
+					$("#image").prepend("<div class='tag-square' id='tag-" + model.tagCount + "'></div><div id='tag-options' style='display: none;'><div class='name-box' id='option-one'>Steven Chang</div><div class='name-box' id='open-two'>Nathan For You</div><div class='name-box' id='open-three'>Kevin The Fruitbat</div></div>");
+					$("#tag-" + model.tagCount).css({ "top": model.tagSquare.y, "left": model.tagSquare.x });
+					$("#tag-options").css({ "top": model.tagSquare.y + 30, "left": model.tagSquare.x });
+					$("#tag-options").slideDown(1500);
+				};
 			}
 		);
 	},
