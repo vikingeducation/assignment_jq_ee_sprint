@@ -112,7 +112,13 @@ var view = {
 		// The sub-elements should change background color when the menu is opened and they are hovered over
 		// I'm thinking we should add a class on .mouseenter() and remove a class on .mouseleave()
 		// or .hover( inHandler, outHandler )
-		$("#options").children().hover( function(event){ $(event.target).addClass("hover") }, function(event){ $(event.target).removeClass("hover") } )
+		$("#options").children().hover( 
+			function(event){ $(event.target).addClass("hover");
+							 $(event.target).css( 'cursor', 'pointer' );
+								 }, 
+			function(event){ $(event.target).removeClass("hover");
+							 $(event.target).css( 'cursor', 'default' );
+			 } )
 
 
 		// This part will be when the user clicks on one of the options
