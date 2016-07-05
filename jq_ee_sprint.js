@@ -123,6 +123,9 @@ var view = {
 
 		// This part will be when the user clicks on one of the options
 		// then change text of drop-down
+		$("#options").children().click(function(){
+			$("#selected").text( $(event.target).text() );
+		});
 	},
 
 	displayCharactersLeft: function(inputLength, target, divId, maxCharacters){
