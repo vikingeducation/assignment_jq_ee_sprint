@@ -1,0 +1,46 @@
+.error {
+  background-color: red;
+}
+
+.hover {
+  background-color: pink;
+}
+
+#drop-down{
+  border: 1px solid black;
+  width: 100px;
+}
+
+.drop-box{
+  border: 1px solid black;
+  height: 18px;
+}
+
+#image{
+  height: 400px;
+  position: relative;
+}
+
+img{
+  height: 100%;
+}
+
+#cursor-square{
+  pointer-events:none;
+}
+
+.tag-square{
+  border: 2px solid red;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+}
+
+#tag-options{
+  position: absolute;
+}
+
+.name-box{
+  border: 1px solid white;
+  color: white;
+}
