@@ -15,3 +15,20 @@
   border: 1px solid black;
   height: 18px;
 }
+
+#image{
+  height: 400px;
+  position: relative;
+}
+
+img{
+  height: 100%;
+}
+
+#cursor-square{
+  border: 2px solid red;
+  height: 30px;
+  width: 30px;
+  pointer-events:none;
+  position: absolute;
+}

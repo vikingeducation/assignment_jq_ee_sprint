@@ -118,7 +118,7 @@ var view = {
 								 }, 
 			function(event){ $(event.target).removeClass("hover");
 							 $(event.target).css( 'cursor', 'default' );
-			 } )
+		});
 
 
 		// This part will be when the user clicks on one of the options
@@ -126,6 +126,24 @@ var view = {
 		$("#options").children().click(function(){
 			$("#selected").text( $(event.target).text() );
 		});
+
+		// ????? WHY DOES THE DIV JUST DISAPPEAR AND WHAT ABOUT THIS CLICK DISAPPEAR AS WELL, THAT'S MESSED UP
+		// I think I get it, I think it's cycling between the div being there and the div not being there
+		// I want the position of the cursor square absolute to the image.
+		$( "img" ).first().mousemove(function( event ) {
+		  var elementPageX = $('img').first().offset().left;
+		  var elementPageY = $('img').first().offset().top;
+		  var absolutePositionX = event.pageX - elementPageX - 15;
+		  var absolutePositionY = event.pageY - elementPageY - 15;
+		  $("#cursor-square").css( { "top": (absolutePositionY + "px"), "left": (absolutePositionX + "px") } );
+		});
+
+		// I want the cursor square to become visible on hover and hidden when mouse goes off.
+		$( "img" ).first().hover( 
+			function(event){ $("#image").prepend("<div id='cursor-square'></div>") },
+			function(event){ $("#cursor-square").remove() }
+		);
+
 	},
 
 	displayCharactersLeft: function(inputLength, target, divId, maxCharacters){
