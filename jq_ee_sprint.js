@@ -97,9 +97,8 @@ var view = {
 		// slideDown(2500);
 		// slideUp(2500);
 		// on click of #drop-down
-		// if height of #options is 0, slideUp
-		// else slideDown
-		// then change text of drop-down
+		// if #options is hiddel, slideDown
+		// else slideUp
 		$("#drop-down").on( 'click', function(event){
 			// Slide down the options if they're hidden
 			// otherwise slide it up
@@ -109,6 +108,15 @@ var view = {
 				$("#options").slideUp(1500)
 			};
 		});
+
+		// The sub-elements should change background color when the menu is opened and they are hovered over
+		// I'm thinking we should add a class on .mouseenter() and remove a class on .mouseleave()
+		// or .hover( inHandler, outHandler )
+		$("#options").children().hover( function(event){ $(event.target).addClass("hover") }, function(event){ $(event.target).removeClass("hover") } )
+
+
+		// This part will be when the user clicks on one of the options
+		// then change text of drop-down
 	},
 
 	displayCharactersLeft: function(inputLength, target, divId, maxCharacters){
