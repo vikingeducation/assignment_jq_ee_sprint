@@ -1,0 +1,16 @@
+.selector {
+	width: 100px;
+	height: 40px;
+	margin: 100px;
+	margin-bottom: 0px;
+	border: 1px solid DarkRed;
+}
+
+.list {
+	margin-left: 100px;
+}
+
+.li-hover {
+	color: red;
+	cursor: pointer;
+}
