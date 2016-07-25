@@ -1,0 +1,49 @@
+<html>
+<head>
+
+	<title>Form Validation</title>
+
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script type="text/javascript" src= "script.js"></script>
+
+</head>
+<body>
+
+	<div class= "form">
+		<form>
+			<div class= 'form-field'>
+				<span class= "error-notify"></span>
+				<input type= "text" placeholder= "username" data-min = "4" data-max = "32"><br>
+				<span class= "char-count"></span>
+			</div>
+
+			<div class= 'form-field'>
+				<span class= "error-notify"></span>
+				<textarea placeholder= "What's on your mind?" data-min = "4" data-max = "140"></textarea><br>
+				<span class= "char-count"></span>
+			</div>
+
+			<div class= 'form-field'>
+				<span class= "error-notify"></span>
+				<input type= "password" placeholder= "password" data-min = "6" data-max = "16"><br>
+				<span class= "char-count"></span>
+			</div>
+
+			<div class= 'form-field'>
+				<span class= "error-notify"></span>
+				<input class= 'pw-confirmation' type= "password" placeholder= "password confirmation" data-min = "6" data-max = "16"><br>
+				<span class= "char-count"></span>
+				<span class= "pw-match"></span>
+			</div>
+
+
+			<input type= "submit" value= "Create">
+
+		</form>
+	</div>
+
+</body>
+</html>

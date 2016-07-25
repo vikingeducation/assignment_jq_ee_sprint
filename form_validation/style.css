@@ -1,0 +1,84 @@
+body {
+	width: 100%;
+}
+
+.form {
+	width: 400px;
+	margin: 100px auto;
+	background-color: white;
+	padding: 20px 15px;
+	border-radius: 5px;
+	box-shadow: 0 5px 10px 1px rgba(0,0,0, 0.5);
+}
+
+.form input,
+.form textarea {
+	display: block;
+	width: 90%;
+	margin: 10px auto;
+	padding: 20px 15px;
+	font-size: 16px;
+	border-radius: 3px;
+	border: 0;
+	border-bottom: 1px solid LightGreen;
+}
+
+.form input:focus,
+.form textarea:focus {
+	outline: 0;
+	background-color: LightGreen;
+	transition: 0.2s;
+	color: white;
+}
+
+.form input[type=submit] {
+	background-color: LightGreen;
+	color: white;
+	font-size: 18px;
+}
+
+.form input[type=submit]:hover {
+	background-color: ForestGreen;
+	color: white;
+	font-size: 18px;
+	transition: 0.2s;
+}
+
+#pw-match {
+	margin-left: 20px;
+}
+
+::-webkit-input-placeholder {
+   color: rgba(0,100,0,0.5);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: rgba(0,100,0,0.5);  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba(0,100,0,0.5);  
+}
+
+:-ms-input-placeholder {  
+   color: rgba(0,100,0,0.5);  
+}
+
+.error-notify {
+	color: DarkRed;
+}
+
+.error-field {
+	color: Crimson;
+	border-bottom: 1px solid Crimson;
+}
+
+.form-field {
+	height: 120px;
+}
+
+.char-count {
+	margin: 0;
+	padding: 0;
+	margin-left: 10%;
+}
