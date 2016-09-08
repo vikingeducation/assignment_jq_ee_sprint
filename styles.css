@@ -5,3 +5,11 @@
 .error {
   color: red;
 }
+
+.dropdown-div {
+  display: inline-block;
+}
+
+.background-color {
+  background-color: hotpink;
+}

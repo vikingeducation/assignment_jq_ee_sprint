@@ -84,4 +84,31 @@ $(document).ready(function() {
       $('#password-confirmation').after($errorDiv.clone().text("Passwords Don't Match!"));
     }
   })
+
+
+
+
+//accordian thing
+
+  var $dropdown = $(".dropdown");
+  var $dropdownDiv = $(".dropdown-div");
+  $dropdown.hide();  
+
+  $dropdownDiv.on("click", function(e) {
+    if ($dropdown.is(":visible")) {
+      $dropdown.slideUp();
+    } else {
+      $dropdown.slideDown();
+    }
+  });
+
+  var $dropdownLis = $dropdown.children();
+  var hoverBGColor = function() {
+    console.log(this);
+    $(this).toggleClass("background-color");
+    $(this).children().css("cursor", "help");
+  }
+  $dropdownLis.hover( hoverBGColor, hoverBGColor);
+
+
 });
