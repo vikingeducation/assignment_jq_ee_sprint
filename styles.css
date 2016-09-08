@@ -42,7 +42,6 @@
 .waldo-container, .waldo-pic {
     width: 100%;
     height: 600px;
-    /*position: relative;*/
 }
 
 #target-box {
@@ -50,8 +49,6 @@
     height: 50px;
     border: 2px solid black;
     position: absolute;
-    /*z-index: 1;*/
-    pointer-events: none;
 }
 
 .waldo-drop-choices {
@@ -64,6 +61,18 @@
   background-color: yellow;
 }
 
-#x {
-  z-index: 22;
+.new-box {
+    z-index: 21;
+}
+
+.x {
+    position: absolute;
+    z-index: 22;
+    text-decoration: none;
+    color: red;
+}
+
+.x:hover {
+    background-color: yellow;
+    cursor: pointer;
 }

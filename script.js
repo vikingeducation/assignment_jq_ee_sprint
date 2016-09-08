@@ -168,13 +168,16 @@ $(document).ready(function() {
         $('.waldo-container').append(newBox);
         console.log(newBox.css('left'));
         $(newBox).append($target);
-        $(newBox).append($('<p id="x">x</p>'));
+        $(newBox).append($('<a href="#" class="x">x</a>'));
     });
 
-    $('#x').click(function(e) {
+    $('.waldo-container').on('click', '.x', function(e) {
+        e.preventDefault();
         console.log("IT RUNS!");
         $target = $(e.target);
+        $('.waldo-drop-choices').append($target.prev());
         $target.parent().remove();
+        return false;
     });
 })
 
