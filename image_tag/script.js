@@ -23,11 +23,24 @@ $("#image").on("click", function(event) {
        left:  event.pageX - 50,
        top:   event.pageY - 35
     });
-    $newBox.append("<ul class='box-list'><li>HI</li><li>HELLO</li><li>HOLA</li></ul>")
-})
 
-$(".box-list li").on("click", function() {
-  $(".box-list li").addClass("hidden");
-  $(this).removeClass("hidden");
+    $newBox.append("<ul class='box-list'><li>Dylan</li><li>Hannah</li><li>Andur</li></ul>")
+
+    $("ul > li").on("click", function() {
+      $("ul > li").slice(-3).addClass("hidden");
+      $(this).removeClass("hidden");
+      $newBox.addClass("permanent");
+      $newBox.append("<div id='x'>x</div>");
+
+
+      $("#x").on("click", function(event) {
+
+        $(this).parent().remove();
+      })
+
+    });
+
 });
+
+
 
