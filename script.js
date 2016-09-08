@@ -72,11 +72,11 @@ function validateLength(node){
 }
 
 function showChildItems(node) {
-  node.children('.dropdown-item').removeClass('hidden');
+  node.children('.dropdown-item').slideDown(1000).removeClass('hidden');
 }
 
 function hideChildItems(node) {
-  node.children('.dropdown-item').addClass('hidden');
+  node.children('.dropdown-item').slideUp(1000).addClass('hidden');
 }
 
 function validatePassword(){
