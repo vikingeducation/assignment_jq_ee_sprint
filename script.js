@@ -107,7 +107,7 @@ $(document).ready(function() {
     // };
 
     var moveMouse = function() {
-        $('.waldo-pic').mousemove(function(e) {
+        $('.waldo-container').mousemove(function(e) {
         $target = $(e.target);
         $('#target-box').show();
         $('#target-box').css({
@@ -123,7 +123,7 @@ $(document).ready(function() {
 
     var toggleMove = function() {
         if (moveSwitch) {
-            $('.waldo-pic').off("mousemove");
+            $('.waldo-container').off("mousemove");
         } else {
             moveMouse();
         }
@@ -146,23 +146,35 @@ $(document).ready(function() {
 
     var createBox = function() {
         var tLeft = $('#target-box').css( 'left' );
-        var tRight = $('#target-box').css( 'right' );
-        var box = $('<div></div>').css({
+        var tTop = $('#target-box').css( 'top' );
+        var box = $('<div>').css({
             left: tLeft,
-            right: tRight,
+            top: tTop,
             position: 'absolute',
             width: '50px',
             height: '50px',
             border: '2px solid green',
-        })
+        }).addClass('new-box')
         return box;
-    }
+    };
+
+    var createX = function() {
+
+    };
 
     $('.waldo-drop-choice').click(function(e) {
         $target = $(e.target);
         var newBox = createBox();
         $('.waldo-container').append(newBox);
         console.log(newBox.css('left'));
-    })
+        $(newBox).append($target);
+        $(newBox).append($('<p id="x">x</p>'));
+    });
+
+    $('#x').click(function(e) {
+        console.log("IT RUNS!");
+        $target = $(e.target);
+        $target.parent().remove();
+    });
 })
 
