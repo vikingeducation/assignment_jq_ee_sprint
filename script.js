@@ -19,6 +19,8 @@ var colorClass = function(node, matching) {
 $(document).ready(function() {
     $('.error-message').hide();
     $('.my-drop-choices').hide();
+    $('#target-box').hide();
+    $('.waldo-drop-choices').hide();
     $('.counted').keyup(function(e) {
         var $target = $(e.target);
         var type = $target.attr('type');
@@ -100,12 +102,42 @@ $(document).ready(function() {
         $choices.slideUp();
     });
 
-    $('.waldo-pic').mousemove(function(e) {
+    // $('.waldo-pic').mouseleave(function(e) {
+    //     $('#target-box').hide();
+    // };
+
+    var moveMouse = function() {
+        $('.waldo-pic').mousemove(function(e) {
         $target = $(e.target);
+        $('#target-box').show();
         $('#target-box').css({
             left:  e.pageX,
             top:   e.pageY
-        });
-    })
+            })
+        })
+    };
+
+    moveMouse();
+
+    var moveSwitch = true;
+
+    var toggleMove = function() {
+        if (moveSwitch) {
+            $('.waldo-pic').off("mousemove");
+        } else {
+            moveMouse();
+        }
+    };
+
+    $('.waldo-container').click(function(e) {
+        toggleMove();
+        moveSwitch = !moveSwitch
+        $choices = $(".waldo-drop-choices");
+        $choices.css({
+            left:  e.pageX,
+            top:   e.pageY += 50
+            });
+        $choices.slideDown();
+    });
 })
 
