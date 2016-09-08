@@ -30,11 +30,13 @@
 
 .drawn{
   border: 2px solid red;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   position: absolute;
 }
 
-.box-menu {
-  
+.stationary-menu, .box-menu {
+  position: absolute;
+  border: 2px solid red;
+  width: 5%;
 }

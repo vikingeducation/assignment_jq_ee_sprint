@@ -125,7 +125,8 @@ $(document).ready(function(e) {
   });
 
   // Handlers for menu items.
-  $("#dropdown-menu").on("click", function(e) {
+  $("#dropdown-menu, .stationary-menu").on("click", function(e) {
+    $(document).off("click");
     if ($(this).hasClass('closed')) {
       showChildItems($(this));
       $(this).removeClass('closed');
@@ -147,15 +148,16 @@ $(document).ready(function(e) {
   $(".dropdown-item").on("click", function(e){
     $('.dropdown-bar').html(e.target.innerHTML);
     $("#dropdown-bar").trigger("click");
+    $("#astronauts").on("mousemove")
   });
 
   $("#astronauts").on("mousemove", function(e){
-    $("#tagging-box").css({left: e.pageX, top: e.pageY});
+    $(".tagging-box").css({left: e.pageX, top: e.pageY});
   });
 
   $("#astronauts").on({
-    "mouseenter": function(e){$("#tagging-box").addClass("drawn");},
-    "mouseleave": function(e){$("#tagging-box").removeClass("drawn");}
+    "mouseenter": function(e){$(".tagging-box").addClass("drawn");},
+    "mouseleave": function(e){$(".tagging-box").removeClass("drawn");}
   });
 
   $(document).on(
@@ -163,6 +165,16 @@ $(document).ready(function(e) {
     "click": function(e){
       $("#astronauts").off("mousemove");
       console.log(e.target);
+      var $newBox = $(".tagging-box").clone();
+      $newBox.removeClass("tagging-box");
+      $newBox.addClass("stationary-box");
+      $('#astronauts').after($newBox);
+      var $newMenu = $(".box-menu").clone();
+      $newMenu.removeClass("box-menu");
+      $newMenu.addClass("stationary-menu");
+      $('#astronauts').after($newMenu);
+      $newMenu.removeClass('hidden');
+      $newMenu.css({left: e.pageX - 10, top: e.pageY + 30})
     }
   });
 
