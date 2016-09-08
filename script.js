@@ -3,25 +3,92 @@ $(document).ready(function () {
   dropDown.init();
 });
 
-var dropDown = {
+var photo = {
   init: function() {
-    
-    $("#drop-down li").attr("hidden", "true");
-    $("#drop-down li").first().removeAttr("hidden");
+    $("#image").on('mouseenter', function(e) {
+      photo.startHover(e);
+    });
 
-    $('#drop-down').on('click', "li", function(e){ 
-      dropDown.unveal();
-      dropDown.selekt(e);
-      dropDown.reveal();
-      
+    $("#image").on('mousemove', function(e) {
+      photo.hover(e);
+    });
+
+    $("#image").on('mouseleave', function(e) {
+      photo.stopHover();
     });
   },
 
-  unveal: function () {
-    // adds hidden attribute to all list elements except for the selekted
-    $("#drop-down li").attr("hidden", "true");
-    $("#drop-down li").find(".selected").removeAttr("hidden");
+  setPosition: function(e, $object) {
+    var x = e.pageX;
+    var y = e.pageY;
+    $object.css("top", y + "px").css("left", x + "px");
+    return $object;
+  },
 
+  startHover: function(e) {
+    // first make div
+    // then css box relative to mouse position
+    var box = $("<div>").addClass("photo-box");
+
+  },
+
+  hover: function(e) {
+
+    // first make div
+    // then css box relative to mouse position
+
+    // var box = $("<div>").addClass("photo-box");
+    // box.animate({
+
+
+    });
+
+  },
+
+  stopHover: function(e) {
+
+  }
+
+
+
+}
+
+var dropDown = {
+  init: function() {
+    $("#drop-down li").first().addClass("selected");
+    dropDown.hide(0);
+
+    $('#drop-down').on('mouseenter', "li", function(e){ 
+      if (!dropDown.hidden) {
+        dropDown.hoverOn(e);
+      }
+    });
+
+    $('#drop-down').on('mouseleave', "li", function(e){ 
+      dropDown.hoverOff(e);
+    });
+
+    $('#drop-down').on('mouseleave', function(e){ 
+      dropDown.hide(300);
+    });
+
+    $('#drop-down').on('click', "li", function(e){ 
+      if (dropDown.hidden) {
+        dropDown.reveal(200);
+      } else {
+        dropDown.selekt(e);
+        dropDown.hide(200);
+      }
+    });
+
+
+  },
+
+  hide: function (time) {
+    $("#drop-down li").not('.selected').hide(time);
+
+
+    dropDown.hidden = true;
   },
 
   selekt: function(e) {
@@ -29,9 +96,21 @@ var dropDown = {
     $(e.target).addClass("selected");
   },
 
-  reveal: function () {
-    $("#drop-down li").removeAttr("hidden");
+  reveal: function (time) {
+    $("#drop-down li").show(time)  //removeAttr("hidden");
+    // $("#drop-down").slideDown(500);
+    dropDown.hidden = false;
+  },
+
+  hoverOn: function(e) {
+    $(e.target).addClass("mouse-over");
+  },
+
+  hoverOff: function(e) {
+    $(e.target).removeClass("mouse-over");
   }
+
+
 };
 
 

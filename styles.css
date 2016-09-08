@@ -12,4 +12,23 @@
 
 #drop-down {
   border: 1px solid;
+  list-style-type: none;
+}
+
+.mouse-over {
+  background-color: #3b5998;
+  color: white;
+  cursor: crosshair 100px;
+}
+
+img {
+  width: 500px;
+  height: 300px;
+}
+
+.photo-box {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #73AD21;
+  border-radius: 25px;
 }
