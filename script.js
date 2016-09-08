@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 function createSpan(charsTyped, maxChars){
   var $span = $("<span></span>");
@@ -8,16 +8,29 @@ function createSpan(charsTyped, maxChars){
   return $span;
 }
 
-$(document).ready(function(e){
-    $("#text-field").on("input",function(e){
-     var charsTyped = e.target.value.length;
-     var span = createSpan(charsTyped, 32);
-     $("#text-field").after(span);
-   });
+// function giveId(node, selector) {
+//   return node.attr('id', selector);
+// }
 
+// function hasSpan(selector) {
+//   return $(selector);
+// }
+//
+// function removeSpan(node, selector) {
+//   return node.remove(selector);
+// }
 
+function getCharsTypedValue(value, max) {
+  return max - value;
+}
 
+// function changeSpanValue(span,value) {
+//   return span.html(value.toString());
+// }
 
-
-
-})
+$(document).ready(function(e) {
+  $("#text-field").on("input",function(e){
+     var charsTyped = getCharsTypedValue(e.target.value.length, 32);
+     $(this).after(span);
+  });
+});
