@@ -10,8 +10,6 @@ $("#image").on("mousemove", function(event) {
     });
 
 
-
-
 })
 
 $("#image").on("mouseleave", function(event) {
