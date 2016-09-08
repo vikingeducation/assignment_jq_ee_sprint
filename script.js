@@ -18,6 +18,7 @@ var colorClass = function(node, matching) {
 
 $(document).ready(function() {
     $('.error-message').hide();
+    $('.my-drop-choices').hide();
     $('.counted').keyup(function(e) {
         var $target = $(e.target);
         var type = $target.attr('type');
@@ -78,11 +79,33 @@ $(document).ready(function() {
         };
 
     });
+
+    $('.my-drop-box').click(function(e) {
+        $choices = $('.my-drop-choices');
+        if ($choices.css('display') !== 'none') {
+            $choices.slideUp();
+        } else {
+            $choices.slideDown();
+        }
+    });
+
+    $('.my-drop-choice').click(function(e) {
+        $target = $(e.target);
+        $otherSelected = $('.selected');
+        $otherSelected.removeClass('selected');
+        $target.addClass('selected');
+        $choices = $('.my-drop-choices');
+        $dropBox = $('.my-drop-box');
+        $dropBox.text($target.text());
+        $choices.slideUp();
+    });
+
+    $('.waldo-pic').mousemove(function(e) {
+        $target = $(e.target);
+        $('#target-box').css({
+            left:  e.pageX,
+            top:   e.pageY
+        });
+    })
 })
-
-
-
-
-
-
 
