@@ -142,11 +142,28 @@ $(document).ready(function(e) {
 
   $(".dropdown-item").hover(function(e){
     $(e.target).toggleClass("hovered");
-  })
+  });
 
   $(".dropdown-item").on("click", function(e){
     $('.dropdown-bar').html(e.target.innerHTML);
     $("#dropdown-bar").trigger("click");
-  })
+  });
+
+  $("#astronauts").on("mousemove", function(e){
+    $("#tagging-box").css({left: e.pageX, top: e.pageY});
+  });
+
+  $("#astronauts").on({
+    "mouseenter": function(e){
+    $("#tagging-box").addClass("drawn");
+    }, 
+    "mouseleave": function(e){
+     $("#tagging-box").removeClass("drawn");
+    },
+    "click": function(e){
+      $("#astronauts").off({"mouse"})
+    }
+  }
+  );
 
 });
