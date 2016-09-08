@@ -1,3 +1,25 @@
 .error {
   border: 1px solid red;
 }
+
+.error-message{
+  color: red;
+}
+
+ul {
+  border: 1px solid black;
+  width: 100px;
+}
+
+li{
+  display: none;
+}
+
+.blank {
+  display: list-item;
+}
+
+.hovered {
+  background-color: blue;
+}
+

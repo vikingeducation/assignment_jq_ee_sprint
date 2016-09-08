@@ -68,20 +68,48 @@ var scriptMethods = {
 
         if (vals[names[i]].length < mins[names[i]]) {
           e.preventDefault();
-          errors[inputs[i]] = true;
+          errors[inputs[i]] = "This is too short";
         };
       };
 
       if ($('input[name="password"]').val() !== $('input[name="confirmation"]').val() ) {
         e.preventDefault();
-        errors['input[name="confirmation"]'] = true;
+        if (!errors['input[name="confirmation"]']) {
+          errors['input[name="confirmation"]'] = "true";
+        };
       }
 
       for (var items in errors) {
         $(items).addClass('error');
+        if (errors[items] !== "true") {
+          var errorEle = '<p class="error-message">' + errors[items] + '</p>';
+          $(items).next().after(errorEle);
+        };
       }
 
     });
+  },
+
+  dropdownMenu: function() {
+    $('ul').on('click', function(e) {
+      var currentEle = $(e.currentTarget);
+      var eleChildren = currentEle.children().filter(function(index){
+        if (index > 0) {
+          return $(this);
+        };
+      });
+      eleChildren.toggle(500);
+    });
+  },
+
+  liHover: function() {
+    $( "li" ).hover(
+      function() {
+        $( this ).addClass( "hovered" );
+      }, function() {
+        $( this ).removeClass( "hovered" );
+      }
+    );
   }
 }
 $(document).ready(function() {
@@ -91,5 +119,7 @@ $(document).ready(function() {
   scriptMethods.charactersRemaining('input[type="password"]');
   scriptMethods.passwordMatch();
   scriptMethods.checkInputs();
+  scriptMethods.dropdownMenu();
+  scriptMethods.liHover();
 
 });
