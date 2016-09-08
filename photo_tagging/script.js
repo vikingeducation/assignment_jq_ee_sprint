@@ -4,6 +4,7 @@ $(document).ready(function() {
   var $img = $('img');
   var $div = $("#tagger");
   var $dropdown = $('<div class="dropdown"><div class="top-drop"></div><div class= "bottom-drop"><ul><li>Matt</li><li>Johnny</li><li>Leo</li></ul></div></div>')
+  var $shower = $('<div class="shower"></div>');
 
   var movingTag = function() {
     $img.bind('mousemove', function(e) {
@@ -38,16 +39,16 @@ $(document).ready(function() {
     $(this).parent().html($(this).clone());
 
     $parentDrop.removeClass('dropdown').addClass('perma-drop');
-    
+
 
     var innerDiv = $parentDrop.children().eq(1);
     innerDiv.removeClass('bottom-drop');
     innerDiv.addClass('blue-background white-text');
 
-    var $closeBtnDiv = $("<div class='close-btn'>&times;</div>");  
+    var $closeBtnDiv = $("<div class='close-btn'>&times;</div>");
     $parentDrop.prepend($closeBtnDiv);
-    
 
+    $parentDrop.wrap($shower);
     movingTag();
     $div.removeClass('fixed');
 
@@ -59,5 +60,6 @@ $(document).ready(function() {
       $(this).parent().remove();
    });
   }
+
   movingTag();
 });
