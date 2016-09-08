@@ -9,17 +9,19 @@
 ul {
   border: 1px solid black;
   width: 100px;
+  list-style-type: none;
 }
 
-li{
+li {
   display: none;
-}
-
-.blank {
-  display: list-item;
+  cursor: pointer;
 }
 
 .hovered {
   background-color: blue;
 }
 
+.blank {
+  display: block;
+  background-color: white;
+}

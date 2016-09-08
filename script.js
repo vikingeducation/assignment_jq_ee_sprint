@@ -110,7 +110,15 @@ var scriptMethods = {
         $( this ).removeClass( "hovered" );
       }
     );
+  },
+
+  liSelect: function() {
+    $("li").on('click', function(e) {
+      var currentEle = $(e.target);
+      $('ul').prepend(currentEle);
+    });
   }
+
 }
 $(document).ready(function() {
 
@@ -121,5 +129,6 @@ $(document).ready(function() {
   scriptMethods.checkInputs();
   scriptMethods.dropdownMenu();
   scriptMethods.liHover();
+  scriptMethods.liSelect();
 
 });
