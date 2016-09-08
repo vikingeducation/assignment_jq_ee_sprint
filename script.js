@@ -114,6 +114,9 @@ $(document).ready(function(e) {
     validateLength($("#text-area"));
     validateLength($("#password"));
     validatePassword();
+  });
 
+  $("#dropdown-menu").on("click", function(e) {
+    
   });
 });
