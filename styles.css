@@ -12,4 +12,11 @@
 
 #drop-down {
   border: 1px solid;
+  list-style-type: none;
+}
+
+.mouse-over {
+  background-color: green;
+  color: white;
+  cursor: crosshair;
 }
