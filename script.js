@@ -56,13 +56,12 @@ $(document).ready(function() {
   var $errorDiv = $("<div class='error'></div>");
   $('button').on('click', function(e) {
     $('div.error').remove();
-    e.preventDefault();
+//     e.preventDefault();
 
     var textLength = $("#text-field").val().length;
     var textFeedbackLength = $('textarea').val().length;
     var passwordLength = $('#password').val().length;
     var passwordConfirmationLength = $('#password-confirmation').val().length;
-
     if (textLength < 4 || textLength > 32) {
       $('#text-field').addClass("error-input");
       $('#text-field').after($errorDiv.clone().text("Invalid text input"));
@@ -82,6 +81,10 @@ $(document).ready(function() {
     if ($('#password').val() !== $('#password-confirmation').val()) {
       $('#password-confirmation').addClass("error-input");
       $('#password-confirmation').after($errorDiv.clone().text("Passwords Don't Match!"));
+    }
+
+    if ( $('.error').length > 0 ){
+      e.preventDefault;
     }
   })
 
@@ -110,5 +113,10 @@ $(document).ready(function() {
   }
   $dropdownLis.hover( hoverBGColor, hoverBGColor);
 
-
+  $dropdownLis.on("click", function(e){
+    var aText = $(this).children().text();
+    $('#hidden').text(aText);
+    console.log($('#hidden').text());
+    $('span').text(aText);
+  })
 });
