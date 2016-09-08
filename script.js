@@ -66,6 +66,8 @@ $('#submit').on('click', function(event) {
   }
 });
 
+// dropdown
+
 $(".click-me").on("click", function () {
   $(".hiding-options").removeClass("hiding-options");
   $(".option-list li").on("click", function() {
