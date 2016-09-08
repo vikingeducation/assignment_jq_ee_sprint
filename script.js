@@ -45,6 +45,45 @@ function isEmpty() {
   });
 }
 
+function isTooShort(node){
+  //debugger;
+  return node.val().length < parseInt(node.attr("minLength"));
+}
+
+function isTooLong(node){
+  return node.val().length > parseInt(node.maxLength);
+}
+
+function validateLength(node){
+  var spanName = "#error-" + node.attr("id");
+  var $span = $(spanName);
+  //console.log($span);
+  if (isTooShort(node)){
+    $span.html("Must be at least " + node.attr("minLength") + " characters!");
+    node.addClass("error");
+  }
+  else if (isTooLong(node)){
+    $span.html("Must be shorter than " + node.maxLength.toString() + " characters!");
+    node.addClass("error");
+  }
+  else{
+    $span.hide();
+  }
+}
+
+function validatePassword(){
+  var $span = $('#counter-password-confirmation');
+  if(compare($('#password-confirmation'),$('#password'))){
+    $span.hide();
+  }
+  else{
+     var message = "Password doesn't match!";
+     changeSpanValue($span, message);
+     $span.show();
+     $('#password-confirmation').addClass("error");
+  }
+}
+
 $(document).ready(function(e) {
   $("form").on("input", "input, textarea", function(e) {
      var charsLeft = getCharsLeft(e.target.value.length, parseInt(e.target.maxLength));
@@ -60,12 +99,21 @@ $(document).ready(function(e) {
     var passwordContent = getPasswordContent();
     var message;
     var $span = $('#matching-pw-confirm');
-    if (compare(e.target.value, passwordContent) || isEmpty(e.target.value, passwordContent)) {
+    if (compare(e.target.value, passwordContent) || e.target.value.length === 0) {
       $span.hide();
     } else {
       message = "Password doesn't match!";
       changeSpanValue($span, message);
       $span.show();
     }
+  });
+
+  $("#submit-button").on("click", function(e){
+    //e.preventDefault();
+    validateLength($("#text-field"));
+    validateLength($("#text-area"));
+    validateLength($("#password"));
+    validatePassword();
+
   });
 });

@@ -7,13 +7,23 @@
 </head>
 <body>
 <form>
-  <input type="text" id = "text-field" maxLength = "32"><span id="counter-text-field"></span>
-  <textarea id = "text-area" maxLength = "140"></textarea><span id='counter-text-area'></span>
+  <input type="text" id = "text-field" minLength = "4"maxLength = "32">
+  <span id="counter-text-field"></span>
+  <span id="error-text-field"></span>
+  <br>
+  <textarea id = "text-area" minLength = "4" maxLength = "140"></textarea><span id='counter-text-area'></span>
+  <span id = "error-text-area"></span>
+  <br>
   <label for = "password">Password</label>
-  <input type = "password" id = "password" maxLength = "16"><span id='counter-password'></span>
+  <input type = "password" id = "password" minLength = "6" maxLength = "16"><span id='counter-password'></span>
+  <span id = "error-password"></span>
+  <br>
   <label for = "password-confirmation">Password Confirmation</label><span id='matching-pw-confirm'></span>
-  <input type = "password" id = "password-confirmation" maxLength = "16"><span id='counter-password-confirmation'></span>
-  <input type = "submit">
+  <input type = "password" id = "password-confirmation" maxLength = "16">
+  <span id='counter-password-confirmation'></span>
+  <span id = "error-password-confirmation"></span>
+  <br>
+  <input type = "submit" id = "submit-button">
 </form>
 
 <p></p>
