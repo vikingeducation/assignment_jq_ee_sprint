@@ -133,11 +133,36 @@ $(document).ready(function() {
         toggleMove();
         moveSwitch = !moveSwitch
         $choices = $(".waldo-drop-choices");
-        $choices.css({
-            left:  e.pageX,
-            top:   e.pageY += 50
+        if ($choices.css('display') === 'none') {
+            $choices.css({
+                left:  e.pageX,
+                top:   e.pageY += 50
             });
-        $choices.slideDown();
+            $choices.slideDown();
+        } else {
+            $choices.slideUp();
+        }
     });
+
+    var createBox = function() {
+        var tLeft = $('#target-box').css( 'left' );
+        var tRight = $('#target-box').css( 'right' );
+        var box = $('<div></div>').css({
+            left: tLeft,
+            right: tRight,
+            position: 'absolute',
+            width: '50px',
+            height: '50px',
+            border: '2px solid green',
+        })
+        return box;
+    }
+
+    $('.waldo-drop-choice').click(function(e) {
+        $target = $(e.target);
+        var newBox = createBox();
+        $('.waldo-container').append(newBox);
+        console.log(newBox.css('left'));
+    })
 })
 
