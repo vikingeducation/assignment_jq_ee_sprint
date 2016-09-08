@@ -40,10 +40,17 @@
 
 .permanent {
   border: 2px solid green ;
+  opacity: 0;
+}
+
+.permanent:hover {
+  opacity: 1;
 }
 
 .permanent ul {
   background-color: green ;
+
+
 }
 
 .x {

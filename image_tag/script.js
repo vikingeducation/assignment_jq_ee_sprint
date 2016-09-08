@@ -26,6 +26,7 @@ $("#image").on("click", function(event) {
 
     $newBox.append("<ul class='box-list'><li>Dylan</li><li>Hannah</li><li>Andur</li></ul>")
 
+
     $("ul > li").on("click", function() {
       $("ul > li").slice(-3).addClass("hidden");
       $(this).removeClass("hidden");
