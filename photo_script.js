@@ -51,21 +51,23 @@ var photoMethods = {
     container.append(friendList);
 
     $('img').off('click', photoMethods.fixTargetEvent);
-  $('ul').click(function(e) {
 
-    var list = $(e.currentTarget);
-    list.parent().addClass('selected');
+    $('ul').click(function(e) {
 
-    var currentEle = $(e.target);
-    currentEle.addClass("selected");
+      var list = $(e.currentTarget);
+      list.parent().addClass('selectedCont');
 
-    $('ul').children().filter(function(_, ele) {
-      ele = $(ele);
-      return !ele.hasClass('selected');
-    }).hide();
-    $('.tagger').hide();
-    $('img').on('click', photoMethods.fixTargetEvent);
-  });
+      var currentEle = $(e.target);
+      currentEle.addClass("selected");
+
+      $('ul').children().filter(function(_, ele) {
+        ele = $(ele);
+        return !ele.hasClass('selected');
+      }).hide();
+      $('.tagger').hide();
+      $('img').on('click', photoMethods.fixTargetEvent);
+
+    });
 
     $('img').on('mousemove', photoMethods.mousemoveEvent);
     $('img').on('click', photoMethods.photoStuff);
@@ -73,7 +75,7 @@ var photoMethods = {
   },
 
   photoStuff: function() {
-    if (!$('.fixed-container').last().hasClass('selected')) {
+    if (!$('.fixed-container').last().hasClass('selectedCont')) {
       $('.tagger').show();
       $('.fixed-container').last().remove();
     }
