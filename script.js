@@ -139,4 +139,14 @@ $(document).ready(function(e) {
   $("#dropdown-bar").on("click", function(e) {
     $("#dropdown-menu").trigger("click");
   });
+
+  $(".dropdown-item").hover(function(e){
+    $(e.target).toggleClass("hovered");
+  })
+
+  $(".dropdown-item").on("click", function(e){
+    $('.dropdown-bar').html(e.target.innerHTML);
+    $("#dropdown-bar").trigger("click");
+  })
+
 });

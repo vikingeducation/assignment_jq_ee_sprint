@@ -2,9 +2,10 @@
   color: red;
 }
 
-#dropdown-bar {
+.dropdown-bar {
   background-color: black;
   color: white;
+  cursor: pointer;
 }
 
 .dropdown-item {
@@ -12,6 +13,11 @@
   display: block;
   background-color: gray;
   color: white;
+  cursor: pointer;
+}
+
+.hovered{
+  background-color: blue;
 }
 
 .hidden {
