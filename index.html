@@ -27,14 +27,21 @@
 
     <form>
       <div class="form-group">
-        <input type="text" name="username" id="username">
-
+        <label name="username">Username</label>
         <br>
-        <textarea id='description'></textarea>
+        <input type="text" name="username" id="username" class="form-control">
         <br>
-        <input type="password" id="password" name="password" required="true">
+        <label name="description">Description</label>
         <br>
-        <input type="password" id="confirm" name="password-confirmation" required="true">
+        <textarea id='description' class="form-control"></textarea>
+        <br>
+        <label name="password">Password</label>
+        <br>
+        <input type="password" id="password" name="password" required="true" class="form-control">
+        <br>
+        <label name="password-confirmation">Password Confirmation</label>
+        <br>
+        <input type="password" id="confirm" name="password-confirmation" required="true" class="form-control">
         <br>
       </div>
 
