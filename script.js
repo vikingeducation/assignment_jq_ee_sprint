@@ -1,43 +1,32 @@
+  var scriptMethods = { 
+    charactersRemaining: function(targetElement, limit) {   
+      $(targetElement).bind("change keyup input",function(e) {
+
+        var limitNum = limit;
+
+        if ($(this).val().length > limitNum) {
+          $(this).val($(this).val().substring(0, limitNum));
+        }
+
+        currentEle = $(e.target);
+
+        var inputLength = currentEle.val().length;
+
+        $(currentEle).next().text(limitNum - inputLength + " characters remaining");
+
+        if (inputLength === 0) {
+          $(currentEle).next().hide();
+        } else {
+          $(currentEle).next().show();
+        }
+
+      });
+    }
+  }
 $(document).ready(function() {
 
-  $('input[type=text]').bind("change keyup input",function(e) {
-
-    var limitNum = 32;
-
-    if ($(this).val().length > limitNum) {
-      $(this).val($(this).val().substring(0, limitNum));
-    }
-
-    currentEle = $(e.target);
-
-    var inputLength = currentEle.val().length;
-
-    $('span').text(inputLength);
-
-    if (inputLength === 0) {
-      $('span').hide();
-    } else {
-      $('span').show();
-    }
-
-  });
-  //
-  // $('input[type=text]').on('keypress', function(e) {
-  //   currentEle = $(e.target);
-  //   var inputLength = currentEle.val().length;
-  //
-  //   if (inputLength > 32) {
-  //     e.preventDefault();
-  //   };
-  //
-  //   $('span').text(inputLength);
-  //
-  //   if (inputLength === 0) {
-  //     $('span').hide();
-  //   } else {
-  //     $('span').show();
-  //   }
-  //
-  // });
+  scriptMethods.charactersRemaining('input[type="text"]', 32);
+  scriptMethods.charactersRemaining('textarea', 140);
+  scriptMethods.charactersRemaining('input[type="password"]', 16);
 
 });
