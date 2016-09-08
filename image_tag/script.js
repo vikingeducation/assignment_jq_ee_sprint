@@ -26,6 +26,12 @@ $("#image").on("click", function(event) {
 
     $newBox.append("<ul class='box-list'><li>Dylan</li><li>Hannah</li><li>Andur</li></ul>")
 
+    // if($(".tag-box:not(.permanent)").length > 0) {
+    //   $("#image").on("click", function() {
+    //     $(".tag-box:not(.permanent)").last().remove();
+    //   })
+    // }
+
 
     $("ul > li").on("click", function() {
       $("ul > li").slice(-3).addClass("hidden");
