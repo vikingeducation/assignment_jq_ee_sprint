@@ -16,7 +16,7 @@
   position: absolute;
 }
 
-.dropdown ul {
+ul {
   margin: 0px;
   list-style: none;
 }
@@ -29,9 +29,17 @@
   border-top: 5px solid green;
 }
 
+.blue-background {
+  background-color: blue;
+}
+
 .perma-drop {
   width: 100px;
   height: auto;
   border: 5px solid blue;
   position: absolute;
+}
+
+.white-text {
+  color: white;
 }

@@ -37,6 +37,12 @@ $(document).ready(function() {
     $(this).parent().html($(this).clone());
 
     $parentDrop.removeClass('dropdown').addClass('perma-drop');
+    var innerDiv = $parentDrop.children().eq(1);
+    innerDiv.removeClass('bottom-drop');
+    innerDiv.addClass('blue-background white-text');
+    movingTag();
+    $div.removeClass('fixed');
+
   });
 
 
