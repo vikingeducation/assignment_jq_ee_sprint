@@ -57,7 +57,7 @@ var validations = {
 
     }
 
-  };
+  }
 
 
 };
