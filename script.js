@@ -73,6 +73,9 @@ $(document).ready(function() {
                 valueArray[i].next().next().show().text("Field is too long.");
             }
         };
+        if (passVal.val() !== confVal.val()) {
+            e.preventDefault();
+        };
 
     });
 })
