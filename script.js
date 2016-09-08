@@ -158,8 +158,11 @@ $(document).ready(function(e) {
     "mouseleave": function(e){$("#tagging-box").removeClass("drawn");}
   });
 
-  $("#tagging-box").on({
-    "click": function(e){$("#astronauts").off("mousemove");}
+  $("document").on(
+  {
+    "click": function(e){$("#astronauts").off("mousemove"); debugger;}
+    
   });
+
 
 });
