@@ -71,6 +71,14 @@ function validateLength(node){
   }
 }
 
+function showChildItems(node) {
+  node.children('.dropdown-item').removeClass('hidden');
+}
+
+function hideChildItems(node) {
+  node.children('.dropdown-item').addClass('hidden');
+}
+
 function validatePassword(){
   var $span = $('#counter-password-confirmation');
   if(compare($('#password-confirmation'),$('#password'))){
@@ -116,7 +124,19 @@ $(document).ready(function(e) {
     validatePassword();
   });
 
+  // Handlers for menu items.
   $("#dropdown-menu").on("click", function(e) {
-    
+    if ($(this).hasClass('closed')) {
+      showChildItems($(this));
+      $(this).removeClass('closed');
+    } else {
+      hideChildItems($(this));
+      $(this).addClass('closed');
+    }
+  });
+
+  // Clicking this triggers the menu <ul>.
+  $("#dropdown-bar").on("click", function(e) {
+    $("#dropdown-menu").trigger("click");
   });
 });
