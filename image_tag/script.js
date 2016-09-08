@@ -30,17 +30,11 @@ $("#image").on("click", function(event) {
       $("ul > li").slice(-3).addClass("hidden");
       $(this).removeClass("hidden");
       $newBox.addClass("permanent");
-      $newBox.append("<div id='x'>x</div>");
+      $newBox.append("<div class='x'>x</div>");
 
-
-      $("#x").on("click", function(event) {
-
+      $(".x").on("click", function(event) {
         $(this).parent().remove();
-      })
-
+      });
     });
 
 });
-
-
-
