@@ -5,12 +5,32 @@ $(document).ready(function () {
 
 var dropDown = {
   init: function() {
-    $('#drop-down').on('click', "li", dropDown.selekt );
+    
+    $("#drop-down li").attr("hidden", "true");
+    $("#drop-down li").first().removeAttr("hidden");
+
+    $('#drop-down').on('click', "li", function(e){ 
+      
+      dropDown.selekt(e);
+      dropDown.reveal();
+      dropDown.unveal();
+    });
+  },
+
+  unveal: function () {
+    // adds hidden attribute to all list elements except for the selekted
+    $("#drop-down li").attr("hidden", "true");
+    $("#drop-down li").find(".selected").removeAttr("hidden");
+
   },
 
   selekt: function(e) {
     $("#drop-down li").removeClass("selected");
     $(e.target).addClass("selected");
+  },
+
+  reveal: function () {
+    $("#drop-down li").removeAttr("hidden");
   }
 };
 
