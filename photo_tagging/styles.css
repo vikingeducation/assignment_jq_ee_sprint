@@ -43,3 +43,8 @@ ul {
 .white-text {
   color: white;
 }
+
+.close-btn {
+  position: relative;
+  top: -20px;
+}

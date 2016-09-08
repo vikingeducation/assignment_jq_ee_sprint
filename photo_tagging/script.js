@@ -12,6 +12,7 @@ $(document).ready(function() {
         top: e.pageY - 50
       });
     });
+    closeBtnFunc();
   }
 
   $div.on('click', function(e) {
@@ -37,15 +38,26 @@ $(document).ready(function() {
     $(this).parent().html($(this).clone());
 
     $parentDrop.removeClass('dropdown').addClass('perma-drop');
+    
+
     var innerDiv = $parentDrop.children().eq(1);
     innerDiv.removeClass('bottom-drop');
     innerDiv.addClass('blue-background white-text');
+
+    var $closeBtnDiv = $("<div class='close-btn'>&times;</div>");  
+    $parentDrop.prepend($closeBtnDiv);
+    
+
     movingTag();
     $div.removeClass('fixed');
 
   });
 
-
-
+  var closeBtnFunc = function () {
+    $(".close-btn").on("click", function() {
+    console.log(this);
+      $(this).parent().remove();
+   });
+  }
   movingTag();
 });
