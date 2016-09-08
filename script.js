@@ -154,16 +154,12 @@ $(document).ready(function(e) {
   });
 
   $("#astronauts").on({
-    "mouseenter": function(e){
-    $("#tagging-box").addClass("drawn");
-    }, 
-    "mouseleave": function(e){
-     $("#tagging-box").removeClass("drawn");
-    },
-    "click": function(e){
-      $("#astronauts").off({"mouse"})
-    }
-  }
-  );
+    "mouseenter": function(e){$("#tagging-box").addClass("drawn");},
+    "mouseleave": function(e){$("#tagging-box").removeClass("drawn");}
+  });
+
+  $("#tagging-box").on({
+    "click": function(e){$("#astronauts").off("mousemove");}
+  });
 
 });
