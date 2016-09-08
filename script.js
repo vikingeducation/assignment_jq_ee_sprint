@@ -1,26 +1,33 @@
 $(document).ready(function () {
   validations.init();
   dropDown.init();
+  photo.init();
 });
 
 var photo = {
   init: function() {
-    $("#image").on('mouseenter', function(e) {
+    $(".img-container").on('mouseenter', function(e) {
       photo.startHover(e);
     });
 
-    $("#image").on('mousemove', function(e) {
+    $(".img-container").on('mousemove', function(e) {
       photo.hover(e);
     });
 
-    $("#image").on('mouseleave', function(e) {
+    $(".img-container").on('mouseleave', function(e) {
       photo.stopHover();
     });
+
+    $(".img-container").on('click', function(e) {
+      photo.setBox(e);
+      photo.startHover(e);
+    });
+
   },
 
   setPosition: function(e, $object) {
-    var x = e.pageX;
-    var y = e.pageY;
+    var x = e.pageX - photo.boxWidth;
+    var y = e.pageY - photo.boxHeight;
     $object.css("top", y + "px").css("left", x + "px");
     return $object;
   },
@@ -28,29 +35,24 @@ var photo = {
   startHover: function(e) {
     // first make div
     // then css box relative to mouse position
-    var box = $("<div>").addClass("photo-box");
-
+    var $box = $("<div>").addClass("photo-box").attr("id", "hover-box");
+    photo.setPosition(e, $box).insertAfter( $('#image') );
+    photo.boxWidth = $box.width() / 2;
+    photo.boxHeight = $box.height() / 2;
   },
 
   hover: function(e) {
-
-    // first make div
-    // then css box relative to mouse position
-
-    // var box = $("<div>").addClass("photo-box");
-    // box.animate({
-
-
-    });
-
+    photo.setPosition(e, $("#hover-box"));
   },
 
   stopHover: function(e) {
+    $("#hover-box").remove();
+  },
 
+  setBox: function(e) {
+    console.log($("#hover-box"))
+    $("#hover-box").removeAttr("id");
   }
-
-
-
 }
 
 var dropDown = {
