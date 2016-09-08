@@ -1,10 +1,9 @@
-"use strict;"
+"use strict"
+
+// refactor with attributes to determine min/max for different forms.
+
 
 $(document).ready(function() {
-  //   var $text_field
-  //   if (inputLength > 32) {
-  //     $feedbackDiv.text("Please input 32 characters or fewer.");
-  //   };
   var $feedbackDiv = $("#text-field-feedback");
   $('#text-field').keyup(function() {
 
@@ -29,11 +28,7 @@ $(document).ready(function() {
     var inputLength = $('#password').val().length;
     if (inputLength) {
       $('#password').after($feedbackDiv.text(16 - inputLength));
-    }
-    //     else if( inputLength < 6 && inputLength){
-    //       $('#password').after($feedbackDiv.text("Password to short"));
-    //     }
-    else {
+    } else {
       $feedbackDiv.text("");
     }
   });
@@ -53,9 +48,6 @@ $(document).ready(function() {
     if (inputLength) {
       $('#password-confirmation').after($feedbackDiv.text(16 - inputLength));
     }
-    //     else if( inputLength < 6 && inputLength ){
-    //       $('#password-confirmation').after($feedbackDiv.text("Password to short"));
-    //     }
     else {
       $feedbackDiv.text("");
     }
@@ -85,7 +77,7 @@ $(document).ready(function() {
     }
     if (passwordConfirmationLength < 6 || passwordConfirmationLength > 16) {
       $('#password-confirmation').addClass("error-input");
-      $('#password-confirmation').after($errorDiv.clone().text("Invalid text input"));
+      $('#password-confirmation').after($errorDiv.clone().text("Invalid password input"));
     }
     if ($('#password').val() !== $('#password-confirmation').val()) {
       $('#password-confirmation').addClass("error-input");
