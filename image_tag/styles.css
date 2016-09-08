@@ -1,9 +1,13 @@
-#image {
-  width: 1000px;
-  position: relative;
+.container {
+  position:relative;
 }
 
-#tag-box {
+#image {
+  width: 1000px;
+  position: absolute;
+}
+
+#active {
   position: absolute;
   float: left;
   height: 70px;
@@ -11,6 +15,24 @@
   border: 2px solid red;
 }
 
+.tag-box {
+  position: absolute;
+  float:left;
+  height: 70px;
+  width: 100px;
+  border: 2px solid red;
+  z-index: 5;
+}
+
 .hidden {
   display: none;
 }
+
+.box-list {
+  position:relative;
+  background-color:white;
+  z-index:5;
+  margin-top:72px;
+  width:60px;
+}
+
