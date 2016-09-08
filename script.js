@@ -10,10 +10,10 @@ var dropDown = {
     $("#drop-down li").first().removeAttr("hidden");
 
     $('#drop-down').on('click', "li", function(e){ 
-      
+      dropDown.unveal();
       dropDown.selekt(e);
       dropDown.reveal();
-      dropDown.unveal();
+      
     });
   },
 
