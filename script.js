@@ -55,7 +55,7 @@ $('#submit').on('click', function(event) {
 
   if(invalidInputs.length !== 0) {
     for(message in invalidMessages) {
-      $("#errors-list").append("<li>" + invalidMessages[message] + "</li>")
+      $("#errors-list").append("<li class= 'error-message'>" + invalidMessages[message] + "</li>")
     }
 
     for(input in invalidInputs) {
@@ -65,3 +65,12 @@ $('#submit').on('click', function(event) {
    $( "#main-form" ).submit();
   }
 });
+
+$(".click-me").on("click", function () {
+  $(".hiding-options").removeClass("hiding-options");
+  $(".option-list li").on("click", function() {
+    $(".option-list li").addClass("hiding-options");
+    $(this).removeClass("hiding-options");
+  })
+});
+
