@@ -50,24 +50,26 @@ var photoMethods = {
 
     container.append(friendList);
 
-    $('ul').click(function(e) {
+    $('img').off('click', photoMethods.fixTargetEvent);
+  $('ul').click(function(e) {
 
-      var list = $(e.currentTarget);
-      list.parent().addClass('selected');
+    var list = $(e.currentTarget);
+    list.parent().addClass('selected');
 
-      var currentEle = $(e.target);
-      currentEle.addClass("selected");
+    var currentEle = $(e.target);
+    currentEle.addClass("selected");
 
-      $('ul').children().filter(function(_, ele) {
-        ele = $(ele);
-        return !ele.hasClass('selected');
-      }).hide();
-      $('.tagger').hide();
+    $('ul').children().filter(function(_, ele) {
+      ele = $(ele);
+      return !ele.hasClass('selected');
+    }).hide();
+    $('.tagger').hide();
+    $('img').on('click', photoMethods.fixTargetEvent);
+  });
 
-    });
     $('img').on('mousemove', photoMethods.mousemoveEvent);
     $('img').on('click', photoMethods.photoStuff);
-    $('img').off('click', photoMethods.fixTargetEvent);
+
   },
 
   photoStuff: function() {
