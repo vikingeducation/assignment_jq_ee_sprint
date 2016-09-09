@@ -179,5 +179,30 @@ $(document).ready(function() {
         $target.parent().remove();
         return false;
     });
+
+    $('.simon-square').click(function(e) {
+        $target = $(e.target);
+        $target.css('opacity', 1);
+        var changeOp = function() {
+            $target.css('opacity', .5)
+        };
+        setTimeout(changeOp, 500);
+    });
+
+    var runSequence = function(amt) {
+        for (var i = 0; i < amt-1; i++) {
+            lightUp();
+        }
+    };
+
+    var lightUp = function() {
+        var randNum = Math.floor((Math.random() * 4) + 1);
+        var searchName = '#' + randNum
+        $(searchName).css('opacity', 1);
+        var changeOp = function() {
+            $(searchName).css('opacity', .5)
+        };
+        setTimeout(changeOp, 500);
+    };
 })
 
