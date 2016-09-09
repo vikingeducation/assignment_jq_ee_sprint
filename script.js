@@ -15,12 +15,14 @@ var photo = {
     });
 
     $(".img-container").on('mouseleave', function(e) {
+      console.log("have left border");
       photo.stopHover();
+      
     });
 
     $(".img-container").on('click', function(e) {
       photo.setBox(e);
-      photo.startHover(e);
+      //photo.startHover(e);
     });
 
   },
@@ -50,10 +52,81 @@ var photo = {
   },
 
   setBox: function(e) {
-    console.log($("#hover-box"))
-    $("#hover-box").removeAttr("id");
+    var $box = $("#hover-box").removeAttr("id");
+
+    // add div
+    var $list = $("#drop-down").clone();
+    $list.first().addClass("selected");    
+    $box.append($list);
+    dropDown.init();
+
+
   }
 }
+
+// function dropDown() {
+
+
+//   this.make_List = function() {
+//     var $('<ul>');
+//   }
+
+//   this.init = function() {
+
+//     $("#drop-down li").first().addClass("selected");
+//     dropDown.hide(0);
+
+//     $('#drop-down').on('mouseenter', "li", function(e){ 
+//       if (!dropDown.hidden) {
+//         dropDown.hoverOn(e);
+//       }
+//     });
+
+//     $('#drop-down').on('mouseleave', "li", function(e){ 
+//       dropDown.hoverOff(e);
+//     });
+
+//     $('#drop-down').on('mouseleave', function(e){ 
+//       dropDown.hide(300);
+//     });
+
+//     $('#drop-down').on('click', "li", function(e){
+//       console.log("dropping"); 
+//       if (dropDown.hidden) {
+//         dropDown.reveal(200);
+//       } else {
+//         dropDown.selekt(e);
+//         dropDown.hide(200);
+//       }
+//     });
+//   };
+
+//   this.hide = function (time) {
+//     $("#drop-down li").not('.selected').hide(time);
+
+
+//     dropDown.hidden = true;
+//   },
+
+//   this.reveal = function (time) {
+//     $("#drop-down li").show(time)  //removeAttr("hidden");
+//     // $("#drop-down").slideDown(500);
+//     dropDown.hidden = false;
+//   },
+//   this.selekt = function(e) {
+//     $("#drop-down li").removeClass("selected");
+//     $(e.target).addClass("selected");
+//   },
+
+//   this.hoverOn = function(e) {
+//     $(e.target).addClass("mouse-over");
+//   },
+
+//   this.hoverOff = function(e) {
+//     $(e.target).removeClass("mouse-over");
+//   }
+// };
+
 
 var dropDown = {
   init: function() {
@@ -74,7 +147,8 @@ var dropDown = {
       dropDown.hide(300);
     });
 
-    $('#drop-down').on('click', "li", function(e){ 
+    $('#drop-down').on('click', "li", function(e){
+      console.log("dropping"); 
       if (dropDown.hidden) {
         dropDown.reveal(200);
       } else {

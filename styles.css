@@ -18,8 +18,9 @@
 .mouse-over {
   background-color: #3b5998;
   color: white;
-  cursor: crosshair 100px;
+  cursor: crosshair;
 }
+
 
 img {
   width: 1000px;
