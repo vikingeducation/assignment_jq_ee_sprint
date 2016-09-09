@@ -1,0 +1,52 @@
+<html>
+<head>
+<link rel = "stylesheet" href="styles.css"></script>
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="script.js"></script>
+
+</head>
+<body>
+<img id="astronauts" src="astronauts.jpg">
+<div class="tagging-box">
+</div>
+<ul class="box-menu hidden">
+  <li class = "dropdown-bar"></li>
+  <li class="dropdown-item hidden">Joey</li>
+  <li class="dropdown-item hidden">Jim</li>
+  <li class="dropdown-item hidden">Jack</li>
+</ul>
+
+<form>
+  <input type="text" id = "text-field" minLength = "4"maxLength = "32">
+  <span id="counter-text-field"></span>
+  <span id="error-text-field"></span>
+  <br>
+  <textarea id = "text-area" minLength = "4" maxLength = "140"></textarea><span id='counter-text-area'></span>
+  <span id = "error-text-area"></span>
+  <br>
+  <label for = "password">Password</label>
+  <input type = "password" id = "password" minLength = "6" maxLength = "16"><span id='counter-password'></span>
+  <span id = "error-password"></span>
+  <br>
+  <label for = "password-confirmation">Password Confirmation</label><span id='matching-pw-confirm'></span>
+  <input type = "password" id = "password-confirmation" maxLength = "16">
+  <span id='counter-password-confirmation'></span>
+  <span id = "error-password-confirmation"></span>
+  <br>
+  <input type = "submit" id = "submit-button">
+</form>
+
+<form>
+  <div class="container">
+    <ul id="dropdown-menu" class="closed">
+      <li class = "dropdown-bar"></li>
+      <li class="dropdown-item hidden">An item</li>
+      <li class="dropdown-item hidden">Another item</li>
+      <li class="dropdown-item hidden">One more item</li>
+    </ul>
+  </div>
+</form>
+
+<p></p>
+</body>
+</html>
