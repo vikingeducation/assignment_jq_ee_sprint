@@ -1,0 +1,15 @@
+.error-input {
+  border: 5px solid red;
+}
+
+.error {
+  color: red;
+}
+
+.dropdown-div {
+  display: inline-block;
+}
+
+.background-color {
+  background-color: hotpink;
+}

@@ -1,0 +1,71 @@
+#tagger {
+    width: 100px;
+    height: 100px;
+    border: 1px solid darkred;
+    position: absolute;
+}
+
+.fixed {
+    display: none;
+}
+
+.dropdown {
+    width: 100px;
+    height: auto;
+    border: 5px solid green;
+    position: absolute;
+}
+
+ul {
+    margin: 0px;
+    list-style: none;
+}
+
+.top-drop {
+    height: 100px;
+}
+
+.shower {
+    height: 200px;
+    width: 100px;
+    postion: absolute;
+}
+
+.shower * {
+    visibility: hidden;
+}
+
+.shower:hover * {
+    visibility: visible;
+}
+
+.bottom-drop {
+    background-color: white;
+    border-top: 5px solid green;
+}
+
+.blue-background {
+    background-color: blue;
+}
+
+.perma-drop {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    /*border: 5px solid blue;*/
+    color: white;
+}
+
+.perma-drop * {
+  visibility: hidden;
+}
+
+.perma-drop:hover * {
+  visibility: visible;
+}
+
+
+.close-btn {
+    position: relative;
+    top: -20px;
+}
