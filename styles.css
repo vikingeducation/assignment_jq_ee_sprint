@@ -1,0 +1,27 @@
+.error {
+  border: 1px solid red;
+}
+
+.error-message{
+  color: red;
+}
+
+ul {
+  border: 1px solid black;
+  width: 100px;
+  list-style-type: none;
+}
+
+li {
+  display: none;
+  cursor: pointer;
+}
+
+.hovered {
+  background-color: blue;
+}
+
+.blank {
+  display: block;
+  background-color: white;
+}
