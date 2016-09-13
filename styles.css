@@ -9,3 +9,19 @@ p {
 .color {
   background-color: pink;
 }
+
+.tag {
+  border: solid 2px red;
+  position: absolute;
+  height: 75px;
+  width: 75px;
+}
+
+#image-holder {
+  position: relative;
+}
+
+.dropdown {
+  
+  
+}
