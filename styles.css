@@ -1,0 +1,11 @@
+p {
+  display: inline-block;
+}
+
+.red {
+  border: solid 1px red;
+}
+
+.color {
+  background-color: pink;
+}
