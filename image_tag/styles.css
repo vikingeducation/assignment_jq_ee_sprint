@@ -1,0 +1,67 @@
+.container {
+  position:relative;
+}
+
+#image {
+  width: 1000px;
+  position: absolute;
+}
+
+#active {
+  position: absolute;
+  float: left;
+  height: 70px;
+  width: 100px;
+  border: 2px solid red;
+}
+
+.tag-box {
+  position: absolute;
+  float:left;
+  height: 70px;
+  width: 100px;
+  border: 2px solid red;
+  z-index: 5;
+}
+
+.hidden {
+  display: none;
+}
+
+.box-list {
+  position:relative;
+  background-color:white;
+  z-index:5;
+  margin-top:72px;
+  width:100%;
+  list-style-type: none;
+  padding: 2px;
+}
+
+.permanent {
+  border: 2px solid green ;
+  opacity: 0;
+}
+
+.permanent:hover {
+  opacity: 1;
+}
+
+.permanent ul {
+  background-color: green ;
+
+
+}
+
+.x {
+  background-color: green;
+  color: white;
+  position: absolute;
+  top: -8;
+  left: 90;
+  width: 10px;
+  height: 10px;
+  padding: 8px;
+  padding-top: 4px;
+  border-radius: 50%;
+}
