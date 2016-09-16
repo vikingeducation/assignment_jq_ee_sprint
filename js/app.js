@@ -1,17 +1,29 @@
 var formHandlers = {
   init: function () {
+    formHandlers.countRemainCharacter();
+    formHandlers.textRemainCharacter();
+  },
+
+  countRemainCharacter: function(){
     $("input[type=text]").keyup(function(){
-      allowedLength = 32 - $(this).val().length;
-      if (allowedLength < 32){
-        $(this).after($("<h1></h1>").text(allowedLength)
+      var allowedLengthLeft = 32 - $(this).val().length;
+      $('.input-counter').remove();
+      if (allowedLengthLeft < 32){
+        $(this).after($("<p></p>").text(allowedLengthLeft + " remaining words ")
                                     .addClass("input-counter"));
       };
-      $('.input-counter').remove();
     });
   },
 
-  countInputCharacter: function(){
-
+  textRemainCharacter: function(){
+    $("textarea").keyup(function(){
+      var allowedLengthLeft = 140 - $(this).val().length;
+      $('.input-counter').remove();
+      if (allowedLengthLeft < 140){
+        $(this).after($("<p></p>").text(allowedLengthLeft + " remaining words ")
+                                    .addClass("input-counter"));
+      };
+    });
   },
 };
 
