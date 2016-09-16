@@ -8,21 +8,22 @@
     <script src="js/jquery.js"></script>
   </head>
   <body>
-    <form method="post">
+    <form>
       title:
-      <input type="text" name="title">
+      <input type="text" name="title" maxlength="32">
       <br>
       Body:
-      <textarea rows="3" placeholder="write somthing here"></textarea>
+      <textarea rows="3" placeholder="write somthing here" maxlength="140"></textarea>
       <br>
       password
-      <input type="password" name="Password">
+      <input type="password" name="Password" maxlength="16">
       <br>
       confirmation
-      <input type="password" name="Password Confirmation" >
+      <input type="password" name="Confirmation" maxlength="16" >
+      <input type="submit" name="Confirm" >
     </form>
 
-    
+
     <script src="js/app.js"></script>
   </body>
 </html>
