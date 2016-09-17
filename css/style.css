@@ -1,0 +1,57 @@
+.warning-line {
+  border: solid 1px red;
+}
+
+.warning {
+  color: red;
+  font-weight: bold;
+}
+
+.dropdown-menu ul {
+  list-style-type: none;
+}
+
+.dropdown-menu ul li {
+  display: none;
+}
+
+.bg-green {
+  background-color: green;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.photo-tag {
+  width: 50px;
+  height: 50px;
+  border: solid 5px red;
+  position: absolute;
+  display: none;
+  z-index: 1;
+}
+
+/*body > .photo-wrap:hover .photo-tag {
+  display: block;
+}*/
+
+/*.photo-wrap {
+  position: relative;
+}*/
+
+.fixed-tag {
+  width: 50px;
+  height: 50px;
+  border: solid 5px red;
+  position: absolute;
+  z-index: 1;
+}
+
+.name-list {
+  display: none;
+  position: relative;
+  left: -25px;
+  top: 30px;
+}
