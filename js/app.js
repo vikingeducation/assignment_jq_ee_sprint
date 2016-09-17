@@ -1,156 +1,163 @@
 var formHandlers = {
   init: function () {
-    formHandlers.countRemainCharacter();
-    formHandlers.textRemainCharacter();
-    formHandlers.passwordRemainCharacter();
-    formHandlers.passwordConfirmRemainCharacter();
-    formHandlers.formValidate();
+    var title = {
+      jqObject: $("input[type=text]"),
+      minLength: 4,
+      maxLength: 32,
+    };
+    var text = {
+      jqObject: $("textarea"),
+      minLength: 4,
+      maxLength: 140,
+    };
+    var password = {
+      jqObject: $("input[name='Password']"),
+      minLength: 6,
+      maxLength: 16,
+    };
+    var confirmation = {
+      jqObject: $("input[name='Confirmation']"),
+      minLength: 6,
+      maxLength: 16,
+    };
+
+    formHandlers.inputCounter(title);
+    formHandlers.inputCounter(text);
+    formHandlers.inputCounter(password);
+    formHandlers.passwordValueCheck(password, confirmation);
+
+    formHandlers.lengthValidate(title);
+    formHandlers.lengthValidate(text);
+    formHandlers.lengthValidate(password);
+
+    // formHandlers.formValidate();
   },
 
-  // countHelper: function(){
-  //   var allowedLengthLeft = 32 - $(this).val().length;
-  //   $('.input-counter').remove();
-  //   if (allowedLengthLeft < 32){
-  //     $(this).after($("<p></p>").text(allowedLengthLeft + " remaining words ")
-  //                                 .addClass("input-counter"));
-  //   };
-  // },
-  //
-  // countRemainCharacter: function(){
-  //   $("input[type='text']").keyup(function(){
-  //     this.countHelper();
-  //   });
-  // },
-
-  countRemainCharacter: function(){
-    $("input[type=text]").keyup(function(){
-      var allowedLengthLeft = 32 - $(this).val().length;
+  inputCounter: function(input){
+    var inputObject = input.jqObject;
+    var max = input.maxLength;
+    inputObject.keyup(function(){
       $('.input-counter').remove();
-      if (allowedLengthLeft < 32){
-        $(this).after($("<p></p>").text(allowedLengthLeft + " remaining words ")
-                                    .addClass("input-counter"));
+      var allowedLengthLeft = max - inputObject.val().length;
+      if (allowedLengthLeft < max){
+        inputObject.after($("<p></p>").text(allowedLengthLeft + " remaning")
+        .addClass("input-counter"));
       };
+    });
+    inputObject.change(function(){
+      $('.input-counter').remove();
     });
   },
 
-  textRemainCharacter: function(){
-    $("textarea").keyup(function(){
-      var allowedLengthLeft = 140 - $(this).val().length;
-      $('.input-counter').remove();
-      if (allowedLengthLeft < 140){
-        $(this).after($("<p></p>").text(allowedLengthLeft + " remaining words ")
-                                    .addClass("input-counter"));
-      };
-    });
-  },
-
-  passwordRemainCharacter: function(){
-    $("input[name='Password']").keyup(function(){
-      var allowedLengthLeft = 16 - $(this).val().length;
-      $('.input-counter').remove();
-      if (allowedLengthLeft < 16){
-        $(this).after($("<p></p>").text(allowedLengthLeft + " remaining words ")
-                                    .addClass("input-counter")
-                                    );
-      };
-    });
-  },
-
-  passwordConfirmRemainCharacter: function(){
-    $("input[name='Confirmation']").keyup(function(){
-      var passwordInput = $("input[name='Password']").val();
-      var passwordConfirm = $(this).val();
-      $('.input-counter').remove();
+  passwordValueCheck: function(password, confirmation){
+    var result = false;
+    confirmation.jqObject.change(function(){
+      var passwordValue = password.jqObject.val();
+      var confirmValue = confirmation.jqObject.val();
       $('.password-check').remove();
-      if (passwordConfirm !== passwordInput && passwordConfirm.length >=1){
-        $(this).after($("<p></p>").text("password does not fit yet")
-                                    .addClass("password-check"));
+      if (passwordValue !== confirmValue && confirmValue.length > 1){
+        confirmation.jqObject.after($("<p></p>").text("Warning! Password does not fit!")
+                                                .addClass("password-check"));
       } else {
-        $('.password-check').remove();
-      };
+        result = true;
+      }
+    });
+
+    $('input[type=submit]').click(function(){
+      return result;
     });
   },
 
-  formValidate: function(){
-    $("form").submit(function(){
-      $(".input-counter").remove();
-      var title = $("input[type=text]");
-      var textarea = $("textarea");
-      var password = $("input[name='Password']");
-      var confirmation = $("input[name='Confirmation']");confirmation
-      var result = true;
-
-      if (title.val().length < 4 || title.val().length > 32){
-        $(".warning").remove();
-        if ( !title.parent().hasClass("input-wrap") ){
-          title.wrap("<div class='input-wrap'></div>");
-        };
-        title.after($("<p></p>").text("title length should be within 4 and 32")
-                                .addClass("warning"));
-        result = false;
-      } else {
-        if ( title.parent().hasClass("input-wrap") ){
-          title.unwrap();
-        };
+  lengthValidate: function(input){
+    var inputObject = input.jqObject;
+    var min = input.minLength;
+    var max = input.maxLength;
+    inputObject.change(function(){
+      var objectLength = inputObject.val().length;
+      if (objectLength >= min && objectLength <= max){
+        inputObject.next().remove();
+        inputObject.parent().removeClass("warning-line");
       };
+    });
 
-      if (textarea.val().length < 4 || textarea.val().length > 140) {
-        if ( !textarea.parent().hasClass("input-wrap") ){
-          textarea.wrap("<div class='input-wrap'></div>");
-        };
-        result = false;
-      } else {
-        if ( textarea.parent().hasClass("input-wrap") ){
-          textarea.unwrap();
-        };
+    $('input[type=submit]').click(function(){
+      var objectLength = inputObject.val().length;
+      if (inputObject.parent().hasClass('warning-line')){
+        inputObject.next().remove();
+        inputObject.parent().removeClass("warning-line");
       };
-
-      if (password.val().length < 6 || password.val().length > 16) {
-        if ( !password.parent().hasClass("input-wrap") ){
-          password.wrap("<div class='input-wrap'></div>");
-        };
-        result = false;
-      } else {
-        if ( password.parent().hasClass("input-wrap") ){
-          password.unwrap();
-        };
+      if (objectLength < min || objectLength > max){
+        inputObject.after($("<p></p>").addClass("warning")
+                                      .text("Warning, maximum length " + max + ", minimum length " + min));
+        inputObject.parent().addClass("warning-line");
+        return false;
       };
-
-      if (confirmation.val().length < 6 || confirmation.val().length > 16) {
-        if ( !confirmation.parent().hasClass("input-wrap") ){
-          confirmation.wrap("<div class='input-wrap'></div>");
-        };
-        result = false;
-      } else {
-        if ( confirmation.parent().hasClass("input-wrap") ){
-          confirmation.unwrap();
-        };
-      };
-
-      if (confirmation.val() !== password.val()){
-        if ( !confirmation.parent().hasClass("input-wrap") ){
-          confirmation.wrap("<div class='input-wrap'></div>");
-        };
-        if ( !password.parent().hasClass("input-wrap") ){
-          password.wrap("<div class='input-wrap'></div>");
-        };
-        result = false;
-      } else {
-        if ( confirmation.parent().hasClass("input-wrap") ){
-          confirmation.unwrap();
-        };
-        if ( password.parent().hasClass("input-wrap") ){
-          password.unwrap();
-        };
-      };
-
-      return result;
     });
   },
 
 };
 
 
+var dropdown = {
+  init: function(){
+    $('.dropdown-menu ul').click(function(){
+      $(this).children('li').fadeToggle(500);
+    });
+
+    $('.dropdown-menu ul li').hover(
+      function(){
+        $(this).addClass("bg-green").css( 'cursor', 'pointer' );
+      },
+      function(){
+        $(this).removeClass("bg-green");
+      }
+    );
+
+    $('.dropdown-menu ul p').hover(
+      function(){
+        $(this).css( 'cursor', 'pointer' );
+      }
+    );
+
+    $('.dropdown-menu ul li').click(function(){
+      $('.dropdown-menu ul p').text($(this).text());
+    });
+
+  },
+};
+
+var photoTagging = {
+  init: function(){
+    $('.photo-wrap').hover(
+      function(){
+        $(".photo-tag").show();
+      },
+      function(){
+        $(".photo-tag").hide();
+      }
+    );
+
+    $('.photo-wrap').mousemove(
+      function(event){
+        $(".photo-tag").css({left: event.pageX - 25, top: event.pageY -25});
+      });
+
+    $('.photo-wrap').click(function(event){
+      $('.photo-wrap').append(
+        $("<div></div>").addClass("fixed-tag")
+                        .append($('.name-list').slideToggle(500))
+                        .css({left: event.pageX - 25, top: event.pageY -25})
+      );
+      $('.photo-tag').hide();
+    });
+  },
+
+
+}
+
+
 $(document).ready(function () {
   formHandlers.init();
+  dropdown.init();
+  photoTagging.init();
 });
