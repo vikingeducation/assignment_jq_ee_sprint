@@ -38,5 +38,26 @@ $(document).ready(function(){
       alert("fix your shit");
     };
   });
+  //////////////////////////
+
+  $("#top").click(function(){
+		$("#menu ul").slideUp();
+		if(!$(this).next().is(":visible"))
+		{
+			$(this).next().slideDown();
+		}
+	})
+  $("#menu ul li").hover( function() {
+    $(this).css("background-color", "blue");
+  }, function() {
+    $(this).css("background-color", "green");
+  });
+
+  $("#menu ul li").click( function() {
+    $("#top").html($(this).text());
+    $("#top").css("background-color", "green");
+    $("#menu ul").slideUp();
+  });
+
 
 })
