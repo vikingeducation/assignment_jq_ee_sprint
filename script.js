@@ -80,10 +80,76 @@ var dropdown = {
   }
 };
 
+var tagging = {
+  init: function() {
+    $('.image-container').hover(
+      function() {
+        $('.image-tag').show();
+      },
+      function() {
+        $('.image-tag').hide();
+      }
+    );
+
+    $('.image').on('mousemove', function(event) {
+        $('.image-tag').css({left: event.pageX - 50, top: event.pageY - 50});
+    });
+
+    $('.image-container').on('click', function(event) {
+      //Adding the temp tag box
+      var inprogTag = $('.image-tag').clone()
+                                     .removeClass('image-tag')
+                                     .addClass('inprogress-image-tag')
+      this.append(inprogTag[0]);
+
+      //Name-list slideDown
+      var nameList = $('.name-list')
+      $(inprogTag).append(nameList.slideDown(500))
+
+      //Unbind mousemove event
+      $('.image').off('mousemove');
+      $('.image-container').off('click');
+    });
+
+    $('.name-list li').on("click", function() {
+      $(this).siblings().slideUp(300)
+
+      $('.image').on('mousemove', function(event) {
+        $('.image-tag').css({left: event.pageX - 50, top: event.pageY - 50});
+      });
+
+      // $('.image-container').on('click', function(event) {
+      //   //Adding the temp tag box
+      //   var inprogTag = $('.image-tag').clone()
+      //                                  .removeClass('image-tag')
+      //                                  .addClass('inprogress-image-tag')
+      //   this.append(inprogTag[0]);
+
+      //   //Name-list slideDown
+      //   var nameList = $('.name-list')
+      //   $(inprogTag).append(nameList.slideDown(500))
+
+      //   //Unbind mousemove event
+      //   $('.image').off('mousemove');
+      //   $('.image-container').off('click');
+      // });
+    })
+    $('.name-list li').hover(
+      function() {
+        $(this).addClass("bg-green").css('cursor', 'pointer');
+      },
+      function() {
+        $(this).removeClass("bg-green");
+      }
+    );
+  }
+}
+
 
 $(document).ready( function() {
   validation.init();
   dropdown.init();
+  tagging.init();
 });
 
 
