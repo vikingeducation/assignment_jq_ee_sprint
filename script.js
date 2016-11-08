@@ -1,4 +1,22 @@
 var validation = {
+  init: function() {
+    $('input#username').on('input',function(e){
+      validation.displayRemainingChar(e);
+    });
+    $('#info').on('input', function(e){
+      validation.displayRemainingChar(e);
+    });
+    $('#password').on('input', function(e){
+      validation.displayRemainingChar(e);
+    });
+    $('#password_conf').on('input', function(e){
+      validation.matchPassword(e);
+    });
+    $('#submit').on('click', function(e) {
+      validation.run(e);
+    });
+  },
+
   displayRemainingChar: function(event){
     var max = parseInt($(event.target).attr("maxlength"));
     var count = (max - $(event.target).val().length).toString();
@@ -43,20 +61,29 @@ var validation = {
   }
 }
 
+var dropdown = {
+  init: function() {
+   $('.dropdown ul li').hover(
+      function() {
+        $(this).addClass("bg-green").css('cursor', 'pointer');
+      },
+      function() {
+        $(this).removeClass("bg-green");
+      }
+    );
+
+    $('.dropdown ul li').on("click", function() {
+      $(this).siblings().slideToggle(300)
+    })
+
+    $('.dropdown ul li').first().trigger( "click" );
+  }
+};
+
+
 $(document).ready( function() {
-  $('input#username').on('input',function(e){
-    validation.displayRemainingChar(e);
-  });
-  $('#info').on('input', function(e){
-    validation.displayRemainingChar(e);
-  });
-  $('#password').on('input', function(e){
-    validation.displayRemainingChar(e);
-  });
-  $('#password_conf').on('input', function(e){
-    validation.matchPassword(e);
-  });
-  $('#submit').on('click', function(e) {
-    validation.run(e);
-  });
+  validation.init();
+  dropdown.init();
 });
+
+
