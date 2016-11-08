@@ -5,7 +5,9 @@
     <meta charset="UTF-8" />
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
   </head>
+
   <body>
     <form>
       <label>Username:</label>
@@ -13,10 +15,10 @@
       <label>Info:</label>
       <textarea rows="4" cols="20" maxlength="140" placeholder="Describe yourself here..." id="info"></textarea><span class="info"></span><br><br>
       <label>Password:</label>
-      <input type="password"></input><br><br>
+      <input type="password" maxlength="16" id="password"></input><span class="password"></span><br><br>
       <label>Password Confirmation:</label>
-      <input type="password>"></input><br><br>
-      <input type="submit">
+      <input type="password" maxlength="16" id="password_conf"></input><span class="password_conf"></span></span><br><br>
+      <input type="submit" id="submit">
     </form>
   </body>
 </html>
