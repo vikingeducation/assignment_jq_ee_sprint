@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>JQ EE Sprint</title>
+    <meta charset="UTF-8" />
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <form>
+      <label>Username:</label>
+      <input type="text" id="username" maxlength="32" placeholder="username"><span class="username"></span></input><br><br>
+      <label>Info:</label>
+      <textarea rows="4" cols="20" maxlength="140" placeholder="Describe yourself here..." id="info"></textarea><span class="info"></span><br><br>
+      <label>Password:</label>
+      <input type="password" maxlength="16" id="password"></input><span class="password"></span><br><br>
+      <label>Password Confirmation:</label>
+      <input type="password" maxlength="16" id="password_conf"></input><span class="password_conf"></span></span><br><br>
+
+      <div class="dropdown">
+        <label>City:</label>
+        <ul>
+          <li>&#x25BC;</li>
+          <li>&#x25BC; San Jose </li>
+          <li>&#x25BC; San Francisco </li>
+          <li>&#x25BC; Los Angeles </li>
+        </ul>
+      </div>
+      <input type="submit" id="submit"><br>
+    </form>
+    <div class="image-container">
+      <div class="image-tag"></div>
+      <div class="image">
+        <img src="image.jpg">
+      </div>
+    </div>
+  </body>
+</html>

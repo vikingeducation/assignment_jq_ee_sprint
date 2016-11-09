@@ -1,0 +1,45 @@
+.red {
+  border:1px solid red;
+}
+
+.dropdown ul {
+  list-style-type: none;
+}
+
+.dropdown ul li {
+  border: 1px solid black;
+  width: 200px;
+}
+
+.bg-green {
+  background-color: #66CD00;
+}
+
+.image-tag {
+  width: 100px;
+  height: 100px;
+  border: 3px solid red;
+  display: none;
+  position: absolute;
+}
+
+.fixed-image-tag {
+  width: 100px;
+  height: 100px;
+  border: solid 5px orange;
+  position: absolute;
+}
+
+.name-list {
+  position: relative;
+  left: 0px;
+  top: 88px;
+  background: #666;
+  color: #fff;
+}
+
+.name-list ul {
+  list-style-type: none;
+  padding-left: 5px;
+}
+
