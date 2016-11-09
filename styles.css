@@ -23,29 +23,23 @@
   position: absolute;
 }
 
-.inprogress-image-tag {
+.fixed-image-tag {
   width: 100px;
   height: 100px;
   border: solid 5px orange;
   position: absolute;
 }
 
-.fixed-image-tag {
-  width: 100px;
-  height: 100px;
-  border: solid 5px yellow;
-  position: absolute;
-}
-
-
 .name-list {
-  list-style-type: none;
-  display: none;
   position: relative;
   left: 0px;
   top: 88px;
   background: #666;
   color: #fff;
+}
+
+.name-list ul {
+  list-style-type: none;
   padding-left: 5px;
 }
 

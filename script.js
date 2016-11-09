@@ -95,53 +95,45 @@ var tagging = {
         $('.image-tag').css({left: event.pageX - 50, top: event.pageY - 50});
     });
 
-    $('.image-container').on('click', function(event) {
-      //Adding the temp tag box
-      var inprogTag = $('.image-tag').clone()
-                                     .removeClass('image-tag')
-                                     .addClass('inprogress-image-tag')
-      this.append(inprogTag[0]);
+    var imageTagListener = function() {
+      $('.image-container').on('click', function(event) {
+        //Adding the temp tag box
+        var fixedTag = $('.image-tag').clone()
+                                       .removeClass('image-tag')
+                                       .addClass('fixed-image-tag')
+        $(this).append(fixedTag[0]);
 
-      //Name-list slideDown
-      var nameList = $('.name-list')
-      $(inprogTag).append(nameList.slideDown(500))
+        var nameList = $('<div class="name-list"><ul><li>Bell</li><li>Ben</li><li>Brown</li></ul></div>');
+        nameList.appendTo(fixedTag).slideDown(1000);
 
-      //Unbind mousemove event
-      $('.image').off('mousemove');
-      $('.image-container').off('click');
+        //Unbind mousemove event
+        $('.image').off('mousemove');
+        $('.image-container').off('click');
+        selectBoxListener(nameList);
+      });
+    }
+    var selectBoxListener = function(nameList) {
+        nameList.on("click", "ul li", function(event) {
+        $(this).siblings().slideUp(300)
+        event.stopPropagation();
+
+        $('.image').on('mousemove', function(event) {
+          $('.image-tag').css({left: event.pageX - 50, top: event.pageY - 50});
+        });
+
+        imageTagListener();
+      })
+    }
+
+    $('.image-container').on('mouseenter', ".name-list ul li", function() {
+        $(this).addClass("bg-green").css('cursor', 'pointer');
     });
 
-    $('.name-list li').on("click", function() {
-      $(this).siblings().slideUp(300)
-
-      $('.image').on('mousemove', function(event) {
-        $('.image-tag').css({left: event.pageX - 50, top: event.pageY - 50});
-      });
-
-      // $('.image-container').on('click', function(event) {
-      //   //Adding the temp tag box
-      //   var inprogTag = $('.image-tag').clone()
-      //                                  .removeClass('image-tag')
-      //                                  .addClass('inprogress-image-tag')
-      //   this.append(inprogTag[0]);
-
-      //   //Name-list slideDown
-      //   var nameList = $('.name-list')
-      //   $(inprogTag).append(nameList.slideDown(500))
-
-      //   //Unbind mousemove event
-      //   $('.image').off('mousemove');
-      //   $('.image-container').off('click');
-      // });
-    })
-    $('.name-list li').hover(
-      function() {
-        $(this).addClass("bg-green").css('cursor', 'pointer');
-      },
-      function() {
+    $('.image-container').on('mouseleave', ".name-list ul li", function() {
         $(this).removeClass("bg-green");
-      }
-    );
+    });
+
+    imageTagListener();
   }
 }
 
