@@ -1,0 +1,19 @@
+.photo-tagging img {
+  cursor: pointer;
+}
+
+.hover-tagging-box {
+  border: 3px solid black;
+  width: 100px;
+  height: 100px;
+  display: none;
+  position: absolute;
+  pointer-events: none;
+}
+
+.placed-tagging-box {
+  border: 3px groove gold;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
