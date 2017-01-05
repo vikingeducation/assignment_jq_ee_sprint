@@ -5,13 +5,11 @@ $('form').on('input', function(event) {
 });
 
 $('form').on('input', 'input[type=password]', function() {
-  var passwordText = $('#password').val();
-  var passwordConfirmationText = $('#password-confirmation').val();
+  var passwordText = $('#password input').val();
+  var passwordConfirmationText = $('#password-confirmation input').val();
   if (passwordText === passwordConfirmationText || passwordConfirmationText.length === 0) {
-    $('#password-confirmation-warning').hide();
+    $('#password-confirmation .warning').text('');
   } else {
-    $('#password-confirmation-warning')
-      .text("Passwords don't match")
-      .show();
+    $('#password-confirmation .warning').text("Passwords don't match");
   }
 });
