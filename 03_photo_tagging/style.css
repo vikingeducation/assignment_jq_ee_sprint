@@ -1,3 +1,9 @@
+.photo-tagging {
+  position: relative;
+  margin: 0 auto;
+  width: 800px;
+  height: 492px;
+}
 .photo-tagging img {
   cursor: pointer;
 }
@@ -16,4 +22,5 @@
   width: 100px;
   height: 100px;
   position: absolute;
+  pointer-events: none;
 }
