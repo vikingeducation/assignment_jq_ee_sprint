@@ -9,13 +9,16 @@ body {
 
 ul {
   display: none;
+  width: 400px;
+  margin: 0 auto;
+  padding: 0;
+  border: 1px solid silver;
+  border-top: 0px;
 }
 
 li {
   cursor: pointer;
   list-style: none;
-  width: 400px;
-  margin: 0 auto;
   background: lightyellow;
 }
 
@@ -31,6 +34,9 @@ li:hover {
   background: wheat;
   cursor: pointer;
   margin: 0 auto;
+}
+#dropdown-box span {
+  display: none;
 }
 
 #first {
