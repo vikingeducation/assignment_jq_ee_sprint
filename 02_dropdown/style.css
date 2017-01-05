@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Pinyon+Script');
+
+body {
+  text-align: center;
+  font-family: 'Pinyon Script', cursive;
+  font-size: 50px;
+  box-sizing: border-box;
+}
+
+ul {
+  display: none;
+}
+
+li {
+  cursor: pointer;
+  list-style: none;
+  width: 400px;
+  margin: 0 auto;
+  background: lightyellow;
+}
+
+li:hover {
+  background: lightblue;
+}
+
+#dropdown-box {
+  height: 1em;
+  padding: 0.25em;
+  width: 400px;
+  border: 5px groove gold;
+  background: wheat;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+#first {
+  display: none;
+}
+
+#second {
+}
