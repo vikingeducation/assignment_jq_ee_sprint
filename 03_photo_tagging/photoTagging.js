@@ -3,7 +3,7 @@ var $hoverTaggingBox = jQuery('.hover-tagging-box');
 var names = ["Twilight Sparkle", "Pinkie Pie", "Applejack", "Rainbow Dash", "Rarity", "Fluttershy"];
 
 var calcBoxCoords = function(event) {
-  var $img = $('.photo-tagging img');
+  var $img = $(event.target);
   var imageEdges = {
     top: $img.offset().top,
     right: $img.offset().left + $img.width(),
