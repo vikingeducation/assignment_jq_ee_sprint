@@ -1,5 +1,7 @@
 var $hoverTaggingBox = jQuery('.hover-tagging-box');
 
+var names = ["Twilight Sparkle", "Pinkie Pie", "Applejack", "Rainbow Dash", "Rarity", "Fluttershy"];
+
 var calcBoxCoords = function(event) {
   var $img = $('.photo-tagging img');
   var imageEdges = {
@@ -48,6 +50,12 @@ $('.photo-tagging img')
       .css({
         left: boxCoords.x,
         top: boxCoords.y,
+      });
+      var $label = $('<div>').appendTo($placedBox);
+      var $ul = $('<ul>').appendTo($placedBox);
+      $.each(names, function(index, name) {
+        var $li = $('<li>').text(name);
+        $ul.append($li);
       });
     $('body').append($placedBox);
   });

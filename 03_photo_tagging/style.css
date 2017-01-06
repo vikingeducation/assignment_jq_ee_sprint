@@ -24,3 +24,29 @@
   position: absolute;
   pointer-events: none;
 }
+.placed-tagging-box ul {
+  margin: 0;
+  margin-right: -3em;
+  padding: .5em 0;
+  list-style: none;
+  position: relative;
+  top: 103px;
+  background: hsla(0, 0%, 100%, 0.85);
+  pointer-events: all;
+}
+.placed-tagging-box ul li {
+  margin: .2em 0;
+  cursor: pointer;
+  margin: 0 -3px;
+  padding: 3px .5em;
+}
+.placed-tagging-box ul li:hover {
+  background: hsla(174, 100%, 82%, 0.85);
+}
+.placed-tagging-box div {
+  background: hsla(0, 0%, 100%, 0.85);
+  position: relative;
+  top: 103px;
+  text-align: center;
+  padding: 3px;
+}
