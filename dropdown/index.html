@@ -1,49 +1,18 @@
-  <!-- <meta charset="utf-8">
-  <title>Dropdown Practice</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script> -->
   <!DOCTYPE html>
   <html>
   <head>
+  <title>Dropdown Practice</title>
   <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
-  <style>
-  button.dropDown {
-      background-color: #eee;
-      color: #444;
-      cursor: pointer;
-      padding: 18px;
-      width: 10%;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 15px;
-      transition: 1s;
-  }
 
-  ul{
-    list-style-type: none;
-  }
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 
-  li.active, li:hover {
-    background-color: #ddd;
-  }
-
-  div.options {
-      padding: 0 18px;
-      display: none;
-      background-color: white;
-  }
-
-  div.options.show {
-      display: block;
-  }
-  </style>
   </head>
   <body>
 
   <!-- TODO ask why form breaks dropdown -->
   <!-- <form> -->
-    <button class="dropDown"></button>
+    <button class="dropDown" id="display"></button>
     <div class="options">
       <ul id="options">
         <li>Man</li>
@@ -52,30 +21,6 @@
       </ul>
     </div>
   <!-- </form> -->
-
-  <script>
-  var handleDrop = {
-    toggle: function(event) {
-      // TODO ask how to use next()
-      // var $originator = $(event.target);
-      this.classList.toggle("active");
-      this.nextElementSibling.classList.toggle("show");
-    }
-  }
-
-  var $dropDown = $(".dropDown");
-  //.on is not a function (also tried bind and live)
-  $dropDown[0].on("click", handleDrop.toggle);
-
-  //Does not work:
-  // var $selection = $("#options li")[0]
-  // $selection.click("click") function(){
-  //   alert("Hey");
-  //   $(".dropDown").trigger("click");
-  //   $dropDown.text()
-  // }
-
-  </script>
 
   </body>
   </html>

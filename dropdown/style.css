@@ -1,25 +1,30 @@
-div.dropDown {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: 0.4s;
+button.dropDown {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 10%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 1s;
 }
 
-div.dropDown.li.active, div.dropDown.li:hover {
+ul{
+  list-style-type: none;
+}
+
+li.active, li:hover {
   background-color: #ddd;
 }
 
-div.li {
-  padding: 0 18px;
-  background-color: green;
-  display: none;
+div.options {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
 }
 
-div.panel.show {
-  display: block;
+div.options.show {
+    display: block;
 }
