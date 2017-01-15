@@ -1,0 +1,21 @@
+.target-box {
+  display: none;
+  border: 2px solid red;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  pointer-events: none;
+}
+
+.target-box.show {
+  display: inline;
+}
+
+.placed-box {
+  /*display: none;*/
+  border: 2px solid green;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  pointer-events: none;
+}

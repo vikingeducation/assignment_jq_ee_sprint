@@ -6,7 +6,7 @@ var handleDrop = {
   makePick: function() {
     // console.log($(this).text());
     var $selection = $(this).text();
-    var $display = $("#display"); //how do I use fewer ids?
+    var $display = $("#display"); 
     $display.text($selection);
     handleDrop.toggle($(".dropDown"));
   }

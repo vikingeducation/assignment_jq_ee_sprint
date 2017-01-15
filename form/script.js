@@ -1,15 +1,16 @@
 // "use strict";
 
+// break back out
 var formRead = {
   charCount: function(event){
-    var $originator = $(event.target);
+    var $originator = $(event.target[0]);
     // TODO what would work in place of .type?:
     var maxChar;
-    if ($originator["type = text"]){
+    if ($originator.type === "text"){
       maxChar = 32;
-    } else if ($originator.type == "textarea") {
+    } else if ($originator.type === "textarea") {
       maxChar = 140;
-    } else if ($originator.type == "password") {
+    } else if ($originator.type === "password") {
       maxChar = 16;
     }
     var $counter = $originator.next();
@@ -50,7 +51,9 @@ var formRead = {
 };
 
 $(document).ready(function(){
-  $("form").on("keyup", formRead.charCount);
-  $("form").on("input", "input[type=password]", formRead.passMatch);
-  $("form input[type=submit]").on("click", formRead.nameValidate);
+  // $("form").on("keyup", formRead.charCount);
+  $('textarea').keyup(formRead.charCount);
+
+  // $("form").on("input", "input[type=password]", formRead.passMatch);
+  // $("form input[type=submit]").on("click", formRead.nameValidate);
 });
