@@ -3,6 +3,7 @@ var crew = ["Picard", "Diana", "Richer", "Worf", "Data", "Jordy", "Diana"];
 var $targetBox = $(".target-box");
 
 var $mouseX, $mouseY, $xp, $yp;
+var $placedBox;
 
 // mouse enter creates red box
 $(".tagable-photo img").on("mouseenter", (function(e) {
@@ -23,8 +24,9 @@ $(".tagable-photo img").on("mouseleave", (function(e) {
 
 $(".tagable-photo img").on("click", (function(e) {
   $(".target-box").removeClass('show');
-  $(".target-box").append(".placed-box");
-  $(".placed-box").offset({ top: e.pageY - 50,
-                           left: e.pageX - 50
-                         });
+  $placedBox = $('<div>')
+    .addClass("placed-box")
+    .appendTo(".tagable-photo")
+    .offset({ top: e.pageY - 50,
+             left: e.pageX - 50 });
 }));
