@@ -2,21 +2,23 @@
 
 // break back out
 var formRead = {
-  charCount: function(event){
+  inputCount: function(event){
     var $originator = $(event.target[0]);
-    // TODO what would work in place of .type?:
-    var maxChar;
-    if ($originator.type === "text"){
-      maxChar = 32;
-    } else if ($originator.type === "textarea") {
-      maxChar = 140;
-    } else if ($originator.type === "password") {
-      maxChar = 16;
-    }
+    var maxChar = 32;
     var $counter = $originator.next();
     var remaining = maxChar - $originator.val().length;
     $counter.text( remaining < maxChar ? remaining + " characters remaining" : "" );
   },
+  //   // TODO what would work in place of .type?:
+  //   var maxChar;
+  //   if ($originator.type === "text"){
+  //     maxChar = 32;
+  //   } else if ($originator.type === "textarea") {
+  //     maxChar = 140;
+  //   } else if ($originator.type === "password") {
+  //     maxChar = 16;
+  //   }
+  // },
 
   passMatch: function(){
     var firstPassword = $("#password").val();
