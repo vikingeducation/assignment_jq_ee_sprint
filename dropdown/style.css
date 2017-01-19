@@ -1,0 +1,30 @@
+button.dropDown {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 10%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 1s;
+}
+
+ul{
+  list-style-type: none;
+}
+
+li.active, li:hover {
+  background-color: #ddd;
+}
+
+div.options {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+
+div.options.show {
+    display: block;
+}
