@@ -3,27 +3,33 @@
 // break back out
 var formRead = {
   inputCount: function(event){
-    var $originator = $(event.target[0]);
+    var $originator = $(event.target);
     var maxChar = 32;
     var $counter = $originator.next();
     var remaining = maxChar - $originator.val().length;
     $counter.text( remaining < maxChar ? remaining + " characters remaining" : "" );
   },
-  //   // TODO what would work in place of .type?:
-  //   var maxChar;
-  //   if ($originator.type === "text"){
-  //     maxChar = 32;
-  //   } else if ($originator.type === "textarea") {
-  //     maxChar = 140;
-  //   } else if ($originator.type === "password") {
-  //     maxChar = 16;
-  //   }
-  // },
 
-  passMatch: function(){
+  passwordCount: function(event){
+    var $originator = $(event.target);
+    var maxChar = 16;
+    var $counter = $originator.next();
+    var remaining = maxChar - $originator.val().length;
+    $counter.text( remaining < maxChar ? remaining + " characters remaining" : "" );
+  },
+
+  textareaCount: function(event){
+    var $originator = $(event.target);
+    var maxChar = 140;
+    var $counter = $originator.next();
+    var remaining = maxChar - $originator.val().length;
+    $counter.text( remaining < maxChar ? remaining + " characters remaining" : "" );
+  },
+
+  passMatch: function(event){
     var firstPassword = $("#password").val();
     var secondPassword = $("#password-confirmation").val();
-    var $display = $(".count", "#passwords");
+    var $display = $(".warning", "#passwords");
     var $displayText;
     if (secondPassword.length === 0 || firstPassword === secondPassword){
       displayText = "";
@@ -50,11 +56,20 @@ var formRead = {
       warningText = "";
     }
   }
+  
 };
+
 
 $(document).ready(function(){
   // $("form").on("keyup", formRead.charCount);
-  $('textarea').keyup(formRead.charCount);
+  $('input[type="text"]').keyup(formRead.inputCount);
+  $('input[type="password"]').keyup(function(event){
+    formRead.passwordCount(event);
+    formRead.passMatch(event);
+  });
+  $('textarea').keyup(formRead.textareaCount);
+
+
 
   // $("form").on("input", "input[type=password]", formRead.passMatch);
   // $("form input[type=submit]").on("click", formRead.nameValidate);

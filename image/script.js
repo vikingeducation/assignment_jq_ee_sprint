@@ -1,5 +1,5 @@
 var crew = ["Picard", "Beverly", "Richer", "Worf", "Data", "Jordy", "Diana"];
-
+var currentTag;
 var $targetBox = $(".target-box");
 
 var $mouseX, $mouseY, $xp, $yp;
@@ -28,30 +28,30 @@ var handleDrop = {
 
   makePick: function() {
     var $selection = $(this).text();
-    var $display = $(".option-display");
-    var test = this;
+    var $display = $("#" + currentTag);
+    // var test = this.parent();
     $display.text($selection);
     handleDrop.toggle($(".dropDown"));
     $display.addClass("tag-to-bottom");
   }
 };
 
-var setTag = function() {
-
+var randomID = function() {
+  var return_id = Math.random().toString().slice(2);
+  return return_id;
 };
 
-$(".tagable-photo img").on("click", (function(e) {
-  $(".target-box").removeClass('show');
-  var $tagContainer = $('<div>')
-    .addClass("tag-container")
-    .appendTo(".tagable-photo")
-    .offset({ top: e.pageY - 50,
-             left: e.pageX - 50 });
-  var $placedBox = $('<div>')
-    .addClass("placed-box")
-    .appendTo($tagContainer);
+var setTag = function(e) {
+  currentTag = randomID();
+  var $tagContainer = $('<div>').addClass("tag-container")
+                                .appendTo(".tagable-photo")
+                                .offset({ top: e.pageY - 50,
+                                         left: e.pageX - 50 });
+  var $placedBox = $('<div>').addClass("placed-box")
+                             .appendTo($tagContainer);
   var $tag = $('<div>').insertAfter($placedBox)
-                       .addClass("option-display");
+                       .addClass("option-display")
+                       .attr("id", currentTag);
   var $button = $('<button>').addClass("dropDown")
                              .attr('id', 'display')
                              .appendTo($tag);
@@ -63,31 +63,11 @@ $(".tagable-photo img").on("click", (function(e) {
     var $li = $('<li>').text(name)
                        .appendTo($options);
   });
+};
+
+$(".tagable-photo img").on("click", (function(e) {
+  $(".target-box").removeClass('show');
+  setTag(e);
   var $selection = $("li");
   $selection.on("click", handleDrop.makePick);
-  // $selection.click(function(event) {
-  //   event.stopPropagation();
-  //   handleDrop.makePick(event);
-  // });
 }));
-
-// var handleDrop = {
-//   toggle: function() {
-//     $(".options").toggleClass('show');
-//   },
-//
-//   makePick: function() {
-//     // console.log($(this).text());
-//     var $selection = $(this).text();
-//     var $display = $("#display");
-//     $display.text($selection);
-//     handleDrop.toggle($(".dropDown"));
-//   }
-// };
-//
-// $(document).ready(function() {
-//   var $dropDown = $(".dropDown");
-//   var $selection = $("li");
-//   $dropDown.on("click", handleDrop.toggle);
-//   $selection.on("click", handleDrop.makePick);
-// });

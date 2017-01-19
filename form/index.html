@@ -8,7 +8,7 @@
     <script src="script.js"></script>
 </head>
 <body>
-  <form id="practice">
+  <form id="practice" action=#>
     <div id="name">
       User name:<br>
       <input type="text" name="username">
@@ -16,20 +16,20 @@
       <span class="warning"></span>
     </div>
     <div id="story">
-      <textarea rows="4" cols="50">What's the story?</textarea>
+      <textarea rows="4" cols="50" placeholder="What's the story?"></textarea>
       <span class="count"></span>
       <span class="warning"></span>
     </div>
     <div id="passwords">
       <input type="password" id="password" placeholder="Password">
       <span class="count"></span>
-      <span class="warning"></span>
+      <!-- <span class="warning"></span> -->
       <br>
       <input type="password" id="password-confirmation" placeholder="Confirm Password">
       <span class="count"></span>
       <span class="warning"></span>
     </div>
-    <button type="submit" class="pure-button pure-button-primary">Confirm</button>
+    <button type="submit">Confirm</button>
   </form>
 </body>
 </html>
