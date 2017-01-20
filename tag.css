@@ -1,13 +1,10 @@
 .image-container{
-	margin: 60px;
-	background-color: orange;
 	height: 400px;
-	width: 800px;
+	width: 640px;
 }
-
 .image-container img{
-	height: 100%;
 	width: 100%;
+	height: 100%;
 }
 
 .target{
@@ -15,33 +12,24 @@
 	width: 100px;
 	position: absolute;
 	display: none;
-}
-
-.target-square{
-	width: 100%;
-	height: 100px;
-	border: 3px solid green;
+	border: 4px solid red;
+	pointer-events: none;
 }
 
 .target-element{
+	width: 100px;
+	border: 4px solid red;
 	height: 30px;
-	line-height: 30px;
-	text-align: center;
-	color: white;
-	font-weight: bold;
-}
-
-.elements{
+	position: absolute;
 	background-color: gray;
-	height: 100px;
-	width: 100%;
 	display: none;
-	border-bottom: 3px solid red;
-	border-left: 3px solid red;
-	border-right: 3px solid red;
 }
 
-.elements a{
+.target-element a{
 	display: block;
 	text-decoration: none;
+}
+
+.target-elements-wrapper{
+	pointer-events: none;
 }
