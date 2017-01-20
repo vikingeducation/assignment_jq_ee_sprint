@@ -1,0 +1,33 @@
+.slide-menu{
+	height: 200px;
+	margin-left: 400px;
+	margin-top: 200px;
+	width: 200px;
+}
+
+.options{
+	width: 200px;
+	height: 25%;
+	border: 1px black solid;
+	line-height: 50px;
+	text-align: center;
+}
+
+.options a{
+	display: block;
+	text-decoration: none;
+}
+
+.options a:hover{
+	background-color: gray;
+}
+
+#option1{
+	display: none;
+}
+#option2{
+display: none;
+}
+#option3{
+display: none;
+}
