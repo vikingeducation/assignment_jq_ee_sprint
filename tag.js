@@ -5,19 +5,14 @@ var slideCompleted
 $( document ).ready(function() {
 
 	$( "#theImageContainer" ).hover(function(e){
-		$target = create_target(e.pageX, e.pageY);
-		curX = e.pageX;
-		curY = e.pageY;
-		move_target($target, e.pageX, e.pageY);
-		$( "#theImage" ).on('mousemove', function(e){
-			move_target($target, e.pageX, e.pageY);
-		});
+		console.log('first hover in');
+		overall_hover_in_handler(e);
 	}, function(e){
-			remove_target();
+		overall_hover_out_handler(e);
 	});
 
 	$( "#theImage" ).click(function(e){
-		if(e.pageY - 40 <= curX && e.pageY - 40 <= curY){
+		if(e.pageX - 40 <= curX && e.pageY - 40 <= curY){
 			var targetID = '#x' + curX + 'y' + curY;
 			$(targetID).children().first().next().slideDown();
 			$( "#theImage" ).off('mousemove');
@@ -28,20 +23,45 @@ $( document ).ready(function() {
 			var $friend2 = $friend1.next();
 			var $friend3 = $friend2.next();
 			$friend1.click(function(e){
-				select_tag($selected, targetID, 'Ronaldo');
+				select_tag($selected, targetID, 'Ronaldo', e);
 			});
 			$friend2.click(function(e){
-				select_tag($selected, targetID, 'Rivaldo');
+				select_tag($selected, targetID, 'Rivaldo', e);
 			});
 			$friend3.click(function(e){
-				select_tag($selected, targetID, 'Romario');
+				select_tag($selected, targetID, 'Romario', e);
+			});
+		}
+		else{
+			var targetID = '#x' + curX + 'y' + curY;
+			$(targetID).remove();
+			overall_hover_in_handler(e);
+			$( "#theImageContainer" ).hover(function(e){
+				console.log('first hover in');
+				overall_hover_in_handler(e);
+			}, function(e){
+				overall_hover_out_handler(e);
 			});
 		}
 	});
 
 });
 
-function select_tag(selected, targetID, selection){
+function overall_hover_in_handler(e){
+	$target = create_target(e.pageX, e.pageY);
+	curX = e.pageX;
+	curY = e.pageY;
+	move_target($target, e.pageX, e.pageY);
+	$( "#theImage" ).on('mousemove', function(e){
+		move_target($target, e.pageX, e.pageY);
+	});
+}
+
+function overall_hover_out_handler(e){
+	remove_target();
+}
+
+function select_tag(selected, targetID, selection, e){
 	selected.children().first().text(selection);
 	selected.css('border-bottom', '4px solid red');
 	selected.css('border-left', '4px solid red');
@@ -51,6 +71,14 @@ function select_tag(selected, targetID, selection){
 	selected.children().first().css('color', 'black');
 	$(targetID).children().first().next().slideUp();
 	$(targetID).append(selected);
+	//$newTarget = create_target(e.pageX, e.pageY);
+	//move_target($newTarget, e.pageX, e.pageY);
+	$( "#theImageContainer" ).hover(function(e){
+		console.log('second hover in');
+		overall_hover_in_handler(e);
+	}, function(e){
+		overall_hover_out_handler(e);
+	});
 }
 
 function remove_target(){
@@ -62,6 +90,9 @@ function move_target(target, x, y){
 	var newY = y - 40;
 	target.css('top', newY + 'px');
 	target.css('left', newX + 'px');
+	target.attr('id', 'x' + newX + 'y' + newY);
+	curY = newY;
+	curX = newX;
 }
 
 function create_target(x, y){
