@@ -1,10 +1,23 @@
 <DOCTYPE HTML>
-<<html>
+<html>
 <head>
   <title></title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
+  <form>
+    <input type="text" placeholder="Text field" id="input">
+    <span class="counter-input hidden">Characters remaining: <span class="number-input">32</span></span>
+    <br>
+    <textarea></textarea><span class="counter-area hidden">Characters remaining: <span class="number-area">140</span></span>
+    <br>
+    <input type="password" placeholder="Your password" id="password"><span class="counter-password hidden">Characters remaining: <span class="number-password">16</span></span>
+    <br>
+    <input type="password" placeholder="Confirm your password" id="password-conf"><span class="counter-password-conf hidden">Characters remaining: <span class="number-password-conf">16</span> </span><span class="approve-password-conf hidden">The confirmation doesn't match the password.</span>
+    <br>
+    <button type="submit">Submit!</button>
+  </form>
 
 <script type="text/javascript" src="script.js"></script>
 </body>

@@ -1,0 +1,11 @@
+.hidden {
+  display: none;
+}
+
+.offend {
+  background-color: red;
+}
+
+.offend-text {
+  color: red;
+}
