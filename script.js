@@ -81,4 +81,11 @@ $(document).ready( function(){
     event.preventDefault();
   });
 
+  $(".dropbtn").on("click", function(){
+    $(".dropdown-content").slideDown(200);
+  });
+  $(".dropdown-content div").on("click", function(){
+    $(".dropdown-content").slideUp(200);
+    $(".dropbtn").text($(this).text());
+  })
 });

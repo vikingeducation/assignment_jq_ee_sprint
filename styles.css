@@ -9,3 +9,21 @@
 .offend-text {
   color: red;
 }
+
+.dropbtn {
+  border: 1px solid black;
+  cursor: pointer;
+  width: 100px;
+  height: 1em;
+}
+.dropdown-content {
+  display: none;
+}
+.dropdown-content div {
+  cursor: pointer;
+  border: 1px solid black;
+  width: 100px;
+}
+.dropdown-content div:hover {
+  background-color: #ccc;
+}
