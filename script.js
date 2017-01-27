@@ -87,5 +87,5 @@ $(document).ready( function(){
   $(".dropdown-content div").on("click", function(){
     $(".dropdown-content").slideUp(200);
     $(".dropbtn").text($(this).text());
-  })
+  });
 });
