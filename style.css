@@ -1,0 +1,33 @@
+#text-counter, #textarea-counter, #text-confirmation, #error-message, div {
+	display: none;
+}
+
+.error {
+	background: red;
+}
+
+.red {
+	color: red;
+
+}
+div {
+	background-color: #654C99;
+	width: 80px;
+	border-radius: 3px;
+	color: white;
+	padding: 0px 5px;
+}
+
+button {
+	border-radius: 4px;
+	background-color: #D9D9D9;
+	width: 90px;
+}
+button, div {
+	cursor: pointer;
+}
+
+
+.mouseenter {
+	background-color: yellow;
+}
