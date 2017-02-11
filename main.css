@@ -54,7 +54,7 @@ table {
 }
 
 .displayed, .selected {
-    display: block;
+    display: block !important;
 }
 
 
