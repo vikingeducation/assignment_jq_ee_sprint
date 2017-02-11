@@ -4,12 +4,16 @@ $(document).ready(function() {
 
 var hackedDropBox = {
     "init" : function init() {
-        this.ulListener();
+        this.ulListener(this.liClicked);
     },
-    "ulListener" : function ulListener() {
-        $("ul").on("click", "li", function whichClicked(event) {
-            console.log(event.target, " was clicked");
-        });
+    "ulListener" : function ulListener(fn) {
+        $("ul").on("click", "li", fn);
+    },
+    "targetAllLiOnClick" : function targetAllLiOnClick(event) {
+        return $(event.delegateTarget).children();
+    },
+    "liClicked" : function liClicked(event) {
+        console.log(event.target, " was clicked");
     }
     
 };
