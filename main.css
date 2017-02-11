@@ -49,8 +49,8 @@ table {
 
 /*CSS Reset End */
 
-#hackedDropBox li {
-    display:none;
+#hacked-dropbox li {
+    display: none;
 }
 
 .displayed, .selected {
