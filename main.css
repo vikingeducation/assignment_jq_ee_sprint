@@ -48,3 +48,13 @@ table {
 }
 
 /*CSS Reset End */
+
+#hackedDropBox li {
+    display:none;
+}
+
+.displayed, .selected {
+    display: block;
+}
+
+
