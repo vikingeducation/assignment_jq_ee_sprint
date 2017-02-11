@@ -22,3 +22,35 @@ input, textarea {
 .error {
   border: 2px solid red;
 }
+
+.margin-top {
+  margin-top: 50px;
+}
+
+.dropdown {
+  position: relative;
+  padding: 20px 20px;
+  width: 200px;
+  color: white;
+  background-color: #666;
+  border-bottom: 5px solid black;
+}
+
+.dropdown ul {
+  position: relative;
+  bottom: -20px;
+  left: -20px;
+  width: 200px;
+  list-style: none;
+  color: white;
+  background-color: #666;
+}
+
+.dropdown li {
+  padding: 20px 20px;
+}
+
+.active {
+  color: black;
+  background-color: #ccc;
+}
