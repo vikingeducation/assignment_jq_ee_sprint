@@ -49,6 +49,10 @@ table {
 
 /*CSS Reset End */
 
+div#hacked-dropbox:hover {
+    cursor: pointer;
+}
+
 div#hacked-dropbox li {
     display: none;
 }
