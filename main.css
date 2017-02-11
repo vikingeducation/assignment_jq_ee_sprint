@@ -49,7 +49,11 @@ table {
 
 /*CSS Reset End */
 
-div#hacked-dropbox:hover {
+div#hacked-dropbox ul {
+    border: 1px solid black;
+}
+
+div#hacked-dropbox ul:hover {
     cursor: pointer;
 }
 
