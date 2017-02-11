@@ -135,8 +135,15 @@ var formHandlers = {
   confirmPassword: function(passwordFields) {
     var passField = passwordFields.elements[0];
     var confirmField = passwordFields.elements[1];
-    if (passField.value === confirmField.value) return true;
-    return false;
+    if (passField.value === confirmField.value &&
+        confirmField.value.length > 0) {
+      $(confirmField).removeClass("error");
+      return true;
+    } else {
+      $(confirmField).removeClass("error")
+                     .addClass("error");
+      return false;
+    };
   }
 
 };
