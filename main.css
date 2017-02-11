@@ -49,12 +49,16 @@ table {
 
 /*CSS Reset End */
 
-#hacked-dropbox li {
+div#hacked-dropbox li {
     display: none;
 }
 
-.displayed, .selected {
+li.displayed, li.selected {
     display: block !important;
+}
+
+li.displayed:hover {
+    background-color: orange;
 }
 
 
