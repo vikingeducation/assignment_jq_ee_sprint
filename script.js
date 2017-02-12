@@ -62,6 +62,10 @@ var formValidator = {
             .children(".remaining-number")
             .text(inputValueLength); //Pass the length of the value into this HTML element for the user.
 
+    },
+    "checkIfPasswordsMatching" : function checkIfPasswordsMatching(event){
+        var $confirmPass = $(event.target);
+        
     }
     
     
