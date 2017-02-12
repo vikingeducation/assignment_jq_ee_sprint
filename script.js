@@ -32,7 +32,7 @@ var hackedDropBox = {
         $(event.delegateTarget).toggleClass("collapsed-view");
     },
     "styleUls" : function styleUls() {
-    $("ul").css("transition", "top 1s");
+    $("ul").css("transition", "height 1s");
     },
     "styleLis" : function styleLis() {
         $("li").each(function (index, element) {
