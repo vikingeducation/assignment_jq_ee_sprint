@@ -109,11 +109,11 @@ var formValidator = {
             }
         }
     },
-    "checkInputs" : function checkInputs(test, event) {
-        event.preventDefault();
-        Object.getOwnPropertyNames(test).forEach(function (element, index, arr) {
-            console.log(test[element](), element);
+    "checkInputs" : function checkInputs(event) {
+        Object.getOwnPropertyNames(event.data).forEach(function (element, index, arr) {
+            console.log(event.data[element]());
         });
+        event.preventDefault();
         alert("You did it!");
     },
     
