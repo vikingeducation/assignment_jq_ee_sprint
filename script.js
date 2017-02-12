@@ -1,5 +1,6 @@
 $(document).ready(function() {
         hackedDropBox.init();
+        formValidator.init();
 });
 
 var hackedDropBox = {
@@ -40,6 +41,14 @@ var hackedDropBox = {
         var height = $ul.children().length;
         $ul.css("height", height + "em");
     }
+    
+    
+};
+
+var formValidator = {
+    "init" : function init() {
+        
+    },
     
     
 };
