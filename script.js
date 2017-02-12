@@ -65,6 +65,7 @@ var formValidator = {
         $("#username").keyup(this.toggleFeedbackDisplay);
         $("#message").keyup(this.toggleFeedbackDisplay);
         $("#password").keyup(this.toggleFeedbackDisplay);
+        $("#passwordconfirm").keyup(this.toggleFeedbackDisplay);
         $("#passwordconfirm").keyup(this.updatePasswordMatching(this.checkIfPasswordsMatching));
         $("#test-form").submit(testSuite, this.checkInputs);
     },
