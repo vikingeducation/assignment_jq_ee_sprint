@@ -62,14 +62,12 @@ div#hacked-dropbox ul:hover {
     cursor: pointer;
 }
 
-div#hacked-dropbox li {
-    display: none;
-}
 
 li {
     height: 1em;
     position:absolute;
     width: 100%;
+    display: none;
 }
 
 li.displayed, li.selected {
