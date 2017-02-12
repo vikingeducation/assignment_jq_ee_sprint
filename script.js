@@ -72,8 +72,8 @@ var formValidator = {
             .text(maxChars - inputValueLength); //Pass the length of the value into this HTML element for the user.
         };
     },
-    "checkIfPasswordsMatching" : function checkIfPasswordsMatching(event){
-        var $confirmPass = $(event.target);
+    "checkIfPasswordsMatching" : function checkIfPasswordsMatching(){
+        var $confirmPass = $("#passwordconfirm");
         var passConfirmVal = $confirmPass.val();
         
         //Get the password input value
