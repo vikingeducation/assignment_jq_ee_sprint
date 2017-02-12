@@ -21,7 +21,8 @@ var photoTagging = {
       // When no tag-hover exists:
       if ($(this).children(".tag-hover").length === 0) {
 
-        // When no tag exists, create a new tag-hover:
+        // If no tag-fixed exists either,
+        // create a new tag-hover:
         if ($(this).children(".tag-fixed").length === 0) {
           var currLeft = event.pageX - $(this).position().left - 50;
           var currTop = event.pageY - $(this).height() - 35;
@@ -29,7 +30,8 @@ var photoTagging = {
                                   .css({left: currLeft, top: currTop});
           $(this).append($newTag);
 
-        // When tag-fixed exists, remove tag if img or container is clicked:
+        // If tag-fixed already exists,
+        // remove tag if img or container is clicked:
         } else {
           var $tagFixed = $(this).children(".tag-fixed");
           var target = event.target;
@@ -43,7 +45,6 @@ var photoTagging = {
             var name = target.innerHTML;
             var $name = $("<div>").addClass("tagged-name")
                                   .html(name);
-            console.log($name);
             $tagFixed.removeClass("tag-fixed")
                      .addClass("tag-saved")
                      .children().remove();
