@@ -10,6 +10,7 @@ var hackedDropBox = {
         this.ulListener(this.toggleCollapsedClass);
         this.ulListener(this.toggleCollapsedViewClass);
         this.styleLis();
+        this.styleUls();
         this.defineUlSize();
     },
     "ulListener" : function ulListener(fn) {
@@ -29,6 +30,9 @@ var hackedDropBox = {
     },
     "toggleCollapsedViewClass" : function toggleCollapsedViewClass(event) {
         $(event.delegateTarget).toggleClass("collapsed-view");
+    },
+    "styleUls" : function styleUls() {
+    $("ul").css("transition", "top 1s");
     },
     "styleLis" : function styleLis() {
         $("li").each(function (index, element) {
