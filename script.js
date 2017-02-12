@@ -7,15 +7,13 @@ var hackedDropBox = {
         this.ulListener(this.toggleSelectedClass);
         this.ulListener(this.toggleDisplayedClass);
         this.ulListener(this.toggleCollapsedClass);
+        this.ulListener(this.toggleCollapsedViewClass);
         this.styleLis();
         this.defineUlSize();
     },
     "ulListener" : function ulListener(fn) {
         $("ul").on("click", "li[id!='default-value']", fn);
         $("ul").one("click", "li[id='default-value']", fn);
-    },
-    "targetAllLiOnClick" : function targetAllLiOnClick(event) {
-        return $(event.delegateTarget).children();
     },
     "toggleSelectedClass" : function toggleSelectedClass(event) {
         $(event.target).toggleClass("selected");
@@ -26,7 +24,10 @@ var hackedDropBox = {
     },
     "toggleCollapsedClass" : function toggleCollapsedClass(event) {
         $(event.delegateTarget).children().toggleClass("collapsed");
-
+    
+    },
+    "toggleCollapsedViewClass" : function toggleCollapsedViewClass(event) {
+        $(event.delegateTarget).toggleClass("collapsed-view");
     },
     "styleLis" : function styleLis() {
         $("li").each(function (index, element) {
