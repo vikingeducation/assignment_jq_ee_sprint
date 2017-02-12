@@ -49,6 +49,18 @@ var formValidator = {
     "init" : function init() {
         
     },
+    "displayNumberOfChars" : function displayNumberOfChars(DOMElement) {
+        var $input = $(DOMElement);
+        var inputValue = $input.val();
+        var inputValueLength = inputValue.length;
+        
+        //Find the corresponding div which displays this value as defined in the html
+        $input
+            .siblings(".remaining-chars")
+            .children(".remaining-number")
+            .text(inputValueLength); //Pass the length of the value into this HTML element for the user.
+
+    }
     
     
 };
