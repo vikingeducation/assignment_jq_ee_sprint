@@ -47,9 +47,12 @@ var hackedDropBox = {
 
 var formValidator = {
     "init" : function init() {
-        $("#username").keyup(this.displayNumberOfChars);
-        $("#message").keyup(this.displayNumberOfChars);
-        $("#password").keyup(this.displayNumberOfChars);
+        var usernameCalc = this.makeRemainingCharsCalc(32);
+        var messageCalc = this.makeRemainingCharsCalc(140);
+        var passwordCalc = this.makeRemainingCharsCalc(16);
+        $("#username").keyup(usernameCalc);
+        $("#message").keyup(messageCalc);
+        $("#password").keyup(passwordCalc);
         $("#passwordconfirm").keyup(this.checkIfPasswordsMatching);
     },
     "displayNumberOfChars" : function displayNumberOfChars(event) {
@@ -61,8 +64,11 @@ var formValidator = {
         $input
             .siblings(".remaining-chars")
             .children(".remaining-number")
-            .text(inputValueLength); //Pass the length of the value into this HTML element for the user.
+            .text(maxChars - inputValueLength); //Pass the length of the value into this HTML element for the user.
 
+    },
+    "makeRemainingCharsCalc" : function makeRemainingCharsCalc(maxChars) {
+        return this.displayNumberOfChars;
     },
     "checkIfPasswordsMatching" : function checkIfPasswordsMatching(event){
         var $confirmPass = $(event.target);
