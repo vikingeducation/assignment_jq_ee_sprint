@@ -8,7 +8,8 @@ var hackedDropBox = {
         this.ulListener(this.toggleDisplayedClass);
     },
     "ulListener" : function ulListener(fn) {
-        $("ul").on("click", "li", fn);
+        $("ul").on("click", "li[id!='default-value']", fn);
+        $("ul").one("click", "li[id='default-value']", fn);
     },
     "targetAllLiOnClick" : function targetAllLiOnClick(event) {
         return $(event.delegateTarget).children();
