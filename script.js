@@ -30,7 +30,7 @@ var hackedDropBox = {
     "styleLis" : function styleLis() {
         $("li").each(function (index, element) {
             $(element).css("top", index + "em");
-            $(element).css("transition", "top");
+            $(element).css("transition", "top 1s");
         });
     }
     
