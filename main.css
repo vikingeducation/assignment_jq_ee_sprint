@@ -52,6 +52,7 @@ table {
 div#hacked-dropbox ul {
     border: 1px solid black;
     position: relative;
+    min-height: 1em;
 }
 
 div#hacked-dropbox ul:hover {
@@ -70,6 +71,7 @@ li {
 li.displayed, li.selected {
     display: block !important;
 }
+
 li.collapsed {
     top: 0em !important;
 }

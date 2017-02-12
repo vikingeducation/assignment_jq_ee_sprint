@@ -6,7 +6,7 @@ var hackedDropBox = {
     "init" : function init() {
         this.ulListener(this.toggleSelectedClass);
         this.ulListener(this.toggleDisplayedClass);
-        this.positionList();
+        this.positionLis();
     },
     "ulListener" : function ulListener(fn) {
         $("ul").on("click", "li[id!='default-value']", fn);
