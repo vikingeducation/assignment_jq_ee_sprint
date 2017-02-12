@@ -110,10 +110,10 @@ var formValidator = {
         }
     },
     "checkInputs" : function checkInputs(test, event) {
-        Object.getOwnPropertyNames(test).forEach(function (element, index, arr) {
-            console.log(test[element]());
-        });
         event.preventDefault();
+        Object.getOwnPropertyNames(test).forEach(function (element, index, arr) {
+            console.log(test[element](), element);
+        });
         alert("You did it!");
     },
     
