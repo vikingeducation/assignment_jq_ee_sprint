@@ -58,7 +58,8 @@ var formValidator = {
         $("#password").keyup(passwordCalc);
         $("#passwordconfirm").keyup(this.checkIfPasswordsMatching);
     },
-    "displayNumberOfChars" : function displayNumberOfChars(event) {
+    "makeRemainingCharsCalc" : function makeRemainingCharsCalc(maxChars) {
+        return function displayNumberOfChars(event) {
         var $input = $(event.target);
         var inputValue = $input.val();
         var inputValueLength = inputValue.length;
@@ -68,10 +69,7 @@ var formValidator = {
             .siblings(".remaining-chars")
             .children(".remaining-number")
             .text(maxChars - inputValueLength); //Pass the length of the value into this HTML element for the user.
-
-    },
-    "makeRemainingCharsCalc" : function makeRemainingCharsCalc(maxChars) {
-        return this.displayNumberOfChars;
+        };
     },
     "checkIfPasswordsMatching" : function checkIfPasswordsMatching(event){
         var $confirmPass = $(event.target);
