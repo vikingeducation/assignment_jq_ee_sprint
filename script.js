@@ -77,6 +77,28 @@ var formValidator = {
             .children(".is-matching")
             .text(isMatching); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
         
+    },
+    "makeLengthChecker" : function makeLengthChecker(min, max) {
+        var tempArr = [min, max];
+        tempArr.sort(function sorter(a, b) { //sort in ascendering order
+            return a - b;
+        });
+        min = tempArr[0];
+        max = tempArr[1];
+        return function(event) {
+            var inputLen = $(event.target).val().length;
+            if (inputLen < min || inputLen > max) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    },
+    
+    
+    "getLengthOfInput" : function getLengthOfInput() {
+        //Maybe use to refactor?
     }
     
     
