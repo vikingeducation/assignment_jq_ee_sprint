@@ -50,6 +50,7 @@ var formValidator = {
         $("#username").keyup(this.displayNumberOfChars);
         $("#message").keyup(this.displayNumberOfChars);
         $("#password").keyup(this.displayNumberOfChars);
+        $("#passwordconfirm").keyup(this.checkIfPasswordsMatching);
     },
     "displayNumberOfChars" : function displayNumberOfChars(event) {
         var $input = $(event.target);
@@ -65,6 +66,16 @@ var formValidator = {
     },
     "checkIfPasswordsMatching" : function checkIfPasswordsMatching(event){
         var $confirmPass = $(event.target);
+        var passConfirmVal = $confirmPass.val();
+        
+        //Get the password input value
+        var passVal = $("password").val()
+        var isMatching = passVal === passConfirmVal;
+        //Find the matching display for the user
+        $confirmPass
+            .siblings(".matching-chars")
+            .children(".is-matching")
+            .text(isMatching); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
         
     }
     
