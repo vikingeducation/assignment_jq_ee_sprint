@@ -50,6 +50,9 @@ var formValidator = {
         var usernameCalc = this.makeRemainingCharsCalc(32);
         var messageCalc = this.makeRemainingCharsCalc(140);
         var passwordCalc = this.makeRemainingCharsCalc(16);
+        var makeUsernameLengthChecker = this.makeLengthChecker(4, 32);
+        var makeMessageLengthChecker = this.makeLengthChecker(4, 140);
+        var makePasswordLengthChecker = this.makeLengthChecker(6, 16);
         $("#username").keyup(usernameCalc);
         $("#message").keyup(messageCalc);
         $("#password").keyup(passwordCalc);
