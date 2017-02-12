@@ -57,6 +57,7 @@ var formValidator = {
         $("#message").keyup(messageCalc);
         $("#password").keyup(passwordCalc);
         $("#passwordconfirm").keyup(this.checkIfPasswordsMatching);
+        $("#test-form").submit(this.checkInputs);
     },
     "makeRemainingCharsCalc" : function makeRemainingCharsCalc(maxChars) {
         return function displayNumberOfChars(event) {
@@ -92,7 +93,7 @@ var formValidator = {
         });
         min = tempArr[0];
         max = tempArr[1];
-        return function(event) {
+        return function lenChecker(event) {
             var inputLen = $(event.target).val().length;
             if (inputLen < min || inputLen > max) {
                 return false;
@@ -101,6 +102,10 @@ var formValidator = {
                 return true;
             }
         }
+    },
+    "checkInputs" : function checkInputs(event) {
+        event.preventDefault();
+        alert("You did it!");
     },
     
     
