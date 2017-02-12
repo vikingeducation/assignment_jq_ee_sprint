@@ -6,6 +6,7 @@ var hackedDropBox = {
     "init" : function init() {
         this.ulListener(this.toggleSelectedClass);
         this.ulListener(this.toggleDisplayedClass);
+        this.ulListener(this.toggleCollapsedClass);
         this.styleLis();
     },
     "ulListener" : function ulListener(fn) {
@@ -20,6 +21,11 @@ var hackedDropBox = {
     },
     "toggleDisplayedClass" : function toggleDisplayedClass(event) {
         $(event.delegateTarget).children().toggleClass("displayed");
+
+    },
+    "toggleCollapsedClass" : function toggleCollapsedClass(event) {
+        $(event.delegateTarget).children().toggleClass("collapsed");
+
     },
     "styleLis" : function styleLis() {
         $("li").each(function (index, element) {
