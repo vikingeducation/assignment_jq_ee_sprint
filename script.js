@@ -8,6 +8,7 @@ var hackedDropBox = {
         this.ulListener(this.toggleDisplayedClass);
         this.ulListener(this.toggleCollapsedClass);
         this.styleLis();
+        this.defineUlSize();
     },
     "ulListener" : function ulListener(fn) {
         $("ul").on("click", "li[id!='default-value']", fn);
@@ -32,6 +33,12 @@ var hackedDropBox = {
             $(element).css("top", index + "em");
             $(element).css("transition", "top 1s");
         });
+    },
+    "defineUlSize" : function defineUlSize() {
+        var $ul = $("ul");
+        var height = $ul.children().length;
+        $ul.css("height", height + "em");
     }
+    
     
 };
