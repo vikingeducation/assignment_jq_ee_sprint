@@ -67,15 +67,15 @@ var formValidator = {
     },
     "makeRemainingCharsCalc" : function makeRemainingCharsCalc(maxChars) {
         return function displayNumberOfChars(event) {
-        var $input = $(event.target);
-        var inputValue = $input.val();
-        var inputValueLength = inputValue.length;
-        
-        //Find the corresponding div which displays this value as defined in the html
-        $input
-            .siblings(".remaining-chars")
-            .children(".remaining-number")
-            .text(maxChars - inputValueLength); //Pass the length of the value into this HTML element for the user.
+            var $input = $(event.target);
+            var inputValue = $input.val();
+            var inputValueLength = inputValue.length;
+            
+            //Find the corresponding div which displays this value as defined in the html
+            $input
+                .siblings(".remaining-chars")
+                .children(".remaining-number")
+                .text(maxChars - inputValueLength); //Pass the length of the value into this HTML element for the user.
         };
     },
     "checkIfPasswordsMatching" : function checkIfPasswordsMatching(){
