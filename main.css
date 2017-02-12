@@ -66,10 +66,15 @@ div#hacked-dropbox li {
 li {
     height: 1em;
     position:absolute;
+    width: 100%;
 }
 
 li.displayed, li.selected {
     display: block !important;
+}
+
+li.selected {
+    top: 0em;
 }
 
 li.collapsed {
