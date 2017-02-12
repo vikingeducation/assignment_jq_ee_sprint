@@ -119,7 +119,9 @@ var formValidator = {
         event.preventDefault();
         alert("You did it!");
     },
-    
+    "toggleFeedbackDisplay" : function toggleFeedbackDisplay(event) {
+        
+    },
     
     "getLengthOfInput" : function getLengthOfInput() {
         //Maybe use to refactor?
