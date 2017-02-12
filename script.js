@@ -103,7 +103,7 @@ var formValidator = {
             }
         }
     },
-    "checkInputs" : function checkInputs(event) {
+    "checkInputs" : function checkInputs(test, event) {
         event.preventDefault();
         alert("You did it!");
     },
