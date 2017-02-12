@@ -69,7 +69,7 @@ var formValidator = {
         var passConfirmVal = $confirmPass.val();
         
         //Get the password input value
-        var passVal = $("password").val()
+        var passVal = $("#password").val()
         var isMatching = passVal === passConfirmVal;
         //Find the matching display for the user
         $confirmPass
