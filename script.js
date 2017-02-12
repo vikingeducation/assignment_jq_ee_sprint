@@ -57,12 +57,12 @@ var formValidator = {
             "username" : makeUsernameLengthChecker,
             "message" : makeMessageLengthChecker,
             "password" : makePasswordLengthChecker,
-            "confirmpassword" : this.checkIfPasswordsMatching
+            "confirmpassword" : this.checkIfPasswordsMatching //Empty passwords and passwords less than length still pass the test
         };
         $("#username").keyup(usernameCalc);
         $("#message").keyup(messageCalc);
         $("#password").keyup(passwordCalc);
-        $("#passwordconfirm").keyup(this.checkIfPasswordsMatching);
+        $("#passwordconfirm").keyup(this.updatePasswordMatching(this.checkIfPasswordsMatching));
         $("#test-form").submit(testSuite, this.checkInputs);
     },
     "makeRemainingCharsCalc" : function makeRemainingCharsCalc(maxChars) {
@@ -79,18 +79,21 @@ var formValidator = {
         };
     },
     "checkIfPasswordsMatching" : function checkIfPasswordsMatching(){
-        var $confirmPass = $("#passwordconfirm");
-        var passConfirmVal = $confirmPass.val();
+        var passConfirmVal = $("#passwordconfirm").val();
         
         //Get the password input value
         var passVal = $("#password").val()
         var isMatching = passVal === passConfirmVal;
-        //Find the matching display for the user
-        $confirmPass
+        return isMatching;
+        
+    },
+    "updatePasswordMatching" : function updatePasswordMatching(checkFn) {
+        return function (event) {
+        $("#passwordconfirm")
             .siblings(".matching-chars")
             .children(".is-matching")
-            .text(isMatching); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
-        
+            .text(checkFn()); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
+        };
     },
     "makeLengthChecker" : function makeLengthChecker(min, max, DOMElement) {
         var tempArr = [min, max];
