@@ -73,4 +73,9 @@ li.displayed:hover {
     background-color: orange;
 }
 
+li.displayed#default-value:hover {
+	cursor:default;
+	background-color:white;
+}
+
 
