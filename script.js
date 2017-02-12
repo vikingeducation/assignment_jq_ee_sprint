@@ -48,7 +48,8 @@ var hackedDropBox = {
 var formValidator = {
     "init" : function init() {
         $("#username").keyup(this.displayNumberOfChars);
-        
+        $("#message").keyup(this.displayNumberOfChars);
+        $("#password").keyup(this.displayNumberOfChars);
     },
     "displayNumberOfChars" : function displayNumberOfChars(event) {
         var $input = $(event.target);
