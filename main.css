@@ -61,6 +61,10 @@ div#hacked-dropbox li {
     display: none;
 }
 
+li {
+    height: 1em;
+}
+
 li.displayed, li.selected {
     display: block !important;
 }
