@@ -120,7 +120,18 @@ var formValidator = {
         alert("You did it!");
     },
     "toggleFeedbackDisplay" : function toggleFeedbackDisplay(event) {
-        
+        var $input = $(event.target);
+        var inputLen = $input.val().length;
+        var $display = $input
+                        .siblings(".remaining-chars, .matching-chars"); //Gets the inputs corresponding display
+        $display.toggleClass("displayed", (function() {
+            if (inputLen > 0){
+                return true;
+            }
+            else {
+                return false;
+            }
+        })());
     },
     
     "getLengthOfInput" : function getLengthOfInput() {
