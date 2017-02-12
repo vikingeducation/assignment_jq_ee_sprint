@@ -50,9 +50,9 @@ var formValidator = {
         var usernameCalc = this.makeRemainingCharsCalc(32);
         var messageCalc = this.makeRemainingCharsCalc(140);
         var passwordCalc = this.makeRemainingCharsCalc(16);
-        var makeUsernameLengthChecker = this.makeLengthChecker(4, 32);
-        var makeMessageLengthChecker = this.makeLengthChecker(4, 140);
-        var makePasswordLengthChecker = this.makeLengthChecker(6, 16);
+        var makeUsernameLengthChecker = this.makeLengthChecker(4, 32, "#username");
+        var makeMessageLengthChecker = this.makeLengthChecker(4, 140, "#message");
+        var makePasswordLengthChecker = this.makeLengthChecker(6, 16, "#password");
         $("#username").keyup(usernameCalc);
         $("#message").keyup(messageCalc);
         $("#password").keyup(passwordCalc);
@@ -86,15 +86,15 @@ var formValidator = {
             .text(isMatching); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
         
     },
-    "makeLengthChecker" : function makeLengthChecker(min, max) {
+    "makeLengthChecker" : function makeLengthChecker(min, max, DOMElement) {
         var tempArr = [min, max];
         tempArr.sort(function sorter(a, b) { //sort in ascendering order
             return a - b;
         });
         min = tempArr[0];
         max = tempArr[1];
-        return function lenChecker(event) {
-            var inputLen = $(event.target).val().length;
+        return function lenChecker() { //Can also accept jQuery objects
+            var inputLen = $(DOMElement).val().length;
             if (inputLen < min || inputLen > max) {
                 return false;
             }
