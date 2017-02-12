@@ -53,11 +53,17 @@ var formValidator = {
         var makeUsernameLengthChecker = this.makeLengthChecker(4, 32, "#username");
         var makeMessageLengthChecker = this.makeLengthChecker(4, 140, "#message");
         var makePasswordLengthChecker = this.makeLengthChecker(6, 16, "#password");
+        var testSuite = {
+            "username" : makeUsernameLengthChecker,
+            "message" : makeMessageLengthChecker,
+            "password" : makePasswordLengthChecker,
+            "confirmpassword" : this.checkIfPasswordsMatching
+        };
         $("#username").keyup(usernameCalc);
         $("#message").keyup(messageCalc);
         $("#password").keyup(passwordCalc);
         $("#passwordconfirm").keyup(this.checkIfPasswordsMatching);
-        $("#test-form").submit(this.checkInputs);
+        $("#test-form").submit(testSuite, this.checkInputs);
     },
     "makeRemainingCharsCalc" : function makeRemainingCharsCalc(maxChars) {
         return function displayNumberOfChars(event) {
