@@ -51,6 +51,7 @@ table {
 
 div#hacked-dropbox ul {
     border: 1px solid black;
+    position: relative;
 }
 
 div#hacked-dropbox ul:hover {
