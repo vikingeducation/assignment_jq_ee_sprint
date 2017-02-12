@@ -64,6 +64,7 @@ div#hacked-dropbox li {
 
 li {
     height: 1em;
+    position:absolute;
 }
 
 li.displayed, li.selected {
