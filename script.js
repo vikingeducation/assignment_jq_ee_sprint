@@ -51,16 +51,17 @@ var hackedDropBox = {
 
 var formValidator = {
     "init" : function init() {
+               
+        var makeUsernameLengthChecker = this.makeLengthChecker(4, 32, "#username");
+        var makeMessageLengthChecker = this.makeLengthChecker(4, 140, "#message");
+        var makePasswordLengthChecker = this.makeLengthChecker(6, 16, "#password");
+        var checkIfPasswordsMatching = this.checkIfValuesMatching("#password", "#passwordconfirm");
         
         var usernameCalc = this.makeRemainingCharsCalc(32);
         var messageCalc = this.makeRemainingCharsCalc(140);
         var passwordCalc = this.makeRemainingCharsCalc(16);
         var passMatch = this.updatePasswordMatching(checkIfPasswordsMatching);
-        
-        var makeUsernameLengthChecker = this.makeLengthChecker(4, 32, "#username");
-        var makeMessageLengthChecker = this.makeLengthChecker(4, 140, "#message");
-        var makePasswordLengthChecker = this.makeLengthChecker(6, 16, "#password");
-        var checkIfPasswordsMatching = this.checkIfValuesMatching("#password", "#passwordconfirm");
+ 
         
         var testSuite = {
             "#username" : this.makeValidatorObject(makeUsernameLengthChecker, "Error: Username not between 4 and 32 chars"),
