@@ -193,5 +193,11 @@ var formValidator = {
 var photoTagger = {
     "init" : function init() {
         console.log("What do, time for photoTagger!");
+        $("#photo-tagger").mouseenter(function(event) {
+            console.log("mouseentered event triggered at", event.target);
+        });
+        $("#photo-tagger").mouseleave(function(event) {
+            console.log("mouseeleave event triggered at", event.target);
+        });
     }
 };
