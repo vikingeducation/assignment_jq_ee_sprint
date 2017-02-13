@@ -125,16 +125,24 @@ var formValidator = {
     "checkInputs" : function checkInputs(event) {
         event.preventDefault();
         var passing = false;
-        Object.getOwnPropertyNames(event.data).forEach(function (element, index, arr) {
-            event.data[element]["testResult"] = event.data[element]["test"](); //Run the test and assign the result to the testResult property on the respective input
+        Object.getOwnPropertyNames(event.data).forEach(function (currentValue, index, arr) {
+            event.data[currentValue].testResult = event.data[currentValue]["test"](); //Run the test and assign the result to the testResult property on the respective input
         });
-        var results = Object.getOwnPropertyNames(event.data).map(function (element, index, arr) {
-            return [element, event.data[element]["testResult"]]; //Run the test and assign the result to the testResult property on the respective input
+        var results = Object.getOwnPropertyNames(event.data).map(function (currentValue, index, arr) {
+            return [currentValue, event.data[currentValue].testResult]; //Run the test and assign the result to the testResult property on the respective input
         });
         //Go through the results, if there is a false value, Call the updateUserFeedback function passing in the error message and the id
         //Have local validateTrigger, if true at the end, tests passed!
-        var justResults = results.map(function(element, index, arr) {
-            return element[1]; //Grab the testResult value from each test
+        results.forEach(function (currentValue, index, arr) {
+            if (!currentValue[1]) { //Then display feedback message
+                $(currentValue[0])
+                    .siblings(".feedback")
+                    .text(event.data[currentValue[0]].errorMessage);
+            }
+        });
+        
+        var justResults = results.map(function(currentValue, index, arr) {
+            return currentValue[1]; //Grab the testResult value from each test
         });
         passing = justResults.reduce(function(acc, currentValue) {
             return acc && currentValue;
