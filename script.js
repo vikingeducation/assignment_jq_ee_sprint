@@ -133,7 +133,14 @@ var formValidator = {
         });
         //Go through the results, if there is a false value, Call the updateUserFeedback function passing in the error message and the id
         //Have local validateTrigger, if true at the end, tests passed!
-        alert(results); //Display testResults
+        var justResults = results.map(function(element, index, arr) {
+            return element[1]; //Grab the testResult value from each test
+        });
+        passing = justResults.reduce(function(acc, currentValue) {
+            return acc && currentValue;
+        }, true); //See if all tests passing
+        console.log(results); //Display testResults
+        console.log("All tests passing: ", passing); //Display if all tests passed
     },
     "toggleFeedbackDisplay" : function toggleFeedbackDisplay(valLen, DOMElement) {
         var $input = $(DOMElement);
