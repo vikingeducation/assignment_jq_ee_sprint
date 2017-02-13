@@ -74,11 +74,11 @@ var formValidator = {
         $("#test-form").submit(testSuite, this.checkInputs);
     },
     "makeRemainingCharsCalc" : function makeRemainingCharsCalc(maxChars) {
-        return function displayNumberOfChars(event) {
+        return (event) => {
             var $input = $(event.target);
             var inputValue = $input.val();
             var inputValueLength = inputValue.length;
-            
+            this.toggleFeedbackDisplay(inputValueLength, $input);
             //Find the corresponding div which displays this value as defined in the html
             $input
                 .siblings(".feedback")
@@ -125,13 +125,12 @@ var formValidator = {
         event.preventDefault();
         alert("You did it!");
     },
-    "toggleFeedbackDisplay" : function toggleFeedbackDisplay(event) {
-        var $input = $(event.target);
-        var inputLen = $input.val().length;
+    "toggleFeedbackDisplay" : function toggleFeedbackDisplay(valLen, DOMElement) {
+        var $input = $(DOMElement);
         var $display = $input
                         .siblings(".feedback"); //Gets the inputs corresponding display
         $display.toggleClass("displayed", (function() {
-            if (inputLen > 0){
+            if (valLen > 0){
                 return true;
             }
             else {
