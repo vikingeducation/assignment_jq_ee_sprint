@@ -130,7 +130,10 @@ var formValidator = {
         Object.getOwnPropertyNames(event.data).forEach(function (element, index, arr) {
             event.data[element]["testResult"] = event.data[element]["test"](); //Run the test and assign the result to the testResult property on the respective input
         });
-        alert(event.data); //Display testResults
+        var results = Object.getOwnPropertyNames(event.data).map(function (element, index, arr) {
+            return [event.data[element], event.data[element]["testResult"]]; //Run the test and assign the result to the testResult property on the respective input
+        });
+        alert(results); //Display testResults
     },
     "toggleFeedbackDisplay" : function toggleFeedbackDisplay(valLen, DOMElement) {
         var $input = $(DOMElement);
