@@ -1,6 +1,7 @@
 $(document).ready(function() {
         hackedDropBox.init();
         formValidator.init();
+        photoTagger.init();
 });
 
 var hackedDropBox = {
@@ -190,5 +191,7 @@ var formValidator = {
 };
 
 var photoTagger = {
-    
+    "init" : function init() {
+        console.log("What do, time for photoTagger!");
+    }
 };
