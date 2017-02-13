@@ -51,19 +51,24 @@ var hackedDropBox = {
 
 var formValidator = {
     "init" : function init() {
+        
         var usernameCalc = this.makeRemainingCharsCalc(32);
         var messageCalc = this.makeRemainingCharsCalc(140);
         var passwordCalc = this.makeRemainingCharsCalc(16);
-        var passMatch = this.checkIfPasswordsMatching();
+        var passMatch = this.updatePasswordMatching(checkIfPasswordsMatching);
+        
         var makeUsernameLengthChecker = this.makeLengthChecker(4, 32, "#username");
         var makeMessageLengthChecker = this.makeLengthChecker(4, 140, "#message");
         var makePasswordLengthChecker = this.makeLengthChecker(6, 16, "#password");
+        var checkIfPasswordsMatching = this.checkIfValuesMatching("#password", "#passwordconfirm");
+        
         var testSuite = {
-            "username" : makeUsernameLengthChecker,
-            "message" : makeMessageLengthChecker,
-            "password" : makePasswordLengthChecker,
-            "confirmpassword" : this.checkIfPasswordsMatching //Empty passwords and passwords less than length still pass the test
+            "#username" : this.makeValidatorObject(makeUsernameLengthChecker, "Error: Username not between 4 and 32 chars"),
+            "#message" : this.makeValidatorObject(makeMessageLengthChecker, "Error: Message not between 4 and 140 chars"),
+            "#password" : this.makeValidatorObject(makePasswordLengthChecker, "Error: Password not between 6 and 16 chars"),
+            "#confirmpassword" : this.makeValidatorObject(checkIfPasswordsMatching, "Error: Passwords do not match") //Empty passwords and passwords less than length still pass the test
         };
+        
         $("#username").keyup(usernameCalc);
         $("#message").keyup(messageCalc);
         $("#password").keyup(passwordCalc);
@@ -81,23 +86,25 @@ var formValidator = {
                 .text("Remaining characters: " + (maxChars - inputValueLength)); //Pass the length of the value into this HTML element for the user.
         };
     },
-    "checkIfPasswordsMatching" : function checkIfPasswordsMatching(){
-        var passConfirmVal = $("#passwordconfirm").val();
+    "checkIfValuesMatching" : function checkIfValuesMatching(DOMElementOne, DOMElementTwo){
+        return function checkMatching() {
+        var val1 = $(DOMElementOne).val();
         
         //Get the password input value
-        var passVal = $("#password").val()
-        var isMatching = passVal === passConfirmVal;
+        var val2 = $(DOMELementTwo).val()
+        var isMatching = val1 === val2;
         return isMatching;
+        };
         
     },
-    "updatePasswordMatching" : function updatePasswordMatching() {
+    "updatePasswordMatching" : function updatePasswordMatching(checkFn) {
         return (event) => {
         var $input = $(event.target);
         var inputValueLength = this.getLengthOfInput($input);
         this.toggleFeedbackDisplay(inputValueLength, $input);
-        $("#passwordconfirm")
+        $input
             .siblings(".feedback")
-            .text("Passwords matching: " + this.checkIfPasswordsMatching()); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
+            .text("Passwords matching: " + checkFn()); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
         };
     },
     "makeLengthChecker" : function makeLengthChecker(min, max, DOMElement) {
@@ -142,6 +149,14 @@ var formValidator = {
         var $input = $(DOMElement);
         return $input.val().length;
         //Maybe use to refactor?
+    },
+    
+    "makeValidatorObject" : function makeValidatorObject(test, errMessage){
+        var validatorObject = {
+        "testResult" : test,
+        "errorMessage" : errMessage
+        }
+        return validatorObject;
     }
     
     
