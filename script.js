@@ -192,14 +192,19 @@ var formValidator = {
     
 };
 
-var photoTagger = {
+var photoTagger = { //Good idea to use namespaces for attaching and detaching event handlers and specifying handler names
     "init" : function init() {
         console.log("What do, time for photoTagger!");
         $("#photo-tagger").mouseenter(function(event) {
             console.log("mouseentered event triggered at", event.target);
+            $(event.target).on("mousemove", this.taggerBox);
         });
         $("#photo-tagger").mouseleave(function(event) {
             console.log("mouseeleave event triggered at", event.target);
+            $(event.target).off("mousemove", this.taggerBox);
         });
+    },
+    "taggerBox" : function taggerBox(event) {
+        console.log("taggerBox");
     }
 };
