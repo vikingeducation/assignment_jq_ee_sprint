@@ -98,7 +98,7 @@ var formValidator = {
         return function (event) {
         $("#passwordconfirm")
             .siblings(".feedback")
-            .text(checkFn()); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
+            .text("Passwords matching: " + checkFn()); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
         };
     },
     "makeLengthChecker" : function makeLengthChecker(min, max, DOMElement) {
@@ -129,7 +129,7 @@ var formValidator = {
         var $input = $(event.target);
         var inputLen = $input.val().length;
         var $display = $input
-                        .siblings(".remaining-chars, .matching-chars"); //Gets the inputs corresponding display
+                        .siblings(".feedback"); //Gets the inputs corresponding display
         $display.toggleClass("displayed", (function() {
             if (inputLen > 0){
                 return true;
