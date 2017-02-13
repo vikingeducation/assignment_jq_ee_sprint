@@ -92,7 +92,7 @@ var formValidator = {
         var val1 = $(DOMElementOne).val();
         
         //Get the password input value
-        var val2 = $(DOMElementTwo).val()
+        var val2 = $(DOMElementTwo).val();
         var isMatching = val1 === val2;
         return isMatching;
         };
@@ -123,7 +123,7 @@ var formValidator = {
             else {
                 return true;
             }
-        }
+        };
     },
     "checkInputs" : function checkInputs(event) {
         Object.getOwnPropertyNames(event.data).forEach(function (element, index, arr) {
