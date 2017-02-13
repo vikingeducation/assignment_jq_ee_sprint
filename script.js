@@ -82,7 +82,7 @@ var formValidator = {
             //Find the corresponding div which displays this value as defined in the html
             $input
                 .siblings(".feedback")
-                .text("Remaining characters", maxChars - inputValueLength); //Pass the length of the value into this HTML element for the user.
+                .text("Remaining characters: " + (maxChars - inputValueLength)); //Pass the length of the value into this HTML element for the user.
         };
     },
     "checkIfPasswordsMatching" : function checkIfPasswordsMatching(){
