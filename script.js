@@ -66,18 +66,13 @@ var formValidator = {
         $("#username").keyup(usernameCalc);
         $("#message").keyup(messageCalc);
         $("#password").keyup(passwordCalc);
-        $("#username").keyup(this.toggleFeedbackDisplay);
-        $("#message").keyup(this.toggleFeedbackDisplay);
-        $("#password").keyup(this.toggleFeedbackDisplay);
-        $("#passwordconfirm").keyup(this.toggleFeedbackDisplay);
-        $("#passwordconfirm").keyup(this.updatePasswordMatching(this.checkIfPasswordsMatching));
+        $("#passwordconfirm").keyup(this.updatePasswordMatching);
         $("#test-form").submit(testSuite, this.checkInputs);
     },
     "makeRemainingCharsCalc" : function makeRemainingCharsCalc(maxChars) {
         return (event) => {
             var $input = $(event.target);
-            var inputValue = $input.val();
-            var inputValueLength = inputValue.length;
+            var inputValueLength = this.getLengthOfInput($input);
             this.toggleFeedbackDisplay(inputValueLength, $input);
             //Find the corresponding div which displays this value as defined in the html
             $input
@@ -94,11 +89,14 @@ var formValidator = {
         return isMatching;
         
     },
-    "updatePasswordMatching" : function updatePasswordMatching(checkFn) {
-        return function (event) {
+    "updatePasswordMatching" : function updatePasswordMatching() {
+        return (event) => {
+        var $input = $(event.target);
+        var inputValueLength = this.getLengthOfInput($input);
+        this.toggleFeedbackDisplay(inputValueLength, $input);
         $("#passwordconfirm")
             .siblings(".feedback")
-            .text("Passwords matching: " + checkFn()); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
+            .text("Passwords matching: " + this.checkIfPasswordsMatching()); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
         };
     },
     "makeLengthChecker" : function makeLengthChecker(min, max, DOMElement) {
@@ -139,7 +137,9 @@ var formValidator = {
         })());
     },
     
-    "getLengthOfInput" : function getLengthOfInput() {
+    "getLengthOfInput" : function getLengthOfInput(DOMElement) {
+        var $input = $(DOMElement);
+        return $input.val().length;
         //Maybe use to refactor?
     }
     
