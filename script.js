@@ -138,7 +138,7 @@ var formValidator = {
             //Have local validateTrigger, if true at the end, tests passed!
             results.forEach(function (currentValue, index, arr) {
                 if (!currentValue[1]) { //Then display feedback message
-                    this.toggleFeedbackDisplay(0, $(currentValue[0]), true);
+                    this.toggleFeedbackDisplay(0, $(currentValue[0]), true); //This is referencing the results array right now. We need it to reference the formValidation object
                     this.updateUserFeedback($(currentValue[0]), testSuite[currentValue[0]].errorMessage);
                 }
             });
