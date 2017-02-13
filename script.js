@@ -209,6 +209,8 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "taggerBox" : function taggerBox() {
         return (event) => {
             console.log("taggerBox");
+            console.log("Mouse at X:", event.pageX); //Mouse x coordinate relative to left side of document
+            console.log("Mouse at Y:", event.pageY); //Mouse y coorindate relative to top of document
         };
     }
 };
