@@ -188,3 +188,7 @@ var formValidator = {
     
     
 };
+
+var photoTagger = {
+    
+};
