@@ -136,12 +136,13 @@ var formValidator = {
             });
             //Go through the results, if there is a false value, Call the updateUserFeedback function passing in the error message and the id
             //Have local validateTrigger, if true at the end, tests passed!
-            results.forEach(function (currentValue, index, arr) {
+            for (let i = 0; i < results.length; i++) {
+                let currentValue = results[i];
                 if (!currentValue[1]) { //Then display feedback message
                     this.toggleFeedbackDisplay(0, $(currentValue[0]), true); //This is referencing the results array right now. We need it to reference the formValidation object
                     this.updateUserFeedback($(currentValue[0]), testSuite[currentValue[0]].errorMessage);
                 }
-            });
+            }
         
             var justResults = results.map(function(currentValue, index, arr) {
                 return currentValue[1]; //Grab the testResult value from each test
