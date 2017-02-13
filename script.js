@@ -70,12 +70,13 @@ var formValidator = {
             "#password" : this.makeValidatorObject(makePasswordLengthChecker, "Error: Password not between 6 and 16 chars"),
             "#passwordconfirm" : this.makeValidatorObject(checkIfPasswordsMatching, "Error: Passwords do not match") //Empty passwords and passwords less than length still pass the test
         };
+        var tests = this.checkInputs(testSuite);
         
         $("#username").keyup(usernameCalc);
         $("#message").keyup(messageCalc);
         $("#password").keyup(passwordCalc);
         $("#passwordconfirm").keyup(passMatch);
-        $("#test-form").submit(testSuite, this.checkInputs);
+        $("#test-form").submit(tests);
     },
     "makeRemainingCharsCalc" : function makeRemainingCharsCalc(maxChars) {
         return (event) => {
@@ -123,40 +124,41 @@ var formValidator = {
             }
         };
     },
-    "checkInputs" : function checkInputs(event) {
-        event.preventDefault();
-        var passing = false;
-        Object.getOwnPropertyNames(event.data).forEach(function (currentValue, index, arr) {
-            event.data[currentValue].testResult = event.data[currentValue]["test"](); //Run the test and assign the result to the testResult property on the respective input
-        });
-        var results = Object.getOwnPropertyNames(event.data).map(function (currentValue, index, arr) {
-            return [currentValue, event.data[currentValue].testResult]; //Run the test and assign the result to the testResult property on the respective input
-        });
-        //Go through the results, if there is a false value, Call the updateUserFeedback function passing in the error message and the id
-        //Have local validateTrigger, if true at the end, tests passed!
-        results.forEach(function (currentValue, index, arr) {
-            if (!currentValue[1]) { //Then display feedback message
-                $(currentValue[0])
-                    .siblings(".feedback")
-                    .text(event.data[currentValue[0]].errorMessage);
-            }
-        });
+    "checkInputs" : function checkInputs(testSuite) {
+        return (event) => {
+            event.preventDefault();
+            var passing = false;
+            Object.getOwnPropertyNames(testSuite).forEach(function (currentValue, index, arr) {
+                testSuite[currentValue].testResult = testSuite[currentValue]["test"](); //Run the test and assign the result to the testResult property on the respective input
+            });
+            var results = Object.getOwnPropertyNames(testSuite).map(function (currentValue, index, arr) {
+                return [currentValue, testSuite[currentValue].testResult]; //Run the test and assign the result to the testResult property on the respective input
+            });
+            //Go through the results, if there is a false value, Call the updateUserFeedback function passing in the error message and the id
+            //Have local validateTrigger, if true at the end, tests passed!
+            results.forEach(function (currentValue, index, arr) {
+                if (!currentValue[1]) { //Then display feedback message
+                    this.toggleFeedbackDisplay(0, $(currentValue[0]), true);
+                    this.updateUserFeedback($(currentValue[0]), testSuite[currentValue[0]].errorMessage);
+                }
+            });
         
-        var justResults = results.map(function(currentValue, index, arr) {
-            return currentValue[1]; //Grab the testResult value from each test
-        });
-        passing = justResults.reduce(function(acc, currentValue) {
-            return acc && currentValue;
-        }, true); //See if all tests passing
-        console.log(results); //Display testResults
-        console.log("All tests passing: ", passing); //Display if all tests passed
+            var justResults = results.map(function(currentValue, index, arr) {
+                return currentValue[1]; //Grab the testResult value from each test
+            });
+            passing = justResults.reduce(function(acc, currentValue) {
+                return acc && currentValue;
+            }, true); //See if all tests passing
+            console.log(results); //Display testResults
+            console.log("All tests passing: ", passing); //Display if all tests passed
+        };
     },
-    "toggleFeedbackDisplay" : function toggleFeedbackDisplay(valLen, DOMElement) {
+    "toggleFeedbackDisplay" : function toggleFeedbackDisplay(valLen, DOMElement, onError) {
         var $input = $(DOMElement);
         var $display = $input
                         .siblings(".feedback"); //Gets the inputs corresponding display
         $display.toggleClass("displayed", (function() {
-            if (valLen > 0){
+            if (valLen > 0 || onError){
                 return true;
             }
             else {
