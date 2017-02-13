@@ -81,9 +81,8 @@ var formValidator = {
             
             //Find the corresponding div which displays this value as defined in the html
             $input
-                .siblings(".remaining-chars")
-                .children(".remaining-number")
-                .text(maxChars - inputValueLength); //Pass the length of the value into this HTML element for the user.
+                .siblings(".feedback")
+                .text("Remaining characters", maxChars - inputValueLength); //Pass the length of the value into this HTML element for the user.
         };
     },
     "checkIfPasswordsMatching" : function checkIfPasswordsMatching(){
@@ -98,8 +97,7 @@ var formValidator = {
     "updatePasswordMatching" : function updatePasswordMatching(checkFn) {
         return function (event) {
         $("#passwordconfirm")
-            .siblings(".matching-chars")
-            .children(".is-matching")
+            .siblings(".feedback")
             .text(checkFn()); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
         };
     },
