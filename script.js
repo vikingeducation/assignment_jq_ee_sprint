@@ -128,9 +128,9 @@ var formValidator = {
     "checkInputs" : function checkInputs(event) {
         event.preventDefault();
         Object.getOwnPropertyNames(event.data).forEach(function (element, index, arr) {
-            console.log(event.data[element]());
+            event.data[element]["testResult"] = event.data[element]["test"](); //Run the test and assign the result to the testResult property on the respective input
         });
-        alert("You did it!");
+        alert(event.data); //Display testResults
     },
     "toggleFeedbackDisplay" : function toggleFeedbackDisplay(valLen, DOMElement) {
         var $input = $(DOMElement);
