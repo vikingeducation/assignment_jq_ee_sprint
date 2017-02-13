@@ -81,10 +81,8 @@ var formValidator = {
             var $input = $(event.target);
             var inputValueLength = this.getLengthOfInput($input);
             this.toggleFeedbackDisplay(inputValueLength, $input);
-            //Find the corresponding div which displays this value as defined in the html
-            $input
-                .siblings(".feedback")
-                .text("Remaining characters: " + (maxChars - inputValueLength)); //Pass the length of the value into this HTML element for the user.
+            var message = "Remaining characters: " + (maxChars - inputValueLength);
+            this.updateUserFeedback($input, message);
         };
     },
     "checkIfValuesMatching" : function checkIfValuesMatching(DOMElementOne, DOMElementTwo){
@@ -103,9 +101,8 @@ var formValidator = {
         var $input = $(event.target);
         var inputValueLength = this.getLengthOfInput($input);
         this.toggleFeedbackDisplay(inputValueLength, $input);
-        $input
-            .siblings(".feedback")
-            .text("Passwords matching: " + checkFn()); //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
+        var message = "Passwords matching: " + checkFn();
+        this.updateUserFeedback($input, message);  //Pass the boolean value into HTML element for the user. jQuery will coerce boolean to string
         };
     },
     "makeLengthChecker" : function makeLengthChecker(min, max, DOMElement) {
@@ -162,6 +159,13 @@ var formValidator = {
         "errorMessage" : errMessage
         }
         return validatorObject;
+    },
+    
+    "updateUserFeedback" : function updateUserFeedback(DOMElement, message) {
+        var $input = $(DOMElement);
+        $input
+            .siblings(".feedback")
+            .text(message);
     }
     
     
