@@ -92,7 +92,7 @@ var formValidator = {
         var val1 = $(DOMElementOne).val();
         
         //Get the password input value
-        var val2 = $(DOMELementTwo).val()
+        var val2 = $(DOMElementTwo).val()
         var isMatching = val1 === val2;
         return isMatching;
         };
