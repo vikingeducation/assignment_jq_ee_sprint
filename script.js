@@ -212,5 +212,8 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
             console.log("Mouse at X:", event.pageX); //Mouse x coordinate relative to left side of document
             console.log("Mouse at Y:", event.pageY); //Mouse y coorindate relative to top of document
         };
+    },
+    "makeBox" : function makeBox(xCoord, yCoord) {
+        //make box (div) element with width and height and background color and absolute positioning and place it in the body element
     }
 };
