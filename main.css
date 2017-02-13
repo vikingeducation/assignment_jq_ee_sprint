@@ -87,7 +87,7 @@ li.displayed#default-value:hover {
 	background-color:white;
 }
 
-.matching-chars, .remaining-chars {
+.feedback {
 	display: none; /*Set to initially not display*/
 }
 .displayed {
