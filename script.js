@@ -50,7 +50,7 @@ var hackedDropBox = {
 };
 
 var formValidator = {
-    "init" : function init() {
+    "init" : function init() { //Init should be passed all input elements with corresponding information
                
         var makeUsernameLengthChecker = this.makeLengthChecker(4, 32, "#username");
         var makeMessageLengthChecker = this.makeLengthChecker(4, 140, "#message");
@@ -126,10 +126,10 @@ var formValidator = {
         };
     },
     "checkInputs" : function checkInputs(event) {
+        event.preventDefault();
         Object.getOwnPropertyNames(event.data).forEach(function (element, index, arr) {
             console.log(event.data[element]());
         });
-        event.preventDefault();
         alert("You did it!");
     },
     "toggleFeedbackDisplay" : function toggleFeedbackDisplay(valLen, DOMElement) {
@@ -154,7 +154,8 @@ var formValidator = {
     
     "makeValidatorObject" : function makeValidatorObject(test, errMessage){
         var validatorObject = {
-        "testResult" : test,
+        "test" : test,
+        "testResult" : false,
         "errorMessage" : errMessage
         }
         return validatorObject;
