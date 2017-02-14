@@ -49,6 +49,11 @@ table {
 
 /*CSS Reset End */
 
+.displayed {
+	display: block !important;
+}
+
+/* Hacked Dropbox CSS Start*/
 ul {
     border: 1px solid black;
     position: relative;
@@ -87,9 +92,24 @@ li.displayed#default-value:hover {
 	background-color:white;
 }
 
+/* Hacked Dropbox CSS End*/
+
+/* Form Validation CSS Start */
+
 .feedback {
 	display: none; /*Set to initially not display*/
 }
-.displayed {
-	display: block;
+
+/* Form Validation CSS End */
+
+/* Photo Tagger CSS Start */
+
+.tagger {
+	height: 50px;
+	width: 50px;
+	background-color: green;
+	position: absolute;
 }
+
+/* Photo Tagger CSS End */
+
