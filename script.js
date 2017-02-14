@@ -199,6 +199,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         let taggerBox = this.taggerBox();
         console.log("What do, time for photoTagger!");
         let defaultState = this.makeDefaultState();
+        let awaitingBoxLocationState = this.awaitingBoxLocationState();
         defaultState(); //Set #photo-tagger to defaultState on page load
 
     },
@@ -231,13 +232,14 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         return () => {
             console.log("defaultState active!");
             $("#photo-tagger").off(); //Clear all listeners
-            $("#photo-tagger").one("mouseenter", function(event) {console.log("Mouse enter handler for", event.delegateTarget, "handler attached");}); //trigger awaitingBoxLocation state
+            $("#photo-tagger").one("mouseenter", function(event) {console.log("Mouse enter handler for", event.delegateTarget, "handler.");}); //trigger awaitingBoxLocation state
         };
     },
-    "makeAwaitingBoxLocationState" : function makeAwaitingBoxLocationState(handler) {
+    "makeAwaitingBoxLocationState" : function makeAwaitingBoxLocationState() {
         return () => {
             console.log("awaitingBoxLocationState active!");
-            $("#photo-tagger").one("mouseleave", handler); //trigger defaultState state
+            $("#photo-tagger").off(); //Clear all listeners. Is this needed if we make all listeners one()?
+            $("#photo-tagger").one("mouseleave", function(event) {console.log("Mouse leave handler for", event.delegateTarget, "handler.");}); //trigger defaultState state
         };
     },
     
