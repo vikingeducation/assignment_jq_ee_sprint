@@ -197,14 +197,8 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "init" : function init() {
         let taggerBox = this.taggerBox();
         console.log("What do, time for photoTagger!");
-        $("#photo-tagger").mouseenter(function(event) {
-            console.log("mouseentered event triggered at", event.target);
-            $(event.target).on("mousemove", taggerBox);
-        });
-        $("#photo-tagger").mouseleave(function(event) {
-            console.log("mouseeleave event triggered at", event.target);
-            $(event.target).off("mousemove", taggerBox);
-        });
+        this.defaultState();
+
     },
     "taggerBox" : function taggerBox() {
         return (event) => {
@@ -232,14 +226,13 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         
     },
     "defaultState" : function defaultState() { //div id=photo-tagger is waiting for mouse enter event. Initial state and triggered when mouseleave event occurs
-        $("#photo-tagger").mouseenter(function(event) { //trigger awaitingBoxLocation state
+        $("#photo-tagger").on("mouseenter", function(event) { //trigger awaitingBoxLocation state
             console.log("mouseentered event triggered at", event.target);
-            $(event.target).on("mousemove", taggerBox);
         });
     },
-    "awaitingBoxLocation" : function awaitingBoxLocation() {
-        $("#photo-tagger").mouseleave(function(event) { //trigger defaultState state
-            
+    "awaitingBoxLocationState" : function awaitingBoxLocationState() {
+        $("#photo-tagger").on("mouseleave", function(event) { //trigger defaultState state
+            console.log("mouseleave event triggered at", event.target);
         });
     }
 };
