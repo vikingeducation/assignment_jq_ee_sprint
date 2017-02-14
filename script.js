@@ -197,7 +197,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "init" : function init() {
         let taggerBox = this.taggerBox();
         console.log("What do, time for photoTagger!");
-        let defaultState = this.makeDefaultState(function(){console.log("test test");});
+        let defaultState = this.makeDefaultState(function(event){$(this).one("mouseleave", function() {console.log("test test");})});
         defaultState(); //Set #photo-tagger to defaultState on page load
 
     },
