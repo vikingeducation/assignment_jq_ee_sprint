@@ -199,7 +199,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         let taggerBox = this.taggerBox();
         console.log("What do, time for photoTagger!");
         let defaultState = this.makeDefaultState();
-        let awaitingBoxLocationState = this.awaitingBoxLocationState();
+        let awaitingBoxLocationState = this.makeAwaitingBoxLocationState();
         defaultState(); //Set #photo-tagger to defaultState on page load
 
     },
