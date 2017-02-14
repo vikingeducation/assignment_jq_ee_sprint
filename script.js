@@ -197,8 +197,8 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "init" : function init() {
         let taggerBox = this.taggerBox();
         console.log("What do, time for photoTagger!");
-        let defaultState = this.makeDefaultState(function(){console.log("hi sonny");});
-        defaultState();
+        let defaultState = this.makeDefaultState(function(){console.log("test test");});
+        defaultState(); //Set #photo-tagger to defaultState on page load
 
     },
     "taggerBox" : function taggerBox() {
@@ -229,6 +229,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "makeDefaultState" : function makeDefaultState(handler) { //div id=photo-tagger is waiting for mouse enter event. Initial state and triggered when mouseleave event occurs
         return () => {
             console.log("defaultState active!");
+            $("#photo-tagger").off(); //Clear all listeners
             $("#photo-tagger").one("mouseenter", handler); //trigger awaitingBoxLocation state
         };
     },
