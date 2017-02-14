@@ -222,5 +222,13 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 "left": xCoord
             });
         $(document.body).append($box); //targeting the body element
+    },
+    
+    "addEventHandlers" : function addEventHandlers(DOMElement, ...handlers) {
+        
+    },
+    
+    "buildState" : function buildState() {
+        
     }
 };
