@@ -195,9 +195,10 @@ var formValidator = {
 
 var photoTagger = { //Good idea to use namespaces for attaching and detaching event handlers and specifying handler names
     "init" : function init() {
+        let photoState = "";
         let taggerBox = this.taggerBox();
         console.log("What do, time for photoTagger!");
-        let defaultState = this.makeDefaultState(function(event){$(this).one("mouseleave", function() {console.log("test test");})});
+        let defaultState = this.makeDefaultState();
         defaultState(); //Set #photo-tagger to defaultState on page load
 
     },
@@ -226,11 +227,11 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "buildState" : function buildState() {
         
     },
-    "makeDefaultState" : function makeDefaultState(handler) { //div id=photo-tagger is waiting for mouse enter event. Initial state and triggered when mouseleave event occurs
+    "makeDefaultState" : function makeDefaultState() { //div id=photo-tagger is waiting for mouse enter event. Initial state and triggered when mouseleave event occurs
         return () => {
             console.log("defaultState active!");
             $("#photo-tagger").off(); //Clear all listeners
-            $("#photo-tagger").one("mouseenter", handler); //trigger awaitingBoxLocation state
+            $("#photo-tagger").one("mouseenter", function(event) {console.log("Mouse enter handler for", event.delegateTarget, "handler attached");}); //trigger awaitingBoxLocation state
         };
     },
     "makeAwaitingBoxLocationState" : function makeAwaitingBoxLocationState(handler) {

@@ -109,6 +109,7 @@ li.displayed#default-value:hover {
 	width: 50px;
 	background-color: green;
 	position: absolute;
+	display: inline-block;
 }
 
 /* Photo Tagger CSS End */
