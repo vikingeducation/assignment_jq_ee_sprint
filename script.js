@@ -225,14 +225,12 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "buildState" : function buildState() {
         
     },
-    "defaultState" : function defaultState() { //div id=photo-tagger is waiting for mouse enter event. Initial state and triggered when mouseleave event occurs
-        $("#photo-tagger").on("mouseenter", function(event) { //trigger awaitingBoxLocation state
-            console.log("mouseentered event triggered at", event.target);
-        });
+    "defaultState" : () => { //div id=photo-tagger is waiting for mouse enter event. Initial state and triggered when mouseleave event occurs
+        console.log("defaultState active!");
+        $("#photo-tagger").one("mouseenter", this.awaitingBoxLocationState); //trigger awaitingBoxLocation state
     },
-    "awaitingBoxLocationState" : function awaitingBoxLocationState() {
-        $("#photo-tagger").on("mouseleave", function(event) { //trigger defaultState state
-            console.log("mouseleave event triggered at", event.target);
-        });
+    "awaitingBoxLocationState" : () => {
+        console.log("awaitingBoxLocationState active!");
+        $("#photo-tagger").one("mouseleave", this.defaultState); //trigger defaultState state
     }
 };
