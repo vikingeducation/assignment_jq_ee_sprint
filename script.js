@@ -1,3 +1,5 @@
+"use strict";
+
 $(document).ready(function() {
         hackedDropBox.init();
         formValidator.init();
@@ -195,7 +197,7 @@ var formValidator = {
 
 var photoTagger = { //Good idea to use namespaces for attaching and detaching event handlers and specifying handler names
     "init" : function init() {
-        let photoState = "";
+        let photoState = "defaultState";
         let taggerBox = this.taggerBox();
         console.log("What do, time for photoTagger!");
         let defaultState = this.makeDefaultState();
@@ -228,6 +230,9 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "buildState" : function buildState() {
         
     },
+    "changeState" : function changeState(state) {
+        photoState = state; //Need to figure out how to assign state to photoState
+    },
     "makeDefaultState" : function makeDefaultState() { //div id=photo-tagger is waiting for mouse enter event. Initial state and triggered when mouseleave event occurs
         return () => {
             console.log("defaultState active!");
@@ -240,6 +245,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
             console.log("awaitingBoxLocationState active!");
             $("#photo-tagger").off(); //Clear all listeners. Is this needed if we make all listeners one()?
             $("#photo-tagger").one("mouseleave", function(event) {console.log("Now in DefaultState.");}); //trigger defaultState state
+            $("#photo-tagger").one("click", function(event) {console.log("Now in AwaitingNameSelectionState");}); //Move to AwaitinNameSelectionState
         };
     },
     
