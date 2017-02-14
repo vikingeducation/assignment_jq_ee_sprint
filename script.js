@@ -236,5 +236,11 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
             console.log("awaitingBoxLocationState active!");
             $("#photo-tagger").one("mouseleave", handler); //trigger defaultState state
         };
+    },
+    
+    "makeAwaitingNameSelectionState" : function makeAwaitingNameSelectionState(handler) {
+        return () => {
+            
+        }
     }
 };
