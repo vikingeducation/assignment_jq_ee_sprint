@@ -216,7 +216,11 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "makeBox" : function makeBox(xCoord, yCoord) {
         //make box (div) element with width and height and background color and absolute positioning and place it in the body element
         var $box = $("<div></div>")
-            .addClass("tagger");
-        $(document.body) //targeting the body element
+            .addClass("tagger")
+            .offset( {
+                "top": yCoord,
+                "left": xCoord
+            });
+        $(document.body).append($box); //targeting the body element
     }
 };
