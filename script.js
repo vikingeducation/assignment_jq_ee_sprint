@@ -197,12 +197,9 @@ var formValidator = {
 
 var photoTagger = { //Good idea to use namespaces for attaching and detaching event handlers and specifying handler names
     "init" : function init() {
-        let photoState = "defaultState";
-        let taggerBox = this.taggerBox();
         console.log("What do, time for photoTagger!");
-        let awaitingBoxLocationState = this.makeAwaitingBoxLocationState();
-        let defaultToAwaitingBox = this.makeDefaultState(awaitingBoxLocationState);
-        $("#photo-tagger").one("mouseenter", defaultToAwaitingBox); //I want this to be called when mouseenter event happens on photo-tagger. trigger awaitingBoxLocation state
+        this.changeState("default");
+        this.updateEventHandlers();
 
     },
     "taggerBox" : function taggerBox() {
@@ -224,8 +221,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     },
     
     "updateEventHandlers" : function updateEventHandlers() {
-        let state = photoTagger.state;
-        switch(state) {
+        switch(photoTagger.state) {
             case "default":
                 console.log("now attaching default state handlers");
                 $("#photo-tagger").one("mouseenter", function(event) {
@@ -249,7 +245,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         
     },
     "changeState" : function changeState(state) {
-        photoState = state; //Need to figure out how to assign state to photoState
+        this.state = state; //Need to figure out how to assign state to photoState
     },
     "makeDefaultState" : function makeDefaultState(fnOne) { //div id=photo-tagger is waiting for mouse enter event. Initial state and triggered when mouseleave event occurs
         return (event) => {
