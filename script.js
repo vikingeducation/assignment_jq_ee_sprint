@@ -210,6 +210,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 "top": yCoord,
                 "left": xCoord
             });
+        this.addNamesDropDown($box);
         $(document.body).append($box); //targeting the body element
     },
     "addNamesDropDown" : function addNamesDropDown(DOMElement) {
@@ -222,8 +223,6 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         $selectElement.append($optionThree);
         $(DOMElement).append($selectElement);
 
-
-        
     },
     "updateEventHandlers" : function updateEventHandlers() {
         switch(photoTagger.state) {
@@ -260,7 +259,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                     photoTagger.updateEventHandlers();
                 });
 /*
-                $("#photo-tagger").one("click", "selection", function(event) {
+                $("#photo-tagger").one("click", "select", function(event) {
                     event.stopPropagation(); //Stop listener on photo-tagger from being triggered
                     photoTagger.state = "awaitingNameSelection";
                     photoTagger.updateEventHandlers();
