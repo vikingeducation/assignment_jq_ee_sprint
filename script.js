@@ -202,6 +202,9 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         console.log("What do, time for photoTagger!");
         let defaultState = this.makeDefaultState();
         let awaitingBoxLocationState = this.makeAwaitingBoxLocationState();
+        let defaultToAwaitingBox = this.makeDefaultState(awaitingBoxLocationState);
+        $("#photo-tagger").one("mouseenter", defaultToAwaitingBox); //trigger awaitingBoxLocation state
+
         defaultState(); //Set #photo-tagger to defaultState on page load
 
     },
@@ -233,11 +236,11 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "changeState" : function changeState(state) {
         photoState = state; //Need to figure out how to assign state to photoState
     },
-    "makeDefaultState" : function makeDefaultState() { //div id=photo-tagger is waiting for mouse enter event. Initial state and triggered when mouseleave event occurs
-        return () => {
+    "makeDefaultState" : function makeDefaultState(fnOne) { //div id=photo-tagger is waiting for mouse enter event. Initial state and triggered when mouseleave event occurs
+        return (event) => {
             console.log("defaultState active!");
             $("#photo-tagger").off(); //Clear all listeners
-            $("#photo-tagger").one("mouseenter", function(event) {console.log("Now in AwaitingBoxLocationState.");}); //trigger awaitingBoxLocation state
+            $("#photo-tagger").one("mouseenter", fnOne); //trigger awaitingBoxLocation state
         };
     },
     "makeAwaitingBoxLocationState" : function makeAwaitingBoxLocationState() {
