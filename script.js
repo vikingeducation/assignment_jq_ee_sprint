@@ -238,9 +238,9 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         let $parentTagger =$option.parents(".tagger");
         $parentTagger.append($nameDisplay);
     },
-    "selectRemove" : function selectRemove(DOMElement) {
+    "selectRemove" : function selectRemove(option) {
         //DOMElement is the option element with select as it's only parent
-        $(DOMElement.parent()).remove();
+        $(option).parent().remove();
     },
     "removeUnpersistedTagger" : function removeUnpersistedTagger() {
         $(".tagger:not(.persist)").remove(); //remove any tagger boxes that do not also have persist class
@@ -288,7 +288,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
 /*
                 $("#photo-tagger").one("click", "option", function(event) {
                     event.stopPropagation(); //Stop listener on photo-tagger from being triggered
-                    photoTagger.nameAppend(event.currentTarget, ".tagger");
+                    photoTagger.nameAppend(event.currentTarget);
                     photoTagger.selectRemove(event.currentTarget);
                     photoTagger.addPersistClass(event.currentTarget);
                     photoTagger.state = "awaitingNameSelection";
