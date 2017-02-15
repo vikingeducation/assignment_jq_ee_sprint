@@ -240,6 +240,9 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         $(".tagger:not(.persist)").remove(); //remove any tagger boxes that do not also have persist class
         
     },
+    "addPersistClass" : function addPersistClass(DOMElement) {
+        $(DOMElement).parents(".tagger").addClass("persist");
+    },
     "updateEventHandlers" : function updateEventHandlers() {
         switch(photoTagger.state) {
             case "default":
@@ -281,6 +284,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                     event.stopPropagation(); //Stop listener on photo-tagger from being triggered
                     photoTagger.nameAppend(event.currentTarget, ".tagger");
                     photoTagger.selectRemove(event.currentTarget);
+                    photoTagger.addPersistClass(event.currentTarget);
                     photoTagger.state = "awaitingNameSelection";
                     photoTagger.updateEventHandlers();
                 });
