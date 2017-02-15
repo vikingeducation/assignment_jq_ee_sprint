@@ -200,12 +200,9 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         let photoState = "defaultState";
         let taggerBox = this.taggerBox();
         console.log("What do, time for photoTagger!");
-        let defaultState = this.makeDefaultState();
         let awaitingBoxLocationState = this.makeAwaitingBoxLocationState();
         let defaultToAwaitingBox = this.makeDefaultState(awaitingBoxLocationState);
-        $("#photo-tagger").one("mouseenter", defaultToAwaitingBox); //trigger awaitingBoxLocation state
-
-        defaultState(); //Set #photo-tagger to defaultState on page load
+        $("#photo-tagger").one("mouseenter", defaultToAwaitingBox); //I want this to be called when mouseenter event happens on photo-tagger. trigger awaitingBoxLocation state
 
     },
     "taggerBox" : function taggerBox() {
