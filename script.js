@@ -223,7 +223,25 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         $(document.body).append($box); //targeting the body element
     },
     
-    "addEventHandlers" : function addEventHandlers(DOMElement, ...handlers) {
+    "updateEventHandlers" : function updateEventHandlers() {
+        let state = photoTagger.state;
+        switch(state) {
+            case "default":
+                console.log("now attaching default state handlers");
+                $("#photo-tagger").one("mouseenter", function(event) {
+                    photoTagger.state = "awaitingBoxLocation";
+                    photoTagger.updateEventHandlers();
+                });
+                break;
+            case "awaitingBoxLocation":
+                console.log("now attaching awaitingBoxLocation handlers");
+                break;
+            case "awaitingNameSelection":
+                console.log("now attaching awaitingNameSelection handlers");
+                break;
+            default:
+                console.log("No handlers registered. Error");
+        }
         
     },
     
