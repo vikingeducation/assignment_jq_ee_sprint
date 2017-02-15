@@ -234,9 +234,9 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "nameAppend" : function nameAppend(option) {
         let $option = $(option);
         let name = $option.text() //Get text of the name clicked
-        let nameDisplay = $("<div>").text(name);
-        let parentTagger =$option.parents(".tagger");
-        parentTagger.append(nameDisplay);
+        let $nameDisplay = $("<div>").text(name);
+        let $parentTagger =$option.parents(".tagger");
+        $parentTagger.append($nameDisplay);
     },
     "selectRemove" : function selectRemove(DOMElement) {
         //DOMElement is the option element with select as it's only parent
