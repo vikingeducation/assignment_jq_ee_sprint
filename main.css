@@ -109,10 +109,15 @@ option:hover {
 }
 
 .tagger {
-	height: 50px;
-	width: 50px;
 	background-color: green;
 	position: absolute;
+}
+
+.tag-frame {
+	height: 50px;
+	width: 50px;
+	background-color:blue;
+	
 }
 
 #photo-tagger {
