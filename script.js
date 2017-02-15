@@ -238,10 +238,10 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                     photoTagger.updateEventHandlers();
                 });
                 $("#photo-tagger").one("click", function(event) {
+                    photoTagger.makeBox(event.pageX, event.pageY);
                     photoTagger.state = "awaitingNameSelection";
                     photoTagger.updateEventHandlers();
                 });
-                  
                 break;
             case "awaitingNameSelection":
                 console.log("now attaching awaitingNameSelection handlers");
@@ -254,6 +254,13 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                     photoTagger.state = "awaitingBoxLocation";
                     photoTagger.updateEventHandlers();
                 });
+/*
+                $("#photo-tagger").one("click", "selection", function(event) {
+                    event.stopPropagation(); //Stop listener on photo-tagger from being triggered
+                    photoTagger.state = "awaitingNameSelection";
+                    photoTagger.updateEventHandlers();
+                });
+*/ 
                 break;
             default:
                 console.log("No handlers registered. Error");
