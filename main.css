@@ -109,6 +109,9 @@ li.displayed#default-value:hover {
 	width: 50px;
 	background-color: green;
 	position: absolute;
+}
+
+.photo-tagger {
 	display: inline-block;
 }
 
