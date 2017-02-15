@@ -202,13 +202,6 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         this.updateEventHandlers();
 
     },
-    "taggerBox" : function taggerBox() {
-        return (event) => {
-            console.log("taggerBox");
-            console.log("Mouse at X:", event.pageX); //Mouse x coordinate relative to left side of document
-            console.log("Mouse at Y:", event.pageY); //Mouse y coorindate relative to top of document
-        };
-    },
     "makeBox" : function makeBox(xCoord, yCoord) {
         //make box (div) element with width and height and background color and absolute positioning and place it in the body element
         var $box = $("<div></div>")
@@ -219,7 +212,19 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
             });
         $(document.body).append($box); //targeting the body element
     },
-    
+    "addNamesDropDown" : function addNamesDropDown(DOMElement) {
+        var $selectElement = $("<select>").attr("name", "tagFriends").attr("size", 3);
+        var $optionOne = $("<option>").attr("value", "jane").text("Jane");
+        var $optionTwo = $("<option>").attr("value", "jill").text("Jill");
+        var $optionThree = $("<option>").attr("value", "jan").text("Jan");
+        $selectElement.append($optionOne);
+        $selectElement.append($optionTwo);
+        $selectElement.append($optionThree);
+        $(DOMElement).append($selectElement);
+
+
+        
+    },
     "updateEventHandlers" : function updateEventHandlers() {
         switch(photoTagger.state) {
             case "default":
