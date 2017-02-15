@@ -3,7 +3,7 @@
 $(document).ready(function() {
         hackedDropBox.init();
         formValidator.init();
-        photoTagger.init();
+        photoTagger.init("#photo-tagger");
 });
 
 var hackedDropBox = {
@@ -196,7 +196,8 @@ var formValidator = {
 };
 
 var photoTagger = { //Good idea to use namespaces for attaching and detaching event handlers and specifying handler names
-    "init" : function init() {
+    "init" : function init(DOMElement) {
+        let targetImg = $(DOMElement);
         console.log("What do, time for photoTagger!");
         this.changeState("default");
         this.updateEventHandlers();
@@ -223,6 +224,17 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         $selectElement.append($optionThree);
         $(DOMElement).append($selectElement);
 
+    },
+    "nameAppend" : function nameAppend(option) {
+        let $option = $(option);
+        let name = $option.text() //Get text of the name clicked
+        let nameDisplay = $("<div>").text(name);
+        let parentTagger =$option.parent(".tagger");
+        parentTagger.append(nameDisplay);
+    },
+    "selectRemove" : function selectRemove(DOMElement) {
+        //DOMElement is the option element with select as it's only parent
+        $(DOMElement.parent()).remove();
     },
     "updateEventHandlers" : function updateEventHandlers() {
         switch(photoTagger.state) {
@@ -259,8 +271,10 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                     photoTagger.updateEventHandlers();
                 });
 /*
-                $("#photo-tagger").one("click", "select", function(event) {
+                $("#photo-tagger").one("click", "option", function(event) {
                     event.stopPropagation(); //Stop listener on photo-tagger from being triggered
+                    photoTagger.nameAppend(event.currentTarget, ".tagger");
+                    photoTagger.selectRemove(event.currentTarget);
                     photoTagger.state = "awaitingNameSelection";
                     photoTagger.updateEventHandlers();
                 });
