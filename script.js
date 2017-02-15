@@ -224,6 +224,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         switch(photoTagger.state) {
             case "default":
                 console.log("now attaching default state handlers");
+                $("#photo-tagger").off(); //clear all previous handlers
                 $("#photo-tagger").one("mouseenter", function(event) {
                     photoTagger.state = "awaitingBoxLocation";
                     photoTagger.updateEventHandlers();
@@ -231,9 +232,28 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 break;
             case "awaitingBoxLocation":
                 console.log("now attaching awaitingBoxLocation handlers");
+                $("#photo-tagger").off(); //clear all previous handlers
+                $("#photo-tagger").one("mouseleave", function(event) {
+                    photoTagger.state = "default";
+                    photoTagger.updateEventHandlers();
+                });
+                $("#photo-tagger").one("click", function(event) {
+                    photoTagger.state = "awaitingNameSelection";
+                    photoTagger.updateEventHandlers();
+                });
+                  
                 break;
             case "awaitingNameSelection":
                 console.log("now attaching awaitingNameSelection handlers");
+                $("#photo-tagger").off(); //clear all previous handlers
+                $("#photo-tagger").one("mouseleave", function(event) {
+                    photoTagger.state = "default";
+                    photoTagger.updateEventHandlers();
+                });
+                $("#photo-tagger").one("click", function(event) {
+                    photoTagger.state = "awaitingBoxLocation";
+                    photoTagger.updateEventHandlers();
+                });
                 break;
             default:
                 console.log("No handlers registered. Error");
