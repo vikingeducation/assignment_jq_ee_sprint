@@ -236,6 +236,10 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         //DOMElement is the option element with select as it's only parent
         $(DOMElement.parent()).remove();
     },
+    "removeUnpersistedTagger" : function removeUnpersistedTagger() {
+        $(".tagger:not(.persist)").remove(); //remove any tagger boxes that do not also have persist class
+        
+    },
     "updateEventHandlers" : function updateEventHandlers() {
         switch(photoTagger.state) {
             case "default":
@@ -263,11 +267,13 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 console.log("now attaching awaitingNameSelection handlers");
                 $("#photo-tagger").off(); //clear all previous handlers
                 $("#photo-tagger").one("mouseleave", function(event) {
+                    photoTagger.removeUnpersistedTagger();
                     photoTagger.state = "default";
                     photoTagger.updateEventHandlers();
                 });
                 $("#photo-tagger").one("click", function(event) {
                     photoTagger.state = "awaitingBoxLocation";
+                    photoTagger.removeUnpersistedTagger();
                     photoTagger.updateEventHandlers();
                 });
 /*
