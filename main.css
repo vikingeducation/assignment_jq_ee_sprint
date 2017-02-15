@@ -104,6 +104,10 @@ li.displayed#default-value:hover {
 
 /* Photo Tagger CSS Start */
 
+option:hover {
+	background-color:red;
+}
+
 .tagger {
 	height: 50px;
 	width: 50px;
@@ -114,6 +118,8 @@ li.displayed#default-value:hover {
 #photo-tagger {
 	display: inline-block;
 }
+
+
 
 /* Photo Tagger CSS End */
 
