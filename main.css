@@ -111,7 +111,7 @@ li.displayed#default-value:hover {
 	position: absolute;
 }
 
-.photo-tagger {
+#photo-tagger {
 	display: inline-block;
 }
 
