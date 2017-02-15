@@ -288,9 +288,9 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
 
                 $("#photo-tagger").one("click", "option", function(event) {
                     event.stopPropagation(); //Stop listener on photo-tagger from being triggered
+                    photoTagger.addPersistClass(event.currentTarget);
                     photoTagger.nameAppend(event.currentTarget);
                     photoTagger.selectRemove(event.currentTarget);
-                    photoTagger.addPersistClass(event.currentTarget);
                     photoTagger.state = "awaitingNameSelection";
                     photoTagger.updateEventHandlers();
                 });
