@@ -285,7 +285,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                     photoTagger.removeUnpersistedTagger();
                     photoTagger.updateEventHandlers();
                 });
-/*
+
                 $("#photo-tagger").one("click", "option", function(event) {
                     event.stopPropagation(); //Stop listener on photo-tagger from being triggered
                     photoTagger.nameAppend(event.currentTarget);
@@ -294,7 +294,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                     photoTagger.state = "awaitingNameSelection";
                     photoTagger.updateEventHandlers();
                 });
-*/ 
+ 
                 break;
             default:
                 console.log("No handlers registered. Error");
