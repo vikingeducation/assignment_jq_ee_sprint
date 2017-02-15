@@ -205,16 +205,22 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     },
     "makeBox" : function makeBox(xCoord, yCoord) {
         //make box (div) element with width and height and background color and absolute positioning and place it in the body element
-        var $box = $("<div></div>")
+        let $box = $("<div></div>")
             .addClass("tagger")
             .offset( {
                 "top": yCoord,
                 "left": xCoord
             });
-        this.addNamesDropDown($box);
+        $box.append(this.makeTagFrame());
+        $box.append(this.addNamesDropDown());
         $("#photo-tagger").append($box); //targeting the body element
     },
-    "addNamesDropDown" : function addNamesDropDown(DOMElement) {
+    "makeTagFrame" : function makeTagFrame() {
+        let $tagFrame = $("<div>")
+            .addClass("tag-frame");
+        return $tagFrame;
+    },
+    "addNamesDropDown" : function addNamesDropDown() {
         var $selectElement = $("<select>").attr("name", "tagFriends").attr("size", 3);
         var $optionOne = $("<option>").attr("value", "jane").text("Jane");
         var $optionTwo = $("<option>").attr("value", "jill").text("Jill");
@@ -222,7 +228,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         $selectElement.append($optionOne);
         $selectElement.append($optionTwo);
         $selectElement.append($optionThree);
-        $(DOMElement).append($selectElement);
+        return $selectElement;
 
     },
     "nameAppend" : function nameAppend(option) {
