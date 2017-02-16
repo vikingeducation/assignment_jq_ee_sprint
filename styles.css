@@ -1,0 +1,38 @@
+p {
+display: inline-block;
+}
+
+
+.red {
+border: solid 1px red;
+}
+
+.redtext {
+  color: red;
+}
+
+color {
+ background-color: pink;
+}
+
+
+
+
+.dropdown {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.dropdown:hover {
+    background-color: #3e2e41;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
