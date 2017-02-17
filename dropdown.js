@@ -1,11 +1,5 @@
 var dropdown = {
   init: function() {
-    // $('h3').click(function() {
-    //     $('li').slideToggle();
-    // } ) ;
-    // $('li').hover( function() {
-    //   $(this).toggleClass( 'hover-option' );
-    // } ); 
     dropdown.slide();
     dropdown.hover();
     dropdown.register();
