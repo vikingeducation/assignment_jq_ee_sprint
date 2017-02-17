@@ -5,3 +5,12 @@ h1 {
 .error {
   color: red;
 }
+
+li {
+  display: none;
+}
+
+.hover-option {
+  background-color: red;
+  cursor: pointer;
+}
