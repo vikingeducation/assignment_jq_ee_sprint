@@ -57,6 +57,7 @@ table {
 ul {
     border: 1px solid black;
     position: relative;
+    overflow: hidden;
 }
 
 ul.collapsed-view {
@@ -70,9 +71,7 @@ ul:hover {
 
 li {
     height: 1em;
-    position:absolute;
     width: 100%;
-    display: none;
 }
 
 li.displayed, li.selected {

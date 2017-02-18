@@ -8,11 +8,9 @@ $(document).ready(function() {
 
 var hackedDropBox = {
     "init" : function init() {
-        this.ulListener(this.toggleSelectedClass);
-        this.ulListener(this.toggleDisplayedClass);
-        this.ulListener(this.toggleCollapsedClass);
-        this.ulListener(this.toggleCollapsedViewClass);
-        this.styleLis();
+        $("ul").on("click", function(event) {
+            $(event.currentTarget).toggleClass("collapsed-view")
+        });
         this.styleUls();
         this.defineUlSize();
     },
