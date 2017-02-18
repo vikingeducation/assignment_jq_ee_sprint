@@ -11,6 +11,7 @@ var hackedDropBox = {
         $("ul").on("click", function(event) {
             $(event.currentTarget).toggleClass("collapsed-view")
         });
+        this.ulListener(this.toggleSelectedClass);
         this.styleUls();
         this.defineUlSize();
     },
@@ -20,14 +21,6 @@ var hackedDropBox = {
     },
     "toggleSelectedClass" : function toggleSelectedClass(event) {
         $(event.target).toggleClass("selected");
-    },
-    "toggleDisplayedClass" : function toggleDisplayedClass(event) {
-        $(event.delegateTarget).children().toggleClass("displayed");
-
-    },
-    "toggleCollapsedClass" : function toggleCollapsedClass(event) {
-        $(event.delegateTarget).children().toggleClass("collapsed");
-    
     },
     "toggleCollapsedViewClass" : function toggleCollapsedViewClass(event) {
         $(event.delegateTarget).toggleClass("collapsed-view");
