@@ -58,12 +58,13 @@ ul {
     border: 1px solid black;
     position: relative;
     overflow: hidden;
-    margin-top: 1em;
     box-sizing: border-box;
 }
 
 ul.collapsed-view {
     height: 1em !important;
+    padding-top: 1em;
+
 }
 
 ul:hover {
