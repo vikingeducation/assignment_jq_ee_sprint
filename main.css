@@ -49,10 +49,6 @@ table {
 
 /*CSS Reset End */
 
-.displayed {
-	display: block !important;
-}
-
 /* Hacked Dropbox CSS Start*/
 ul {
     border: 1px solid black;
@@ -77,20 +73,17 @@ li {
     width: 100%;
 }
 
-li.displayed, li.selected {
+li.selected {
     display: block !important;
     position: absolute;
 }
 
-li.collapsed {
-    top: 0em !important;
-}
 
-li.displayed:hover {
+li:hover {
     background-color: orange;
 }
 
-li.displayed#default-value:hover {
+li#default-value:hover {
 	cursor:default;
 	background-color:white;
 }
