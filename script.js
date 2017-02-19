@@ -255,9 +255,9 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 console.log("now attaching awaitingBoxLocation handlers");
                 $("#photo-tagger").off(); //clear all previous handlers from "#photo-tagger". Async problems? Does not return promise
                 let $tagger = $(photoTagger.makeTaggerBox());
-                $("photo-tagger").on("mousemove", function (event) {
+                $("#photo-tagger").on("mousemove", function (event) {
                     $tagger.css("top", event.pageY)
-                                            .css("left", event.pageX);
+                            .css("left", event.pageX);
                 });
                 $("#photo-tagger").one("mouseleave", function(event) {
                     photoTagger.state = "default";
