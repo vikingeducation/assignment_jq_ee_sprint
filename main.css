@@ -64,7 +64,7 @@ ul.displayed-view {
 
 }
 
-ul.display-view #selected-value:hover {
+ul.displayed-view #selected-value:hover {
 	cursor: default;
 	background-color:white;
 }
