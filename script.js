@@ -201,7 +201,6 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         let $box = $("<div></div>")
             .addClass("tagger");
         $box.append(this.makeTagFrame());
-        $box.append(this.addNamesDropDown());
         $("#photo-tagger").append($box); //targeting the photo container
         return $box;
     },
@@ -301,7 +300,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 let leftAdjust = width/2;
                 let topAdjusted = eventTrigger.pageY - topAdjust;
                 let leftAdjusted = eventTrigger.pageX - leftAdjust;
-                
+                $box.append(photoTagger.addNamesDropDown());
                 $box.offset({"top": topAdjusted, "left": leftAdjusted});
                 
                 console.log("now attaching awaitingNameSelection handlers");
