@@ -195,17 +195,14 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         $("#photo-tagger").append($box); //targeting the body element
         return $box;
     },
-    "makeBox" : function makeBox(xCoord, yCoord) {
+    "makeBox" : function makeBox() {
         //make box (div) element with width and height and background color and absolute positioning and place it in the body element
         let $box = $("<div></div>")
-            .addClass("tagger")
-            .offset( {
-                "top": yCoord,
-                "left": xCoord
-            });
+            .addClass("tagger");
         $box.append(this.makeTagFrame());
         $box.append(this.addNamesDropDown());
-        $("#photo-tagger").append($box); //targeting the body element
+        $("#photo-tagger").append($box); //targeting the photo container
+        return $box;
     },
     "makeTagFrame" : function makeTagFrame() {
         let $tagFrame = $("<div>")
@@ -290,7 +287,16 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 
                 break;
             case "awaitingNameSelection":
-                photoTagger.makeBox(eventTrigger.pageX, eventTrigger.pageY)
+                let $box = $(photoTagger.makeBox());
+                let height = $box.height();
+                let width = $box.width();
+                let topAdjust = height/2;
+                let leftAdjust = width/2;
+                let topOffset = eventTrigger.pageY - topAdjust;
+                let leftOffset = eventTrigger.pageX - leftAdjust;
+                
+                $box.offset({"top": topOffset, "left": leftOffset});
+                
                 console.log("now attaching awaitingNameSelection handlers");
                 $("#photo-tagger").one("mouseleave", function(event) {
                     photoTagger.state = "default";
