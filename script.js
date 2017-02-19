@@ -241,7 +241,8 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "updateEventHandlers" : function updateEventHandlers(eventTrigger) {
         photoTagger.removeUnpersistedTagger();
         $("#photo-tagger").off(); //clear all previous handlers Async problems? Does not return promise. Hope that all previous handlers are remove before new ones are attached
-
+        let height;
+        let width;
         switch(photoTagger.state) {
             case "default":
                 console.log("now attaching default state handlers");
@@ -254,8 +255,8 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 console.log("now attaching awaitingBoxLocation handlers");
                 let $tagger = $(photoTagger.makeTaggerBox());
                 //Look at the dimensions of the tagger-box.
-                let height = $($tagger).height(); //Should this be $(tagger).children(".tagger-box"). But we really want to take into account to total with a name. We can calculate that prior and hide it.
-                let width = $($tagger).width();
+                height = $($tagger).height(); //Should this be $(tagger).children(".tagger-box"). But we really want to take into account to total with a name. We can calculate that prior and hide it.
+                width = $($tagger).width();
                 let topOffset = height/2;
                 let leftOffset = width/2;
                 
@@ -293,8 +294,8 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 break;
             case "awaitingNameSelection":
                 let $box = $(photoTagger.makeBox());
-                let height = $box.height();
-                let width = $box.width();
+                height = $box.height();
+                width = $box.width();
                 let topAdjust = height/2;
                 let leftAdjust = width/2;
                 let topAdjusted = eventTrigger.pageY - topAdjust;
