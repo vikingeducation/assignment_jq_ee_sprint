@@ -109,11 +109,13 @@ option:hover {
 	background-color:red;
 }
 
+/*Tagger is the div that holds the .tag-trame and .user-dropdown-menu*/
 .tagger {
 	background-color: green;
 	position: absolute;
 }
 
+/*Declare dimensions of the framing div*/
 .tag-frame {
 	height: 50px;
 	width: 50px;

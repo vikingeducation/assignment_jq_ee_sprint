@@ -187,6 +187,17 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         this.updateEventHandlers();
 
     },
+    "makeTaggerBox" : function makeTaggerBox() {
+        //make box (div) element with width and height and background color and absolute positioning and place it in the body element
+        let $box = $("<div></div>")
+            .addClass("tagger")
+            .offset( {
+                "top": 0,
+                "left": 0
+            });
+        $box.append(this.makeTagFrame());
+        return $box; //targeting the body element
+    },
     "makeBox" : function makeBox(xCoord, yCoord) {
         //make box (div) element with width and height and background color and absolute positioning and place it in the body element
         let $box = $("<div></div>")
@@ -245,7 +256,12 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 break;
             case "awaitingBoxLocation":
                 console.log("now attaching awaitingBoxLocation handlers");
-                $("#photo-tagger").off(); //clear all previous handlers
+                let $tagger = $(photoTagger.makeTaggerBox());
+                $tagger.on("mousemove", function (event) {
+                    $(event.currentTarget).css("top", event.pageY)
+                                            .css("left", event.pageX);
+                });
+                $("#photo-tagger").off(); //clear all previous handlers from "#photo-tagger"
                 $("#photo-tagger").one("mouseleave", function(event) {
                     photoTagger.state = "default";
                     photoTagger.updateEventHandlers();
@@ -255,6 +271,8 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                     photoTagger.state = "awaitingNameSelection";
                     photoTagger.updateEventHandlers();
                 });
+                //We need to make a function in here which refers to the "box" that we want to place somewhere
+                
                 break;
             case "awaitingNameSelection":
                 console.log("now attaching awaitingNameSelection handlers");
@@ -314,3 +332,11 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         }
     }
 };
+
+/*okay, let's attach an event handlers to mousemove, that will remove the box box and redraw at new location
+/set pageX, pageY on mouse move of $box element. We "create the $box" upon going to "awaitingBoxLocation" state;
+In the awaitingBoxLocation state, we attach a handler to the mousemove event that will change the top and left of this $box based
+on pageX and pageY location
+Upon leaving this state, we disconnect this handler and call the check persist, per usual.
+*/
+let $box = 
