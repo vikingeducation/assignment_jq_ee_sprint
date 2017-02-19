@@ -28,12 +28,6 @@ var hackedDropBox = {
     "styleUls" : function styleUls() {
     $("ul").css("transition", "height 1s");
     },
-    "styleLis" : function styleLis() {
-        $("li").each(function (index, element) {
-            $(element).css("top", index + "em");
-            $(element).css("transition", "top 1s");
-        });
-    },
     "defineUlSize" : function defineUlSize() {
         var $ul = $("ul");
         var height = $ul.children().length;
