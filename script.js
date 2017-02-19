@@ -254,8 +254,8 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
             case "awaitingBoxLocation":
                 console.log("now attaching awaitingBoxLocation handlers");
                 let $tagger = $(photoTagger.makeTaggerBox());
-                $tagger.on("mousemove", function (event) {
-                    $(event.currentTarget).css("top", event.pageY)
+                $("photo-tagger").on("mousemove", function (event) {
+                    $tagger.css("top", event.pageY)
                                             .css("left", event.pageX);
                 });
                 $("#photo-tagger").off(); //clear all previous handlers from "#photo-tagger"
