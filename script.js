@@ -261,9 +261,22 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 let width = $($tagger).width();
                 let heightOffset = height/2;
                 let widthOffset = width/2;
+                let topAndLeftPositionOfPhoto = $("#photo-tagger").position();
+                let widthOfPhoto = $("#photo-tagger").width();
+                let heightOfPhoto = $("#photo-tagger").height();
+                let topEdgeOfPhoto = topAndLeftPositionOfPhoto.top;
+                let leftEdgeOfPhoto = topAndLeftPositionOfPhoto.left;
+                let rightEdgeOfPhoto = leftEdgeOfPhoto + widthOfPhoto;
+                let bottomEdgeOfPhoto = topEdgeOfPhoto + heightOfPhoto;
+                
                 $("#photo-tagger").on("mousemove", function (event) {
-                    $tagger.css("top", event.pageY - heightOffset)
-                            .css("left", event.pageX - widthOffset);
+                    if (event.pageX > rightEdgeOfPhoto || event.pageX < leftEdgeOfPhoto || event.pageY > bottomEdgeOfPhoto || event.pageY < topEdgeOfPhoto) {
+                        $(event.currentTarget).trigger("mouseleave");
+                    }
+                    else {
+                        $tagger.css("top", event.pageY - heightOffset)
+                                .css("left", event.pageX - widthOffset);
+                    }
                 });
                 $("#photo-tagger").one("mouseleave", function(event) {
                     photoTagger.state = "default";
