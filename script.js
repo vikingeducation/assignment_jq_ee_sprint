@@ -14,16 +14,17 @@ var hackedDropBox = {
         this.ulListener(this.toggleSelectedClass);
     },
     "ulListener" : function ulListener(fn) {
-        $("ul").on("click", "li[id!='default-value']", fn);
-        $("ul").one("click", "li[id='default-value']", fn);
+        $("ul").on("click", "li", fn);
     },
     "toggleSelectedClass" : function toggleSelectedClass(event) {
-        $(event.target).toggleClass("selected");
+        //If an li gets clicked (detects a click event), change the value of "selected-value" to the contents of the event.currentTarget
+        $("#selected-value").val($(event.currentTarget).val());
     },
+    /* NOT PRESENTLY USED, CONSIDER DELETING
     "toggleCollapsedViewClass" : function toggleCollapsedViewClass(event) {
         $(event.delegateTarget).toggleClass("collapsed-view");
     },
-    /* NOT PRESENTLY USED
+    NOT PRESENTLY USED
     "styleUls" : function styleUls() {
     $("ul").css("transition", "height 1s");
     },
