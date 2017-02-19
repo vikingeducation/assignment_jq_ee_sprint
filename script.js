@@ -306,7 +306,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                     photoTagger.addPersistClass(event.currentTarget);
                     photoTagger.nameAppend(event.currentTarget);
                     photoTagger.selectRemove(event.currentTarget);
-                    photoTagger.state = "awaitingNameSelection";
+                    photoTagger.state = "awaitingBoxLocation";
                     photoTagger.updateEventHandlers();
                 });
  
