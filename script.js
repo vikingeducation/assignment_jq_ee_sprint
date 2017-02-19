@@ -247,7 +247,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 console.log("now attaching default state handlers");
                 $("#photo-tagger").one("mouseenter", function(event) {
                     photoTagger.state = "awaitingBoxLocation";
-                    photoTagger.updateEventHandlers();
+                    photoTagger.updateEventHandlers(event);
                 });
                 break;
             case "awaitingBoxLocation":
@@ -256,9 +256,11 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 //Look at the dimensions of the tagger-box.
                 let height = $($tagger).height(); //Should this be $(tagger).children(".tagger-box"). But we really want to take into account to total with a name. We can calculate that prior and hide it.
                 let width = $($tagger).width();
-                let heightOffset = height/2;
-                let widthOffset = width/2;
-                let topAndLeftPositionOfPhoto = $("#photo-tagger").position();
+                let topOffset = height/2;
+                let leftOffset = width/2;
+                
+                
+                let topAndLeftPositionOfPhoto = $("#photo-tagger").offset();
                 let widthOfPhoto = $("#photo-tagger").width();
                 let heightOfPhoto = $("#photo-tagger").height();
                 let topEdgeOfPhoto = topAndLeftPositionOfPhoto.top;
@@ -266,13 +268,16 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 let rightEdgeOfPhoto = leftEdgeOfPhoto + widthOfPhoto;
                 let bottomEdgeOfPhoto = topEdgeOfPhoto + heightOfPhoto;
                 
+                //Draw the box once so that it appears on state switch. Use eventTrigger
+                $tagger.offset({"top": eventTrigger.pageY - topOffset, "left": eventTrigger.pageX - leftOffset});
+                
                 $("#photo-tagger").on("mousemove", function (event) {
                     if (event.pageX > rightEdgeOfPhoto || event.pageX < leftEdgeOfPhoto || event.pageY > bottomEdgeOfPhoto || event.pageY < topEdgeOfPhoto) {
                         $(event.currentTarget).trigger("mouseleave");
                     }
                     else {
-                        $tagger.css("top", event.pageY - heightOffset)
-                                .css("left", event.pageX - widthOffset);
+                        $tagger.css("top", event.pageY - topOffset)
+                                .css("left", event.pageX - leftOffset);
                     }
                 });
                 $("#photo-tagger").one("mouseleave", function(event) {
@@ -292,10 +297,10 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 let width = $box.width();
                 let topAdjust = height/2;
                 let leftAdjust = width/2;
-                let topOffset = eventTrigger.pageY - topAdjust;
-                let leftOffset = eventTrigger.pageX - leftAdjust;
+                let topAdjusted = eventTrigger.pageY - topAdjust;
+                let leftAdjusted = eventTrigger.pageX - leftAdjust;
                 
-                $box.offset({"top": topOffset, "left": leftOffset});
+                $box.offset({"top": topAdjusted, "left": leftAdjusted});
                 
                 console.log("now attaching awaitingNameSelection handlers");
                 $("#photo-tagger").one("mouseleave", function(event) {
@@ -304,7 +309,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 });
                 $("#photo-tagger").one("click", function(event) {
                     photoTagger.state = "awaitingBoxLocation";
-                    photoTagger.updateEventHandlers();
+                    photoTagger.updateEventHandlers(event);
                 });
 
                 $("#photo-tagger").one("click", "option", function(event) {
@@ -313,7 +318,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                     photoTagger.nameAppend(event.currentTarget);
                     photoTagger.selectRemove(event.currentTarget);
                     photoTagger.state = "awaitingBoxLocation";
-                    photoTagger.updateEventHandlers();
+                    photoTagger.updateEventHandlers(event);
                 });
  
                 break;
