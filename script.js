@@ -9,7 +9,7 @@ $(document).ready(function() {
 var hackedDropBox = {
     "init" : function init() {
         $("ul").on("click", function(event) {
-            $(event.currentTarget).toggleClass("collapsed-view")
+            $(event.currentTarget).toggleClass("displayed-view")
         });
         this.ulListener(this.toggleSelectedClass);
         this.styleUls();

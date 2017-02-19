@@ -55,14 +55,20 @@ ul {
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
-}
-
-ul.collapsed-view {
     height: 1em !important;
     padding-top: 1em;
+}
+
+ul.displayed-view {
+    height: 5em !important;
+    padding-top: 0em;
 
 }
 
+ul.display-view #selected-value:hover {
+	cursor: default;
+	background-color:white;
+}
 ul:hover {
     cursor: pointer;
 }
@@ -83,10 +89,8 @@ li:hover {
     background-color: orange;
 }
 
-li#default-value:hover {
-	cursor:default;
-	background-color:white;
-}
+
+li#selected-value
 
 /* Hacked Dropbox CSS End*/
 
