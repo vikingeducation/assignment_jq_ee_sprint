@@ -242,6 +242,8 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         $(DOMElement).parents(".tagger").addClass("persist");
     },
     "updateEventHandlers" : function updateEventHandlers() {
+        photoTagger.removeUnpersistedTagger();
+
         switch(photoTagger.state) {
             case "default":
                 console.log("now attaching default state handlers");
@@ -336,3 +338,6 @@ In the awaitingBoxLocation state, we attach a handler to the mousemove event tha
 on pageX and pageY location
 Upon leaving this state, we disconnect this handler and call the check persist, per usual.
 */
+
+//Get position of #photo-tagger
+
