@@ -6,6 +6,11 @@ $(document).ready(function() {
         photoTagger.init("#photo-tagger");
 });
 
+
+/********************************************************** Start hackedDropdown ***********************************************/
+
+
+
 var hackedDropBox = {
     "init" : function init() {
         $("ul").on("click", function(event) {
@@ -36,6 +41,13 @@ var hackedDropBox = {
     */
     
 };
+
+/************************************************* End hackedDropDown *****************************************************/
+
+
+
+
+/*********************************************** Start formValidator object ************************************************/
 
 var formValidator = {
     "init" : function init() { //Init should be passed all input elements with corresponding information
@@ -179,6 +191,12 @@ var formValidator = {
     
     
 };
+/********************************** End formValidator object *****************************************************/
+
+
+
+/********************************** Start photoTagger object ************************************************************/
+
 
 var photoTagger = { //Good idea to use namespaces for attaching and detaching event handlers and specifying handler names
     "init" : function init(DOMElement) {
@@ -358,12 +376,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     }
 };
 
-/*okay, let's attach an event handlers to mousemove, that will remove the box box and redraw at new location
-/set pageX, pageY on mouse move of $box element. We "create the $box" upon going to "awaitingBoxLocation" state;
-In the awaitingBoxLocation state, we attach a handler to the mousemove event that will change the top and left of this $box based
-on pageX and pageY location
-Upon leaving this state, we disconnect this handler and call the check persist, per usual.
-*/
 
-//Get position of #photo-tagger
+/************************************************ End photoTagger object **************************************************/
+
 
