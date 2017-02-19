@@ -243,11 +243,11 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     },
     "updateEventHandlers" : function updateEventHandlers() {
         photoTagger.removeUnpersistedTagger();
+        $("#photo-tagger").off(); //clear all previous handlers Async problems? Does not return promise. Hope that all previous handlers are remove before new ones are attached
 
         switch(photoTagger.state) {
             case "default":
                 console.log("now attaching default state handlers");
-                $("#photo-tagger").off(); //clear all previous handlers
                 $("#photo-tagger").one("mouseenter", function(event) {
                     photoTagger.state = "awaitingBoxLocation";
                     photoTagger.updateEventHandlers();
@@ -255,7 +255,6 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 break;
             case "awaitingBoxLocation":
                 console.log("now attaching awaitingBoxLocation handlers");
-                $("#photo-tagger").off(); //clear all previous handlers from "#photo-tagger". Async problems? Does not return promise
                 let $tagger = $(photoTagger.makeTaggerBox());
                 $("#photo-tagger").on("mousemove", function (event) {
                     $tagger.css("top", event.pageY)
@@ -275,15 +274,12 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 break;
             case "awaitingNameSelection":
                 console.log("now attaching awaitingNameSelection handlers");
-                $("#photo-tagger").off(); //clear all previous handlers
                 $("#photo-tagger").one("mouseleave", function(event) {
-                    photoTagger.removeUnpersistedTagger();
                     photoTagger.state = "default";
                     photoTagger.updateEventHandlers();
                 });
                 $("#photo-tagger").one("click", function(event) {
                     photoTagger.state = "awaitingBoxLocation";
-                    photoTagger.removeUnpersistedTagger();
                     photoTagger.updateEventHandlers();
                 });
 
