@@ -56,13 +56,11 @@ ul {
     overflow: hidden;
     box-sizing: border-box;
     height: 1em !important;
-    padding-top: 1em;
     transition: height 1s;
 }
 
 ul.displayed-view {
     height: 5em !important;
-    padding-top: 0em;
 
 }
 
@@ -78,11 +76,6 @@ ul:hover {
 li {
     height: 1em;
     width: 100%;
-}
-
-li.selected {
-    display: block !important;
-    position: absolute;
 }
 
 
