@@ -241,7 +241,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "addPersistClass" : function addPersistClass(DOMElement) {
         $(DOMElement).parents(".tagger").addClass("persist");
     },
-    "updateEventHandlers" : function updateEventHandlers() {
+    "updateEventHandlers" : function updateEventHandlers(eventTrigger) {
         photoTagger.removeUnpersistedTagger();
         $("#photo-tagger").off(); //clear all previous handlers Async problems? Does not return promise. Hope that all previous handlers are remove before new ones are attached
 
@@ -265,14 +265,14 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                     photoTagger.updateEventHandlers();
                 });
                 $("#photo-tagger").one("click", function(event) {
-                    photoTagger.makeBox(event.pageX, event.pageY);
                     photoTagger.state = "awaitingNameSelection";
-                    photoTagger.updateEventHandlers();
+                    photoTagger.updateEventHandlers(event);
                 });
                 //We need to make a function in here which refers to the "box" that we want to place somewhere
                 
                 break;
             case "awaitingNameSelection":
+                photoTagger.makeBox(eventTrigger.pageX, eventTrigger.pageY)
                 console.log("now attaching awaitingNameSelection handlers");
                 $("#photo-tagger").one("mouseleave", function(event) {
                     photoTagger.state = "default";
