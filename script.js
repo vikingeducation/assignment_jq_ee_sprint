@@ -257,8 +257,8 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
                 console.log("now attaching awaitingBoxLocation handlers");
                 let $tagger = $(photoTagger.makeTaggerBox());
                 //Look at the dimensions of the tagger-box.
-                let height = $(tagger).height(); //Should this be $(tagger).children(".tagger-box"). But we really want to take into account to total with a name. We can calculate that prior and hide it.
-                let width = $(tagger).width();
+                let height = $($tagger).height(); //Should this be $(tagger).children(".tagger-box"). But we really want to take into account to total with a name. We can calculate that prior and hide it.
+                let width = $($tagger).width();
                 let heightOffset = height/2;
                 let widthOffset = width/2;
                 $("#photo-tagger").on("mousemove", function (event) {
