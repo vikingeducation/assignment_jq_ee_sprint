@@ -57,6 +57,7 @@ ul {
     box-sizing: border-box;
     height: 1em !important;
     padding-top: 1em;
+    transition: height 1s;
 }
 
 ul.displayed-view {
