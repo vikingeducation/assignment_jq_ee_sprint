@@ -256,9 +256,14 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
             case "awaitingBoxLocation":
                 console.log("now attaching awaitingBoxLocation handlers");
                 let $tagger = $(photoTagger.makeTaggerBox());
+                //Look at the dimensions of the tagger-box.
+                let height = $(tagger).height();
+                let width = $(tagger).width();
+                let heightOffset = height/2;
+                let widthOffset = width/2;
                 $("#photo-tagger").on("mousemove", function (event) {
-                    $tagger.css("top", event.pageY)
-                            .css("left", event.pageX);
+                    $tagger.css("top", event.pageY - heightOffset)
+                            .css("left", event.pageX - widthOffset);
                 });
                 $("#photo-tagger").one("mouseleave", function(event) {
                     photoTagger.state = "default";
