@@ -97,6 +97,9 @@ li:hover {
 .feedback {
 	display: none; /*Set to initially not display*/
 }
+.display {
+	display: block;
+}
 
 /* Form Validation CSS End */
 

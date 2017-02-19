@@ -144,7 +144,7 @@ var formValidator = {
         var $input = $(DOMElement);
         var $display = $input
                         .siblings(".feedback"); //Gets the inputs corresponding display
-        $display.toggleClass("displayed", (function() {
+        $display.toggleClass("display", (function() {
             if (valLen > 0 || onError){
                 return true;
             }
