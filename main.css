@@ -56,7 +56,7 @@ ul {
     overflow: hidden;
     box-sizing: border-box;
     height: 1em !important;
-    transition: height 1s;
+    transition: height .5s;
 }
 
 ul.displayed-view {

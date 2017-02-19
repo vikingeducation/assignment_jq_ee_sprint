@@ -23,7 +23,7 @@ var hackedDropBox = {
     },
     "toggleSelectedClass" : function toggleSelectedClass(event) {
         //If an li gets clicked (detects a click event), change the value of "selected-value" to the contents of the event.currentTarget
-        $("#selected-value").val($(event.currentTarget).val());
+        $("#selected-value").text($(event.currentTarget).text());
     },
     /* NOT PRESENTLY USED, CONSIDER DELETING
     "toggleCollapsedViewClass" : function toggleCollapsedViewClass(event) {
