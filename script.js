@@ -190,11 +190,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
     "makeTaggerBox" : function makeTaggerBox() {
         //make box (div) element with width and height and background color and absolute positioning and place it in the body element
         let $box = $("<div></div>")
-            .addClass("tagger")
-            .offset( {
-                "top": 0,
-                "left": 0
-            });
+            .addClass("tagger");
         $box.append(this.makeTagFrame());
         return $box; //targeting the body element
     },
@@ -339,4 +335,3 @@ In the awaitingBoxLocation state, we attach a handler to the mousemove event tha
 on pageX and pageY location
 Upon leaving this state, we disconnect this handler and call the check persist, per usual.
 */
-let $box = 
