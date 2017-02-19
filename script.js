@@ -192,7 +192,7 @@ var photoTagger = { //Good idea to use namespaces for attaching and detaching ev
         let $box = $("<div></div>")
             .addClass("tagger");
         $box.append(this.makeTagFrame());
-        $("#photo-tagger").append($box); //targeting the body element
+        $(document.body).append($box); //targeting the body element
         return $box;
     },
     "makeBox" : function makeBox(xCoord, yCoord) {
