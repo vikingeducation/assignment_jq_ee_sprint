@@ -1,0 +1,19 @@
+li {
+	border: 1px dotted black;
+	display: none;
+	min-width: 100px;
+	text-align: center;
+	padding: 1rem;
+	cursor: pointer;
+	width: 150px;
+}
+
+li:first-of-type {
+	display: block;
+}
+
+.invert {
+	border: 1px dotted #fff;
+	background-color: #111;
+	color: #fff;
+}
