@@ -7,4 +7,12 @@ $(document).ready(function(){
         $('#nameCounter').html(32 - length);
       }
     });
+    $('#email').keyup(function(){
+      var length = $(this).val().length;
+      if (length == 0) {
+        $('#emailCounter').html('');
+      } else  {
+        $('#emailCounter').html(140 - length);
+      }
+    });
 })
