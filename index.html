@@ -8,21 +8,25 @@
   <script src="script.js"></script>
   </head>
   <body>
-    <form>
+    <form name="myForm">
       Name:
-      <input type="text" maxlength="32" id="name">
+      <input type="text"  maxlength="32" id="name">
       <span id="nameCounter"></span>
+      <span class="err" id="nameErr"></span>
       Email Address:
       <input type="textarea" maxlength="140" id="email">
       <span id="emailCounter"></span>
+      <span class="err" id="emailErr"></span>
       Password:
       <input type="password" maxlength="16" id="pass">
       <span id="passCounter"></span>
+      <span class="err" id="passErr"></span>
       Confirm:
       <input type="password" maxlength="16" id="conf">
       <span id="confCounter"></span>
       <span id="confMessage"></span>
-      <input type="submit" value="Submit">
+      <span class="err" id="confErr"></span>
+      <input type="submit" value="Submit" id="submit">
     </form>
   </body>
 </html>
