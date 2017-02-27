@@ -31,4 +31,14 @@ $(document).ready(function(){
         $('#confCounter').html(16 - length);
       }
     });
+    $('#conf').keyup(function(){
+      var length = $(this).val().length;
+      if (length == 0) {
+        $('#confMessage').html('');
+      } else if ($(this).val() != $('#pass').val()) {
+        $('#confMessage').html("Passwords do not match.");
+      }else {
+        $('#confMessage').html("")
+      }
+    })
 })
