@@ -61,5 +61,8 @@ $(document).ready(function () {
     return false;
   });
 //end form exercise
+  $('#menu').click(function () {
+    $('.items').slideToggle('slow');
+  });
 
 });
