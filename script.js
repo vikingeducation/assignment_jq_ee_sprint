@@ -68,9 +68,9 @@ $(document).ready(function () {
   });
 
   $(".items").hover(function () {
-    $(this).css("background-color", "yellow");
+    $(this).css("background-color", "yellow").css("cursor", "pointer");
     }, function () {
-    $(this).css("background-color", "blue");
-});
+    $(this).css("background-color", "blue").css("cursor", "default");
+  });
 
 });
