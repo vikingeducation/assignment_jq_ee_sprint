@@ -62,7 +62,15 @@ $(document).ready(function () {
   });
 //end form exercise
   $('#menu').click(function () {
-    $('.items').slideToggle('slow');
+    $('.items').slideToggle('slow', function () {
+      $('.items').css('background-color', 'blue');
+    });
   });
+
+  $(".items").hover(function () {
+    $(this).css("background-color", "yellow");
+    }, function () {
+    $(this).css("background-color", "blue");
+});
 
 });

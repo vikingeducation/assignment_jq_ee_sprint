@@ -9,6 +9,9 @@
 .items {
   display: none;
   list-style-type: none;
+  border: 1px solid black;
+  height: 20px;
+  width: 50px;
 }
 
 #menu {
