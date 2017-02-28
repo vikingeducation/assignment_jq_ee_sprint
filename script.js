@@ -67,6 +67,12 @@ $(document).ready(function () {
     });
   });
 
+  $('li').click(function () {
+      $('.items').slideToggle('slow');
+      $('#menu').html($(this).text());
+  });
+
+
   $(".items").hover(function () {
     $(this).css("background-color", "yellow").css("cursor", "pointer");
     }, function () {
