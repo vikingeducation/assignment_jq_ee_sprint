@@ -52,8 +52,7 @@ $(document).ready(function () {
     Validator.confirmPass($('#conf'), $('#confMessage'), $('#pass'));
     Counter.count($('#conf'), $('#confCounter'), 16);
   });
-
-  $('#myForm').submit(function() {
+  $('#myForm').submit(function () {
     Validator.reset();
     Validator.validateChars($('#name'), $('#nameErr'), 4, 32);
     Validator.validateChars($('#email'), $('#emailErr'), 4, 140);
@@ -61,4 +60,6 @@ $(document).ready(function () {
     Validator.validPass($('#conf'), $('#confMessage'), $('#pass'));
     return false;
   });
+//end form exercise
+
 });
