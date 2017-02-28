@@ -68,8 +68,9 @@ $(document).ready(function () {
   });
 
   $('li').click(function () {
-      $('.items').slideToggle('slow');
-      $('#menu').html($(this).text());
+    $('.items').slideToggle('slow');
+    $('#menu').html($(this).text());
+    $('form').submit();
   });
 
 
