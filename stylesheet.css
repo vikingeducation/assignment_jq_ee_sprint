@@ -19,3 +19,16 @@
   height: 20px;
   width: 50px;
 }
+
+.target_outline {
+  outline: 3px solid #c00;
+  height: 100px;
+  width: 75px;
+  visibility: hidden;
+}
+
+.target_selected {
+  outline: 3px solid #0c0;
+  height: 100px;
+  width: 75px;
+}

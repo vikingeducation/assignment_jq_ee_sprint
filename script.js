@@ -66,18 +66,36 @@ $(document).ready(function () {
       $('.items').css('background-color', 'blue');
     });
   });
-
   $('li').click(function () {
     $('.items').slideToggle('slow');
     $('#menu').html($(this).text());
     $('form').submit();
   });
-
-
   $(".items").hover(function () {
     $(this).css("background-color", "yellow").css("cursor", "pointer");
     }, function () {
     $(this).css("background-color", "blue").css("cursor", "default");
   });
+//end dropdown exercise
+document.onmousemove = function(e){
+  $('#photo').hover(function () {
+    $('#targ').css('visibility', 'visible');
+    }, function () {
+    $('#targ').css('visibility', 'hidden');
+    });
+  $('#targ').css('position', 'absolute').css('left', (e.pageX - 37) + 'px').css('top', (e.pageY - 50) + 'px')
+};
 
+
+//   cursorX = e.pageX;
+//   cursorY = e.pageY;
+//     d.style.position = "absolute";
+//     d.style.left = cursorX + 'px';
+//     d.style.top = cursorY + 'px';
+//   }
+// }
+// setInterval(checkCursor, 10000000);
+// function checkCursor(){
+//   // alert("Cursor at: " + cursorX + ", " + cursorY);
+// }
 });
