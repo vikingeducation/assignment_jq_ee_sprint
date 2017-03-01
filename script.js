@@ -60,42 +60,49 @@ $(document).ready(function () {
     Validator.validPass($('#conf'), $('#confMessage'), $('#pass'));
     return false;
   });
-//end form exercise
+// end form exercise
   $('#menu').click(function () {
     $('.items').slideToggle('slow', function () {
       $('.items').css('background-color', 'blue');
     });
   });
-  $('li').click(function () {
+  $('.items').click(function () {
     $('.items').slideToggle('slow');
     $('#menu').html($(this).text());
     $('form').submit();
   });
-  $(".items").hover(function () {
-    $(this).css("background-color", "yellow").css("cursor", "pointer");
-    }, function () {
-    $(this).css("background-color", "blue").css("cursor", "default");
+  $('.items').hover(function () {
+    $(this).css('background-color', 'yellow').css('cursor', 'pointer');
+  }, function () {
+    $(this).css('background-color', 'blue').css('cursor', 'default');
   });
-//end dropdown exercise
-document.onmousemove = function(e){
-  $('#photo').hover(function () {
-    $('#targ').css('visibility', 'visible');
-    }, function () {
-    $('#targ').css('visibility', 'hidden');
+
+
+// end dropdown exercise
+  document.onmousemove = function (e) {
+    $('#photo').hover(function () {
+      $('#targ').css('visibility', 'visible');
+      }, function () {
+      $('#targ').css('visibility', 'hidden');
+      });
+    $('#targ').css('position', 'absolute').css('left', (e.pageX - 50) + 'px').css('top', (e.pageY - 75) + 'px');
+  };
+
+
+  $('#photoWrap').click(function (e) {
+    var currentX = e.pageX;
+    var currentY = e.pageY;
+
+    $('.names').slideDown('slow', function () {
+      $('.names').css('background-color', 'red');
+        $('#29').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 75) + 'px')
+        $('#58').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 95) + 'px')
+        $('#28').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 115) + 'px')
+        $('#72').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 135) + 'px')
+        $('#62').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 155) + 'px')
+
     });
-  $('#targ').css('position', 'absolute').css('left', (e.pageX - 37) + 'px').css('top', (e.pageY - 50) + 'px')
-};
 
-
-//   cursorX = e.pageX;
-//   cursorY = e.pageY;
-//     d.style.position = "absolute";
-//     d.style.left = cursorX + 'px';
-//     d.style.top = cursorY + 'px';
-//   }
-// }
-// setInterval(checkCursor, 10000000);
-// function checkCursor(){
-//   // alert("Cursor at: " + cursorX + ", " + cursorY);
-// }
+    $("<div class='clickedOutline'></div>").appendTo($('#targ')).css('position', 'fixed').css('left', (currentX - 50) + 'px').css('top', (currentY - 122) + 'px')
+   });
 });

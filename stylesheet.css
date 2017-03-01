@@ -20,15 +20,34 @@
   width: 50px;
 }
 
-.target_outline {
-  outline: 3px solid #c00;
-  height: 100px;
-  width: 75px;
+.targetOutline {
+  outline: 5px solid #c00;
+  height: 150px;
+  width: 100px;
   visibility: hidden;
 }
+.clickedOutline {
+  outline: 5px solid #c00;
+  height: 150px;
+  width: 100px;
+  visibility: visible;;
+}
+/*#pensNames {
+  position: relative;
+  zoom: 1;
+}*/
+.names {
+  display: none;
+  list-style-type: none;
+  border: 1px solid black;
+  height: 20px;
+  width: 100px;
+}
 
-.target_selected {
+
+
+/*.target_selected {
   outline: 3px solid #0c0;
   height: 100px;
   width: 75px;
-}
+}*/
