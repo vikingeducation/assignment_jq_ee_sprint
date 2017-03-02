@@ -79,49 +79,185 @@ $(document).ready(function () {
 
 
 // end dropdown exercise
-  document.onmousemove = function (e) {
-    var tagged = false;
-    var named = false;
+//   document.onmousemove = function (e) {
+//     var tagged = false;
+//     var named = false;
+//
+//     $('#photo').hover(function () {
+//       $('#targ').css('visibility', 'visible');
+//       }, function () {
+//       $('#targ').css('visibility', 'hidden');
+//       });
+//     $('#targ').css('position', 'absolute').css('left', (e.pageX - 50) + 'px').css('top', (e.pageY - 75) + 'px');
+//   };
+//
+//   $('#photoWrap').click(function (e) {
+//     var currentX = e.pageX;
+//     var currentY = e.pageY;
+//     var nameX = e.pageX - 50;
+//     var nameY = e.pageY + 15;
+//     var tagged = true;
+//     $("<div class='clickedOutline'></div>").appendTo($('#targ')).css('position', 'fixed').css('left', (currentX - 50) + 'px').css('top', (currentY - 122) + 'px')
+//     $('.names').slideDown('slow', function () {
+//       $('.names').css('background-color', 'red');
+//         $('#29').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 75) + 'px')
+//         $('#58').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 95) + 'px')
+//         $('#28').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 115) + 'px')
+//         $('#72').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 135) + 'px')
+//         $('#62').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 155) + 'px')
+//     }); //end names Slide Down
+//       $('.names').click(function () {
+//         var currentName = $(this).text();
+//         // $("<div class='nameBar'></div>").appendTo($('.clickedOutline')).css('position', 'fixed').css('left', (nameX) + 'px').css('top', (nameY) + 'px').css('background-color', 'red');
+//         $('.nameBar').html(currentName);
+//         $('.names').slideUp('slow');
+//         named = true;
+//   });
+//
+//       $('#photowrap2').click(function () {
+//         if ((tagged) && (!named)) {
+//           alert('cancel');
+//         } else
+//           $("<div class='clickedOutline'></div>").appendTo($('#targ')).css('position', 'fixed').css('left', (currentX - 50) + 'px').css('top', (currentY - 122) + 'px')
+//         });
+//         tagged = false;
+//         name = false;
+//
+//   }); // end photowrap
 
-    $('#photo').hover(function () {
-      $('#targ').css('visibility', 'visible');
-      }, function () {
-      $('#targ').css('visibility', 'hidden');
+    var _borderWidth = 8;
+    var _taggerPosition = {};
+    var _people = [
+      'Marc-Andre',
+      'Kris',
+      'Ian',
+      'Patric',
+      'Carl'
+    ];
+
+    // ----------------------------------------
+    // Tagger Position
+    // ----------------------------------------
+    var _setTagPosition = function($tag, x, y) {
+      var offset = $('.image-container').offset();
+      var width = $('.image-container').width();
+      var height = $('.image-container').height();
+
+      y = y - offset.top;
+      x = x - offset.left;
+
+      var w = $tag.width() + _borderWidth * 2;
+      var h = $tag.height() + _borderWidth * 2;
+
+      y -= h / 2;
+      x -= w / 2;
+
+      y = (y < 0) ? 0 : y;
+      x = (x < 0) ? 0 : x;
+
+      var maxHeight = height - h;
+      var maxWidth = width - w;
+
+      y = (y > maxHeight) ? maxHeight : y;
+      x = (x > maxWidth) ? maxWidth : x;
+
+      $tag.css({
+        "z-index": 100,
+        "position": 'absolute',
+        "top": y + 'px',
+        "left": x + 'px'
       });
-    $('#targ').css('position', 'absolute').css('left', (e.pageX - 50) + 'px').css('top', (e.pageY - 75) + 'px');
-  };
+    };
 
-  $('#photoWrap').click(function (e) {
-    var currentX = e.pageX;
-    var currentY = e.pageY;
-    var nameX = e.pageX - 50;
-    var nameY = e.pageY + 15;
-    var tagged = true;
-    $("<div class='clickedOutline'></div>").appendTo($('#targ')).css('position', 'fixed').css('left', (currentX - 50) + 'px').css('top', (currentY - 122) + 'px')
-    $('.names').slideDown('slow', function () {
-      $('.names').css('background-color', 'red');
-        $('#29').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 75) + 'px')
-        $('#58').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 95) + 'px')
-        $('#28').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 115) + 'px')
-        $('#72').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 135) + 'px')
-        $('#62').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 155) + 'px')
-    }); //end names Slide Down
-      $('.names').click(function () {
-        var currentName = $(this).text();
-        // $("<div class='nameBar'></div>").appendTo($('.clickedOutline')).css('position', 'fixed').css('left', (nameX) + 'px').css('top', (nameY) + 'px').css('background-color', 'red');
-        $('.nameBar').html(currentName);
-        $('.names').slideUp('slow');
-        named = true;
-  });
+    // ----------------------------------------
+    // Add Tagger to Container
+    // ----------------------------------------
+    var _createTagger = function() {
+      $('.image-container').prepend('<div id="tagger" class="tag"></div>');
+      $('#tagger').css('border-width', _borderWidth + 'px');
+    };
 
-      $('#photowrap2').click(function () {
-        if ((tagged) && (!named)) {
-          alert('cancel');
-        } else
-          $("<div class='clickedOutline'></div>").appendTo($('#targ')).css('position', 'fixed').css('left', (currentX - 50) + 'px').css('top', (currentY - 122) + 'px')
-        });
-        tagged = false;
-        name = false;
+    // ----------------------------------------
+    // Add Menu to Tagger
+    // ----------------------------------------
+    var _createTaggerMenu = function() {
+      $('#tagger .menu').remove();
+      var $ul = $('<ul class="menu"></ul>');
 
-  }); // end photowrap
+      _people.forEach(function(person, index) {
+        var $a = $('<a></a>');
+        $a.attr('href', '#');
+        $a.attr('data-person-id', index);
+        $a.text(person);
+        var $li = $('<li></li>');
+        $li.append($a);
+        $ul.append($li);
+      });
+
+      $('#tagger').append($ul);
+
+      _setMenuAnchorClickEvents();
+    };
+
+    // ----------------------------------------
+    // Menu Anchor Click
+    // ----------------------------------------
+    var _setMenuAnchorClickEvents = function() {
+      $('#tagger .menu a').click(function(e) {
+        e.preventDefault();
+
+        var $a = $(e.target);
+        var $tag = $('<div class="tag"></div>');
+        $tag.css('border-width', _borderWidth + 'px');
+        var $p = $('<p>' + $a.text() + '</p>');
+        $tag.append($p);
+        $('.image-container').prepend($tag);
+        _people.splice(~~$a.attr('data-person-id'), 1);
+        _setTagPosition($tag, _taggerPosition.x, _taggerPosition.y);
+
+        $('#tagger').removeClass('locked');
+
+
+        return false;
+      });
+    };
+
+    // ----------------------------------------
+    // Show Hide Tagger
+    // ----------------------------------------
+    $('.image-container').hover(function(e) {
+      $('#tagger').show();
+    }, function(e) {
+      if (!$('#tagger').hasClass('locked')) {
+        $('#tagger').hide();
+      }
+    });
+
+    // ----------------------------------------
+    // Lock Tagger on Click
+    // ----------------------------------------
+    $('.image-container').on('click', function(e) {
+      var $tag = $('#tagger');
+      $tag.toggleClass('locked');
+      if ($tag.hasClass('locked')) {
+        _createTaggerMenu();
+      }
+    });
+
+    // ----------------------------------------
+    // Position Tagger on Mouse Move
+    // ----------------------------------------
+    $('.image-container img').mousemove(function(e) {
+      _taggerPosition.x = e.pageX;
+      _taggerPosition.y = e.pageY;
+      if (!$('#tagger').hasClass('locked')) {
+        _setTagPosition($('#tagger'), e.pageX, e.pageY);
+      }
+    });
+
+    // ----------------------------------------
+    // Init Tagger
+    // ----------------------------------------
+    _createTagger();
+
 }); // doc ready

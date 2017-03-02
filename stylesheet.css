@@ -20,34 +20,66 @@
   width: 50px;
 }
 
-.targetOutline {
-  outline: 5px solid #c00;
-  height: 150px;
-  width: 100px;
-  visibility: hidden;
+body {
+  margin-bottom: 128px;
 }
-.clickedOutline {
-  outline: 5px solid #c00;
-  height: 150px;
-  width: 100px;
-  visibility: visible;;
+.image-container {
+  position: relative;
+  max-width: 1024px;
+  margin: 0 auto;
 }
-.names {
+.image-container * {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+.image-container img {
+  width: 100%;
+}
+.tag {
+  position: absolute;
+  min-width: 128px;
+  min-height: 128px;
+  border-style: solid;
+  border-color: red;
+}
+#tagger {
+  pointer-events: none;
   display: none;
-  list-style-type: none;
-  border: 1px solid black;
-  height: 20px;
-  width: 100px;
+  border-color: red;
 }
-.nameBar {
-  border: 1px solid black;
-  height: 20px;
-  width: 100px;
+#tagger.locked {
+  border-color: red;
 }
-
-
-/*.target_selected {
-  outline: 3px solid #0c0;
-  height: 100px;
-  width: 75px;
-}*/
+#tagger .menu {
+  display: none;
+}
+.tag p,
+#tagger .menu {
+  pointer-events: auto;
+  position: absolute;
+  top: 128px;
+  left: -8px;
+  background: red;
+  width: 128px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-style: solid;
+}
+.tag p,
+#tagger.locked .menu{
+  display: block;
+  border: inherit;
+}
+.tag p,
+#tagger .menu a {
+  display: block;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-decoration: none;
+  text-align: center;
+}
+#tagger .menu a:hover {
+  background: #ccc;
+}
