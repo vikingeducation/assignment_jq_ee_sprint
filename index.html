@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>jQ sprint</title>
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="script.js"></script>
+  </head>
+  <body>
+    <form name="myForm" id="myForm">
+      Name:
+      <input type="text"  maxlength="32" id="name">
+      <span id="nameCounter"></span>
+      <span class="err" id="nameErr"></span>
+      Email Address:
+      <input type="textarea" maxlength="140" id="email">
+      <span id="emailCounter"></span>
+      <span class="err" id="emailErr"></span>
+      Password:
+      <input type="password" maxlength="16" id="pass">
+      <span id="passCounter"></span>
+      <span class="err" id="passErr"></span>
+      Confirm:
+      <input type="password" maxlength="16" id="conf">
+      <span id="confCounter"></span>
+      <span id="confMessage"></span>
+      <span class="err" id="confErr"></span>
+      <input type="submit" value="Submit" id="submit">
+      <ul>
+        <div id="menu">
+        </div>
+        <div>
+          <li class="items" id="1">Item 1</li>
+        </div>
+        <div>
+          <li class="items" id="2">Item 2</li>
+        </div>
+        <div>
+          <li class="items" id="3">Item 3</li>
+        </div>
+      </ul>
+    </form>
+
+    <!-- <div id="photoWrap">
+      <div id='photowrap2'>
+      <img id="photo" src="images/pensXmas.jpg">
+      <div id="targ" class="targetOutline">
+      </div>
+      <ul id="pensNames">
+        <div>
+          <li class="names" id="29">Marc-Andre</li>
+        </div>
+        <div>
+          <li class="names" id="58">Kris</li>
+        </div>
+        <div>
+          <li class="names" id="28">Ian</li>
+        </div>
+        <div>
+          <li class="names" id="72">Patric</li>
+        </div>
+        <div>
+          <li class="names" id="62">Carl</li>
+        </div>
+      </ul>
+    </div>
+    </div> -->
+    <div class="image-container">
+      <img src="images/pensXmas.jpg" alt="Image">
+    </div>
+  </body>
+</html>

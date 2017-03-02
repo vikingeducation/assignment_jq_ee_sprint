@@ -1,0 +1,85 @@
+.inputContainer {
+  color: red;
+}
+
+.err {
+  color: red;
+}
+
+.items {
+  display: none;
+  list-style-type: none;
+  border: 1px solid black;
+  height: 20px;
+  width: 50px;
+}
+
+#menu {
+  border: 1px solid black;
+  height: 20px;
+  width: 50px;
+}
+
+body {
+  margin-bottom: 128px;
+}
+.image-container {
+  position: relative;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.image-container * {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+.image-container img {
+  width: 100%;
+}
+.tag {
+  position: absolute;
+  min-width: 128px;
+  min-height: 128px;
+  border-style: solid;
+  border-color: red;
+}
+#tagger {
+  pointer-events: none;
+  display: none;
+  border-color: red;
+}
+#tagger.locked {
+  border-color: red;
+}
+#tagger .menu {
+  display: none;
+}
+.tag p,
+#tagger .menu {
+  pointer-events: auto;
+  position: absolute;
+  top: 128px;
+  left: -8px;
+  background: red;
+  width: 128px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-style: solid;
+}
+.tag p,
+#tagger.locked .menu{
+  display: block;
+  border: inherit;
+}
+.tag p,
+#tagger .menu a {
+  display: block;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-decoration: none;
+  text-align: center;
+}
+#tagger .menu a:hover {
+  background: #ccc;
+}
