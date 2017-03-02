@@ -32,10 +32,6 @@
   width: 100px;
   visibility: visible;;
 }
-/*#pensNames {
-  position: relative;
-  zoom: 1;
-}*/
 .names {
   display: none;
   list-style-type: none;
@@ -43,7 +39,11 @@
   height: 20px;
   width: 100px;
 }
-
+.nameBar {
+  border: 1px solid black;
+  height: 20px;
+  width: 100px;
+}
 
 
 /*.target_selected {

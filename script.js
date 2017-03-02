@@ -80,6 +80,9 @@ $(document).ready(function () {
 
 // end dropdown exercise
   document.onmousemove = function (e) {
+    var tagged = false;
+    var named = false;
+
     $('#photo').hover(function () {
       $('#targ').css('visibility', 'visible');
       }, function () {
@@ -88,11 +91,13 @@ $(document).ready(function () {
     $('#targ').css('position', 'absolute').css('left', (e.pageX - 50) + 'px').css('top', (e.pageY - 75) + 'px');
   };
 
-
   $('#photoWrap').click(function (e) {
     var currentX = e.pageX;
     var currentY = e.pageY;
-
+    var nameX = e.pageX - 50;
+    var nameY = e.pageY + 15;
+    var tagged = true;
+    $("<div class='clickedOutline'></div>").appendTo($('#targ')).css('position', 'fixed').css('left', (currentX - 50) + 'px').css('top', (currentY - 122) + 'px')
     $('.names').slideDown('slow', function () {
       $('.names').css('background-color', 'red');
         $('#29').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 75) + 'px')
@@ -100,9 +105,23 @@ $(document).ready(function () {
         $('#28').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 115) + 'px')
         $('#72').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 135) + 'px')
         $('#62').css('position', 'absolute').css('left', (currentX - 50) + 'px').css('top', (currentY + 155) + 'px')
+    }); //end names Slide Down
+      $('.names').click(function () {
+        var currentName = $(this).text();
+        // $("<div class='nameBar'></div>").appendTo($('.clickedOutline')).css('position', 'fixed').css('left', (nameX) + 'px').css('top', (nameY) + 'px').css('background-color', 'red');
+        $('.nameBar').html(currentName);
+        $('.names').slideUp('slow');
+        named = true;
+  });
 
-    });
+      $('#photowrap2').click(function () {
+        if ((tagged) && (!named)) {
+          alert('cancel');
+        } else
+          $("<div class='clickedOutline'></div>").appendTo($('#targ')).css('position', 'fixed').css('left', (currentX - 50) + 'px').css('top', (currentY - 122) + 'px')
+        });
+        tagged = false;
+        name = false;
 
-    $("<div class='clickedOutline'></div>").appendTo($('#targ')).css('position', 'fixed').css('left', (currentX - 50) + 'px').css('top', (currentY - 122) + 'px')
-   });
-});
+  }); // end photowrap
+}); // doc ready
