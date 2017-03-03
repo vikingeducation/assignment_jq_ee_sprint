@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>jQuery Effects</title>
+      <link href="main.css" rel="stylesheet" type="text/css">
+      <script
+      src="https://code.jquery.com/jquery-3.1.1.js"
+      integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+      crossorigin="anonymous" type="text/javascript" rel="stylesheet"></script>
+      <script src="script.js" type="text/javascript" rel="stylesheet"></script>
+    </head>
+    <body>
+        <div id="hacked-dropbox">
+            <div>Please select an option</div>
+            <ul class="">
+                <li class="selected" id="selected-value"></li>
+                <li class="">Option 1</li>
+                <li class="">Option 2</li>
+                <li class="">Option 3</li>
+                <li class="">Option 4</li>
+            </ul>
+        </div>
+        
+        <form id="test-form" action="#" method="post">
+          <div>
+            <label for="username">Username</label>
+            <div class="feedback"></div>
+            <input type="text" id="username" name="username"/>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <div class="feedback"></div>
+            <textarea id="message" name="message"></textarea>
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <div class="feedback"></div>
+            <input type="password" id="password" name="password"/>
+          </div>
+          <div>
+            <label for="passwordconfirm">Confirm Password</label>
+            <div class="feedback"></div>
+            <input type="password" id="passwordconfirm" name="passwordconfirm"/>
+          </div>
+          <input type="submit" name="submit" value="Booboo"/>
+        </form>
+        
+        <div id="photo-tagger">
+          <img src="http://placehold.it/350x350" alt="No-picture yet"/>
+        </div>
+    </body>
+</html>
