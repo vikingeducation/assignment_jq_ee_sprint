@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JQ EE Sprint</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+  <script src="scripts.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>JQ EE Sprint</h1>
+  </header>
+
+  <!-- Form validation -->
+  <form id="myForm">
+    <label>Text field: <input name="regText" type="text" /></label>
+    <label>Textarea: <textarea name="bigText"></textarea></label>
+    <label>Password: <input name="enterPass" type="password" id="pass" /></label>
+    <label>Confirm: <input name="confirm" type="password" /></label>
+    <button type="submit" id="form-submit">Submit</button>
+  </form>
+
+  <!-- Interactive image -->
+  <div class="img-interactive">
+    <img src="https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97300&w=300&h=300" />
+  </div>
+
+  <!-- Dropdown menu -->
+  <div class="dropdown">
+  <button class="btn-dropdown"></button>
+    <div id="dropdown-default" class="dropdown-content">
+      <button type="submit" id="btn1">Thing 1</button>
+      <button type="submit" id="btn2">Thing 2</button>
+      <button type="submit" id="btn3">Thing 3</button>
+    </div>
+  </div>
+</body>
+</html>
