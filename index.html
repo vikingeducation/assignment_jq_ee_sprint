@@ -5,6 +5,7 @@
   <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
   <script src="scripts.js"></script>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
@@ -14,26 +15,33 @@
 
   <!-- Form validation -->
   <form id="myForm">
-    <label>Full name: <input name="fullName" type="text" /></label>
-    <label>Description: <textarea name="description"></textarea></label>
-    <label>Password: <input name="enterPass" type="password" id="pass" /></label>
+    <label>Full name: <input name="fullName" type="text" id="fn" /><span id="count1"></span></label>
+    <label>Description: <textarea name="description" id="desc"></textarea><span id="count2"></span></label>
+    <label>Password: <input name="enterPass" type="password" id="pass" /><span id="count3"></span></label>
     <label>Confirm: <input name="confirmPass" type="password" /></label>
     <button type="submit" id="form-submit">Submit</button>
   </form>
+
+  <br />
+  <br />
+
+  <!-- Dropdown menu -->
+  <div class="dropdown">
+    <button class="dropbtn"></button>
+    <div id="dropdownItems" class="dropdown-content">
+      <button class="dropbtn">Thing 1</button>
+      <button class="dropbtn">Thing 2</button>
+      <button class="dropbtn">Thing 3</button>
+    </div>
+  </div>
+
+  <br />
+  <br />
 
   <!-- Interactive image -->
   <div class="img-interactive">
     <img src="https://placeholdit.imgix.net/~text?txtsize=28&txt=300%C3%97300&w=300&h=300" />
   </div>
 
-  <!-- Dropdown menu -->
-  <div class="dropdown">
-  <button class="btn-dropdown"></button>
-    <div id="dropdown-default" class="dropdown-content">
-      <button type="submit" id="btn1">Thing 1</button>
-      <button type="submit" id="btn2">Thing 2</button>
-      <button type="submit" id="btn3">Thing 3</button>
-    </div>
-  </div>
 </body>
 </html>
