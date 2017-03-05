@@ -94,8 +94,14 @@ $(document).ready(function() {
   };
 
   // Dropdown menu
+  var menu = {
+    dropdown: function() {
+
+    }
+  };
 
   // Call methods
   form.inputHandler();
   form.charCounter();
+  menu.dropdown();
 });
