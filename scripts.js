@@ -3,7 +3,6 @@ $(document).ready(function() {
   // Form validator using jQuery Form Validation plugin: https://jqueryvalidation.org/
   // TODO: Add character counter
   var form = {
-
     inputHandler: function() {
       $("#myForm").validate({
         rules: {
@@ -24,6 +23,7 @@ $(document).ready(function() {
             equalTo: "enterPass"
           }
         },
+
         messages: {
           fullName: {
             minlength: "Name must be at least 4 characters long",
@@ -51,6 +51,7 @@ $(document).ready(function() {
       $('#count1').hide();
       $('#count2').hide();
       $('#count3').hide();
+
       $("#fn").keydown(function() {
           var el = $(this);
           if (el.val().length === 0) {
@@ -64,6 +65,7 @@ $(document).ready(function() {
             $("#count1").text(32 - el.val().length);
           }
       });
+
       $("#desc").keydown(function() {
           var el = $(this);
           if (el.val().length === 0) {
@@ -77,6 +79,7 @@ $(document).ready(function() {
             $("#count2").text(140 - el.val().length);
           }
       });
+
       $("#pass").keydown(function() {
           var el = $(this);
           if (el.val().length === 0) {
@@ -96,12 +99,25 @@ $(document).ready(function() {
   // Dropdown menu
   var menu = {
     dropdown: function() {
+      $('.dropdown').on('show.bs.dropdown', function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+      });
 
+      $('.dropdown').on('hide.bs.dropdown', function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+      });
     }
   };
+
+  var image = {
+    tagger: function() {
+      
+    }
+  }
 
   // Call methods
   form.inputHandler();
   form.charCounter();
   menu.dropdown();
+  image.tagger();
 });
