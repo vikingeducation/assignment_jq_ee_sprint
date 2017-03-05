@@ -111,13 +111,14 @@ $(document).ready(function() {
 
   var image = {
     tagger: function() {
-      
+      $("#img1").tag();
     }
-  }
+  };
 
   // Call methods
   form.inputHandler();
   form.charCounter();
   menu.dropdown();
   image.tagger();
+
 });
