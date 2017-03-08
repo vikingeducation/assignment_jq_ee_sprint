@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="scripts.js"></script>
+  </head>
+  <body>
+
+
+    <form id="form" action="" method="post">
+
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" >
+        <span id="username-helper" class="helper-text italic">32 characters remaining</span>
+      </div>
+
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" >
+        <span id="password-helper" class="helper-text italic">16 characters remaining</span>
+      </div>
+
+      <div>
+        <label for="password-confirm">Confirm Password:</label>
+        <input type="password" id="password-confirm" >
+        <span id="password-match" class="helper-text italic">Passwords don't match!</span>
+      </div>
+
+      <div>
+        <label for="msg">Message:</label>
+        <textarea id="msg"></textarea>
+        <span id="msg-helper" class="helper-text italic">140 characters remaining</span>
+      </div>
+
+      <div>
+        <ul id="select-list">
+          <li class="item blank-item"></li>
+          <li class="item">Item 1</li>
+          <li class="item">Item 2</li>
+          <li class="item">Item 3</li>
+        </ul>
+      </div>
+
+      <div>
+        <button id="btn-submit" type="submit">Submit Form</button>
+      </div>
+
+    </form>
+  </body>
+</html>
