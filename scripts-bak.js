@@ -142,41 +142,39 @@ var photoTagger = {
     //Show and hide photo tag cursor
     $('#photo')
     .on('mouseenter', function(e) {
-      if(!photoTagger.tagFrameActive) {
-        photoTagger.displayPhotoTag(e, true);
-      }
-
+      photoTagger.cursorActive = true;
+      var $tagCursor = $('<div></div>');
+      $(this).before($tagCursor);
+      $tagCursor.addClass('photo-tag')
+        .attr('id', 'photo-tag-cursor');
     })
     .on('mouseleave', function(e) {
-      if(!photoTagger.tagFrameActive) {
-        photoTagger.displayPhotoTag(e, false);
-      }
+      photoTagger.cursorActive = false;
+      $('#photo-tag-cursor').remove();
     });
 
     $('#photo').on('click', function(e) {
       photoTagger.placePhotoTagFrame(e);
     });
 
-    $('.photo-tag-active').first().not('.placed').find('li').on('click', function(e) {
-      $(this).addClass('selected-name');
-      $(this).parent().addClass('placed');
-      $(this).siblings().remove();
-    });
-
   },
 
+  /*
   displayPhotoTag : function(e, showBool) {
-    photoTagger.cursorActive = showBool;
     if(showBool) {
-      var $tagCursor = $('<div></div>');
-      $(e.target).before($tagCursor);
-      $tagCursor.addClass('photo-tag')
-        .attr('id', 'photo-tag-cursor');
+      //$('#photo').off('mouseenter');
+      //$('#photo').off('mouseleave');
+      //var $tagCursor = $('<div></div>');
+      //$(e.target).before($tagCursor);
+      //$tagCursor.attr('id', 'photo-tag-cursor');
+      $('#photo-tag-cursor').show();
     }
     else {
-      $('#photo-tag-cursor').remove();
+      //$('#photo-tag-cursor').remove();
+      $('#photo-tag-cursor').hide();
     }
   },
+  */
 
   movePhotoTag : function(e) {
     $target = $(e.target);
@@ -189,34 +187,17 @@ var photoTagger = {
 
   placePhotoTagFrame : function(e) {
     $target = $(e.target);
-    if(photoTagger.cursorActive && !photoTagger.tagFrameActive) {
+    if(photoTagger.cursorActive) {
       $('#photo-tag-cursor').remove();
       photoTagger.cursorActive = false;
       photoTagger.tagFrameActive = true;
       var $tagFrame = $('<div></div>');
-      $tagFrame.append('<ul></ul>');
-      $tagFrame.find('ul').append('<li>Alex</li>')
-        .append('<li>Lisa</li>')
-        .append('<li>Tom</li>');
       $target.before($tagFrame);
       $tagFrame.addClass('photo-tag-active');
       $tagFrame.css({
         left: e.pageX - $target.offset().left - 40,
         top: e.pageY - $target.offset().top - 40
       });
-
-      $tagFrame.not('.placed').find('li').on('click', function(e) {
-        $tagFrame.addClass('placed');
-        $(this).addClass('selected-name');
-        $(this).siblings().remove();
-        $(this).off('click');
-        photoTagger.tagFrameActive = false;
-      });
-    }
-    else if(photoTagger.tagFrameActive) {
-      photoTagger.tagFrameActive = false;
-      $('.photo-tag-active').not('.placed').remove();
-      photoTagger.displayPhotoTag(e, true);
     }
   }
 }
