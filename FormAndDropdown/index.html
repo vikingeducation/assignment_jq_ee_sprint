@@ -12,35 +12,36 @@
         <div>
           <input type="text" class="input-box" placeholder="Text field" data-min="4" data-max="32" data-current="0">
           <span class ="remaining-characters">32</span>
-          <span class ="char-error  error-message">Must be 4-32 characters long</span>
+          <span class ="char-error error-message">Must be 4-32 characters long</span>
         </div>
         <div>
           <textarea class="input-box" placeholder="Text area" data-min="4" data-max="140" data-current="0"></textarea>
           <span class ="remaining-characters">140 characters remaining</span>
-          <span class ="char-error  error-message">Must be 4-140 characters long</span>
+          <span class ="char-error error-message">Must be 4-140 characters long</span>
         </div>
         <div>
           <input type="password" class="input-box" id ="pass-orig" data-min="6" data-max="16" data-current="0" placeholder="Password">
           <span class ="remaining-characters">16 characters remaining</span>
-          <span class ="char-error  error-message">Must be at least 6-16 characters long</span>
+          <span class ="char-error error-message">Must be at least 6-16 characters long</span>
         </div>
         <div>
           <input type="password" id="pass-confirm" data-min="6" data-max="16" placeholder="Confirm password">
-          <span class ="remaining-characters">16 characters remaining</span>
           <span id="pass-match">Passwords do not match</span>
-          <span class ="char-error error-message">Must be at least 6-16 characters long</span>
         </div>
 
         <input type="submit" class="button" value="Click me">
       </form>
     </div>
 
-    <div class ="dropdown">
+    <div class="dropdown-container">
       <ul>
-        <li class="active"><li>
-        <li>Item one</li>
-        <li>Item two</li>
-        <li>Item three</li>
+        <li class="list-top open">&nbsp</li>
+        <ul class ="dropdown">
+          <li class="inactive">Ite one</li>
+          <li class="inactive">Item two</li>
+          <li class="inactive">Item three</li>
+          <li class="inactive">Item four</li>
+        </ul>
       </ul>
     </div>
   </main>
