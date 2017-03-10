@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="scripts.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <main>
+    <div class="input-form">
+      <form>
+        <div>
+          <input type="text" class="input-box" placeholder="Text field" data-min="4" data-max="32" data-current="0">
+          <span class ="remaining-characters">32</span>
+          <span class ="char-error error-message">Must be 4-32 characters long</span>
+        </div>
+        <div>
+          <textarea class="input-box" placeholder="Text area" data-min="4" data-max="140" data-current="0"></textarea>
+          <span class ="remaining-characters">140 characters remaining</span>
+          <span class ="char-error error-message">Must be 4-140 characters long</span>
+        </div>
+        <div>
+          <input type="password" class="input-box" id ="pass-orig" data-min="6" data-max="16" data-current="0" placeholder="Password">
+          <span class ="remaining-characters">16 characters remaining</span>
+          <span class ="char-error error-message">Must be at least 6-16 characters long</span>
+        </div>
+        <div>
+          <input type="password" id="pass-confirm" data-min="6" data-max="16" placeholder="Confirm password">
+          <span id="pass-match">Passwords do not match</span>
+        </div>
+
+        <input type="submit" class="button" value="Click me">
+      </form>
+    </div>
+
+    <div class="dropdown-container">
+      <ul>
+        <li class="list-top open">&nbsp</li>
+        <ul class ="dropdown">
+          <li class="inactive">Ite one</li>
+          <li class="inactive">Item two</li>
+          <li class="inactive">Item three</li>
+          <li class="inactive">Item four</li>
+        </ul>
+      </ul>
+    </div>
+  </main>
+</body>
+
+</html>
