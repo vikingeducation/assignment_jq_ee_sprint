@@ -62,5 +62,48 @@ $(document).ready(function() {
 
   $('.confirmPassword').keyup(checkPasswordMatch);
 
+  $('.submit').click(function(event) {
+    event.preventDefault();
+    checkValidations();
+    checkPasswordMatch();
+  });
+
+  function checkValidations() {
+
+    if ( $('.textBox').val().length < 4 || $('.textBox').val().length > 32) {
+      $('.textBox').css('color', 'red');
+      $('.textboxErrorMessage').text('Enter 4-32 characters!').css('color', 'red');
+    }
+
+    if ( $('.textArea').val().length < 4 || $('.textArea').val().length > 140) {
+      $('.textArea').css('color', 'red');
+      $('.textareaErrorMessage').text('Enter 4-140 characters!').css('color', 'red');
+    }
+
+    if ( $('.password').val().length < 6 || $('.password').val().length > 16) {
+      $('.password').css('color', 'red');
+      $('.passwordErrorMessage').text('Enter 6-16 characters!').css('color', 'red');
+    }
+
+    if ( $('.confirmPassword').val().length < 6 || $('.confirmPassword').val().length > 16) {
+      $('.confirmPassword').css('color', 'red');
+      $('.confirmMessage').text('Enter 6-16 characters!').css('color', 'red');
+    }
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
