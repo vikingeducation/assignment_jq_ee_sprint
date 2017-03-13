@@ -1,0 +1,5 @@
+form, input, textarea,label {
+  margin: 20px;
+  display: block;
+  min-height: 20-px;
+}
