@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic jQuery</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+
+  <form>
+
+    <div>
+        <div class="text-box">
+          <p>Enter text: <input type="text" class="textBox" name="textfield">
+            <span id="textbox"></span><br>
+            <span class="textboxErrorMessage"></span>
+          </p>
+        </div>
+
+        <div class="text-area">
+          <p>Enter text: <textarea class="textArea"></textarea>
+            <span id="textArea"></span><br>
+            <span class="textareaErrorMessage"></span>
+          </p>
+        </div>
+
+        <div class="text-password">
+          <p>Enter password: <input type="password" name="password" class="password">
+            <span id="password"></span><br>
+            <span class="passwordErrorMessage"></span>
+          </p>
+        </div>
+
+        <div class="confirm-password">
+          <p>Confirm password: <input type="password" name="confirmPassword" class="confirmPassword">
+          <span id="confirmPassword"></span><br>
+            <span class="confirmMessage"></span>
+          </p>
+        </div>
+
+        <input type="submit" class="submit" name="submit">
+    </div>
+
+  </form><br>
+
+  <!-- form-style dropdown menu -->
+  <!-- <form>
+     <select>
+      <option>one</option>
+      <option>two</option>
+      <option>three</option>
+    </select>
+  </form> -->
+
+  <!-- replicated with div tags: -->
+  <div id="dropdown">
+    <div class="top-level topLevel">menu</div>
+      <div class="opt1 option">choice 1</div>
+      <div class="opt2 option">choice 2</div>
+      <div class="opt3 option">choice 3</div>
+  </div>
+
+
+
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="scripts.js"></script>
+</body>
+</html>

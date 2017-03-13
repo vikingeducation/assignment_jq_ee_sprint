@@ -1,0 +1,51 @@
+.confirmMessage {
+  color:red;
+}
+
+/*#dropdown {
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+}*/
+#dropdown {
+  display: inline-block;
+}
+
+.errorText {
+  color:red;
+}
+
+.option {
+  text-align: center;
+  padding-top: 10px;
+  height:30px;
+  width: 200px;
+  border: solid 2px black;
+  display:none;
+}
+
+.opt1 {
+  background-color: orange;
+  border-top: none;
+}
+
+.opt2 {
+background-color: orange;
+border-top: none;
+}
+
+.opt3 {
+  background-color: orange;
+  border-top: none;
+}
+.top-level {
+  text-align: center;
+  padding-top: 5px;
+  height:35px;
+  width: 200px;
+  border: solid 2px black;
+}
+
+.optionBackground {
+  background-color: green;
+}
