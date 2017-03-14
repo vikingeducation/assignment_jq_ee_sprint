@@ -1,0 +1,19 @@
+#duck, #explosion {
+  position: absolute;
+}
+
+.hidden {
+  display: none;
+}
+
+html {
+  cursor: url('target.svg'), pointer;
+  height: 100%;
+}
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  font-size: 8px;
+}

@@ -1,0 +1,42 @@
+img {
+  position: relative;
+}
+
+.target-outline, .fixed-target {
+  outline: 3px solid red;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  z-index: 1;
+}
+
+.fixed-name {
+  height: 20px;
+  outline: 3px solid green;
+  width: 100px;
+  position: absolute;
+  background-color: white;
+  z-index: 100;
+}
+.forever {
+  outline: 3px solid green;
+  width: 100px;
+  height: 100px;
+  z-index: 100;
+}
+button {
+  z-index: 100;
+}
+.hidden {
+  display: none;
+}
+.dropdown-content {
+  display: none;
+  width: 100px;
+  position: absolute;
+  background-color: white;
+  outline: 3px solid red;
+}
+.dropdown-content div:hover {
+  background-color: #ccc;
+}
