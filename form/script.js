@@ -66,19 +66,20 @@ $(document).ready( function(){
     }
   });
 
-  $("form").submit(function(event) {
+  $("button").on("click", function(event) {
     var $offendSpan;
-    offend($("#text-field"), 4, 32);
+    event.preventDefault();
+    offend($("#input"), 4, 32);
     offend($("textarea"), 4, 140);
     offend($("#password"), 6, 16);
     offend($("#password-conf"), 6, 16);
-    
+
     if ($("#password-conf").val() !== $("#password").val()) {
       $offendSpan = $("<span class='offend-text'>Your passwords must match! </span>");
       $("#password-conf").addClass("offend");
         $(".approve-password-conf").after($offendSpan);
       }
-    event.preventDefault();
+
   });
 
   $(".dropbtn").on("click", function(){
