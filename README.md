@@ -1,4 +1,4 @@
-assignment_jq_ee_sprint
+assignment_jq_ee_sprint - Mark Hahn
 =======================
 
 jQSFX
