@@ -1,0 +1,41 @@
+img {
+  display: block;
+  margin: auto;
+  width: 70%;
+  cursor: crosshair; }
+
+#square {
+  width: 70px;
+  height: 70px;
+  border: 6px solid red; }
+
+.fixed-square {
+  width: 70px;
+  height: 70px;
+  border: 6px solid green;
+  position: fixed;
+  color: white;
+  font-size: 17px; }
+
+#dropdown {
+  width: 76px;
+  height: 80px;
+  border: 3px solid red;
+  background-color: white;
+  pointer-events: none; }
+  #dropdown p {
+    font-size: 12px;
+    padding: 0;
+    text-align: center;
+    margin: 1px;
+    pointer-events: auto;
+    cursor: pointer; }
+
+#tagger {
+  position: fixed;
+  pointer-events: none; }
+
+.invisible {
+  display: none; }
+
+/*# sourceMappingURL=styles.css.map */
