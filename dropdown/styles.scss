@@ -1,0 +1,19 @@
+div {
+	display: none;
+	width: 120px;
+	height: 40px;
+	border: 1px solid black;
+	padding: 2px;
+	text-align: center;
+	vertical-align: middle;
+	margin: auto;
+	cursor: pointer;
+}
+
+.start, .selected, .open {
+	display: block;
+	&:hover {
+		border: 3px solid black;
+	}
+}
+
