@@ -1,0 +1,58 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    font-size: 21px;
+    line-height: 1.618em;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #F3F3F3;
+}
+
+header {
+    height: 100px;
+    background: linear-gradient(to right, rgba(5,75,145,1) 0%, rgba(62,123,177,1) 100%);
+    text-align: center;
+    background: mauve;
+    letter-spacing: 3px;
+}
+
+header h1 {
+    font-size: 1.618em;
+    color: white;
+    padding-top: 20px;
+}
+main {
+    margin-top: 50px;
+    margin-left: 25%;
+    width: 50%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form * {
+    width: 100%;
+    margin-bottom: .5em;
+}
+
+p.input-notification {
+    line-height: .5em;
+    font-size: .618em;
+    color: #777;
+}
+
+p.pass-warning {
+    text-align: center;
+    background-color: #F99;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: -10px;
+    color: red;
+    font-size: .8em;
+    line-height: 3em;
+    border-radius: 10px;
+}
