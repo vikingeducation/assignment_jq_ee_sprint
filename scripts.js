@@ -132,8 +132,9 @@
 
         setup: function(config) {
             config.$img.mousemove(function(event) {
-                var xCoordinate = event.clientX + "px";
-                var yCoordinate = event.clientY + "px";
+                var parentOffset = $(this).position();
+                var xCoordinate = (event.pageX - parentOffset.left) + "px";
+                var yCoordinate = (event.pageY - parentOffset.top) + "px";
                 imgTagger.clearTaggingBlock();
                 imgTagger.drawTaggingBlock(xCoordinate, yCoordinate, config);
             });
@@ -141,6 +142,11 @@
             config.$img.mouseout(function(event) {
                 console.log("mouseout fired!");
                 imgTagger.clearTaggingBlock();
+            });
+
+            config.$img.click(function(event) {
+                console.log("you clicked the image!");
+                console.log(event);
             })
         },
 
