@@ -1,7 +1,29 @@
 (function init() {
     "use strict";
-
     $(document).ready(function() {
+
+        /* Structure:
+            Form Validator
+                `- Variables
+                    -input DOM elements
+                    -max length config (put this in html - data-maxlength)
+                    -
+            Dropdown Menu
+            Image Validator
+
+            --------------------
+
+            TODO:
+                -Remove attachListener; totally superfluous function!!!
+        */
+        var config = {maxFormLengths: [32, 140, 16, 16]};
+
+        var $formInputs = $("form *").filter(":input");
+        var $passInputs = $formInputs.filter(":password");
+        var $password = $passInputs.first();
+        var $confirmPassword = $passInputs.last(); 
+        var $passNotification = $passInputs.first().prev(".pass-warning");
+
         var checkInputLength = function($inputField, maxLength, self) {
             var inputLength = $(self).val().length;
             var remaining = maxLength - inputLength;
@@ -12,28 +34,16 @@
                 $inputNotification.text("");
             }
         };
-
         var attachListener = function($inputField, maxLength) {
             $inputField.keyup(function () {
                 var self = this;
                 checkInputLength($inputField, maxLength, self);
             });
         };
-
-        var config = {
-            maxFormLengths: [32, 140, 16, 16]
-        };
-
-        var $formInputs = $("form *").filter(":input");
-
+        
         $formInputs.each(function(i, inputField) {
             attachListener($(inputField), config.maxFormLengths[i]);
         });
-
-        var $passInputs = $("form *").filter(":password");
-        var $password = $passInputs.first();
-        var $confirmPassword = $passInputs.last(); 
-        var $passNotification = $passInputs.first().prev(".pass-warning");
 
         $passInputs.last().keyup(function() {
             if ($confirmPassword.val().length === 0) {
@@ -47,6 +57,7 @@
 
         $("#form-submit").click(function(event) {
             event.preventDefault();
+            
         });
     });
 }());
