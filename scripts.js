@@ -53,7 +53,7 @@
             if ($passwordConfirm.val().length === 0) {
                 $passNotification.html("");
             } else if ($password.val() !== $passwordConfirm.val()) {
-                $passNotification.html("Password does not match!");
+                $passNotification.html("Passwords do not match");
             } else {
                 $passNotification.html("");
             }
@@ -63,9 +63,14 @@
             $formInputs.each(function(i, inputField) {
                 var $inputField = $(inputField);
                 var $inputError = $inputField.siblings(".input-error");
-                if ($inputField.val().length > $inputField.attr("data-max-length")) {
+                var maxLength = $inputField.attr("data-max-length");
+                var minLength = $inputField.attr("data-min-length");
+                if ($inputField.val().length > maxLength) {
                     $inputField.addClass("input-error-highlight");
-                    $inputError.text("Error: Exceeded character limit for field");
+                    $inputError.text("Error: Exceeded " + maxLength + " character limit for field");
+                } else if ($inputField.val().length < minLength) {
+                    $inputField.addClass("input-error-highlight");
+                    $inputError.text("Error: Please input at least " + minLength + " characters");
                 }
             })
         }
@@ -108,47 +113,65 @@
         }
     };
 
+    // TO DO:
+    // 1. Detect mouse entering image DONE
+    // 2. var taggingBlock (DOM div.imgtagger-hover) appears around mouse. WIP
+    // 3. if Click on img:
+    //      -Create DOM div.imgtagger-active using .position(), slide out UL>LI*4 with names (.imgtagger-friends)
+    // 4. Create listener, anytime .imgtagger-friends name selected, imgtagger-hover.removeClass(imgtagger-active) and this.addClass(imgtagger-placed)
+    //          -also, add dom element <div> with name of friend, position() + offset
+    // 4. if mouseleave or click outside of img:
+    //      -delete imgtagger-hover and imgtagger-placed and imgtagger-placed.siblings("imgtagger-friends")
     var imgTagger = {
         init: function() {
             imgTagger.config = {
-                $img: $("img#img-tagger-main")
-                // Likely needed:
-                // Mouse Position
-                // Blank "tagger" block"
-                // list of names
+                $img: $("div#tag-staging")
             };
             imgTagger.setup(imgTagger.config);
         },
 
         setup: function(config) {
-            config.$img.hover(function(event) {
-                var self = this;
-                imgTagger.pollMouse(self, event);
+            config.$img.mousemove(function(event) {
+                var xCoordinate = event.clientX + "px";
+                var yCoordinate = event.clientY + "px";
+                imgTagger.clearTaggingBlock();
+                imgTagger.drawTaggingBlock(xCoordinate, yCoordinate, config);
             });
-            config.$img.mouseleave(function() {
-                console.log("mouseleave TRIGGERED");
-                clearInterval(imgTagger.pollInterval);
-            });
+
+            config.$img.mouseout(function(event) {
+                console.log("mouseout fired!");
+                imgTagger.clearTaggingBlock();
+            })
         },
 
-        pollMouse: function(self, event) {
-            imgTagger.pollInterval = setInterval(function() {
-                var parentOffset = $(self).parent().offset();
-                var relativeX = event.pageX - parentOffset.left;
-                var relativeY = event.pageY - parentOffset.top;
-                // console.clear();
-                console.log(relativeX);
-                console.log(relativeY);
-            }, 500);
+        clearTaggingBlock: function() {
+            $(".tagging-block-hover").remove();
+        },
+
+        /* Main Problem:
+            When I draw a tagging block under my mouse,
+            all of the sudden my mouse thinks it is under div.tagging-block-hover
+            If div.tagging-block-hover is a child of my tag staging area,
+            Then tagging-block is NEVER removed since we're always "technically"
+            under the image, since mouse is following a child of div#tag-staging-area.
+            Otherwise, if I have it OUTSIDE the tag staging area, then immediately when a
+            tagging block is drawn, I am outside of my staging area and the
+            tagging block is immediately removed, causing it to be redrawn and removed
+            rapidly while I am hovering over my image. Basically, neither way works.
+            Requirements say that mouse must appear in center of box. Only way this whole
+            thing works so far is if box appears at edge of pointer.
+            I've tried playing with position fixed vs absolute, z indexing img on top of
+            everything, etc., and nothing seems to cooperate. Any ideas?
+        */
+        drawTaggingBlock: function(x, y, config) {
+            var taggingBlock = $("<div></div>")
+                .addClass("tagging-block-hover")
+                .css({
+                    'top': y,
+                    'left': x,
+                });
+            config.$img.append(taggingBlock);
         }
-            // 1. Detect mouse entering image
-            // 2. var taggingBlock (DOM div.imgtagger-hover) appears around mouse.
-            // 3. if Click on img:
-            //      -Create DOM div.imgtagger-active using .position(), slide out UL>LI*4 with names (.imgtagger-friends)
-            // 4. Create listener, anytime .imgtagger-friends name selected, imgtagger-hover.removeClass(imgtagger-active) and this.addClass(imgtagger-placed)
-            //          -also, add dom element <div> with name of friend, position() + offset
-            // 4. if mouseleave or click outside of img:
-            //      -delete imgtagger-hover and imgtagger-placed and imgtagger-placed.siblings("imgtagger-friends")
 
     };
 

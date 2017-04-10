@@ -131,5 +131,24 @@ li:last-of-type {
 }
 
 img {
+    z-index: -900;
     max-width: 100%;
+}
+
+#tag-staging {
+    position: relative;
+    z-index: 100;
+}
+
+.tagging-block-hover {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    height: 100px;
+    width: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    border: solid 5px yellow;
+    border-radius: 5px;
+    z-index: 99999999;
 }
