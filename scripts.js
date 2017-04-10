@@ -108,8 +108,53 @@
         }
     };
 
+    var imgTagger = {
+        init: function() {
+            imgTagger.config = {
+                $img: $("img#img-tagger-main")
+                // Likely needed:
+                // Mouse Position
+                // Blank "tagger" block"
+                // list of names
+            };
+            imgTagger.setup(imgTagger.config);
+        },
+
+        setup: function(config) {
+            config.$img.hover(function(event) {
+                var self = this;
+                imgTagger.pollMouse(self, event);
+            });
+            config.$img.mouseleave(function() {
+                console.log("mouseleave TRIGGERED");
+                clearInterval(imgTagger.pollInterval);
+            });
+        },
+
+        pollMouse: function(self, event) {
+            imgTagger.pollInterval = setInterval(function() {
+                var parentOffset = $(self).parent().offset();
+                var relativeX = event.pageX - parentOffset.left;
+                var relativeY = event.pageY - parentOffset.top;
+                // console.clear();
+                console.log(relativeX);
+                console.log(relativeY);
+            }, 500);
+        }
+            // 1. Detect mouse entering image
+            // 2. var taggingBlock (DOM div.imgtagger-hover) appears around mouse.
+            // 3. if Click on img:
+            //      -Create DOM div.imgtagger-active using .position(), slide out UL>LI*4 with names (.imgtagger-friends)
+            // 4. Create listener, anytime .imgtagger-friends name selected, imgtagger-hover.removeClass(imgtagger-active) and this.addClass(imgtagger-placed)
+            //          -also, add dom element <div> with name of friend, position() + offset
+            // 4. if mouseleave or click outside of img:
+            //      -delete imgtagger-hover and imgtagger-placed and imgtagger-placed.siblings("imgtagger-friends")
+
+    };
+
     $(document).ready(function() {
         formValidator.init();
         dropdown.init();
+        imgTagger.init();
     });
 }());

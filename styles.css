@@ -7,7 +7,8 @@
 }
 
 body {
-    background-color: #F3F3F3;
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(232,253,246,1) 100%);
+    background-attachment: fixed;
 }
 
 header {
@@ -81,6 +82,10 @@ p.pass-warning {
     font-weight: 700;
 }
 
+#dropdown-section {
+    min-height: 400px;
+}
+
 ul {
     width: 100%;
 }
@@ -105,7 +110,7 @@ li a {
 
 
 li:not(:first-of-type):hover {
-    background-color: #DDD;
+    background-color: #CCE3F9;
 }
 
 li:first-of-type {
@@ -123,4 +128,8 @@ li:first-of-type a:hover {
 
 li:last-of-type {
     border-radius: 0px 0px 8px 8px;
+}
+
+img {
+    max-width: 100%;
 }
