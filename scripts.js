@@ -114,10 +114,11 @@
     };
 
     // TO DO:
-    // 1. Fix function that restarts setup when user clicks outside image so that
-    //    it ignore if user clicker ul.friends-list
-    // 2. Append taggedFriend box to DOM
-    // 3. Add remove tag function
+    // 1. Stop propagation for all name-friend clicks
+    // 2. event namespacing so that you only turn on what needs to be turned on
+    //      -might have a boolean that determines if this is first pass or second,
+    //      and reactivate listeners on second pass :)
+    // 
     var imgTagger = {
         init: function() {
             imgTagger.config = {
@@ -156,7 +157,7 @@
             // Removes hover tagging block and replaces it with a static temp block
             // Turns off tagging process until user clicks outside image
             console.log(config.taggingStage);
-            config.$img.click(function(event) {
+            config.$img.on("click.setTag", function(event) {
                 if (config.taggingStage === "hover") {
                     imgTagger.startTagging(config, event.offsetX, event.offsetY);
                     config.$taggingBlockHover.hide();
@@ -187,7 +188,7 @@
             console.log("select Friend fired");            
             if (config.taggingStage === "temp") {
                 var $friends = config.$friendsList.find("a");
-                $friends.click(function(event) {
+                $friends.on("click.selectFriend", function(event) {
                     if (config.taggingStage === "temp") {
                         event.preventDefault();
                         var friendName = event.target.innerHTML;
@@ -225,14 +226,13 @@
         cancelTagging: function(config) {
             console.log("outter cancel tagging fired");
             setTimeout(function() {
-                $("html").click(function(event) {
+                $("html").on("click.cancelTagging", function(event) {
                     console.log("inner cancel tagging fired");
                     if (config.taggingStage === "temp" || config.taggingStage === "perm") {
                         if (!$(event.target).is("div.tagging-block-temp *")) {
                             // config.taggingStage = "hover";
                             config.$taggingBlockTemp.hide();
-                            $("html").off("click");
-                            console.log("cancel clicked!");
+                            $("html").off("click.cancelTagging");
                         }
                     }
                 });
