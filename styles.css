@@ -85,7 +85,9 @@ p.pass-warning {
     color: red;
     font-weight: 700;
 }
-
+form button {
+    cursor: pointer;
+}
 #dropdown-section {
     min-height: 400px;
 }
@@ -207,7 +209,17 @@ ul.friends-list li a {
     text-decoration: none;
 }
 
+p.saved-friend a.remove-tag {
+    pointer-events: auto;
+    display: inline-block;
+    margin-left: 1em;
+    color: red;
+    text-align: left;
+    text-decoration: none;
+}
+
 .tagging-block-permanent {
+    pointer-events: none;
     position: absolute;
     min-height: 100px;
     width: 100px;
@@ -221,4 +233,64 @@ p.saved-friend {
     border-top: solid 5px rgba(0, 0, 0, .7);
     background-color: rgba(255,255,255,.7);
     padding-left: 5px;
+}
+
+div#simon-says-container {
+    font-size: 10px;
+}
+
+div.simon-says {
+    position: relative;
+    top: 0px;
+    cursor: pointer;
+    line-height: 0em;
+    border-radius: 20px;
+    height: 250px;
+    display: inline-block;
+    width: 50%;
+    box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color .3s ease-out;
+    transition: box-shadow .1s ease-out;
+    transition: top .1s ease-out;
+}
+
+div.simon-says:active {
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2);
+    top: 4px;
+}
+
+div.simon-says.green {
+    position: relative;
+    background-color: green;
+}
+
+div.simon-says.red {
+    position: relative;
+    background-color: red;
+}
+
+div.simon-says.yellow {
+    position: relative;
+    background-color: yellow;
+}
+
+div.simon-says.blue {
+    position: relative;
+    background-color: blue;
+}
+
+div.simon-says.green:active {
+    background-color: lightgreen;
+}
+
+div.simon-says.red:active {
+    background-color: #FF8888;
+}
+
+div.simon-says.yellow:active {
+    background-color: lightyellow;
+}
+
+div.simon-says.blue:active {
+    background-color: lightblue;
 }

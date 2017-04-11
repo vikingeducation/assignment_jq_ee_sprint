@@ -34,6 +34,7 @@
             });
             formValidator.config.$submitBtn.click(function(event) {
                 event.preventDefault();
+                event.stopPropagation();
                 formValidator.validateInput(formValidator.config.$formInputs);
             })
         },
@@ -133,35 +134,33 @@
         },
 
         setup: function(config) {
-            // Sets up (x,y) coords for tagging block, display tagger
-            // on mouseover
-            config.$img.mousemove(function(event) {
-                if (config.taggingStage === "hover") {
-                    config.$taggingBlockHover.show();
+            imgTagger.setTaggerHover(config);
 
-                    var offset = $(this).position();
-                    var xCoordinate = (event.pageX - offset.left) + "px";
-                    var yCoordinate = (event.pageY - offset.top) + "px";
+            imgTagger.clearTaggerHover(config);
 
-                    imgTagger.moveTaggingBlock(config, xCoordinate, yCoordinate);
-                }
+            imgTagger.enableTagging(config);
+
+            imgTagger.removeTags(config);
+        },
+
+        // Sets up (x,y) coords for tagging block, display tagger
+        // on mouseover
+        setTaggerHover: function(config) {
+            config.$img.on("mousemove.taggerHover", function(event) {
+                config.$taggingBlockHover.show();
+
+                var offset = $(this).position();
+                var xCoordinate = (event.pageX - offset.left) + "px";
+                var yCoordinate = (event.pageY - offset.top) + "px";
+
+                imgTagger.moveTaggingBlock(config, xCoordinate, yCoordinate);
             });
+        },
 
-            // Clears screen when mouse leaves image area
-            config.$img.mouseout(function(event) {
-                if (config.taggingStage === "hover") {
-                    config.$taggingBlockHover.hide();
-                }
-            });
-
-            // Removes hover tagging block and replaces it with a static temp block
-            // Turns off tagging process until user clicks outside image
-            console.log(config.taggingStage);
-            config.$img.on("click.setTag", function(event) {
-                if (config.taggingStage === "hover") {
-                    imgTagger.startTagging(config, event.offsetX, event.offsetY);
-                    config.$taggingBlockHover.hide();
-                }
+        // Clears screen when mouse leaves image area
+        clearTaggerHover: function(config) {
+            config.$img.on("mouseout.taggerHoverExit", function(event) {
+                config.$taggingBlockHover.hide();
             });
         },
 
@@ -172,71 +171,87 @@
             });
         },
 
+        // Removes hover tagging block and replaces it with a static temp block
+        // Turns off tagging process until user clicks outside image
+        enableTagging: function(config) {
+            config.$img.on("click.setTag", function(event) {
+                config.$img.off("mousemove.taggerHover mouseout.taggerHoverExit click.setTag");
+                imgTagger.startTagging(config, event.offsetX, event.offsetY);
+                config.$taggingBlockHover.hide();
+            });
+        },
+
         startTagging: function(config, x, y) {
-            console.log("start tagging fired");
-            config.taggingStage = "temp";
             config.$taggingBlockTemp.css({
                 'left': (x - config.taggingBlockOffset),
                 'top': (y - config.taggingBlockOffset)
             });
             config.$taggingBlockTemp.show();
-            config.$friendsList.slideDown();
+            config.$friendsList.slideDown("fast");
             imgTagger.selectFriend(config, x, y);
         },
 
         selectFriend: function(config, x, y) {
-            console.log("select Friend fired");            
-            if (config.taggingStage === "temp") {
-                var $friends = config.$friendsList.find("a");
-                $friends.on("click.selectFriend", function(event) {
-                    if (config.taggingStage === "temp") {
-                        event.preventDefault();
-                        var friendName = event.target.innerHTML;
-                        config.taggingStage = "permanent";
-                        config.$taggingBlockTemp.slideUp();
-                        imgTagger.saveTag(x, y, config, friendName);
-                    }
-                });
-                imgTagger.cancelTagging(config);
-            }
+            var $friends = config.$friendsList.find("a");
+            $friends.on("click.selectFriend", function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                var friendName = event.target.innerHTML;
+                config.taggingStage = "permanent";
+                config.$taggingBlockTemp.slideUp("fast");
+                config.$friendsList.slideUp("fast");
+                $friends.off("click.selectFriend");
+                imgTagger.saveTag(x, y, config, friendName);
+            });
+            imgTagger.cancelTagging(config, $friends);
         },
 
         saveTag: function(x, y, config, friend) {
-            console.log("save tag fired");
-            if (config.taggingStage === "permanent") {
-                var $taggingBlockPerm = $("<div></div>")
-                    .addClass("tagging-block-permanent")
-                    .css({
-                        'left': (x - config.taggingBlockOffset),
-                        'top': (y- config.taggingBlockOffset)
-                    });
-                var $friend = $("<p></p>")
-                    .addClass("saved-friend")
-                    .text(friend);
-                $taggingBlockPerm.append($friend);
-                config.$img.append($taggingBlockPerm);
-                // imgTagger.removeTempFriendList();
-                // config.taggingStage = "hover";
-            }
+            var $taggingBlockPerm = $("<div></div>")
+                .addClass("tagging-block-permanent")
+                .css({
+                    'left': (x - config.taggingBlockOffset),
+                    'top': (y- config.taggingBlockOffset)
+                });
+            var $friend = $("<p></p>")
+                .addClass("saved-friend")
+                .text(friend);
+            var $removeTag = $("<a></a>")
+                .attr("href", "#")
+                .addClass("remove-tag")
+                .text("x");
+            $friend.append($removeTag);
+            $taggingBlockPerm.append($friend);
+            config.$img.append($taggingBlockPerm);
+            config.taggingStage = "hover";
+            imgTagger.restartTagging(config);
         },
 
-        // setTimeout used in order this function to only be called when user
-        // start tagging process. Otherwise, runs immediately on-click,
-        // interfering with other functions
-        cancelTagging: function(config) {
-            console.log("outter cancel tagging fired");
+        // setTimeout used so that function only begins to listen once
+        // user has started tagging process
+        cancelTagging: function(config, $friends) {
             setTimeout(function() {
                 $("html").on("click.cancelTagging", function(event) {
-                    console.log("inner cancel tagging fired");
-                    if (config.taggingStage === "temp" || config.taggingStage === "perm") {
-                        if (!$(event.target).is("div.tagging-block-temp *")) {
-                            // config.taggingStage = "hover";
-                            config.$taggingBlockTemp.hide();
-                            $("html").off("click.cancelTagging");
-                        }
+                    if (!$(event.target).is("div.tagging-block-temp *")) {
+                        config.$taggingBlockTemp.hide();
+                        $friends.off("click.selectFriend");
+                        imgTagger.restartTagging(config);
                     }
                 });
             }, 0);
+        },
+
+        restartTagging: function(config) {
+            $("html").off("click.cancelTagging");
+            imgTagger.setup(config);
+        },
+
+        removeTags: function(config) {
+            $("a.remove-tag").on("click", function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                $(this).parents().closest(".tagging-block-permanent").remove();
+            });
         }
     };
 
