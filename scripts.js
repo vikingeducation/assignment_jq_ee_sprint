@@ -123,7 +123,7 @@
             imgTagger.config = {
                 $img: $("div#tag-staging"),
                 $tagger: $("div.tagging-block-hover"),
-                imgHasListeners: false,
+                taggingStage: "hover",
                 friends: ["Caesar", "Pompey", "Crassus", "Octavian", "Mark Antony", "Lepidus"],
                 taggingBlockOffset: 50
             };
@@ -131,42 +131,36 @@
         },
 
         setup: function(config) {
-            config.imgHasListeners = true;
-
-            // Sets up (x,y) coords for tagging block
+            // Sets up (x,y) coords for tagging block, display tagger
+            // on mouseover
             config.$img.mousemove(function(event) {
-                var offset = $(this).position();
-                var xCoordinate = (event.pageX - offset.left) + "px";
-                var yCoordinate = (event.pageY - offset.top) + "px";
-                imgTagger.displayTaggingBlock(config);
-                imgTagger.moveTaggingBlock(config, xCoordinate, yCoordinate);
+                if (config.taggingStage === "hover") {
+                    var offset = $(this).position();
+                    var xCoordinate = (event.pageX - offset.left) + "px";
+                    var yCoordinate = (event.pageY - offset.top) + "px";
+                    imgTagger.displayTaggingBlock(config);
+                    imgTagger.moveTaggingBlock(config, xCoordinate, yCoordinate);
+                }
             });
 
             // Clears screen when mouse leaves image area
             config.$img.mouseout(function(event) {
-                config.$tagger.toggle();
+                if (config.taggingStage === "hover") {
+                    config.$tagger.toggle();
+                }
             });
 
             // Removes hover tagging block and replaces it with a static temp block
             // Turns off tagging process until user clicks outside image
             config.$img.click(function(event) {
-                imgTagger.addTaggingBlockTemp(event, config);
-                config.$img.off();
-                config.imgHasListeners = false;
-                config.$tagger.toggle();
-            });
-
-            // Re-adds listeners if missing when user clicks outside image
-            $("*").click(function(event) {
-                if (!$(event.target).is("img#img-tagger-main") && !config.imgHasListeners) {
-                    console.log("Re-add listeners being called unexpectedly!");
-                    imgTagger.clearTaggingBlock(".tagging-block-temp");
-                    imgTagger.setup(imgTagger.config);
+                if (config.taggingStage === "hover") {
+                    imgTagger.addTaggingBlockTemp(event, config);
+                    config.$tagger.toggle();
                 }
             });
 
             // stores friends list and makes available to all functions
-            imgTagger.$friendsList = imgTagger.populateFriendsList(config);
+            imgTagger.$friendsList = imgTagger.populateFriendsList(config.friends);
         },
 
         displayTaggingBlock: function(config) {
@@ -187,6 +181,7 @@
         },
 
         addTaggingBlockTemp: function(event, config) {
+            config.taggingStage = "temp";
             var $taggingBlock = $("<div></div>")
                 .addClass("tagging-block-temp")
                 .css({
@@ -195,12 +190,65 @@
                 });
             config.$img.append($taggingBlock);
             imgTagger.$friendsList.appendTo($taggingBlock).slideDown("fast");
-            imgTagger.tagFriend($taggingBlock);
+            imgTagger.tagFriend($taggingBlock, config, event);
         },
 
-        populateFriendsList: function(config) {
+        tagFriend: function($element, config, originalEvent) {
+            if (config.taggingStage === "temp") {
+                var $friends = $element
+                    .find("ul.friends-list li a");
+                $friends.click(function(event) {
+                    event.preventDefault();
+                    var friendName = event.target.innerHTML;
+                    config.taggingStage = "permanent";
+                    $element.slideUp("slow");
+                    imgTagger.saveTag(originalEvent, config, friendName);
+                    imgTagger.clearTaggingBlock(".tagging-block-temp");
+                    imgTagger.setup(config);
+                });
+                imgTagger.cancelTagging(config);
+            }
+        },
+
+        saveTag: function(event, config, friend) {
+            if (config.taggingStage === "permanent") {
+                var $taggingBlock = $("<div></div>")
+                    .addClass("tagging-block-permanent")
+                    .css({
+                        'left': (event.offsetX - config.taggingBlockOffset),
+                        'top': (event.offsetY - config.taggingBlockOffset)
+                    });
+                var $friend = $("<p></p>")
+                    .addClass("saved-friend")
+                    .text(friend);
+                $taggingBlock.append($friend);
+                config.$img.append($taggingBlock);
+                config.taggingStage = "hover";
+            }
+        },
+
+        // setTimeout used in order this function to only be called when user
+        // start tagging process. Otherwise, runs immediately on-click,
+        // interfering with other functions
+        cancelTagging: function(config) {
+            setTimeout(function() {
+                $("html").click(function(event) {
+                    if (config.taggingStage === "temp" || config.taggingStage === "perm") {
+                        if (!$(event.target).is("div.tagging-block-temp *")) {
+                            imgTagger.clearTaggingBlock(".tagging-block-temp");
+                            config.taggingStage = "hover";
+                            $("html").off("click");
+                            console.log("hello!");
+                            console.log(config);
+                        }
+                    }
+                });
+            }, 0);
+        },
+
+        populateFriendsList: function(friends) {
             var $friendsList = $("<ul></ul>").addClass("friends-list");
-            config.friends.forEach(function(element) {
+            friends.forEach(function(element) {
                 var $li = $("<li></li>");
                 var $a = $("<a></a>")
                     .attr("href", "#");
@@ -209,17 +257,7 @@
                 $friendsList.append($li);
             });
             return $friendsList;
-        },
-
-        tagFriend: function($element) {
-            var $friends = $element
-                .find("ul.friends-list li a");
-            $friends.click(function(event) {
-                event.preventDefault();
-                $element.slideUp("slow");
-            });
         }
-
     };
 
     $(document).ready(function() {
