@@ -163,6 +163,7 @@ img {
 }
 
 .tagging-block-temp {
+    display: none;
     position: absolute;
     min-height: 100px;
     width: 100px;
