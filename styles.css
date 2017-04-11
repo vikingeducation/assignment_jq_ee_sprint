@@ -141,15 +141,17 @@ img {
 }
 
 .tagging-block-hover {
+    display: none;
     position: absolute;
     top: 10px;
     left: 10px;
     height: 100px;
     width: 100px;
-    /*margin-top: -50px;
-    margin-left: -50px;*/
-    margin-top: -110px;
-    margin-left: -110px;
+    margin-top: -50px;
+    margin-left: -50px;
+    /*margin-top: -110px;
+    margin-left: -110px;*/
+    pointer-events: none;
     border: solid 5px yellow;
     border-radius: 5px;
     z-index: 99999999;

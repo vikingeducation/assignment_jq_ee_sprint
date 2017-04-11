@@ -114,37 +114,18 @@
     };
 
     // TO DO:
-    // 1. Detect mouse entering image DONE
-    // 2. var taggingBlock (DOM div.imgtagger-hover) appears around mouse. WIP
-    // 3. if Click on img:
-    //      -Create DOM div.imgtagger-active using .position(), slide out UL>LI*4 with names (.imgtagger-friends)
-    // 4. Create listener, anytime .imgtagger-friends name selected, imgtagger-hover.removeClass(imgtagger-active) and this.addClass(imgtagger-placed)
-    //          -also, add dom element <div> with name of friend, position() + offset
-    // 4. if mouseleave or click outside of img:
-    //      -delete imgtagger-hover and imgtagger-placed and imgtagger-placed.siblings("imgtagger-friends")
-
-    /* Main Problem:
-        When I draw a tagging block under my mouse,
-        all of the sudden my mouse thinks it is under div.tagging-block-hover
-        If div.tagging-block-hover is a child of my tag staging area,
-        Then tagging-block is NEVER removed since we're always "technically"
-        under the image, since mouse is following a child of div#tag-staging-area.
-        Otherwise, if I have it OUTSIDE the tag staging area, then immediately when a
-        tagging block is drawn, I am outside of my staging area and the
-        tagging block is immediately removed, causing it to be redrawn and removed
-        rapidly while I am hovering over my image. Basically, neither way works.
-        Requirements say that mouse must appear in center of box. Only way this whole
-        thing works so far is if box appears at edge of pointer.
-        I've tried playing with position fixed vs absolute, z indexing img on top of
-        everything, etc., and nothing seems to cooperate. Any ideas?
-    */
+    // 1. Fix function that restarts setup when user clicks outside image so that
+    //    it ignore if user clicker ul.friends-list
+    // 2. Append taggedFriend box to DOM
+    // 3. Add remove tag function
     var imgTagger = {
         init: function() {
             imgTagger.config = {
                 $img: $("div#tag-staging"),
+                $tagger: $("div.tagging-block-hover"),
                 imgHasListeners: false,
                 friends: ["Caesar", "Pompey", "Crassus", "Octavian", "Mark Antony", "Lepidus"],
-                taggingBlockOffset: 110
+                taggingBlockOffset: 50
             };
             imgTagger.setup(imgTagger.config);
         },
@@ -157,13 +138,13 @@
                 var offset = $(this).position();
                 var xCoordinate = (event.pageX - offset.left) + "px";
                 var yCoordinate = (event.pageY - offset.top) + "px";
-                imgTagger.clearTaggingBlock(".tagging-block-hover");
-                imgTagger.drawTaggingBlockHover(xCoordinate, yCoordinate, config);
+                imgTagger.displayTaggingBlock(config);
+                imgTagger.moveTaggingBlock(config, xCoordinate, yCoordinate);
             });
 
             // Clears screen when mouse leaves image area
             config.$img.mouseout(function(event) {
-                imgTagger.clearTaggingBlock(".tagging-block-hover");
+                config.$tagger.toggle();
             });
 
             // Removes hover tagging block and replaces it with a static temp block
@@ -172,12 +153,13 @@
                 imgTagger.addTaggingBlockTemp(event, config);
                 config.$img.off();
                 config.imgHasListeners = false;
-                imgTagger.clearTaggingBlock(".tagging-block-hover");
+                config.$tagger.toggle();
             });
 
             // Re-adds listeners if missing when user clicks outside image
             $("*").click(function(event) {
                 if (!$(event.target).is("img#img-tagger-main") && !config.imgHasListeners) {
+                    console.log("Re-add listeners being called unexpectedly!");
                     imgTagger.clearTaggingBlock(".tagging-block-temp");
                     imgTagger.setup(imgTagger.config);
                 }
@@ -187,18 +169,21 @@
             imgTagger.$friendsList = imgTagger.populateFriendsList(config);
         },
 
+        displayTaggingBlock: function(config) {
+            config.$tagger.css({
+                "display": "block"
+            });
+        },
+
         clearTaggingBlock: function(block) {
             $(block).remove();
         },
 
-        drawTaggingBlockHover: function(x, y, config) {
-            var $taggingBlock = $("<div></div>")
-                .addClass("tagging-block-hover")
-                .css({
-                    'left': x,
-                    'top': y
-                });
-            config.$img.append($taggingBlock);
+        moveTaggingBlock: function(config, x, y) {
+            config.$tagger.css({
+                'left': x,
+                'top': y
+            });
         },
 
         addTaggingBlockTemp: function(event, config) {
