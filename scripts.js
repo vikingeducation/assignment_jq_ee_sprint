@@ -143,7 +143,8 @@
             imgTagger.config = {
                 $img: $("div#tag-staging"),
                 imgHasListeners: false,
-                friends: ["Caesar", "Pompey", "Crassus", "Octavian", "Mark Antony", "Lepidus"]
+                friends: ["Caesar", "Pompey", "Crassus", "Octavian", "Mark Antony", "Lepidus"],
+                taggingBlockOffset: 110
             };
             imgTagger.setup(imgTagger.config);
         },
@@ -156,13 +157,13 @@
                 var offset = $(this).position();
                 var xCoordinate = (event.pageX - offset.left) + "px";
                 var yCoordinate = (event.pageY - offset.top) + "px";
-                imgTagger.clearTaggingBlockHover();
+                imgTagger.clearTaggingBlock(".tagging-block-hover");
                 imgTagger.drawTaggingBlockHover(xCoordinate, yCoordinate, config);
             });
 
             // Clears screen when mouse leaves image area
             config.$img.mouseout(function(event) {
-                imgTagger.clearTaggingBlockHover();
+                imgTagger.clearTaggingBlock(".tagging-block-hover");
             });
 
             // Removes hover tagging block and replaces it with a static temp block
@@ -171,28 +172,23 @@
                 imgTagger.addTaggingBlockTemp(event, config);
                 config.$img.off();
                 config.imgHasListeners = false;
-                imgTagger.clearTaggingBlockHover();
+                imgTagger.clearTaggingBlock(".tagging-block-hover");
             });
 
             // Re-adds listeners if missing when user clicks outside image
             $("*").click(function(event) {
                 if (!$(event.target).is("img#img-tagger-main") && !config.imgHasListeners) {
-                    imgTagger.clearTaggingBlockTemp();
+                    imgTagger.clearTaggingBlock(".tagging-block-temp");
                     imgTagger.setup(imgTagger.config);
                 }
             });
 
             // stores friends list and makes available to all functions
             imgTagger.$friendsList = imgTagger.populateFriendsList(config);
-            // $("main").append(imgTagger.$friendsList);
         },
 
-        clearTaggingBlockHover: function() {
-            $(".tagging-block-hover").remove();
-        },
-
-        clearTaggingBlockTemp: function() {
-            $(".tagging-block-temp").remove();
+        clearTaggingBlock: function(block) {
+            $(block).remove();
         },
 
         drawTaggingBlockHover: function(x, y, config) {
@@ -209,12 +205,12 @@
             var $taggingBlock = $("<div></div>")
                 .addClass("tagging-block-temp")
                 .css({
-                    'left': (event.offsetX - 110),
-                    'top': (event.offsetY - 110)
+                    'left': (event.offsetX - config.taggingBlockOffset),
+                    'top': (event.offsetY - config.taggingBlockOffset)
                 });
             config.$img.append($taggingBlock);
             imgTagger.$friendsList.appendTo($taggingBlock).slideDown("fast");
-            // $taggingBlock.append(imgTagger.$friendsList).slideDown();
+            imgTagger.tagFriend($taggingBlock);
         },
 
         populateFriendsList: function(config) {
@@ -228,6 +224,15 @@
                 $friendsList.append($li);
             });
             return $friendsList;
+        },
+
+        tagFriend: function($element) {
+            var $friends = $element
+                .find("ul.friends-list li a");
+            $friends.click(function(event) {
+                event.preventDefault();
+                $element.slideUp("slow");
+            });
         }
 
     };
