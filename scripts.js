@@ -264,35 +264,17 @@
                     "assets/sound/yellowPad.mp3",
                     "assets/sound/bluePad.mp3"
                 ],
+                gameOverSound: "assets/sound/go.mp3",
                 computerMoves: [],
                 userMoves: [],
-                movePosition: 0
+                hasLost: false
             };
             simonSays.setup();
         },
 
         setup: function() {
-            simonSays.enableAudio("user");
             simonSays.enableAudio("computer");
-            simonSays.config.$allPads.off("mousedown.userTouch");
-            simonSays.config.$greenPad.trigger("computer.computerTouch");
             simonSays.enableStartButton();
-            // 0. disable userTouch on default.
-            // 1. When start button is pressed, startComputerMoves();
-            // 2. select a random number between 0 and 3
-            // 3. if 0, then green. if 1, then red. etc. etc.
-            // 4. add this to "computerMoves" array in config.
-            // 5. playComputerMoves();
-            // 6. Play computerMoves[0]. delay. Then computer moves[1]. etc.
-            // 7. do until length of array is traversed.
-            // 8. enable userTouch
-            // 9. If click is detected on a pad, addClickToMoves(), moveposition++;
-            // 10. CheckMoves
-            // 11. every click, iterate through computerMoves[] up to moveposition
-            // 12. if move position === length of computerMoves and equivalent arrays; newComputerMove
-            // 13. else play error.mp3
-            // 14. move position is 0, arrays are cleared
-            // 15. ocmputerMoves
         },
 
         // iterates through each pad and adds mousedown listeners
@@ -314,6 +296,13 @@
             });
         },
 
+        enableStartButton: function() {
+            simonSays.config.$startButton.on("click.startButton", function(event) {
+                event.stopPropagation();
+                simonSays.initializeGame();
+            });
+        },
+
         addTouchToUserMoves: function($element) {
             if ($element.hasClass("simon-green")) {
                 simonSays.config.userMoves.push("green");
@@ -325,23 +314,55 @@
                 simonSays.config.userMoves.push("blue");
             }
 
-            simonSays.config.movePosition++;
-            console.log(simonSays.config.movePosition);
-            console.log(simonSays.config.userMoves);
-
-            // function to evaluate moves here!
+            simonSays.checkUserMoves();
         },
 
-        enableStartButton: function() {
-            simonSays.config.$startButton.on("click.startButton", function(event) {
+        checkUserMoves: function() {
+            var userMovesLength = simonSays.config.userMoves.length;
+            var computerMovesLength = simonSays.config.computerMoves.length;
+
+            for (let i = 0; i < userMovesLength; i++) {
+                if (simonSays.config.userMoves[i] !== simonSays.config.computerMoves[i]) {
+                    simonSays.config.hasLost = true;
+                }
+            }
+            if (simonSays.config.hasLost) {
+                simonSays.endGame();
+            } else if (!simonSays.config.hasLost && (userMovesLength === computerMovesLength)) {
+                simonSays.continueGame();
+            }
+        },
+
+        continueGame: function() {
+            simonSays.config.userMoves = [];
+            simonSays.config.$allPads.off("mousedown.userTouch");
+            setTimeout(function() {
+                simonSays.createNextMove();
+                simonSays.playComputerMoves();
+            }, 1000);
+        },
+
+        endGame: function() {
+            simonSays.config.$allPads.off("mousedown.userTouch");
+            simonSays.playGameOverSound();
+            setTimeout(function() {
                 simonSays.initializeGame();
-            });
+            }, 1400);
+        },
+
+        playGameOverSound: function() {
+            var $gameOverSound = $("<audio></audio")
+                        .attr("src", simonSays.config.gameOverSound);
+            setTimeout(function() {
+                $gameOverSound[0].play();
+            }, 270);
         },
 
         initializeGame: function() {
+            simonSays.config.hasLost = false;
             simonSays.config.userMoves = [];
             simonSays.config.computerMoves = [];
-            simonSays.config.movePosition = 0;
+            simonSays.config.$allPads.off("mousedown.userTouch");
 
             simonSays.createNextMove();
             simonSays.playComputerMoves();
@@ -371,8 +392,65 @@
             simonSays.config.computerMoves.push(nextMove);
         },
 
+        // delays sound playing by array element's index
         playComputerMoves: function() {
-            
+            simonSays.config.computerMoves.forEach(function(element, index) {
+                setTimeout(function(){
+                    switch (element) {
+                        case "green":
+                            simonSays.config.$greenPad.trigger("computer.computerTouch");
+                            simonSays.animateComputerTouch(simonSays.config.$greenPad, "green");
+                            break;
+                        case "red":
+                            simonSays.config.$redPad.trigger("computer.computerTouch");
+                            simonSays.animateComputerTouch(simonSays.config.$redPad, "red");
+                            break;
+                        case "yellow":
+                            simonSays.config.$yellowPad.trigger("computer.computerTouch");
+                            simonSays.animateComputerTouch(simonSays.config.$yellowPad, "yellow");
+                            break;
+                        case "blue":
+                            simonSays.config.$bluePad.trigger("computer.computerTouch");
+                            simonSays.animateComputerTouch(simonSays.config.$bluePad, "blue");
+                            break;
+                    }
+
+                    // Once computer has finished iterating, allows user to 
+                    // start playing
+                    if (index === simonSays.config.computerMoves.length - 1) {
+                        simonSays.enableAudio("user");
+                    }
+                }, 500 * index);
+            });
+        },
+
+        animateComputerTouch: function($currentPad, color) {
+            var padClass = "simon-computer-active-";
+
+            switch (color) {
+                case "green":
+                    padClass += "green";
+                    break;
+                case "red":
+                    padClass += "red";
+                    break;
+                case "yellow":
+                    padClass += "yellow";
+                    break;
+                case "blue":
+                    padClass += "blue";
+                    break;
+            }
+            $currentPad.addClass(padClass).delay(300).queue(function(next) {
+                $(this).removeClass(padClass);
+                next();
+            });
+        },
+
+        startUserTurn: function() {
+            setTimeout(function() {
+                simonSays.config.$allPads.on("mousedown.userTouch");
+            });
         }
 
     };

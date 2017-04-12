@@ -278,6 +278,7 @@ div.simon-says:active {
     top: 4px;
 }
 
+
 div.simon-says.simon-green {
     position: relative;
     background-color: green;
@@ -338,4 +339,32 @@ div.simon-says.simon-blue:active {
 
 #simon-says-start:focus {
     border: solid 1px black;
+}
+
+.simon-computer-active-green {
+    transition: background-color .3s ease-out;
+    background-color: lightgreen !important;
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2) !important;
+    top: 4px !important;
+}
+
+.simon-computer-active-red {
+    transition: background-color .3s ease-out;
+    background-color: #FF8888 !important;
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2) !important;
+    top: 4px !important;
+}
+
+.simon-computer-active-yellow {
+    transition: background-color .3s ease-out;
+    background-color: lightyellow !important;
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2) !important;
+    top: 4px !important;
+}
+
+.simon-computer-active-blue {
+    transition: background-color .3s ease-out;
+    background-color: lightblue !important;
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2) !important;
+    top: 4px !important;
 }
