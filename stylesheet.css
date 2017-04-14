@@ -1,0 +1,19 @@
+ul {
+  list-style-type: none;
+  width: 100px;
+  cursor: pointer;
+}
+
+li:not(:first-child):hover {
+  background-color: #ccc;
+}
+
+li {
+  min-height: 1em;
+  border: 1px solid;
+}
+
+
+.errorBox {
+  border: 1px solid red;
+}
