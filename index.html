@@ -10,13 +10,15 @@
   <body>
     <form>
       <label for='name'>Name</label>
-      <input type='text' id='name' name='name'>
+      <input type='text' id='name' data-max-length='32' data-min-length='4'>
 
       <label for='summary'>Summary</label>
-      <input type='textarea' id='summary' name='summary'>
+      <textarea id='summary' data-max-length='140'
+            data-min-length='4'></textarea>
 
       <label for='password'>Password</label>
-      <input type='password' id='password' name='password' class='js-password-feedback'>
+      <input type='password' id='password' name='password'
+        data-max-length='16' data-min-length='6'>
 
       <label for='password_confirmation'>Confirm Password</label>
       <input type='password' id='password_confirmation'
