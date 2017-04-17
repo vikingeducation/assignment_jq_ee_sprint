@@ -1,0 +1,88 @@
+:root {
+  color: #333;
+  --red-color: #ff3333;
+  --green-color: #3f9f3f;
+  --blue-color: #4499bb;
+}
+
+form {
+  width: 100%;
+}
+
+div.input-block {
+  padding: 1rem;
+  flex:initial;
+  flex-shrink: auto;
+}
+
+div.input-block label {
+  vertical-align: top;
+  display: inline-block;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.57rem;
+  margin-right: 1rem;
+  min-width: 6rem;
+}
+
+div.input-block input[type="text"], input[type="password"], input[type="submit"], textarea {
+  margin: 1px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--blue-color);
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.85rem;
+}
+
+div.input-block input[type="submit"] {
+  color: #333;
+  background-color: #99ccff;
+  border-color: #333;
+}
+
+div.input-block input[type="submit"]:hover {
+  background-color: #aaddff;
+}
+
+div.input-block input[type="password"]:focus {
+  outline: none;
+}
+
+div.input-block input[type="password"].valid {
+  margin: 0;
+  border-color: var(--green-color);
+  border-width: 2px;
+}
+
+div.input-block input[type="password"].invalid {
+  margin: 0;
+  border-color: var(--red-color);
+  border-width: 2px;
+}
+
+div.input-block textarea {
+  width: 15em;
+  height: 5em;
+}
+
+div.input-block input[type="submit"] {
+  padding: .5rem 1.5rem .5rem 1.5rem;
+}
+
+div.input-block span {
+  vertical-align: top;
+  margin-left: 1rem;
+  font-style: italic;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
+
+div.input-block span.message {
+  color: var(--green-color);
+}
+
+div.input-block span.error {
+  color: var(--red-color);
+}
