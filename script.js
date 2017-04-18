@@ -66,7 +66,19 @@ const _minLength = $target => {
   }
 }
 
+const _matches = $target => {
+  const referenceId = $target.attr('data-matches');
+  const referenceValue = $(`#${referenceId}`).val();
+  const actualValue = $target.val();
+
+  return {
+    isValid: (actualValue === referenceValue || !actualValue),
+    message: 'Passwords do not match'
+  }
+}
+
 const _validationListeners = {
   'max-length': _maxLength,
-  'min-length': _minLength
+  'min-length': _minLength,
+  'matches': _matches
 }
