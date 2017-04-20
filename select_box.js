@@ -1,6 +1,6 @@
-"use strict";
+//"use strict";
 
-let CONSTANTS = {
+const CONSTANTS = {
   CONTAINER_SLIDE_SPEED: 100
 }
 
@@ -112,8 +112,8 @@ let selectBox = {
 
     clickHandler: (e) => { // Primary click delegate.
       let $target = $(e.target);
-      let $selectBox = selectBox.getSelectBox($target.closest('.select-box').attr('id'));
-
+      let $selectBox = selectBox.getSelectBox($target.closest('div[class*="select-box"]').attr('id'));
+      console.log($selectBox);
       // Determine which item was clicked on.
       let targetClass = $target.attr('class');
       switch (targetClass) {
@@ -132,8 +132,6 @@ let selectBox = {
           selectBox.eventLogic.selectMenuItem($selectBox, $target);
           break;
       }
-      event.preventDefault();
-      return false;
     },
 
     toggleSelectMenu: ($selectBox) => {
