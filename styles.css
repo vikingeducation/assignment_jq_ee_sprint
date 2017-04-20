@@ -86,3 +86,84 @@ div.input-block span.message {
 div.input-block span.error {
   color: var(--red-color);
 }
+
+/*********************
+ * Select box styles
+ */
+div.select-box {
+  vertical-align: top;
+  cursor: pointer;
+  display:inline-block;
+  min-width: 12rem;
+  min-height: 1rem;
+  padding: .2rem;
+  margin-right: 2rem;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+div.select-box div.selected-item {
+  width: 100%;
+  display: inline-block;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  border: 1px solid #333;
+  border-radius: .2rem .2rem 0 0;
+  padding: .2rem;
+}
+
+div.select-box div.selected-item span {
+  display: inline-block;
+  margin-top: .2rem;
+}
+
+div.select-box div.selected-item-arrow {
+  display: inline-block;
+  float: right;
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  border: 1px solid #333;
+  padding: .1rem .5rem;
+}
+
+div.select-box div.placeholder {
+  font-style: italic;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  color: #999;
+  line-height: 1.4rem;
+  border: 1px solid #333;
+  padding: .2rem;
+}
+
+div.select-box div.item-container {
+  width: 100%;
+  border: 1px solid #333;
+  border-top: none;
+  padding: .2rem;
+}
+
+div.select-box div.item-container div.item-element {
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  padding: .2rem;
+}
+
+div.select-box div.item-container div.item-element:hover {
+  background-color: var(--blue-color);
+  color: #eee;
+}
