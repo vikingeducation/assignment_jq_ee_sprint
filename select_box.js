@@ -57,7 +57,7 @@ let selectBox = {
 
         // Clone our item element.
         let $newItem = selectBox.visualLogic.itemElement.clone();
-        $newItem.attr('value', key);
+        $newItem.data('value', key);
         $newItem.text(itemsObj[key]);
 
         // Save a reference.
@@ -103,6 +103,11 @@ let selectBox = {
   eventLogic: {
     addListeners: ($newSelectBox) => {
       $newSelectBox.on('click', selectBox.eventLogic.clickHandler);
+
+      $newSelectBox.selectedItem.setValue = function(val) {
+        $(this.children('input')[0]).val(val.key);
+        $(this.children('span')[0]).text(val.value)
+      }
     },
 
     clickHandler: (e) => { // Primary click delegate.
@@ -124,7 +129,7 @@ let selectBox = {
           break;
         case "item-element":
           // Select item.
-          selectBox.eventLogic.selectMenuItem($selectBox);
+          selectBox.eventLogic.selectMenuItem($selectBox, $target);
           break;
       }
       event.preventDefault();
@@ -141,8 +146,12 @@ let selectBox = {
       }
     },
 
-    selectMenuItem: ($selectBox) => {
-      
+    selectMenuItem: ($selectBox, $target) => {
+      // Set selected item for hidden input and view.
+      let key = $target.data('value');
+      let value = $target.text();
+      $selectBox.selectedItem.setValue.call($selectBox.selectedItem, { key, value });
+      selectBox.eventLogic.toggleSelectMenu($selectBox);
     }
   },
 

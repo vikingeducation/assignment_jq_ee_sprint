@@ -96,8 +96,8 @@ div.select-box {
   display:inline-block;
   min-width: 12rem;
   min-height: 1rem;
-  padding: .2rem;
   margin-right: 2rem;
+  padding: .2rem;
 }
 
 .noselect {
@@ -119,12 +119,14 @@ div.select-box div.selected-item {
   line-height: 1.4rem;
   border: 1px solid #333;
   border-radius: .2rem .2rem 0 0;
-  padding: .2rem;
+  box-shadow: 1px 1px 8px rgba(100, 100, 100, .3);
 }
 
 div.select-box div.selected-item span {
+  background-color: #fff;
   display: inline-block;
-  margin-top: .2rem;
+  padding-left: .2rem;
+  margin-top: .4rem
 }
 
 div.select-box div.selected-item-arrow {
@@ -136,6 +138,7 @@ div.select-box div.selected-item-arrow {
   line-height: 1.4rem;
   border: 1px solid #333;
   padding: .1rem .5rem;
+  margin: .2rem;
 }
 
 div.select-box div.placeholder {
@@ -145,14 +148,22 @@ div.select-box div.placeholder {
   color: #999;
   line-height: 1.4rem;
   border: 1px solid #333;
-  padding: .2rem;
+}
+
+div.select-box div.placeholder span {
+
+  margin-left: .2rem;
+  vertical-align: middle;
 }
 
 div.select-box div.item-container {
-  width: 100%;
+  position: inherit;
+  width: auto;
   border: 1px solid #333;
   border-top: none;
-  padding: .2rem;
+  border-radius: 0 0 .2rem .2rem;
+  background-color: #fff;
+  box-shadow: 1px 1px 8px rgba(100, 100, 100, .5);
 }
 
 div.select-box div.item-container div.item-element {
@@ -160,7 +171,7 @@ div.select-box div.item-container div.item-element {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   line-height: 1.4rem;
-  padding: .2rem;
+  padding: .4rem;
 }
 
 div.select-box div.item-container div.item-element:hover {
