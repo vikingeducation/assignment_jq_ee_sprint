@@ -1,0 +1,33 @@
+<html>
+<head><title>Form Validator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="scripts.js"></script>
+</head>
+<body>
+<form method="post">
+  <div class="input-block">
+    <label for="textfield">Username</label>
+    <input id="username" type="text" name="username">
+  </div>
+  <div class="input-block">
+    <label for="password">Password</label>
+    <input id="password" data-confirm-id="confirm" type="password" name="password">
+  </div>
+  <div class="input-block">
+    <label for="confirm">Confirm</label>
+    <input id="confirm" data-confirm-id="password" type="password" name="confirm">
+  </div>
+  <div class="input-block">
+    <label for="textfield">Message</label>
+    <textarea id="textarea" name="textarea"></textarea>
+  </div>
+  <div class="input-block">
+    <label for="submit"></label>
+    <input type="submit" value="Submit">
+  </div>
+</form>
+</body>
+</html>
