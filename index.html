@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Jquery events</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="script.js"></script>
   </head>
   <body>
     <div class="form-validation">
@@ -11,19 +13,23 @@
       <form>
         <div class="form-row">
           <label>Text: </label>
-          <input type="text" id="text-field">
+          <input type="text" id="text-field" maxlength="32">
+          <p class="input-validation"></p>
         </div>
         <div class="form-row">
           <label>Text Area: </label>
           <textarea id="text-area"></textarea>
+          <p class="input-validation"></p>
         </div>
         <div class="form-row">
           <label>Password: </label>
           <input type="password">
+          <p class="input-validation"></p>
         </div>
         <div class="form-row">
           <label>Confirm: </label>
           <input type="password">
+          <p class="input-validation"></p>
         </div>
       </form>
     </div>

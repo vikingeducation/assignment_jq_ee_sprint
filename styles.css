@@ -5,13 +5,17 @@
 
 .form-validation {
   height: 200px;
-  width: 400px;
+  width: 450px;
   margin: auto;
   padding: 4px;
   border: 1px solid black;
   background-color: #a9bff9;
 }
 
-input, textarea {
+input, textarea, p {
   margin: 5px;
+}
+
+p {
+  display: inline;
 }
