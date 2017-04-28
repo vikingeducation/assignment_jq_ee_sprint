@@ -31,5 +31,17 @@ $(document).ready(function() {
     else {
       $(this).next().text("");
     }
+
+    var password = $("#password").val();
+    var passwordConfirmation = $("#password-confirmation").val();
+    console.log(password);
+    console.log(passwordConfirmation);
+    if (password == passwordConfirmation) {
+      $("#password-match-validation").text("");
+    } else {
+      if (passwordConfirmation.length > 0) {
+        $("#password-match-validation").text("Passwords do not match!");
+      }
+    }
   });
 });
