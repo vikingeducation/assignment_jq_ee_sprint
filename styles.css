@@ -4,7 +4,7 @@
 }
 
 .form-validation {
-  height: 200px;
+  height: 300px;
   width: 450px;
   margin: auto;
   padding: 4px;
@@ -16,6 +16,15 @@ input, textarea, p {
   margin: 5px;
 }
 
-p {
+.input-validation {
   display: inline;
+}
+
+#password-match-validation {
+  height: 20px;
+}
+
+.error-message {
+  height: 15px;
+  color: red;
 }

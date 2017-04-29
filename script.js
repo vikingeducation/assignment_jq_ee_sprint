@@ -34,8 +34,6 @@ $(document).ready(function() {
 
     var password = $("#password").val();
     var passwordConfirmation = $("#password-confirmation").val();
-    console.log(password);
-    console.log(passwordConfirmation);
     if (password == passwordConfirmation) {
       $("#password-match-validation").text("");
     } else {
@@ -44,4 +42,41 @@ $(document).ready(function() {
       }
     }
   });
+
+  $("button").on("click", function() {
+    //validate text
+    if ($("#text-field").val().length < 4) {
+      $("#text-field").siblings().filter(".error-message").text("Text is too short");
+    } else if ($("#text-field").val().length > 32) {
+      $("#text-field").siblings().filter(".error-message").text("Text is too long");
+    } else {
+      $("#text-field").siblings().filter(".error-message").text("");
+    }
+
+    //5 here since text area includes carriage return
+    if ($("#text-area").val().length < 5) {
+      $("#text-area").siblings().filter(".error-message").text("Text area is too short");
+    } else if ($("#text-area").val().length > 140) {
+      $("#text-area").siblings().filter(".error-message").text("Text area is too long");
+    } else {
+      $("#text-area").siblings().filter(".error-message").text("");
+    }
+
+    if ($("#password").val().length < 6) {
+      $("#password").siblings().filter(".error-message").text("Password is too short");
+    } else if ($("#password").val().length > 16) {
+      $("#password").siblings().filter(".error-message").text("Password is too long");
+    } else {
+      $("#password").siblings().filter(".error-message").text("");
+    }
+
+    if ($("#password-confirmation").val().length < 6) {
+      $("#password-confirmation").siblings().filter(".error-message").text("Password is too short");
+    } else if ($("#password-confirmation").val().length > 16) {
+      $("#password-confirmation").siblings().filter(".error-message").text("Password is too long");
+    } else {
+      $("#password-confirmation").siblings().filter(".error-message").text("");
+    }
+  });
+
 });
