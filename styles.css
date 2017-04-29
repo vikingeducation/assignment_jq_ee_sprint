@@ -28,3 +28,23 @@ input, textarea, p {
   height: 15px;
   color: red;
 }
+
+.dropdown {
+  width: 150px;
+  margin: 30px auto;
+  border: 1px solid black;
+}
+
+li {
+  padding: 5px;
+  height: 15px;
+  background-color: #bffcff;
+  list-style-type: none;
+  margin: auto;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.selected-item {
+  background-color: #11fc4c;
+}

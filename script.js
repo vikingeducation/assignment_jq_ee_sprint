@@ -79,4 +79,30 @@ $(document).ready(function() {
     }
   });
 
+
+  //dropdown menu
+  $("#dropdown-list").hide();
+
+  $(".dropdown").hover(function() {
+    $("#dropdown-list").slideDown(500);
+  }, function() {
+    $("#dropdown-list").slideUp(500);
+  });
+
+  $(".menu").hover(function() {
+    $(this).addClass("selected-item");
+    $(this).css('cursor','pointer');
+  }, function() {
+    $(this).removeClass("selected-item");
+  });
+
+  $(".menu").click(function() {
+    $("#top-item").text($(this).text());
+    $("#dropdown-list").slideUp(500);
+  });
+
+
+
+
+
 });
