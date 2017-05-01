@@ -1,0 +1,370 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    font-size: 21px;
+    line-height: 1.618em;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(232,253,246,1) 100%);
+    background-attachment: fixed;
+}
+
+header {
+    height: 100px;
+    background: linear-gradient(to right, rgba(5,75,145,1) 0%, rgba(62,123,177,1) 100%);
+    text-align: center;
+    background: mauve;
+    letter-spacing: 3px;
+}
+
+header h1 {
+    font-size: 1.618em;
+    color: white;
+    padding-top: 20px;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 1.3em;
+    margin-bottom: 1.5em;
+    border-bottom: solid 1px black;
+}
+
+main {
+    margin-left: 25%;
+    width: 50%;
+    margin-bottom: 500px;
+}
+
+section {
+    margin-top: 2em;
+    margin-bottom: 4em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+--------------------------------------------------
+    FORM VALIDATOR
+--------------------------------------------------
+*/
+
+form * {
+    width: 100%;
+    margin-bottom: .5em;
+}
+
+p.input-notification {
+    line-height: .5em;
+    font-size: .618em;
+    color: #777;
+}
+
+p.pass-warning {
+    text-align: center;
+    background-color: #F99;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: -10px;
+    color: red;
+    font-size: .8em;
+    line-height: 3em;
+    border-radius: 10px;
+}
+
+.input-error-highlight {
+    background-color: #FCC;
+    border: solid 3px red;
+}
+
+.input-error {
+    font-size: .6em;
+    color: red;
+    font-weight: 700;
+}
+form button {
+    cursor: pointer;
+}
+
+/*
+--------------------------------------------------
+    DROPDOWN MENU
+--------------------------------------------------
+*/
+
+#dropdown-section {
+    min-height: 400px;
+}
+
+ul.dropdown-menu {
+    width: 100%;
+}
+
+.dropdown-menu li {
+    box-sizing: border-box;
+    transition: background-color .5s ease;
+    background-color: white;
+    width: 100%;
+    border: solid 1px black;
+    list-style-type: none;
+    border-top: none;
+}
+
+.dropdown-menu li a {
+    display: block;
+    transition: color .5s ease;
+    padding: 4px 0px 2px 20px;
+    padding: auto;
+    text-decoration: none;
+    color: black;
+}
+
+
+.dropdown-menu li:not(:first-of-type):hover {
+    background-color: #CCE3F9;
+}
+
+.dropdown-menu li:first-of-type {
+    border-radius: 8px 8px 0px 0px;
+    border-top: solid 1px black;
+}
+
+.dropdown-menu li:first-of-type:hover {
+    background-color: #054b91;
+}
+
+.dropdown-menu li:first-of-type a:hover {
+    color: white;
+}
+
+.dropdown-menu li:last-of-type {
+    border-radius: 0px 0px 8px 8px;
+}
+
+/*
+--------------------------------------------------
+    IMAGE TAGGER
+--------------------------------------------------
+*/
+
+img {
+    z-index: -900;
+    max-width: 100%;
+}
+
+#tag-staging {
+    position: relative;
+    z-index: 100;
+}
+
+.tagging-block-hover {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 100px;
+    width: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    pointer-events: none;
+    border: solid 5px yellow;
+    border-radius: 5px;
+    z-index: 99999999;
+}
+
+.tagging-block-temp {
+    display: none;
+    position: absolute;
+    min-height: 100px;
+    width: 100px;
+    border: solid 5px green;
+    border-radius: 5px;
+    z-index: 99999; 
+}
+
+ul.friends-list {
+    display: none;
+    margin-top: 100px;
+    background-color: white;
+    border-top: solid 5px green;
+}
+
+ul.friends-list li {
+    border-bottom: solid 1px black;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    list-style-type: none;
+    font-size: .7em;
+}
+
+ul.friends-list li:last-of-type {
+    border-bottom: none;
+}
+
+ul.friends-list li:hover {
+    background-color: #CCE3F9;
+}
+
+ul.friends-list li a {
+    padding: 5px 0px 5px 5px;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    font-size: .7em;
+    color: black;
+    padding-left: 5px;
+    text-decoration: none;
+}
+
+p.saved-friend a.remove-tag {
+    pointer-events: auto;
+    display: inline-block;
+    margin-left: 1em;
+    color: red;
+    text-align: left;
+    text-decoration: none;
+}
+
+.tagging-block-permanent {
+    pointer-events: none;
+    position: absolute;
+    min-height: 100px;
+    width: 100px;
+    border: solid 5px rgba(0, 0, 0, .7);
+    border-radius: 5px;
+}
+
+p.saved-friend {
+    margin-top: 100px;
+    font-size: .7em;
+    border-top: solid 5px rgba(0, 0, 0, .7);
+    background-color: rgba(255,255,255,.7);
+    padding-left: 5px;
+}
+
+/*
+--------------------------------------------------
+    SIMON SAYS
+--------------------------------------------------
+*/
+
+div#simon-says-container {
+    font-size: 10px;
+}
+
+div.simon-says {
+    position: relative;
+    top: 0px;
+    cursor: pointer;
+    line-height: 0em;
+    border-radius: 20px;
+    height: 250px;
+    display: inline-block;
+    width: 50%;
+    box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color .3s ease-out;
+    transition: box-shadow .1s ease-out;
+    transition: top .1s ease-out;
+}
+
+div.simon-says:active {
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2);
+    top: 4px;
+}
+
+
+div.simon-says.simon-green {
+    position: relative;
+    background-color: green;
+}
+
+div.simon-says.simon-red {
+    position: relative;
+    background-color: red;
+}
+
+div.simon-says.simon-yellow {
+    position: relative;
+    background-color: yellow;
+}
+
+div.simon-says.simon-blue {
+    position: relative;
+    background-color: blue;
+}
+
+div.simon-says.simon-green:active {
+    background-color: lightgreen;
+}
+
+div.simon-says.simon-red:active {
+    background-color: #FF8888;
+}
+
+div.simon-says.simon-yellow:active {
+    background-color: lightyellow;
+}
+
+div.simon-says.simon-blue:active {
+    background-color: lightblue;
+}
+
+#simon-says-start {
+    position: relative;
+    background: linear-gradient(to bottom, #ff3019 0%,#cf0404 100%); 
+    color: white;
+    font-weight: 700;
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: block;
+    margin: 50px auto;
+    width: 40%;
+    padding: 10px 0px;
+    border: solid 1px black;
+    box-shadow: 0px 4px rgba(0, 0, 0, 0.5);
+    top: 0px;
+}
+
+#simon-says-start:active {
+    top: 4px;
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+#simon-says-start:focus {
+    border: solid 1px black;
+}
+
+.simon-computer-active-green {
+    transition: background-color .3s ease-out;
+    background-color: lightgreen !important;
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2) !important;
+    top: 4px !important;
+}
+
+.simon-computer-active-red {
+    transition: background-color .3s ease-out;
+    background-color: #FF8888 !important;
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2) !important;
+    top: 4px !important;
+}
+
+.simon-computer-active-yellow {
+    transition: background-color .3s ease-out;
+    background-color: lightyellow !important;
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2) !important;
+    top: 4px !important;
+}
+
+.simon-computer-active-blue {
+    transition: background-color .3s ease-out;
+    background-color: lightblue !important;
+    box-shadow: 0px 0px rgba(0, 0, 0, 0.2) !important;
+    top: 4px !important;
+}

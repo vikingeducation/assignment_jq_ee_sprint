@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="assets/jquery-3.2.0.js"></script>
+    <script src="scripts.js"></script>
+
+    <title>Practicing with Events and Effects</title>
+</head>
+<body>
+    <header>
+        <h1>Practicing with Events and Effects</h1>
+    </header>
+    <main>
+        <section id="form-validator">
+            <h2>Form Validator</h2>
+            <form action="#">
+                <label for="username">
+                    Username
+                    <input type="text" name="username" id ="username" placeholder="User Name" data-max-length="32" data-min-length="4">
+                    <p class="input-notification"></p>
+                    <p class="input-error"></p>
+                </label>
+                <label for="comments">
+                    Comments
+                    <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Your Comments..." data-max-length="140" data-min-length="4"></textarea>
+                    <p class="input-notification"></p>
+                    <p class="input-error"></p>
+                </label>
+                <label for="password">
+                    <p class="pass-warning"></p>
+                    Password
+                    <input type="password" name="password" id="password" placeholder="Password" data-max-length="16" data-min-length="6">
+                    <p class="input-notification"></p>
+                    <p class="input-error"></p>
+                </label>
+                <label for="password-confirm">
+                    Confirm Password
+                    <input type="password" name="password-confirm" id="password-confirm" placeholder="Confirm Password" data-max-length="16" data-min-length="6">
+                    <p class="input-notification"></p>
+                    <p class="input-error"></p>
+                </label>
+                <button id="form-submit">
+                    Submit
+                </button>
+            </form>
+        </section>
+        <section id="dropdown-section">
+            <h2>Dropdown Menu</h2>
+            <ul class="dropdown-menu">
+                <li><a href="#">&#9660</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Links</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Disclaimer</a></li>
+            </ul>
+        </section>
+        <section id="img-tagger">
+            <h2>Image Tagger</h2>
+            <div id="tag-staging">
+                <img src="assets/crowd.jpg" alt="Image of Lego figurines" id="img-tagger-main">
+                <div class="tagging-block-hover"></div>
+                <div class="tagging-block-temp">
+                    <ul class="friends-list">
+                        <li><a href="#">Caesar</a></li>
+                        <li><a href="#">Pompey</a></li>
+                        <li><a href="#">Crassus</a></li>
+                        <li><a href="#">Octavian</a></li>
+                        <li><a href="#">Antony</a></li>
+                        <li><a href="#">Lepidus</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="simon-says">
+            <h2>Simon Says</h2>
+            <button id="simon-says-start">Start!</button>
+            <div id="simon-says-container">
+                <div class="simon-says simon-green"></div><!--
+                --><div class="simon-says simon-red"></div><!--
+                --><div class="simon-says simon-yellow"></div><!--
+                --><div class="simon-says simon-blue"></div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
