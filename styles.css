@@ -35,7 +35,7 @@ input, textarea, p {
   border: 1px solid black;
 }
 
-li {
+.dropdown li {
   padding: 5px;
   height: 15px;
   background-color: #bffcff;
@@ -47,4 +47,15 @@ li {
 
 .selected-item {
   background-color: #11fc4c;
+}
+
+.photo {
+  margin: 30px auto;
+}
+
+#tag-box {
+  border: 2px solid green;
+  width: 40px;
+  height: 40px;
+  position: absolute;
 }
