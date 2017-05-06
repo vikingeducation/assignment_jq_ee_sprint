@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Jquery events</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="form-validation">
+      <h1>Form Validation</h1>
+      <form>
+        <div class="form-row">
+          <label>Text: </label>
+          <input type="text" id="text-field">
+          <p class="input-validation"></p>
+          <p class="error-message"></p>
+        </div>
+        <div class="form-row">
+          <label>Text Area: </label>
+          <textarea id="text-area"></textarea>
+          <p class="input-validation"></p>
+          <p class="error-message"></p>
+        </div>
+        <div class="form-row">
+          <label>Password: </label>
+          <input type="password" id="password">
+          <p class="input-validation"></p>
+          <p class="error-message"></p>
+        </div>
+        <div class="form-row">
+          <label>Confirm: </label>
+          <input type="password" id="password-confirmation">
+          <p class="input-validation"></p>
+          <p class="error-message"></p>
+        </div>
+        <p id="password-match-validation"></p>
+        <div class="form-row">
+          <button type="button">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="dropdown">
+      <ol>
+        <li id="top-item">
+        </li>
+        <ol id="dropdown-list">
+          <li class="menu">
+            London
+          </li>
+          <li class="menu">
+            Barcelona
+          </li>
+          <li class="menu">
+            Paris
+          </li>
+          <li class="menu">
+            San Francisco
+          </li>
+        </ol>
+      </ol>
+    </div>
+
+    <div class="photo">
+      <img id="cat-image" src="cat-facts.jpg">
+      <div id="tag-box"></div>
+      <div id="tag-dropdown">
+        <ul>
+          <li>Matt</li>
+          <li>Maxine</li>
+          <li>Madeline</li>
+          <li>Marshall</li>
+          <li>Maude</li>
+        </ul>
+      </div>
+    </div>
+
+  </body>
+</html>
