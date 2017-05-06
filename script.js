@@ -99,18 +99,8 @@ $(document).ready(function() {
   $("#tag-dropdown").hide();
   tagClickHandlers.toggleTagBoxFollow();
 
-  function followCursor(x, y) {
-    $("#tag-box").css({
-      left: x-20,
-      top: y-20
-    });
-  }
-
   $(".photo").on({
     click: function(e) {
-      //fix outline at current location by turning off #tag-box and creating a new div at the same location
-      console.log(e);
-
       if ($(e.target).is("#tag-box")) {
         $(".photo").off("mouseover");
 
@@ -128,7 +118,9 @@ $(document).ready(function() {
           top: e.pageY+20
         });
         $("#tag-dropdown").slideDown(500);
-      } else {
+      }
+      else
+      {
         $(".photo-box").first().remove();
         $("#tag-dropdown").hide();
         $(".photo").on("mouseover.boxFollow");
@@ -139,12 +131,7 @@ $(document).ready(function() {
           top: e.pageY-20
         });
       }
-
-      //if not tag-box, hide tag-dropdown, remove temporary div box, and hide tag-dropdown
-
-
     }
-
   });
 
   $("#tag-dropdown li").on({
@@ -180,16 +167,4 @@ $(document).ready(function() {
   $(".photo").on("mouseleave", function(e) {
     $("#tag-box").hide();
   });
-
-  // $(".photo").hover(function() {
-  //   $("#tag-box").toggle();
-  //   $("#tag-box").show();
-  // }, function() {
-  //   $("#tag-box").hide();
-  // });
-
-
-
-
-
 });
