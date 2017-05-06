@@ -46,49 +46,13 @@ $(document).ready(function() {
   $("input[type='password']").on("input", function(eventObj) {
     updateLengthRemainingAttribute($(this), 16);
     validatePasswordMatch($("#password").val(), $("#password-confirmation").val());
-    // var password = $("#password").val();
-    // var passwordConfirmation = $("#password-confirmation").val();
-    // if (password == passwordConfirmation) {
-    //   $("#password-match-validation").text("");
-    // } else {
-    //   if (passwordConfirmation.length > 0) {
-    //     $("#password-match-validation").text("Passwords do not match!");
-    //   }
-    // }
   });
 
   $("button").on("click", function() {
-    //validate text
     validateLength($("#text-field"), 4, 32);
     validateLength($("#text-area"), 5, 140);
     validateLength($("#password"), 6, 16);
     validateLength($("#password-confirmation"), 6, 16);
-
-
-
-    // //5 here since text area includes carriage return
-    // if ($("#text-area").val().length < 5) {
-    //   $("#text-area").siblings().filter(".error-message").text("Text area is too short");
-    // } else if ($("#text-area").val().length > 140) {
-    //   $("#text-area").siblings().filter(".error-message").text("Text area is too long");
-    // } else {
-    //   $("#text-area").siblings().filter(".error-message").text("");
-    // }
-    //
-    // if ($("#password").val().length < 6) {
-    //   $("#password").siblings().filter(".error-message").text("Password is too short");
-    // } else if ($("#password").val().length > 16) {
-    //   $("#password").siblings().filter(".error-message").text("Password is too long");
-    // } else {
-    //   $("#password").siblings().filter(".error-message").text("");
-    // }
-    //
-    // if ($("#password-confirmation").val().length < 6) {
-    //   $("#password-confirmation").siblings().filter(".error-message").text("Password is too short");
-    // } else if ($("#password-confirmation").val().length > 16) {
-    //   $("#password-confirmation").siblings().filter(".error-message").text("Password is too long");
-    // } else {
-    //   $("#password-confirmation").siblings().filter(".error-message").text("");
   });
 
 
@@ -105,7 +69,7 @@ $(document).ready(function() {
   $(".menu").hover(function() {
     $(this).addClass("selected-item");
     $(this).css('cursor','pointer');
-  }, function() {
+    }, function() {
     $(this).removeClass("selected-item");
   });
 
@@ -116,25 +80,115 @@ $(document).ready(function() {
 
 
   //photo tagging
+  var tagClickHandlers = {
+    toggleTagBoxFollow: function() {
+      $(".photo").on("mouseover", function(e) {
+          $("#tag-box").css({
+            left: e.pageX-20,
+            top: e.pageY-20
+          });
+        });
+      },
+
+      toggleTagBoxVisibility: function() {
+        $("#tag-box").toggle();
+      }
+  }
+
   $("#tag-box").hide();
   $("#tag-dropdown").hide();
+  tagClickHandlers.toggleTagBoxFollow();
 
-  $(".photo").hover(function() {
-    $("#tag-box").show();
-  }, function() {
+  function followCursor(x, y) {
+    $("#tag-box").css({
+      left: x-20,
+      top: y-20
+    });
+  }
+
+  $(".photo").on({
+    click: function(e) {
+      //fix outline at current location by turning off #tag-box and creating a new div at the same location
+      console.log(e);
+
+      if ($(e.target).is("#tag-box")) {
+        $(".photo").off("mouseover");
+
+        tagClickHandlers.toggleTagBoxVisibility();
+        var $staticBox = $("<div></div>")
+        .addClass("photo-box")
+        .css({
+              left: e.pageX-20,
+              top: e.pageY-20});
+        $("#tag-box").after($staticBox);
+
+        //expose dropdown menu
+        $("#tag-dropdown").css({
+          left: e.pageX-20,
+          top: e.pageY+20
+        });
+        $("#tag-dropdown").slideDown(500);
+      } else {
+        $(".photo-box").first().remove();
+        $("#tag-dropdown").hide();
+        $(".photo").on("mouseover.boxFollow");
+        tagClickHandlers.toggleTagBoxVisibility();
+        tagClickHandlers.toggleTagBoxFollow();
+        $("#tag-box").css({
+          left: e.pageX-20,
+          top: e.pageY-20
+        });
+      }
+
+      //if not tag-box, hide tag-dropdown, remove temporary div box, and hide tag-dropdown
+
+
+    }
+
+  });
+
+  $("#tag-dropdown li").on({
+    click: function(e) {
+      e.stopPropagation();
+      console.log($(e.target).text());
+      //affix name to bottom of box
+      var $targetTagBox = $(".photo-box").first();
+      console.log($targetTagBox.css("top"));
+      var $name = $("<h3></h3>")
+            .addClass("tag-name")
+            .text($(e.target).text())
+            .css({
+                left: $targetTagBox.css("left"),
+                top: parseInt($targetTagBox.css("top"), 10)+44
+            });
+      $targetTagBox.after($name);
+
+      //hide dropdown
+      $("#tag-dropdown").hide();
+      tagClickHandlers.toggleTagBoxVisibility();
+      tagClickHandlers.toggleTagBoxFollow();
+      $("#tag-box").css({
+        left: e.pageX-20,
+        top: e.pageY-20
+      });
+    }
+  });
+
+  $(".photo").on("mouseenter", function(e) {
+    $("#tag-box").show()
+  });
+  $(".photo").on("mouseleave", function(e) {
     $("#tag-box").hide();
   });
 
-  $(".photo").mousemove(function(eventObj) {
-    $("#tag-box").css({
-      left: eventObj.pageX-20,
-      top: eventObj.pageY-20
-    });
-  });
+  // $(".photo").hover(function() {
+  //   $("#tag-box").toggle();
+  //   $("#tag-box").show();
+  // }, function() {
+  //   $("#tag-box").hide();
+  // });
 
-  $(".photo").click(function() {
-    $(".photo").off("mousemove");
-  })
+
 
 
 
