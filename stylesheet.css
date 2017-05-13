@@ -13,3 +13,30 @@
 .input-alert {
   border-color: red;
 }
+
+/* DROPDOWN */
+.dropdown, .dropdown ul {
+  list-style-type: none;
+}
+.dropdown .menu {
+  display:none;
+  position:absolute;
+}
+.dropdown .item:hover{
+  background-color: #e5e5e5;
+  cursor: pointer;
+}
+.dropdown .selected:hover {
+  background-color: #e5e5e5;
+}
+.dropdown .toggle {
+  border: 1px solid #e5e5e5;
+  height:15px;
+  min-width: 100px;
+  display:inline-block;
+}
+
+/* UTILITY */
+.fr {
+ float:right;
+}
