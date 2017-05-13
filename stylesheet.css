@@ -1,0 +1,15 @@
+.alert, .error {
+  color: red;
+}
+
+.show {
+  display: inline;
+}
+
+.unmatched {
+  display: none;
+}
+
+.input-alert {
+  border-color: red;
+}
