@@ -17,7 +17,7 @@ var dropDown = {
   },
 
   setFormValue: function($selection) {
-    var $form = $selection.parents('.form-dropdown');
+    var $form = $selection.parents('#form');
     $form.find('#selection').val('fdjks');
   }
 

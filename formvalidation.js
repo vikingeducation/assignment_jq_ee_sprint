@@ -5,7 +5,7 @@ var formValidation = {
   init: function() {
     $('form').on('keyup', formValidation.fields, formValidation.displayRemainingChars);
     $('form').on('keyup', '#confirmation', formValidation.displayConfirmationMatch);
-    $('form').on('click', '#submit', formValidation.validateLength)
+    $('form').on('click', '#submit', formValidation.validateFields);
   },
 
   displayRemainingChars: function(e) {
@@ -36,29 +36,60 @@ var formValidation = {
     }
   },
 
-  addErrorMessage: function(m) {
-    var msg = $('<span>')
-      .addClass('error')
-      .html(m)
-    return msg
+  validateLength: function(el) {
+    var charCount = el.val().length;
+    if (charCount < el.attr('minlength') || charCount > el.attr('maxlength')) {
+      var msg = 'Please use between ' + el.attr('minlength') + ' and ' + el.attr('maxlength') + ' characters';
+      formValidation.appendErrorMsg(el, msg);
+      return false;
+    } else {
+      formValidation.removeErrorMsg(el);
+      return true;
+    }
   },
 
-  validateLength: function(e) {
+  removeErrorMsg: function(el) {
+    console.log('remove error', el);
+    if (el.siblings('.error').length) {
+      el.siblings('.error').remove();
+    }
+  },
+
+  appendErrorMsg: function(el, msg) {
+    if (el.siblings('.error').length) {
+      el.siblings('.error').html(msg);
+    } else {
+      var m = $('<span>')
+        .addClass('error')
+        .html(msg);
+      el.parent().append(m);
+    }
+  },
+
+  validatePresence: function(el) {
+    console.log('validate presence', el.val());
+    if (el.val()) {
+      formValidation.removeErrorMsg(el);
+      return true;
+    } else {
+      formValidation.appendErrorMsg(el, 'Can\'t be blank');
+      return false;
+    }
+  },
+
+  validateFields: function(e) {
     var $this = $(this);
     var isValid = true;
     $this.closest('form').find(formValidation.fields).each(function(i, el) {
       var $el = $(el);
       var charCount = $el.val().length;
-      if (charCount < $el.attr('minlength') || charCount > $el.attr('maxlength')) {
-
-
-        $el.siblings('.error')
-          .html('This should be between ' + $el.attr('minlength') + ' and ' + $el.attr('maxlength') + ' characters long');
-        $el.addClass('input-alert');
-        isValid = false;
-      } else {
-        $el.removeClass('input-alert');
-        $el.siblings('.error').remove();
+      switch ($el.attr('data-validation')) {
+        case 'length':
+          isValid = formValidation.validateLength($el);
+          break;
+        case 'presence':
+          isValid = formValidation.validatePresence($el);
+          break;
       }
     });
 
@@ -66,5 +97,6 @@ var formValidation = {
       e.preventDefault();
     }
   }
+
 
 }
