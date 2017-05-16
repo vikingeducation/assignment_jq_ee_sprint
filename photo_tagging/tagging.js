@@ -1,38 +1,53 @@
 var tagging = {
 
   names: ['Frank', 'Dee', 'Mac', 'Dennis', 'Charlie', 'Kitten Mittens'],
+  locked: false,
 
   init: function() {
+    tagging.createTagger();
     tagging.startTrackingMouse();
+    $('.photo-container').on('click', '.photo', tagging.tagPhoto);
     $('.photo-container').on('click', '.remove-tag', tagging.removeTag);
   },
 
   removeTag: function(e) {
-    $(this).parents('.tagged').remove();
+    var $parent = $(this).parents('.tagged');
+    name = $parent.find('.selected').text()
+    tagging.names.push(name);
+    $('#tagger').find('.menu').append($('<li>', {
+      class: 'item'
+    }).text(name));
+    $parent.remove();
   },
 
   tagPhoto: function(e) {
-    tagging.stopTrackingMouse(e);
-    $('#tagger').css('pointer-events', 'auto');
-    $('.menu').slideDown(300);
-    $('#tagger').on('click', '.item', tagging.createTag);
+    if (tagging.locked) {
+      $('.menu').slideUp();
+      tagging.startTrackingMouse();
+      tagging.locked = false;
+    } else {
+      tagging.locked = true;
+      tagging.stopTrackingMouse();
+      $('.menu').slideDown(300);
+      $('#tagger').on('click', '.item', tagging.createTag);
+    }
   },
 
   createTag: function(e) {
     var $this = $(this);
     var $tagger = $this.parents('#tagger');
     $this.parents('.toggle').find('.selected').html($this.text());
-    var $tagged = $tagger.addClass('tagged');
+    var $tagged = $tagger.addClass('tagged').addClass('point-through');
     $tagged.attr('id', null)
       .find('.selected')
-      .html($this.text());
+      .html($this.text())
     $tagger.find('.menu').remove();
     $tagged.prepend($('<div>', {
         class: 'remove-tag'
       })
       .text('x'));
-    $('#tagger').css('pointer-events', 'none');
-    tagging.startTrackingMouse();
+    tagging.names.splice(tagging.names.indexOf($this.text()), 1);
+    tagging.locked = false;
   },
 
   startTrackingMouse: function() {
@@ -40,35 +55,42 @@ var tagging = {
       mouseenter: tagging.showTagger,
       mouseleave: tagging.hideTagger,
       mousemove: tagging.followMouse,
-      click: tagging.tagPhoto
     }, '.photo');
+    $('#tagger').toggleClass('point-through');
   },
 
   followMouse: function(e) {
     console.log('followMouse');
-    $('#tagger').css({
-      top: e.pageY - 50,
-      left: e.pageX - 50
-    });
+    if ($('#tagger').length === 0) {
+      tagging.createTagger();
+      tagging.showTagger();
+      tagging.locked = false;
+    }
+    if (!tagging.locked) {
+      $('#tagger').css({
+        top: e.pageY - 50,
+        left: e.pageX - 50
+      });
+    }
   },
 
   stopTrackingMouse: function(e) {
     console.log('stop tracking');
-    $('.photo-container').off({
-      mouseenter: tagging.showTagger,
-      mouseleave: tagging.hideTagger,
-      mousemove: tagging.followMouse,
-      click: tagging.tagPhoto
-    }, '.photo')
+    $('#tagger').removeClass('point-through');
+    $('.photo-container').off('mouseenter, mouseleave');
   },
 
   hideTagger: function() {
     $('#tagger').remove();
   },
+  showTagger: function() {
+    $('#tagger').show();
+  },
 
-  showTagger: function(e) {
+  createTagger: function(e) {
     var $tagger = $('<div>')
-      .attr('id', 'tagger');
+      .attr('id', 'tagger')
+      .addClass('point-through');
     var $toggle = $('<div>')
       .addClass('toggle');
     var $selected = $('<div>')

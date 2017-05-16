@@ -2,12 +2,14 @@
   border:4px solid red;
   width:100px;
   position: absolute;
-  pointer-events:none;
+ display:none;
 }
 .toggle {
   height:100px;
 }
-
+.point-through {
+  pointer-events: none;
+}
 .remove-tag {
 right:-10px;
 top:-10px;
@@ -19,6 +21,7 @@ border-radius: 50%;
 position:absolute;
 cursor: pointer;
 color: #fff;
+pointer-events: auto;
 }
 
 .photo {
