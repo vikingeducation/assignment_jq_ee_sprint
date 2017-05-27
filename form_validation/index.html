@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Effects and Events</title>
+	<link href="styles.css" rel="stylesheet">
+</head>
+<body>
+	<div id="wrapper">
+		<form>
+			<div  id="text-area">
+				<input type="text" class="text-input" id="short-text" data-max="32" data-min="4" name="Text field" placeholder="Start writing here">
+				<div class="text-counter">0</div>
+			</div>
+			<div id="text-area-lg">
+				<textarea class="text-input" id="long-text" data-max="140" data-min="4" name="Text area" placeholder="Start writing here"></textarea>
+				<div class="text-counter">0</div>
+			</div>
+			<div>
+			<input class="password" id="password" type="password" data-max="16" data-min="6" name="password">
+			<div class="text-counter">0</div>
+			</div>
+			<div>
+			<input class="password" id="confirm" type="password" data-max="16" name="password-confirm">
+			<div class="text-counter">0</div>
+			</div>
+			<p id="check-msg">
+				
+			</p>
+			<input id="submit" type="button" name="submit" value="Submit">
+			<p id="error-msg">
+				
+			</p>
+		</form>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	
+</body>
+</html>
