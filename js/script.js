@@ -83,3 +83,17 @@ $( document ).ready( function() {
   }
   $("#submit").on("click", check );
 })
+
+$( document ).ready(function() {
+  var shown = false;
+  $("#dd").on("click", function() {
+    if(!shown) {
+      $("#dd").next().removeClass("hide");
+      shown = true;
+    }
+    else {
+      $("#dd").next().addClass("hide");
+      shown = false;
+    }
+  });
+})
