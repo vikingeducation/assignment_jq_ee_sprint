@@ -1,0 +1,30 @@
+*{
+  border: 1px solid gray;
+}
+#wrapper{
+  background-color: #fefefe;
+}
+#dropdown{
+  display: block;
+  width: 30%;
+  background-color: #c9b0f6;
+  margin: 100px auto;
+}
+ul{
+  list-style: none;
+  border-left: 21px solid #9863f5;
+}
+.list-item{
+  height: 30px;
+  line-height: 1.5;
+	padding-left: 10px;
+}
+
+.items {
+	display:none;
+}
+
+.items:hover{
+	background: #9863f5;
+	cursor: pointer;
+}

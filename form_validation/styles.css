@@ -1,0 +1,104 @@
+*{
+	border: 1px solid gray;
+}
+
+body{
+	background-color: gray;
+}
+
+#wrapper{
+	margin: 0 auto;
+}
+
+form{
+	height: 250px;
+	position: block;
+	width: 50%;
+	margin: 100px auto;
+	background-color: blue;
+	padding: 5px;
+}
+
+
+/*****************
+		Text field
+******************/
+#text-area{
+	width: 90%;
+	height: 30px;
+	margin-left: 15px;
+}
+
+#text-area input{
+	margin-top: 10px;
+}
+
+
+/*****************
+		Textarea
+******************/
+form div{	
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+.text-input{
+	display: inline;
+	width: 80%;
+	
+}
+
+.text-counter{
+	position: absolute;
+	display: none;
+	height: 20px;
+	width: 20px;
+	margin: 8px;
+	color: white;
+	border: none;
+}
+
+/***********
+password
+***********/
+.password{
+	display: inline-block;
+	margin: 5px auto;
+}
+
+#check-msg{
+	display: block;
+	color: white;
+	width: 50%;
+	margin: 5px auto;
+}
+
+/*************
+Submit Button
+*************/
+input[type="button"]{
+	position: inline;
+	color: black;
+	background-color: white;
+	margin-left: 10%;
+}
+
+/***************
+Error
+***************/
+.error{
+	border: 3px solid red;
+}
+
+#error-msg{
+	color: red;
+	text-align: center;
+}
+
+
+
+
+
