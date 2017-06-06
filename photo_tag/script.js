@@ -8,21 +8,79 @@ This outline should not show unless
 the mouse is hovering over the photo.
 */
 
-
-
-var showThis = function(){
-  var $square = $('<div>',{
-    id: "square"
-  })
-  $('#test').append($square);
+var test = function(){
+  console.log("test");
 }
-showThis();
+
+var mouseIn = function(){
+  $(this).on("click", showThis);
+}
+
+var mouseOut = function(){
+  $(window).on("click", function(){
+    $("#square").remove();
+  });
+}
+var hovering = function(){
+  $("figure").hover(mouseIn, mouseOut);
+}
+hovering();
+
+
+
 /*
 When the user clicks, the targeting outline
 becomes fixed at that location
-and a simple drop-down menu slides down below it.
+*/
+var showThis = function(){
+  showSquare();
+}
+
+var showSquare = function(){
+  event.stopPropagation();
+  var $square = $('<div>',{
+    id: "square",
+  })
+  $("#square").remove();
+  $square.css({
+    "top": event.pageY - 38,
+    "left": event.pageX - 40,
+  });
+  $('figure').append($square);
+  addList();
+  //repositions square when clicked in square
+  $square.on("click", showSquare);
+
+}
+
+/* A simple drop-down menu slides down below it.
 Pre-populate this menu with a few sample names to choose from.
 */
+//List of names
+var names = ['Alex', 'Eugene', 'Professor', 'Paul', 'Sylvinna', 'Origin'];
+//propogates list
+var addList = function(){
+  var $list = $('<ul>',{
+    id: "list",
+  })
+  $("#square").append($list);
+  $list.css({
+    "margin-top": "74px"
+  })
+  addListIems();
+  setName();
+}
+
+var addListIems =  function(){
+  names.forEach(function(name){
+    var $listItem = $('<li>', {
+      class: "list-item",
+      html: name
+    })
+    $("#list").append($listItem);
+  })
+}
+
 /*
 If the user clicks away from the dropdown, "cancel"
 the tagging and resume the process of having the
@@ -33,6 +91,41 @@ If the user selects a name from the list,
 assign that name to the now-fixed tag box.
 The name should be displayed somewhere next to this new tag box.
 */
+var setName = function(){
+  $(".list-item").on("click", pickName);
+}
+//click on name on list
+var pickName = function(){
+  event.stopPropagation();
+  var $listItem = $(".list-item");
+  $listItem.on("click", setTag);
+}
+
+var setTag = function(){
+  //add name to box element
+  var nameElement = event.target;
+  var name = $(nameElement).text();
+  setBox(name);
+}
+//create  blue box element
+var setBox = function(name){
+  var $setBox = $('<div>', {
+  class: "setBox",
+  html: name
+  })
+  //fix box with name to position
+  $setBox.css({ //????
+    "top": $("#square").css("top"),
+    "left": $("#square").css("left")
+  });
+  $('figure').append($setBox);
+  $('#square').remove();
+}
+
+
+
+
+
 /*
 Resume the hover-targeting phase and
 allow the user to continue tagging locations in the photo.
