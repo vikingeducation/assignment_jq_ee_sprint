@@ -10,23 +10,36 @@
   </head>
   <body>
     <form>
-      <div id='text'>
+      <div class='text'>
 
         <input type='text' class='text' maxlength="32">
+      </div>
 
+      <div class='textarea'>
+        <textarea maxlength="140" rows='10' cols='50'></textarea></br>
       </div>
-      </br>
-      <div id='textarea'>
-        <input type='textarea' class='textarea' maxlength="140"></br>
-      </div>
-      <div id='password'>
+      <div class='password'>
       <input type='password' class='password' maxlength="16">password</br>
     </div>
-    <div id='confirm'>
+    <div class='confirm'>
       <input type='password' class='confirm' maxlength="16">confirm password
     </div>
-  </br>
-    </form>
 
-    <script src='script.js'></script>
+    <input type='submit' class='submit'>
+    </form>
+  </br></br>
+
+    <div class='dropdown'>
+      <input type='text' id='display' readonly></br>
+      <input type='text' class='hidden' value='examp1' readonly></br>
+      <input type='text' class='hidden' value='examp2' readonly><br>
+      <input type='text' class='hidden' value='examp3' readonly></br>
+      <input type='text' class='hidden' value='examp4' readonly>
+    </div>
+
+    <script src='form.js'></script>
+    <script src='dropdown.js'></script>
+
+
+
   </body>

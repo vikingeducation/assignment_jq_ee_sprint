@@ -1,3 +1,15 @@
 p {
   display: inline
 }
+
+.hidden {
+  display: none;
+}
+
+.opened {
+  background-color: lightgray;
+}
+
+.opened:hover{
+  background-color: lightyellow;
+}
