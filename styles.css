@@ -1,0 +1,47 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size:15px;
+  color: black;
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: 250px;
+  grid-gap: 10px;
+}
+
+.account-action .btn {
+  background: #F77444;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#textFieldCharCounter, #textAreaCharCounter,
+#passwordCharCounter, #passwordConfirmCharCounter {
+  color: green;
+}
+
+#passwordError, #textAreaValidationError, #textFieldValidationError,
+#passwordValidationError, #passwordConfirmValidationError {
+  color: red
+}
+
+.fieldValidationError {
+  background-color: red
+}
+

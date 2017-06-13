@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Practice with Events and Effects!</title>
+
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <form id="login">
+    <fieldset class="account-action grid-wrapper">
+      <h1>The Form Validation</h1>
+      <label for="textField">Random text:</label>
+      <div>
+        <input id="textField" type="text" name="textField" placeholder="Random text">
+        <span id="textFieldCharCounter"></span>
+        <span id="textFieldValidationError" hidden>Text field must be 4-23 chars.</span>
+      </div>
+
+      <p></p>
+      <label for="textArea">Random text area:</label>
+      <div>
+        <textarea id="textArea" name="textArea" placeholder=""></textarea>
+        <span id="textAreaCharCounter"></span>
+        <span id="textAreaValidationError" hidden>Text area must be 4-140 chars.</span>
+      </div>
+      <p></p>
+      <label for="password">Password:</label>
+      <div>
+        <input id="password" type="password" name="password" placeholder="Password required" required>
+        <span id="passwordCharCounter"></span>
+        <span id="passwordValidationError" hidden>Password must be 6-16 chars.</span>
+      </div>
+
+      <p></p>
+
+      <label for="passwordConfirm">Confirm password:</label>
+      <div>
+        <input id="passwordConfirm" type="password" name="passwordConfirm" placeholder="Confirm password" required>
+        <span id="passwordConfirmCharCounter"></span>
+        <span id="passwordError"></span>
+        <span id="passwordConfirmValidationError" hidden>Password confirmation must be 6-16 chars.</span>
+      </div>
+
+      <p></p>
+
+      <input id="btnSubmit" class="btn" type="submit" name="submit" value="Submit">
+
+    </fieldset>
+  </form>
+</body>
+</html>
