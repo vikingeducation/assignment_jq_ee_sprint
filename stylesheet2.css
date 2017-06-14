@@ -1,0 +1,30 @@
+.cursor {
+  position:absolute;
+  height:100px;
+  width:100px;
+  border: 5px solid red;
+  background-color: rgba(255, 255, 255, 0.9)
+  float:left;
+}
+
+.clicked {
+  position:absolute;
+  height:100px;
+  width:100px;
+  border: 5px solid red;
+  background-color: rgba(255, 255, 255, 0.9)
+  float:left;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.friend-list {
+  position:absolute;
+  border: 5px solid red;
+  background-color:rgba(255, 255, 255, 0.9);
+  width: 100px;
+
+}
