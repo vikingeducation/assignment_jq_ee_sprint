@@ -1,0 +1,58 @@
+/* RESET DA STYLE */
+
+li, ul, div, p{
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  outline: 0px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+/* LET THE CODE BEGIN */
+
+li{
+  width: 80px;
+  height: 20px;
+  list-style-type: none;
+  background-color: #DCDCDC;
+  padding: 5px;
+  text-align: center;
+  display: none;
+  cursor: pointer;
+
+}
+
+ul{
+  margin: 20px 0px 20px 0px;
+  list-style-type: none;
+  border: black 2px solid;
+  display: inline-block;
+}
+
+#selected{
+  width: 80px;
+  height: 20px;
+  padding: 5px;
+  text-align: center;
+  background-color: #DCDCDC;
+  cursor: pointer;
+}
+
+#taggedPhoto{
+  width: auto;
+  display: inline-block;
+}
+
+image{
+  display: inline-block;
+}
+
+#targetingBox {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  display: none;
+  border: 10px solid yellow;
+}
