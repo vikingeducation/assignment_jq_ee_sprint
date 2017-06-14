@@ -7,7 +7,8 @@ function showRemainingChars(event) {
 }
 
 function confirmPassword() {
-  if($('#password')[0].value !== $('#passwordConfirm')[0].value && $('#passwordConfirm')[0].value !== '') {
+  var $passwordConfirmValue = $('#passwordConfirm')[0].value;
+  if($('#password')[0].value !== $passwordConfirmValue && $passwordConfirmValue !== '') {
     $('#passwordError').text('Passwords do not match.');
   }
   else $('#passwordError').text('');
@@ -19,14 +20,14 @@ function validateInput(event) {
 
   inputFieldsToValidate.forEach(function(field) {
     var validationValues = validations.getTextValidationValues(field);
-    var fieldSelector = $('#' + field);
-    var fieldValue = fieldSelector[0].value;
+    var $fieldSelector = $('#' + field);
+    var fieldValue = $fieldSelector[0].value;
     if(fieldValue.length < validationValues.minChars || fieldValue.length > validationValues.maxChars) {
-      fieldSelector.addClass('fieldValidationError');
+      $fieldSelector.addClass('fieldValidationError');
       $(validationValues.validationError).prop('hidden', false);
     }
     else {
-      fieldSelector.removeClass('fieldValidationError');
+      $fieldSelector.removeClass('fieldValidationError');
       $(validationValues.validationError).prop('hidden', true);
     }
   });
@@ -36,11 +37,13 @@ function validateInput(event) {
 var validator = {
 
   init: function() {
+    var $passwordConfirm = $('#passwordConfirm');
+
     $('#textField').keyup(showRemainingChars);
     $('#textArea').keyup(showRemainingChars);
     $('#password').keyup(showRemainingChars);
-    $('#passwordConfirm').keyup(showRemainingChars);
-    $('#passwordConfirm').keyup(confirmPassword);
+    $passwordConfirm.keyup(showRemainingChars);
+    $passwordConfirm.keyup(confirmPassword);
     $('#login').submit(validateInput);
   }
 };
