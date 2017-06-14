@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="scripts.js"></script>
+</head>
+
+<body>
+
+  <form>
+    <input type="text" class="username create" char-low="4" char-high="32" />
+    <p class="username char-count"></p>
+
+    <textarea class="info create" char-low="4" char-high="140"></textarea>
+    <p class="info char-count"></p>
+
+    <input type="password" class="password-original create" char-low="6" char-high="16"/>
+    <p class="password-original char-count"></p>
+
+    <input type="password" class="password-conformation create" char-low="6" char-high="16" />
+    <p class="password-conformation char-count"></p>
+    <p class="password-conformation char-match"></p>
+
+    <input type="submit" onclick="return false" />
+  </form>
+
+  <ul>
+    <div id="selected"></div>
+    <li id="brazil">Brazil</li>
+    <li id="sweden">Sweden</li>
+    <li id="usa">USA</li>
+    <li id="argentina">Argentina</li>
+  </ul>
+
+</body>
+</html>
