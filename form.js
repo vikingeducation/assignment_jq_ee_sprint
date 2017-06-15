@@ -81,6 +81,12 @@ const getFormFields = function(){
   return forms
 }
 
+const init = function(el, chars){
+  $(el).keydown(function(){
+    displayRemaining(this, chars)
+  })
+}
+
 
 $(document).ready(function(){
   $('input.text').keydown(function(){
