@@ -12,17 +12,21 @@
     <form>
       <div class='text'>
 
-        <input type='text' class='text' maxlength="32">
+        <input type='text' class='text' id='text' maxlength="32" my-min-length="4">
+        <span class='invalid' invalid='text'></span>
       </div>
 
       <div class='textarea'>
-        <textarea maxlength="140" rows='10' cols='50'></textarea></br>
+        <textarea maxlength="140" id='textarea' rows='10' cols='50' my-min-length="4"></textarea></br>
+        <span class='invalid' invalid='textarea'></span>
       </div>
       <div class='password'>
-      <input type='password' class='password' maxlength="16">password</br>
-    </div>
+      <input type='password' class='password' id='password' maxlength="16" my-min-length="6">password</br>
+      <span class='invalid' invalid='password'></span>
+      </div>
     <div class='confirm'>
-      <input type='password' class='confirm' maxlength="16">confirm password
+      <input type='password' class='confirm' id='confirm' maxlength="16" my-min-length="6" my-matches='password'>confirm password
+      <span class='invalid' invalid='confirm'></span>
     </div>
 
     <input type='submit' class='submit'>

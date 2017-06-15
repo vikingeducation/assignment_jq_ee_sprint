@@ -13,3 +13,16 @@ p {
 .opened:hover{
   background-color: lightyellow;
 }
+
+
+.valid {
+  border-color: green;
+}
+
+.invalid {
+  border-color:red;
+}
+
+.error {
+  border-color: red;
+}
