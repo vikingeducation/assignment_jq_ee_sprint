@@ -9,15 +9,16 @@
 
 
 <div>
-    <form class="login-form">
-      <textarea class="counter"> text area</textarea>
 
-      <input class="counter" type="text" placeholder="username"/>
+      <textarea id="area" class="counter"  onkeyup="CountAreaChar()" > text area</textarea>
+      <p id="areaCounterText"class="counterText" >counter</p>
+      <input id="field" class="counter" type="text"  onkeyup="CountFieldChar()" placeholder="username"/>
+      <p id="fieldCounterText" class="counterText">counter</p>
+      <input id="pass" class="counter" type="password" maxlength="16" onkeyup="CountPasswordChar()" placeholder="password"/>
+      <p id="passCounterText"  class="counterText">counter</p>
 
-      <input class="counter" type="password" placeholder="password"/>
-      <button>login</button>
-      <p class="counter">Numbers remaining <a href="#">here</a></p>
-    </form>
+      <p id = "validate" class="counterText">ss </p>
+<button onclick="ValidateLogIn()">login</button>
 </div>
 
 
