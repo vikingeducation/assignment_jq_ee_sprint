@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="scripts.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+
+<div onmousemove="ShowTagBox(event)" >
+
+  <p id ="theBox"  onmouseup="TagHere()" class = "boxx"  > </p>
+<img   onClick="DontTagHere()"  src="BSG_cast.jpg"  style="width:900px;height:500px;">
+
+</div>
+
+<div id="MoveThis">
+
+  <li class="sub-menu-parent"  >
+
+  <p id="SelectedFromDropDown">DropDownMenu</p>
+        <ul class="sub-menu">
+        <li class="menuItem" onclick="SelectFromDropDown(this)">1ss </li>
+        <li class="menuItem" onclick="SelectFromDropDown(this)">2dd </li>
+        <li class="menuItem" onclick="SelectFromDropDown(this)">Remove</li>
+      </ul>
+    </li>
+
+   </li>
+</div>
+
+</html>
