@@ -2,7 +2,7 @@
 
 li,a{
   width: 120px;
-text
+
 position: relative;
 list-style: none;
 text-align: left;
@@ -10,7 +10,7 @@ margin-left:  100px;
 background-color:  #F55;
 }
 ul{position: absolute;padding-left: 75px;}
-img{}
+
 div{
 
   position: absolute;
@@ -19,11 +19,7 @@ margin: auto;
   text-align: center;
 
 }
-img:hover{
 
-
-
-}
 .menuItem{float: right;}
 .boxx {
 
@@ -35,9 +31,30 @@ img:hover{
     border: 2px solid green;
 pointer-events: visible;
 }
+.insideBox{
+margin-top: 130px;
+margin-left: 20px;
+text-align: center;
+   position:fixed;
+
+background-color:  #F55;
+}
+.insideBox:hover{
+border: 2px solid green;
+visibility:  visible;
+}
+.tag-boxx {
+   position:absolute;
+    width: 100px;
+    height: 100px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    border: 2px solid red;
+pointer-events: visible;
+}
 .sub-menu {
   text-align: center;
-  visibility: hidden; /* hides sub-menu */
+  visibility: visible; /* hides sub-menu */
   opacity: 0;
   position: absolute;
   top: 100%;
@@ -48,7 +65,7 @@ pointer-events: visible;
   transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
 }
 
-.sub-menu-parent:hover .sub-menu {
+.sub-menu-parent .sub-menu {
   visibility: visible; /* shows sub-menu */
   opacity: 1;
   z-index: 1;
@@ -57,4 +74,4 @@ pointer-events: visible;
 }
 .sub-menu :hover {
 cursor:pointer;
-background-color:  #F55; }
+background-color:  #F15; }

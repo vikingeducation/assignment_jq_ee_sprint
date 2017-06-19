@@ -6,10 +6,10 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 
 
-<div>
+<div onmousemove="ShowTagBox(event)" >
 
-  <p id ="theBox" class = "boxx" onClick="TagHere()" ></p>
-<img  onClick="TagHere()" onmousemove="ShowTagBox(event)"  src="BSG_cast.jpg"  style="width:900px;height:500px;">
+  <p id ="theBox"  onmouseup="TagHere()" class = "boxx"  > </p>
+<img   onClick="DontTagHere()"  src="BSG_cast.jpg"  style="width:900px;height:500px;">
 
 </div>
 
@@ -21,7 +21,7 @@
         <ul class="sub-menu">
         <li class="menuItem" onclick="SelectFromDropDown(this)">1ss </li>
         <li class="menuItem" onclick="SelectFromDropDown(this)">2dd </li>
-        <li class="menuItem" onclick="SelectFromDropDown(this)">3ff </li>
+        <li class="menuItem" onclick="SelectFromDropDown(this)">Remove</li>
       </ul>
     </li>
 
