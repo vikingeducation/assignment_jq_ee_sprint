@@ -1,8 +1,9 @@
 function showRemainingChars(event) {
   var numRemainingChars = charCounter.calculateRemainingChars(event.currentTarget);
   var validationValues = validations.getTextValidationValues(event.currentTarget.name);
-  if(numRemainingChars === validationValues.maxChars)
+  if(numRemainingChars === validationValues.maxChars) {
     numRemainingChars = '';
+  }
   $(validationValues.charCounter).text(numRemainingChars);
 }
 
@@ -11,7 +12,9 @@ function confirmPassword() {
   if($('#password')[0].value !== $passwordConfirmValue && $passwordConfirmValue !== '') {
     $('#passwordError').text('Passwords do not match.');
   }
-  else $('#passwordError').text('');
+  else {
+    $('#passwordError').text('');
+  }
 }
 
 function validateInput(event) {

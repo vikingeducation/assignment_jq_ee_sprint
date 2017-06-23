@@ -3,12 +3,12 @@ function toggleList() {
 }
 
 function showColorForListItem(event) {
-  var colorClass = event.target.attributes['name'].value + '-show';
+  var colorClass = event.target.attributes.name.value + '-show';
   $(event.currentTarget).addClass(colorClass);
 }
 
 function hideColorForListItem(event) {
-  var colorClass = event.target.attributes['name'].value + '-show';
+  var colorClass = event.target.attributes.name.value + '-show';
   if(!($(event.currentTarget).hasClass('selected'))) {
     $(event.currentTarget).removeClass(colorClass);
   }
