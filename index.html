@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>jQuery: Events and Effects</title>
+</head>
+<body>
+	<form class="awesome-form">
+		<div>
+			<label for="username">Username</label>
+			<input type="text" name="username" class="username-box"><span class="username-error error-text">4-32 characters needed!</span>
+			<p class="username-area-message"><span class="username-area-counter">32</span> character(s) remaining</p>
+		</div>
+		<div>
+			<label for="comment">Comment</label>
+			<textarea name="comment" form="usrform" class="comment-box" placeholder="Enter text here..."></textarea><span class="commentarea-error error-text">4-140 characters needed!</span>
+			<p class="textarea-counter-message"><span class="textarea-counter">140</span> character(s) remaining</p>
+		</div>
+		<div>
+			<label for="password">Password</label>
+			<input type="password" name="password" class="password-box"><span class="password-error error-text">6-16 characters needed!</span>
+			<p class="password-area-message"><span class="password-area-counter">16</span> character(s) remaining</p>		
+		</div>
+		<div>
+			<label for="cpassword">Confirm Password</label>
+			<input type="password" name="cpassword" class="cpassword-box"><span class="cpassword-error error-text">Please confirm your password!</span>
+			<p class="cpassword-alert">Passwords do not match!</p>
+			<p class="cpassword-area-message"><span class="cpassword-area-counter">16</span> character(s) remaining</p>	
+		</div>
+		<input type="submit" value="Submit" class="form-btn">
+	</form>
+
+	<script
+	  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+	  crossorigin="anonymous"></script>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

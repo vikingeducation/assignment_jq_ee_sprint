@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+form {
+	display: block;
+}
+
+div {
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.cpassword-alert {
+	display: none;
+	color: red;
+}
+
+.error-border {
+	border: 1px solid red;
+}
+
+.error-text {
+	color: red;
+	margin-left: 10px;
+}
+
+.username-error {
+	display: none;
+}
+
+.commentarea-error {
+	display: none;
+}
+
+.password-error {
+	display: none;
+}
+
+.cpassword-error {
+	display: none;
+}
+
