@@ -1,0 +1,174 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size:15px;
+  color: black;
+}
+
+/* Form Validation */
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: 250px;
+  grid-gap: 10px;
+}
+
+.account-action .btn {
+  background: #F77444;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#textFieldCharCounter, #textAreaCharCounter,
+#passwordCharCounter, #passwordConfirmCharCounter {
+  color: green;
+}
+
+#passwordError, #textAreaValidationError, #textFieldValidationError,
+#passwordValidationError, #passwordConfirmValidationError {
+  color: red
+}
+
+.fieldValidationError {
+  background-color: red
+}
+
+/* DropDown */
+#colorDropdown {
+  display: grid;
+  grid-template-columns: 250px 20px;
+}
+
+#colorDropdown .selected {
+  height: 23px;
+  border-bottom-style:none;
+}
+
+#colorList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-style: solid;
+  border-width: 1px;
+  width: 250px;
+}
+
+#colorList li {
+  padding-left: 5px;
+}
+
+.red-show {
+  background-color: palevioletred;
+  cursor: pointer;
+}
+
+.blue-show {
+  background-color: lightblue;
+  cursor: pointer;
+}
+
+.green-show {
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+.purple-show {
+  background-color: mediumpurple;
+  cursor: pointer;
+}
+
+#dropdownArrow {
+  padding: 5px;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-top-style: solid;
+  border-width: 1px;
+  height: 25px;
+}
+
+/* Photo Tag */
+
+.tagger {
+  position: absolute;
+  float: left;
+  border-width: thick;
+  width: 75px;
+  height: 75px;
+  border: solid;
+  color: red;
+  z-index: 100;
+  cursor: crosshair;
+}
+
+.nameTagList {
+  list-style-type: none;
+  position: absolute;
+  float: left;
+  border-width: thick;
+  width: 75px;
+  border: solid;
+  border-color: red;
+  z-index: 100;
+  background-color: white;
+  color: black;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  padding-left: 5px;
+  z-index: 100;
+}
+
+.itemHighlight {
+  background-color: pink;
+  cursor: pointer;
+}
+
+.itemSelected {
+  background-color: lightgreen;
+  border-color: green;
+}
+
+.listSelected {
+  list-style-type: none;
+  position: absolute;
+  float: left;
+  border-width: thick;
+  width: 75px;
+  border: solid;
+  border-color: green;
+  z-index: 100;
+  background-color: white;
+  color: black;
+  padding: 0;
+  margin: 0;
+}
+
+.taggedBox {
+  position: absolute;
+  float: left;
+  border-width: thick;
+  width: 75px;
+  height: 75px;
+  border: solid;
+  color: green;
+  z-index: 100;
+}
+
+
+
+
