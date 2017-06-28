@@ -1,0 +1,35 @@
+div {
+	width: 250px;
+	margin: 10px;
+}
+
+input[type=text], input[type=password], textarea {
+	display: inline-block;
+	box-sizing: border-box;
+	width: calc(90% - 20px);
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	margin: 10px;
+	margin-left: 0;
+	padding: 5px;
+}
+
+textarea {
+	height: 150px;
+}
+
+span {
+	color: #aaa;
+	display: inline-block;
+	width: 10%
+}
+
+input[type=submit] {
+	color: white;
+	font-weight: bold;
+	background-color: #057;
+	border-radius: 5px;
+	border: none;
+	padding: 5px 10px;
+	float: right;
+}
