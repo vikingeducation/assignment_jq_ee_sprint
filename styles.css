@@ -1,15 +1,11 @@
-div {
-  width: 250px;
-  margin: 10px; }
-
 input[type=text], input[type=password], textarea {
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
-  width: calc(90% - 20px);
+  width: 200px;
   border: 2px solid #ccc;
   border-radius: 5px;
   margin: 10px;
-  margin-left: 0;
+  margin-right: 0;
   padding: 5px; }
 
 textarea {
@@ -17,8 +13,7 @@ textarea {
 
 span {
   color: #aaa;
-  display: inline-block;
-  width: 10%; }
+  display: inline-block; }
 
 input[type=submit] {
   color: white;
@@ -28,5 +23,13 @@ input[type=submit] {
   border: none;
   padding: 5px 10px;
   float: right; }
+
+#not-confirmed {
+  font-size: 12px;
+  margin: 10px;
+  margin-top: 0; }
+
+.alert {
+  color: red; }
 
 /*# sourceMappingURL=styles.css.map */
