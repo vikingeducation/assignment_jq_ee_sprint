@@ -7,6 +7,13 @@ var keyHandlers = {
     $('input[type=password]').on('keyup', keyHandlers.handlePassword);
   },
 
+  validate: function() {
+    keyHandlers.validateLength('#text-input', 4, 32);
+    keyHandlers.validateLength('#text-area', 4, 140);
+    keyHandlers.validateLength('#password-input', 6, 16);
+    keyHandlers.validateMatch('#password-repeat', '#password-input');
+  },
+
   handleText: function(event) {
     keyHandlers.checkLength($(event.target), 32);
   },
@@ -42,6 +49,20 @@ var keyHandlers = {
     }
   },
 
+  validateMatch: function(toLabel, toCompare) {
+    let $toLabel = $(toLabel);
+    let $toCompare = $(toCompare);
+
+    if ($toLabel.val() === $toCompare.val()) {
+      // valid!
+      keyHandlers.removeLabel($toLabel);
+    } else {
+      // mismatch
+      keyHandlers.updateLabel($toLabel, 'Passwords Differ');
+      keyHandlers.warn($toLabel);
+    }
+  },
+
   checkLength: function($element, maxLength) {
     let remaining = maxLength - $element.val().length;
 
@@ -59,6 +80,23 @@ var keyHandlers = {
     }
   },
 
+  validateLength: function(selector, minLength, maxLength) {
+    let $element = $(selector);
+    let length = $element.val().length;
+
+    if (length < minLength){
+      keyHandlers.updateLabel($element, 'Too Short');
+      keyHandlers.warn($element);
+
+    } else if (length > maxLength) {
+      keyHandlers.updateLabel($element, 'Too Long');
+      keyHandlers.warn($element);
+    } else {
+      // we're valid
+      keyHandlers.removeLabel($element);
+    }
+  },
+
   removeLabel: function($element){
     // remove label
     keyHandlers.locateLabel($element)
@@ -71,6 +109,9 @@ var keyHandlers = {
 
     // set label value
     $label.text(message);
+
+    $element.removeClass('warning-input');
+    $label.removeClass('warning-label')
   },
 
   locateLabel: function($element) {
@@ -85,6 +126,13 @@ var keyHandlers = {
     }
 
     return $label;
+  },
+
+  warn: function($element) {
+    // warning!
+    $element.addClass('warning-input');
+    keyHandlers.locateLabel($element)
+      .addClass('warning-label');
   }
 }
 
@@ -94,7 +142,7 @@ var buttonHandler = {
   },
   handleSubmit: function(event) {
     event.preventDefault();
-    console.log(event.target);
+    keyHandlers.validate();
   }
 }
 
