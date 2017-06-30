@@ -2,29 +2,80 @@
 
 var mouseHandler = {
   init: function() {
-    $('img').on( {
-      'mousemove': mouseHandler.updateDisplay,
+    $('.taggable img').on( {
       'mouseenter': mouseHandler.showHover,
-      'mouseout': mouseHandler.hideHover,
+    });
+    $('body').on( {
+      'mousemove': mouseHandler.updateDisplay,
+      'mouseleave': mouseHandler.leaveHandlder,
       'click': mouseHandler.handleClick
-    } );
+    });
+
+    mouseHandler.locateImage();
+    mouseHandler.buildSelector();
+  },
+
+  locateImage: function() {
+    let $target = $('.taggable img')
+    let offsets = $target.offset();
+    let height = $target.height();
+    let width = $target.width();
+    mouseHandler.imgTop = offsets.top;
+    mouseHandler.imgLeft = offsets.left;
+    mouseHandler.imgBottom = offsets.top + height;
+    mouseHandler.imgRight = offsets.left + width;
+    mouseHandler.showable = true;
+  },
+
+  buildSelector: function() {
+    let $selectionBox = $('<div>')
+      .addClass('selection-box');
+    $('body').append($selectionBox);
   },
 
   updateDisplay: function(event) {
-    // console.log('X: ' + event.pageX);
-    // console.log('Y: ' + event.pageY)
+    if (mouseHandler.showable) {
+      $('.selection-box').css({
+        'left': event.pageX - 25,
+        'top': event.pageY - 25
+      })
+      
+      if (
+          (event.pageX < mouseHandler.imgLeft)
+        || (event.pageX > mouseHandler.imgRight)
+        || (event.pageY < mouseHandler.imgTop)
+        || (event.pageY > mouseHandler.imgBottom)
+      ) {
+          mouseHandler.hideHover();
+      }
+    }
   },
 
-  showHover: function(event) {
-    console.log('on image');
+  leaveHandlder: function() {
+    mouseHandler.hideHover();
+    mouseHandler.showable = true;
   },
 
-  hideHover: function(event) {
-    console.log('off image');
+  hideHover: function() {
+    $('.selection-box').fadeOut(200);
+  },
+
+  showHover: function() {
+    if (mouseHandler.showable) {
+      $('.selection-box').fadeIn(200);
+    }
   },
 
   handleClick: function(event) {
-    console.log('click image');
+    mouseHandler.showable = !mouseHandler.showable;
+    if (!mouseHandler.showable) {
+      mouseHandler.hideHover();
+    } else {
+      mouseHandler.updateDisplay(event);
+      mouseHandler.showHover();
+    }
+    
+    console.log(mouseHandler.showable);
   }
 
 }
