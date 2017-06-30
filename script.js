@@ -21,22 +21,34 @@ var keyHandlers = {
     let remaining = maxLength - $element.val().length;
 
     if (remaining === maxLength) {
+      // no characters entered
       keyHandlers.removeLabel($element);
     } else {
+      // some characters enterd
       keyHandlers.updateLabel($element, remaining);
     }
   },
 
   removeLabel: function($element){
-    console.log('label removed');
     // locate label
+    $label = keyHandlers.locateLabel($element);
     // hide label
+    $label.hide();
   },
 
   updateLabel: function($element, remaining){
-    console.log('label updated');
     // locate label
+    $label = keyHandlers.locateLabel($element);
+    $label.show();
+
     // set label value
+    if (remaining < 0) {
+      // too many characters
+      $label.text('Too Long!');
+    } else{
+      // inform the user
+      $label.text(remaining);
+    }
   },
 
   locateLabel: function($element) {
