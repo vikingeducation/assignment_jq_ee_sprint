@@ -146,10 +146,44 @@ var buttonHandler = {
   }
 }
 
+var dropHandler = {
+  init: function() {
+    dropHandler.setupDropdowns();
+    $('.dropdown').on('click', 'li', dropHandler.handleSelection);
+  },
+
+  setupDropdowns: function() {
+    let $dropdowns = $('.dropdown');
+    $dropdowns.each(function(index, element) {
+      let $topItem = $('<li>')
+        .append($('<label>'));
+      dropHandler.selectItem($topItem);
+      $(element).prepend($topItem);
+    })
+  },
+
+  selectItem: function($item) {
+    $item.addClass('selected');
+    $item.append(
+      $('<strong>')
+        .text('v')
+    );
+      
+  },
+
+  handleSelection: function(event) {
+    let $items = $(event.target)
+      .parent()
+      .children();
+    console.log($items);
+  }
+}
+
 
 $(
   function() {
     keyHandlers.init();
     buttonHandler.init();
+    dropHandler.init();
   }
 )
