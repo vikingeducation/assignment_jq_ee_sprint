@@ -155,19 +155,37 @@ var dropHandler = {
   setupDropdowns: function() {
     let $dropdowns = $('.dropdown');
     $dropdowns.each(function(index, element) {
+      // add blank list item to the top of the list
       let $topItem = $('<li>')
         .append($('<label>'));
       dropHandler.selectItem($topItem);
       $(element).prepend($topItem);
+
+      // add hidden form element for submission
+      let $input = $('<input>')
+        .attr('type', 'hidden');
+      $(element).append($input);
     })
   },
 
   selectItem: function($item) {
     $item.addClass('selected');
+    // add dropdown arrow
     $item.append(
       $('<strong>')
         .text('v')
     );
+
+    // update hidden input
+    let selectedValue = $item
+      .children('label')
+      .text();
+
+    let formSubmission = $item
+      .closest('.dropdown')
+      .children('input');
+
+    $(formSubmission).val(selectedValue);
   },
 
   deselectItems: function($items) {
@@ -185,9 +203,8 @@ var dropHandler = {
 
   handleSelection: function(event) {
     let $clicked = $(event.currentTarget);
-    console.log($clicked);
     let $list = $(event.delegateTarget);
-    let $items = $list.children();
+    let $items = $list.children('li');
 
     dropHandler.deselectItems($items);
 
