@@ -7,7 +7,7 @@ var mouseHandler = {
     });
     $('body').on( {
       'mousemove': mouseHandler.updateDisplay,
-      'mouseleave': mouseHandler.leaveHandlder,
+      'mouseleave': mouseHandler.hideHover,
       'click': mouseHandler.handleClick
     });
 
@@ -24,58 +24,143 @@ var mouseHandler = {
     mouseHandler.imgLeft = offsets.left;
     mouseHandler.imgBottom = offsets.top + height;
     mouseHandler.imgRight = offsets.left + width;
-    mouseHandler.showable = true;
+    mouseHandler.hideList = true;
   },
 
   buildSelector: function() {
+    // Hover box
     let $selectionBox = $('<div>')
       .addClass('selection-box');
-    $('body').append($selectionBox);
+    
+    // Name list
+    let $selectionList = $('<ul>')
+      .addClass('name-list')
+      .addClass('dropdown');
+
+    let names = ['Sally', 'Sue', 'Sharon', 'Stephanie'];
+    $.each(names, function(i, name) {
+      $selectionList.append(
+        $('<li>')
+          .text(name)
+          .addClass('photo-name')
+      );
+    });
+
+    // Wrapper
+    let $wrapper = $('<div>')
+      .addClass('selection-wrapper')
+      .append($selectionBox)
+      .append($selectionList);
+    $('body').append($wrapper);
+  },
+
+  buildNameBox: function(event) {
+
+    // Name Box
+    let $nameBox = $('<div>')
+      .addClass('name-box');
+
+    // Name Label
+    let selectedName = $(event.target).text();
+    let $nameLabel = $('<h3>')
+      .addClass('name-label')
+      .text(selectedName);
+
+    // Wrapper
+    let selectorPosition = $('.selection-wrapper')
+      .position()
+
+    let $nameContainer = $('<div>')
+      .addClass('name-wrapper')
+      .css({
+        'left': selectorPosition.left,
+        'top': selectorPosition.top
+      })
+      .append($nameBox)
+      .append($nameLabel);
+
+    $('body').append($nameContainer);
+    $nameContainer.fadeIn();
+
   },
 
   updateDisplay: function(event) {
-    if (mouseHandler.showable) {
-      $('.selection-box').css({
-        'left': event.pageX - 25,
-        'top': event.pageY - 25
-      })
-      
-      if (
-          (event.pageX < mouseHandler.imgLeft)
-        || (event.pageX > mouseHandler.imgRight)
-        || (event.pageY < mouseHandler.imgTop)
-        || (event.pageY > mouseHandler.imgBottom)
-      ) {
-          mouseHandler.hideHover();
+    if (mouseHandler.hideList) {
+      mouseHandler.recenterSelector(event);
+      if (mouseHandler.outsideImage(event)) {
+        mouseHandler.hideHover();
       }
     }
   },
 
-  leaveHandlder: function() {
-    mouseHandler.hideHover();
-    mouseHandler.showable = true;
+  recenterSelector: function(event) {
+    $('.selection-wrapper').css({
+      'left': event.pageX - 40,
+      'top': event.pageY - 40
+    })
   },
 
-  hideHover: function() {
-    $('.selection-box').fadeOut(200);
-  },
-
-  showHover: function() {
-    if (mouseHandler.showable) {
-      $('.selection-box').fadeIn(200);
+  outsideImage: function(event) {
+    if (
+        (event.pageX < mouseHandler.imgLeft)
+      || (event.pageX > mouseHandler.imgRight)
+      || (event.pageY < mouseHandler.imgTop)
+      || (event.pageY > mouseHandler.imgBottom)
+    ) {
+        return true;
     }
+    return false;
+  },
+
+  hideHover: function(event, callback) {
+    if (mouseHandler.hideList) {
+      $('.selection-box').fadeOut(200, callback);
+    }
+  },
+
+  showHover: function(event, callback) {
+    if (mouseHandler.hideList) {
+      $('.selection-box').fadeIn(200, callback);
+    }
+  },
+
+  telportHover: function(event) {
+    // hide name list
+    $('.name-list li').each(function(i, element) {
+      $(element).fadeOut(200);
+    })
+    // hide selector, if it's in the frame, recenter and show it
+    mouseHandler.hideHover(event, function() {
+      if (!mouseHandler.outsideImage(event)) {
+        mouseHandler.recenterSelector(event);
+        mouseHandler.showHover();
+      }
+    })
   },
 
   handleClick: function(event) {
-    mouseHandler.showable = !mouseHandler.showable;
-    if (!mouseHandler.showable) {
-      mouseHandler.hideHover();
+    // toggle list state
+    mouseHandler.hideList = !mouseHandler.hideList;
+
+    if (!mouseHandler.hideList) {
+      // name list is hidden. show it.
+      $('.name-list li').each(function(i, element) {
+        $(element).slideDown(200);
+      })
     } else {
-      mouseHandler.updateDisplay(event);
-      mouseHandler.showHover();
+
+      // name list is visible.
+      if ($(event.target).is('li.photo-name')){
+
+        // clicked a name. build a name box and teleport the selector
+        mouseHandler.buildNameBox(event);
+        mouseHandler.telportHover(event);
+
+      } else {
+        // clicked some other thing. teleport!
+        mouseHandler.telportHover(event);
+      }
     }
-    
-    console.log(mouseHandler.showable);
   }
 
 }

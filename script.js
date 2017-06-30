@@ -185,7 +185,6 @@ var dropHandler = {
     let formSubmission = $item
       .closest('.dropdown')
       .siblings('input');
-    console.log(formSubmission)
 
     $(formSubmission).val(selectedValue);
   },
