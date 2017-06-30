@@ -164,7 +164,8 @@ var dropHandler = {
       // add hidden form element for submission
       let $input = $('<input>')
         .attr('type', 'hidden');
-      $(element).append($input);
+      $(element).parent()
+        .append($input);
     })
   },
 
@@ -183,7 +184,8 @@ var dropHandler = {
 
     let formSubmission = $item
       .closest('.dropdown')
-      .children('input');
+      .siblings('input');
+    console.log(formSubmission)
 
     $(formSubmission).val(selectedValue);
   },
