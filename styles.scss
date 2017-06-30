@@ -13,3 +13,25 @@
 .warning-label {
   color: red;
 }
+
+.dropdown {
+  li {
+    border: 1px solid black;
+    list-style-type: none;
+    display: flex;
+  }
+  li:hover {
+    background-color: #cdf;
+    cursor: pointer;
+  }
+  li:active {
+    background-color: #9ac;
+  }
+  li:first-child {
+    justify-content: flex-end;
+  }
+  li.selected {
+    justify-content: space-between;
+  }
+  max-width: 100px;
+} 
