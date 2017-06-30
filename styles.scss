@@ -22,6 +22,9 @@
   }
   li:hover {
     background-color: #cdf;
+  }
+  li:hover,
+  & label {
     cursor: pointer;
   }
   li:active {

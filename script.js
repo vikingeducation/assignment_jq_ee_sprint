@@ -168,15 +168,53 @@ var dropHandler = {
       $('<strong>')
         .text('v')
     );
-      
+  },
+
+  deselectItems: function($items) {
+    let $selected = $items.filter('.selected');
+    $.each($selected, function(index, item) {
+      $(item)
+        .removeClass('selected');
+      $(item)
+        .children('strong')
+        .slideUp(function() {
+          this.remove();
+        })
+    })
   },
 
   handleSelection: function(event) {
-    let $items = $(event.target)
-      .parent()
-      .children();
-    console.log($items);
-  }
+    let $clicked = $(event.currentTarget);
+    console.log($clicked);
+    let $list = $(event.delegateTarget);
+    let $items = $list.children();
+
+    dropHandler.deselectItems($items);
+
+    if ($list.hasClass('open')) {
+      // handle selection
+      dropHandler.selectItem($clicked);
+      $items
+        .not('.selected')
+        .each(function(index, element) {
+          $(element).slideUp();
+        });
+      
+    } else {
+      // open list
+      $items.each(function(index, element) {
+        if (index === 0) {
+          dropHandler.selectItem($(element));
+        }
+        $(element).slideDown(function() {
+          $(element).css('display', 'flex')
+        });
+      });
+    };
+    $list.toggleClass('open');
+  },
+
+
 }
 
 
