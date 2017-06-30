@@ -1,0 +1,35 @@
+
+$list: green red blue yellow;
+
+.container{
+  width: 600px;
+  margin-left: 10%;
+  div {
+    display: inline-block;
+    margin: 15px;
+    width: 250px;
+    height: 250px;
+  }
+  div:hover {
+    cursor: pointer;
+  }
+
+  @each $color, $number in (green, "one"),
+                           (red, "two"),
+                           (blue, "three"),
+                           (yellow, "four") {
+    ##{$number} {
+      background-color: $color;
+    }
+    ##{$number}:hover, ##{$number}.hover {
+      background-color: darken($color, 10%);
+    }
+    ##{$number}:active {
+      background-color: darken($color, 20%);
+    }
+  }
+}
+
+h1 {
+  text-align: center;
+}
