@@ -4,7 +4,7 @@ var keyHandlers = {
   init: function() {
     $('#text-input').on('keyup', keyHandlers.handleText);
     $('#text-area').on('keyup', keyHandlers.handleTextArea);
-    $('section').on('keyup', 'input[type=password]', keyHandlers.handlePassword);
+    $('input[type=password]').on('keyup', keyHandlers.handlePassword);
   },
 
   handleText: function(event) {
@@ -17,7 +17,7 @@ var keyHandlers = {
 
   handlePassword: function(event) {
     // select password inputs
-    let $section = $(event.delegateTarget);
+    let $section = $(event.target).parent();
     let $input = $section.children('#password-input');
     let $repeat = $section.children('#password-repeat');
 
@@ -60,24 +60,31 @@ var keyHandlers = {
   },
 
   removeLabel: function($element){
-    // hide label
+    // remove label
     keyHandlers.locateLabel($element)
-      .hide();
+      .remove();
   },
 
   updateLabel: function($element, message){
     // locate label
     let $label = keyHandlers.locateLabel($element);
 
-    // show label
-    $label.show();
-
     // set label value
     $label.text(message);
   },
 
   locateLabel: function($element) {
-    return $element.next('.input-feedback');
+    // search for label
+    let $label = $element.next('.input-feedback');
+
+    // build one if needed
+    if ($label.length === 0) {
+      $label = $('<strong>')
+        .addClass('input-feedback');
+      $label.insertAfter($element);
+    }
+
+    return $label;
   }
 }
 
