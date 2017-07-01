@@ -1,17 +1,26 @@
 
-$list: green red blue yellow;
+@mixin box {
+  margin: 15px;
+  width: 250px;
+}
 
 .container{
   width: 600px;
   margin-left: 10%;
+
   div {
+    @include box;
     display: inline-block;
-    margin: 15px;
-    width: 250px;
     height: 250px;
   }
+
   div:hover {
     cursor: pointer;
+  }
+
+  button {
+    @include box;
+    height: 100px;
   }
 
   @each $color, $number in (green, "one"),
@@ -21,7 +30,7 @@ $list: green red blue yellow;
     ##{$number} {
       background-color: $color;
     }
-    ##{$number}:hover, ##{$number}.hover {
+    ##{$number}.hover {
       background-color: darken($color, 10%);
     }
     ##{$number}:active {
