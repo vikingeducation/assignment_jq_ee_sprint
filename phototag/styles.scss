@@ -1,11 +1,13 @@
-#container {
+#img-container {
 	width: 1000px;
 	padding: 10px;
 	background-color: #ccc;
 }
 
 #target {
+	position: absolute;
 	border: 5px solid red;
+	z-index: 3;
 }
 
 .hidden {
@@ -13,14 +15,48 @@
 }
 
 .box {
-	position: absolute;
+	position: relative;
 	width: 100px;
 	height: 100px;
+}
+
+.container {
 	border-radius: 5px;
 	border: 5px solid green;
-	z-index: 3;
+}
+
+.tag {
+	color: white;
+	background-color: green;
+	font-weight: bold;
+}
+
+.tag:hover {
+	background-color: green;
+	cursor: default;
 }
 
 img {
 	width: 100%;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	width: 100%
+}
+
+li {
+	text-align: center;
+	width: 100%;
+	background-color: rgba(255, 255, 255, .75);
+	padding: 3px 0;
+	border-top: 2px solid green;
+}
+
+li:hover {
+	background-color: rgba(255, 255, 255, .95);
+	cursor: pointer;
 }
