@@ -1,11 +1,11 @@
 
 @mixin box {
-  margin: 15px;
+  margin: 10px;
   width: 250px;
 }
 
 .container{
-  width: 600px;
+  width: 550px;
   margin-left: 10%;
 
   div {
@@ -23,14 +23,24 @@
     height: 100px;
   }
 
-  @each $color, $number in (green, "one"),
-                           (red, "two"),
-                           (blue, "three"),
-                           (yellow, "four") {
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    display: inline-block;
+  }
+
+
+  @each $color, $number, $corner in (green, "one", "top-left"),
+                           (red, "two", "top-right"),
+                           (blue, "three", "bottom-left"),
+                           (yellow, "four", "bottom-right") {
     ##{$number} {
       background-color: $color;
+      border-#{$corner}-radius: 100%;
     }
-    ##{$number}.hover {
+    ##{$number}:hover, ##{$number}.hover {
       background-color: darken($color, 10%);
     }
     ##{$number}:active {
@@ -39,6 +49,3 @@
   }
 }
 
-h1 {
-  text-align: center;
-}

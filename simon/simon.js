@@ -17,9 +17,10 @@ let clickHandler = {
       "timeOn": 700,
       "timeBetween": 1400,
       "buttons": [],
-      "multiplier": .8,
+      "multiplier": .9,
       "fail": false,
       "testing": false,
+      "countdown": false,
     }
   },
 
@@ -31,7 +32,6 @@ let clickHandler = {
 
   displayButton: function(button) {
     let selector = "#" + clickHandler.getId[button];
-    console.log(selector)
     let $selected = $(selector);
     $selected.addClass('hover')
     setTimeout(function(){
@@ -39,20 +39,11 @@ let clickHandler = {
     }, clickHandler.status.timeOn)
   },
 
-  startGame: function(event) {
-    console.log('start')
-    if (clickHandler.status.fail) {
-      clickHandler.resetGame()
-      clickHandler.displayButtons(1);
-    }
-  },
-
   displayButtons: function(numberLeft) {
     if (numberLeft) {
       // if there are still buttons to press this round
 
       // display one
-      console.log('displaying')
       let button = clickHandler.randomButton();
       clickHandler.status.buttons.push(button);
       clickHandler.displayButton(button);
@@ -67,33 +58,63 @@ let clickHandler = {
     }
   },
 
+  displayMessage: function(message) {
+    $('h2').text(message);
+  },
+
+  startRound: function(round, called) {
+    // perform some setup, then one second delay before starting
+    if (called === undefined) {
+
+      // cancel residual countdown
+      clearTimeout(clickHandler.status.countdown);
+      clickHandler.status.countdown = false;
+
+      // notify user
+      clickHandler.displayMessage('Watch!')
+
+      // wait one second
+      setTimeout(function() {
+        clickHandler.startRound(round, true)
+      }, 1000);
+    } else {
+
+      // start round
+      clickHandler.displayButtons(round)
+    }
+  },
+
   testUser: function() {
-    console.log(clickHandler.status.buttons)
-    // set testing true
+    // enable the test
     clickHandler.status.testing = true;
     // notify user
-    console.log('enter your answers');
-    // start countdown > callback
-    setTimeout(clickHandler.failTest, 5000);
+    clickHandler.displayMessage('Your Turn:');
+    // start test countdown
+    clickHandler.status.countdown = setTimeout(clickHandler.failTest, 5000);
+  },
+
+  cancelCountdown: function() {
+
   },
 
   failTest: function() {
     // notify user
-        console.log('fail')
-        // set status
+    clickHandler.displayMessage('Game over... Try again!');
+    // set status
     clickHandler.status.fail = true;
     clickHandler.status.testing = false;
   },
 
   passTest: function() {
     // notify user
-    console.log('next round')
+    clickHandler.displayMessage(
+      'Round ' + clickHandler.status.round + ' complete!');
     // reset and launch next round
     clickHandler.status.timeOn *= clickHandler.status.multiplier;
     clickHandler.status.timeBetween *= clickHandler.status.multiplier; 
     clickHandler.status.round += 1;
     clickHandler.status.testing = false;
-    clickHandler.displayButtons(clickHandler.status.round);
+    clickHandler.startRound(clickHandler.status.round);
   },
 
   handleInput: function(event) {
@@ -104,9 +125,7 @@ let clickHandler = {
       if (button === clickHandler.status.buttons[0]) {
 
         // they hit the right button, remove it
-        console.log('correct')
         clickHandler.status.buttons.shift()
-
         if (!clickHandler.status.buttons.length) {
 
           // round completed
@@ -118,7 +137,14 @@ let clickHandler = {
         clickHandler.failTest();
       }
     }
-  }
+  },
+
+  startGame: function(event) {
+    if (clickHandler.status.fail) {
+      clickHandler.resetGame()
+      clickHandler.startRound(1);
+    }
+  },
 
 }
 
