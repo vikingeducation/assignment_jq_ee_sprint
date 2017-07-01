@@ -74,6 +74,7 @@ let clickHandler = {
     // notify user
     console.log('enter your answers');
     // start countdown > callback
+    setTimeout(clickHandler.failTest, 5000);
   },
 
   failTest: function() {
