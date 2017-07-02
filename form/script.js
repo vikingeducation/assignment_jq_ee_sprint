@@ -238,8 +238,31 @@ var dropHandler = {
 
 var validateForm = {
   init: function() {
-    $('body').on('keyup', 'input', validateForm.validate);
-    $('body').on('keyup', 'textarea', validateForm.validate);
+    // listen to appropriate elements
+    $('body').on('keyup', '.validate', validateForm.validate);
+
+    // add labels to them
+    validateForm.addLabels()
+  },
+
+  addLabels: function() {
+    // iterate over appropriate elements
+    $('.validate').each(function(index, element) {
+      // jQuery-ify
+      let $target = $(element);
+
+      // grab their id
+      let id = $target.attr('id');
+
+      // build them a label
+      let $label = $('<strong>')
+        .addClass('input-feedback')
+        .attr('for', id);
+
+      // insert it
+      $label.insertAfter($target);
+    });
+
   },
 
   validate: function(event) {
@@ -252,9 +275,23 @@ var validateForm = {
     // validate
     let status = $.map(validations, function(check) {
       return check($target);
-    })
+    });
     
     // apply status to labels
+    validateForm.applyStatus($target, status);
+  },
+
+  applyStatus: function($target, status) {
+    // grab the appropriate label
+    let id = $target.attr('id')
+    let $label = $target
+      .siblings('.input-feedback')
+      .filter(function(index, element) {
+        return $(element).attr('for') === id;
+      });
+
+    // set yo status
+    $label.text(status.join(' ,'));
   },
 
   getValidations: function($target) {
@@ -277,7 +314,7 @@ var validateForm = {
     let minimum = $target.attr('min-length')
     let actual = $target.val().length
     let message = null;
-    if (actual < minimum) {
+    if (actual && (actual < minimum)) {
       message = `${minimum - actual} characters short`;
     }
     return message;
@@ -287,9 +324,7 @@ var validateForm = {
     let maximum = $target.attr('max-length')
     let actual = $target.val().length
     let message = null;
-    console.log(maximum)
-    console.log(actual)
-    if (actual > maximum) {
+    if (actual && (actual > maximum)) {
       message = `${actual - maximum} characters long`;
     }
     return message;

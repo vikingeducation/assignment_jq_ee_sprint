@@ -13,17 +13,17 @@
     <form>
       <section class="form-group">
         <label for="text-input">Text Input:</label>
-        <input type="text" id="text-input" min-length="4" max-length="32">
+        <input type="text" id="text-input" class="validate" min-length="4" max-length="32">
       </section>
       <section class="form-group">
         <label for="text-area">Textarea:</label>
-        <textarea id="text-area" min-length="4" max-length="140"></textarea>
+        <textarea id="text-area" class="validate" min-length="4" max-length="140"></textarea>
       </section>
       <section class="form-group">
         <label for="password-input">Password:</label>
-        <input type="password" id="password-input" min-length="6" max-length="16">
+        <input type="password" id="password-input"  class="validate" min-length="6" max-length="16">
         <label for="password-repeat">Repeat:</label>
-        <input type="password" id="password-repeat" matches="#password-input">
+        <input type="password" id="password-repeat"  class="validate" matches="#password-input">
       </section>
       <section class="form-group">
         <label for="dropdown">Select Country:</label>
