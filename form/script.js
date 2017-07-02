@@ -238,11 +238,14 @@ var dropHandler = {
 
 var validateForm = {
   init: function() {
-    // listen to appropriate elements
+    // listen to elements that want to be validated
     $('body').on('keyup', '.validate', validateForm.validate);
 
     // add labels to them
-    validateForm.addLabels()
+    validateForm.addLabels();
+
+    // listen for validation submission
+    $('body').on('click', '.validate-submit', validateForm.submit);
   },
 
   addLabels: function() {
@@ -263,6 +266,27 @@ var validateForm = {
       $label.insertAfter($target);
     });
 
+  },
+
+  submit: function(event) {
+    event.preventDefault();
+
+    // iterate over all of the labels
+    $('.input-feedback').each(function(index, element) {
+      let $label = $(element)
+
+      // if they have a message
+      if ($label.text()) {
+        
+        // highlight the label
+        $label.addClass('warning');
+
+        // highlight the element
+        let inputId = '#' + $label.attr('for');
+        let $input = $(inputId);
+        $input.addClass('warning');
+      }
+    })
   },
 
   validate: function(event) {
@@ -292,6 +316,10 @@ var validateForm = {
 
     // set yo status
     $label.text(status.join(' ,'));
+
+    // clear submit status
+    $target.removeClass('warning');
+    $label.removeClass('warning');
   },
 
   getValidations: function($target) {
@@ -348,7 +376,7 @@ var validateForm = {
 $(
   function() {
     // keyHandlers.init();
-    buttonHandler.init();
+    //buttonHandler.init();
     dropHandler.init();
     validateForm.init();
   }
