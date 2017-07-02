@@ -142,9 +142,17 @@ var validateForm = {
   },
 
   validate: function(event) {
-    // get our target
+    // validate our target
     let $target = $(event.target);
+    validateForm.validateElement($target);
 
+    // validate matching elements
+    selector = '[matches="#' + $target.attr('id') + '"]';
+    validateForm.validateElement($(selector))
+
+  },
+
+  validateElement: function($target) {
     // what do we need to validate?
     let validations = validateForm.getValidations($target);
 
@@ -215,7 +223,7 @@ var validateForm = {
     let matchValue = $(toMatch).val();
     let actual = $target.val();
     let message = null;
-    if (actual !== matchValue) {
+    if (actual && (actual !== matchValue)) {
       message = 'Passwords differ'
     }
     return message;
