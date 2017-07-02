@@ -236,10 +236,85 @@ var dropHandler = {
 }
 
 
+var validateForm = {
+  init: function() {
+    $('body').on('keyup', 'input', validateForm.validate);
+    $('body').on('keyup', 'textarea', validateForm.validate);
+  },
+
+  validate: function(event) {
+    // get our target
+    let $target = $(event.target);
+
+    // what do we need to validate?
+    let validations = validateForm.getValidations($target);
+
+    // validate
+    let status = $.map(validations, function(check) {
+      return check($target);
+    })
+    
+    // apply status to labels
+  },
+
+  getValidations: function($target) {
+    // check element for special attributes, add validations as appropriate
+    let validations = []
+    let validators = {
+      'min-length': validateForm.minLength,
+      'max-length': validateForm.maxLength,
+      'matches': validateForm.match
+    }
+    for (let attribute in validators) {
+      if ($target.attr(attribute)) {
+        validations.push(validators[attribute]);
+      }
+    }
+    return validations;
+  },
+
+  minLength: function($target) {
+    let minimum = $target.attr('min-length')
+    let actual = $target.val().length
+    let message = null;
+    if (actual < minimum) {
+      message = `${minimum - actual} characters short`;
+    }
+    return message;
+  },
+
+  maxLength: function($target) {
+    let maximum = $target.attr('max-length')
+    let actual = $target.val().length
+    let message = null;
+    console.log(maximum)
+    console.log(actual)
+    if (actual > maximum) {
+      message = `${actual - maximum} characters long`;
+    }
+    return message;
+  },
+
+  match: function($target) {
+    let toMatch = $target.attr('matches');
+    let matchValue = $(toMatch).val();
+    let actual = $target.val();
+    let message = null;
+    if (actual !== matchValue) {
+      message = 'Passwords differ'
+    }
+    return message;
+  }
+
+}
+
+
+
 $(
   function() {
-    keyHandlers.init();
+    // keyHandlers.init();
     buttonHandler.init();
     dropHandler.init();
+    validateForm.init();
   }
 )
