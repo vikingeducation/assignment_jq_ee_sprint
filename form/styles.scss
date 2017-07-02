@@ -1,0 +1,39 @@
+
+.form-group {
+  & label{
+    display: block;
+  }
+  padding: 10px;
+}
+
+.warning {
+  border: 1px solid red;
+}
+
+.dropdown {
+  li {
+    border: 1px solid black;
+    list-style-type: none;
+    display: none;
+  }
+  li:hover {
+    background-color: #cdf;
+  }
+  li:hover,
+  & label {
+    cursor: pointer;
+  }
+  li:active {
+    background-color: #9ac;
+  }
+  li:first-child .selected{
+    justify-content: flex-end;
+  }
+  li.selected {
+    display:flex;
+    justify-content: space-between;
+  }
+  max-width: 100px;
+  padding-left: 0;
+  margin: 0;
+} 

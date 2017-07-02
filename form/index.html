@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Events and Effects</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <h1>Events and Effects</h1>
+    <form>
+      <section class="form-group">
+        <label for="text-input">Text Input:</label>
+        <input type="text" id="text-input" class="validate" min-length="4" max-length="32">
+      </section>
+      <section class="form-group">
+        <label for="text-area">Textarea:</label>
+        <textarea id="text-area" class="validate" min-length="4" max-length="140"></textarea>
+      </section>
+      <section class="form-group">
+        <label for="password-input">Password:</label>
+        <input type="password" id="password-input"  class="validate" min-length="6" max-length="16">
+        <label for="password-repeat">Repeat:</label>
+        <input type="password" id="password-repeat"  class="validate" matches="#password-input">
+      </section>
+      <section class="form-group">
+        <label for="dropdown">Select Country:</label>
+        <ul class="dropdown">
+          <li>
+            <label>Cambodia</label>
+          </li>
+          <li>
+            <label>Canada</label>
+          </li>
+          <li>
+            <label>Chad</label>
+          </li>
+          <li>
+            <label>Colombia</label>
+          </li>
+          <li>
+            <label>Croatia</label>
+          </li>
+        </ul>
+      </section>
+      <button class='validate-submit' type="submit">Submit</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+
+@mixin box {
+  margin: 10px;
+  width: 250px;
+}
+
+.container{
+  width: 550px;
+  margin-left: 10%;
+
+  div {
+    @include box;
+    display: inline-block;
+    height: 250px;
+  }
+
+  div:hover {
+    cursor: pointer;
+  }
+
+  button {
+    @include box;
+    height: 100px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    display: inline-block;
+  }
+
+
+  @each $color, $number, $corner in (green, "one", "top-left"),
+                           (red, "two", "top-right"),
+                           (blue, "three", "bottom-left"),
+                           (yellow, "four", "bottom-right") {
+    ##{$number} {
+      background-color: $color;
+      border-#{$corner}-radius: 100%;
+    }
+    ##{$number}:hover, ##{$number}.hover {
+      background-color: darken($color, 10%);
+    }
+    ##{$number}:active {
+      background-color: darken($color, 20%);
+    }
+  }
+}
+
