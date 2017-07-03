@@ -16,6 +16,9 @@
 .red-border {
   border: 2px solid red; }
 
+.left {
+  float: left; }
+
 h1 {
   text-align: center; }
 
@@ -24,7 +27,7 @@ h1 {
   box-shadow: 0px 0px 10px 4px #B0AE8D;
   margin: 1.5em; }
 
-ol li, p {
+li, p {
   font-size: 1em;
   line-height: 1.35em; }
 
@@ -39,5 +42,30 @@ textarea:focus {
 
 input[type='password'] {
   display: inline; }
+
+#drop-header, #drop-list {
+  float: left; }
+
+#drop-list {
+  list-style-type: none;
+  padding-left: 4px;
+  width: 53px; }
+  #drop-list:hover {
+    cursor: pointer; }
+  #drop-list li:hover {
+    background: #900C3F;
+    color: white; }
+
+#topping {
+  border-bottom: 2px solid #900C3F; }
+
+#spacer {
+  clear: both;
+  position: relative;
+  margin-top: 135px; }
+
+img {
+  display: block;
+  margin: auto; }
 
 /*# sourceMappingURL=styles.css.map */
