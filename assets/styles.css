@@ -1,0 +1,12 @@
+/* examples */
+
+
+fieldset input {
+	display: block;
+}
+form p {
+	display: inline-block;
+}
+p {
+	display: inline-block;
+}
