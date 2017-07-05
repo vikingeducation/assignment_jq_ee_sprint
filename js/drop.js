@@ -1,5 +1,5 @@
-var eventListeners = {
-	eventListeners: function() {
+function dropEventListeners() {
+
 		$('#drop-list').on({
 			click: function(){ dropdown.show(); }
 		});
@@ -7,13 +7,14 @@ var eventListeners = {
 		$('.drop-item').on('click', function(){
 			dropdown.fill(this);
 		});
-	},
+
 };
 
 var dropdown = {
 	show: function() {
 		var listItems = $('#drop-list').children('.drop-item');
 		var $listItems = $(listItems);
+		
 		if ($listItems.hasClass('hide') === true) {
 			$listItems.slideDown().removeClass('hide').addClass('show');
 		} else {
@@ -26,10 +27,11 @@ var dropdown = {
 
 		var li = li.innerText;
 
-
 		$('#topping').html(li);
-	}
+	},
 };
 
 
-$(document).ready(function(){ eventListeners.eventListeners() });
+$(document).ready(function(){ dropEventListeners() });
+
+

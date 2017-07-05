@@ -1,9 +1,8 @@
-// "use strict";
+"use strict";
 
-var eventListeners = function(){
-
+function formEventListeners() {
 	$("#validation-form").on({
-		focus: function(){ formValidation.target( $(this) ) },
+		focus: function(){ console.log('test');formValidation.target( $(this) ) },
 		blur: function(){ formValidation.target( $(this) ) },
 		keyup: function(){ formValidation.inputCharRem( $(this) ) },
 	}, "label[class='text-input']" );
@@ -40,9 +39,8 @@ var eventListeners = function(){
 			console.log('not ready to submit');
 		}
 	});
-
 };
-	
+
 var formValidation = {
 
 	textInputVal: function($target){
@@ -230,25 +228,5 @@ var passValidation = {
 
 };
 
-$(document).ready(function(){ eventListeners() });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$(document).ready(function(){ formEventListeners() });
 
