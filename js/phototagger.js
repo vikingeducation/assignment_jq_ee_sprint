@@ -48,16 +48,16 @@ var tag = {
 	// create element in DOM 
 		$img.after("<div class='show tag'></div>");
 
-	// add top and left positioning of the mouse click to the last div created by subtracting the mouse click x & y coordinates from the x & y coordinates of the top left corner of the image 
-		$firstTag.css('top', y - imgTop); 
-		$firstTag.css('left', x - imgLeft);
-
 	// select all of the added divs
 		var $tags = $img.siblings();
 
 	// select the last div added
 		var firstTag = $tags[0];
 		var $firstTag = $(firstTag);
+
+	// add top and left positioning of the mouse click to the last div created by subtracting the mouse click x & y coordinates from the x & y coordinates of the top left corner of the image 
+		$firstTag.css('top', y - imgTop); 
+		$firstTag.css('left', x - imgLeft);
 
 	// Add a unique id to the last div created
 		var tagId = 'tag' + num;
