@@ -2,20 +2,21 @@
 
 var eventListeners = function() {
 	$('#the-fam-img').on({
-		click: function(){ tag.main( this ) },
+		click: function(){ console.log('test');tag.main( this ) },
 	});
 	$('.img-container').on({
 		mouseenter: function(){ tag.showBox() },
 		mouseleave: function(){ tag.hideBox() },
 	});
+
 }
 
 var tag = {
 
-	loops: [],
+	loops: [], // store the amount of loops
 
 	count: function(){
-
+	// loop each iteration--this is done in order to give the tag boxes a unique id
 		for (var i = this.loops.length; i < this.loops.length + 1; i++) {
 			this.loops.push('loop' + i);
 			return i;
@@ -27,8 +28,8 @@ var tag = {
 		var loopNum = this.count();
 		var $firstTag = this.stick(img, loopNum);
 		this.drop($firstTag, loopNum);
-		this.listItemClick();
-		this.taggedItemClick();
+		this.listItemClick($firstTag, loopNum);
+		this.taggedItemClick($firstTag, loopNum);
 	},
 
 	stick: function(img, num) {
@@ -70,40 +71,63 @@ var tag = {
 		
 	},
 
-	drop: function($firstTag, loopNum) {
+	getId: function($firstTag, loopNum) {
 	// get tag id
 		var tagIdSelected = $firstTag.attr('id');
 		tagIdSelected = '#' + tagIdSelected;
 
 	// get the list items of the tag who's id was selelcted
-		var $names = $(tagIdSelected).find('.name');
+		var tagIdSelected = $(tagIdSelected);
 
-		if ($names.hasClass('hide') === true) {
-			$names.slideDown().removeClass('hide').addClass('show');
+		return tagIdSelected;
+	},
+
+	drop: function($firstTag, loopNum) {
+	// get tag id
+		var tagIdSelected = this.getId($firstTag, loopNum);
+
+	// get the list items of the tag who's id was selelcted
+		var $list = $(tagIdSelected).find('.name');
+
+		if ($list.hasClass('hide') === true) {
+			$list.slideDown().removeClass('hide').addClass('show');
 		} else {
-			$names.slideUp().removeClass('show').addClass('hide');
+			$list.slideUp().removeClass('show').addClass('hide');
 		}
 
 	},
 
-	listItemClick: function() {
+	listItemClick: function($firstTag, loopNum) {
+
 		$('.name').click(function(){ 
+		// get the list item selected
+			var $liClicked = $(this);
 
-			var tagged = this.innerText;
+		// get the grandparent div of the list item selected
+			var $div = $liClicked.parent().parent();
 
-			$('#tagged').html(tagged);
+		// get the list item for the displayed name when dropdown is not visible
+			var $tagged = $div.find('#tagged');
 
+		// fill in the list item that is always visible with the name that was clicked
+			$tagged.html( $liClicked.text() );
+
+		// hide dropdown slider after a name is selected
 			var $list = $('.drop').children('.name');
-
 			$list.slideUp().removeClass('show').addClass('hide');
 
 		});
 
 	},
 
-	taggedItemClick: function($list) {
-		var $list = $('.drop').children('.name');
+	taggedItemClick: function($firstTag, loopNum) {
+	// get tag id
+		var tagIdSelected = this.getId($firstTag, loopNum);
 
+	// get the list items of the tag who's id was selelcted
+		var $list = $(tagIdSelected).find('.name');
+
+	// open and close name dropdown when a different name wants to be selected
 		$('#tagged').click(function() {
 
 			if ($('#tagged').siblings().hasClass('hide') === true) {
@@ -116,6 +140,7 @@ var tag = {
 	},
 
 	showBox: function() {
+	// show the tag box when the mouse is hovered over the image
 		var $tags = $('.img-container').children('div');
 		
 		if ($tags.hasClass('hide') === true) {
@@ -124,6 +149,7 @@ var tag = {
 	},
 
 	hideBox: function() {
+	// hide the tag box when the mouse is not hovered over the image
 		var $tags = $('.img-container').children('div');
 		
 		if ($tags.hasClass('show') === true) {
