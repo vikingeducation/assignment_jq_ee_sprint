@@ -3,10 +3,12 @@
 
 fieldset input {
 	display: block;
+	float: left;
 }
-form p {
-	display: inline-block;
-}
-p {
-	display: inline-block;
+.counter {
+	display: inline;
+	float: left;
+	margin: 0;
+	margin-left:  10px;
+	display: none;
 }
