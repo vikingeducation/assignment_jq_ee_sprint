@@ -1,3 +1,5 @@
+$green-square: #A6CE39;
+
 .hide {
 	display: none;
 }
@@ -23,6 +25,43 @@
 
 .left {
 	float: left;
+}
+
+.tag {
+	height: 100px;
+	width: 100px;
+	border: 8px solid $green-square;
+	position: absolute;
+	z-index: 10;
+	// &:before{
+	// 	content: "this is the content";
+	// 	background: white;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// }
+}
+
+.drop {
+	background: $green-square;
+	border-left: 8px solid $green-square;
+	border-right: 8px solid $green-square;
+	position: absolute;
+	margin: 100px 0 0 -8px;
+	padding: 0;
+	display: block;
+	width: 100px;
+	font-weight: 900;
+	list-style-type: none;
+	li {
+		&:hover {
+			color: black;
+			cursor: pointer;
+			background: #beff0a;
+			border-left: 8px solid #beff0a;
+			border-right: 8px solid #beff0a;
+		}
+	}	
 }
 
 h1 {
@@ -82,11 +121,22 @@ input[type='password'] {
 	margin-top: 135px;
 }
 
+.img-group-container {
+	text-align: center;
+	.img-container {
+		position: relative;
+		display: inline-block;
+	}
+}
+
 img {
 	display: block;
 	margin: auto;
 }
 
+#the-fam-img{
+	cursor: url(../assets/grn_square.png), pointer;
+}
 
 
 

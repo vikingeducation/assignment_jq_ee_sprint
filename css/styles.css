@@ -19,6 +19,31 @@
 .left {
   float: left; }
 
+.tag {
+  height: 100px;
+  width: 100px;
+  border: 8px solid #A6CE39;
+  position: absolute;
+  z-index: 10; }
+
+.drop {
+  background: #A6CE39;
+  border-left: 8px solid #A6CE39;
+  border-right: 8px solid #A6CE39;
+  position: absolute;
+  margin: 100px 0 0 -8px;
+  padding: 0;
+  display: block;
+  width: 100px;
+  font-weight: 900;
+  list-style-type: none; }
+  .drop li:hover {
+    color: black;
+    cursor: pointer;
+    background: #beff0a;
+    border-left: 8px solid #beff0a;
+    border-right: 8px solid #beff0a; }
+
 h1 {
   text-align: center; }
 
@@ -64,8 +89,17 @@ input[type='password'] {
   position: relative;
   margin-top: 135px; }
 
+.img-group-container {
+  text-align: center; }
+  .img-group-container .img-container {
+    position: relative;
+    display: inline-block; }
+
 img {
   display: block;
   margin: auto; }
+
+#the-fam-img {
+  cursor: url(../assets/grn_square.png), pointer; }
 
 /*# sourceMappingURL=styles.css.map */
