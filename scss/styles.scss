@@ -33,13 +33,19 @@ $green-square: #A6CE39;
 	border: 8px solid $green-square;
 	position: absolute;
 	z-index: 10;
-	// &:before{
-	// 	content: "this is the content";
-	// 	background: white;
-	// 	position: absolute;
-	// 	top: 0;
-	// 	left: 0;
-	// }
+}
+
+.close {
+	position: absolute;
+	top: -22px;
+	margin-left: 37px;
+	background: $green-square;
+	border-radius: 50%;
+	padding: 10px;
+	cursor: pointer;
+	&:hover {
+		background: #beff0a;
+	}
 }
 
 .drop {

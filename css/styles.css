@@ -26,6 +26,17 @@
   position: absolute;
   z-index: 10; }
 
+.close {
+  position: absolute;
+  top: -22px;
+  margin-left: 37px;
+  background: #A6CE39;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer; }
+  .close:hover {
+    background: #beff0a; }
+
 .drop {
   background: #A6CE39;
   border-left: 8px solid #A6CE39;

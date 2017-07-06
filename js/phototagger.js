@@ -1,19 +1,74 @@
 "use strict";
 
-var eventListeners = function() {
-	$('#the-fam-img').on({
-		click: function(){ console.log('test');tag.main( this ) },
+function eventListeners() {
+
+	$(document).on({
+		click: function(){ tag.main( event.target ) },
 	});
 	$('.img-container').on({
-		mouseenter: function(){ tag.showBox() },
-		mouseleave: function(){ tag.hideBox() },
+		mouseenter: function(){ toggleBox.showBox() },
+		mouseleave: function(){ toggleBox.hideBox() },
 	});
 
 }
 
 var tag = {
 
-	loops: [], // store the amount of loops
+	tagCancel: function($firstTag, loopNum) {
+		$('.temp').remove();
+	},
+
+	removeClassTemp: function() {
+		$('.temp').removeClass('temp');
+	},
+
+	boxClear: function(target) {
+		$(target).parent().remove();
+	},
+
+	getId: function($firstTag, loopNum) {
+	// get tag id
+		var tagIdSelected = $firstTag.attr('id');
+		tagIdSelected = '#' + tagIdSelected;
+
+	// get the list items of the tag who's id was selelcted
+		var tagIdSelected = $(tagIdSelected);
+
+		return tagIdSelected;
+	},
+
+	main: function(target) {
+
+	// this removes the class of 'temp' if a list item is selected after the tag box is placed on the image
+		if ( $(target).is('.drop li') === true) {
+			this.removeClassTemp();
+		}
+
+	// this clears the tag box if no list item is selected after the tag box is placed on the image
+		this.tagCancel();
+		
+	// this closes clears the tag box if the 'X' is clicked
+		if ( $(target).is('.close') === true) {
+			this.boxClear(target);
+		}
+
+	// this initiated the placement of the tag box if the above condition do not apply
+		if ( $(target).is('img') === true ||
+			 $(target).is('div.tag') === true) {
+
+			var img = target;
+
+			var loopNum = this.count();
+			var $firstTag = this.stick(img, loopNum);
+			this.drop($firstTag, loopNum);
+			this.listItemClick($firstTag, loopNum);
+			this.taggedItemClick($firstTag, loopNum);			
+		}
+
+
+	},
+
+	loops: [], // stores the amount of loops
 
 	count: function(){
 	// loop each iteration--this is done in order to give the tag boxes a unique id
@@ -21,15 +76,6 @@ var tag = {
 			this.loops.push('loop' + i);
 			return i;
 		}
-	},
-
-	main: function(img) {
-		
-		var loopNum = this.count();
-		var $firstTag = this.stick(img, loopNum);
-		this.drop($firstTag, loopNum);
-		this.listItemClick($firstTag, loopNum);
-		this.taggedItemClick($firstTag, loopNum);
 	},
 
 	stick: function(img, num) {
@@ -46,8 +92,8 @@ var tag = {
 		var x = event.clientX;
 		var y = event.clientY;
 
-	// create element in DOM 
-		$img.after("<div class='show tag'></div>");
+	// create tag box div element in DOM 
+		$img.after("<div class='show tag temp'></div>");
 
 	// select all of the added divs
 		var $tags = $img.siblings();
@@ -64,25 +110,21 @@ var tag = {
 		var tagId = 'tag' + num;
 		$firstTag.attr('id', tagId);
 
+	// create tag box close button in DOM 
+		$firstTag.html("<span class='close'>X</span>");
+
 	// Add list of names to tag box
 		$firstTag.append('<ul class="drop"><li id="tagged"><br></li><li class="name hide">Jessica</li><li class="name hide">Finnley</li><li class="name hide">Colin</li></ul>');
+
+
+
+		// $('.tag').html("<span class='close'>X</span>");
 
 		return $firstTag;
 		
 	},
 
-	getId: function($firstTag, loopNum) {
-	// get tag id
-		var tagIdSelected = $firstTag.attr('id');
-		tagIdSelected = '#' + tagIdSelected;
-
-	// get the list items of the tag who's id was selelcted
-		var tagIdSelected = $(tagIdSelected);
-
-		return tagIdSelected;
-	},
-
-	drop: function($firstTag, loopNum) {
+	drop: function($firstTag, loopNum) { 
 	// get tag id
 		var tagIdSelected = this.getId($firstTag, loopNum);
 
@@ -95,9 +137,11 @@ var tag = {
 			$list.slideUp().removeClass('show').addClass('hide');
 		}
 
+		return;
+
 	},
 
-	listItemClick: function($firstTag, loopNum) {
+	listItemClick: function($firstTag, loopNum) { 
 
 		$('.name').click(function(){ 
 		// get the list item selected
@@ -112,6 +156,9 @@ var tag = {
 		// fill in the list item that is always visible with the name that was clicked
 			$tagged.html( $liClicked.text() );
 
+		// remove the "temp" class from the box div
+			$div.removeClass('temp');
+
 		// hide dropdown slider after a name is selected
 			var $list = $('.drop').children('.name');
 			$list.slideUp().removeClass('show').addClass('hide');
@@ -120,7 +167,7 @@ var tag = {
 
 	},
 
-	taggedItemClick: function($firstTag, loopNum) {
+	taggedItemClick: function($firstTag, loopNum) { 
 	// get tag id
 		var tagIdSelected = this.getId($firstTag, loopNum);
 
@@ -138,6 +185,10 @@ var tag = {
 
 		});
 	},
+
+}
+
+var toggleBox = {
 
 	showBox: function() {
 	// show the tag box when the mouse is hovered over the image
@@ -158,7 +209,5 @@ var tag = {
 	},
 
 }
-
-
 
 $(document).ready(function(){ eventListeners() });
