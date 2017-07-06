@@ -73,27 +73,53 @@ var verify_form = function ( e ){
   var tf = false;
   var ta = false;
   var pass = false;
+  var pass1 = false;
+  var pass2 = false;
   var pass_match = false;
   //var pass_match = true;
   var tf_len = $( $inputs[0]).val().length;
   var ta_len = $( $inputs[1]).val().length;
   var pass1_len = $( $inputs[2]).val().length;
   var pass2_len = $( $inputs[3]).val().length;
+
+  //generic error
+
+
   if ( $($inputs[0]).val().length >= 4 && $($inputs[0]).val().length <= 32 ) {
     //pass
     tf = true;
+  }else{
+    //highlight field in red
+    $( $inputs[0] ).css("border-color", "red");
+    //display error messages
+    var $err = $("<p>4-32 characters only</p>");
+    $err.insertAfter( $( $inputs[0] ) )
   }
   if( ta_len >= 4 && ta_len <= 140 ){
     ta = true;
+  }else{
+    $( $inputs[1] ).css("border-color", "red")
+    var $err = $("<p>4-140 characters only</p>");
+    $err.insertAfter( $( $inputs[1] ) )
   }
   if( pass1_len >= 6 && ta_len <= 16 ){
     pass1 = true;
+  }else{
+    $( $inputs[2] ).css("border-color", "red")
+    var $err = $("<p>6-16 characters only</p>");
+    $err.insertAfter( $( $inputs[2] ) )
   }
   if( pass2_len >= 6 && ta_len <= 16 ){
     pass2 = true;
+  }else{
+    $( $inputs[3] ).css("border-color", "red")
+    var $err = $("<p>6-16 characters only</p>");
+    $err.insertAfter( $( $inputs[3] ) )
   }
   if ( pass1 && pass2 ) {
     pass = true;
+  }else{
+
   }
 
   //check that the passwords are the same
@@ -111,13 +137,12 @@ var verify_form = function ( e ){
     //alert("Success");
   }else{
       //failure
-    //highlight the offending fields
-    alert("FAILURE ALL THE ERRORS FOR YOU");
-
-    //display error messages
+    //alert("FAILURE ALL THE ERRORS FOR YOU");
 
     //prevent submit button from working
-    
+    e.preventDefault();
+    e.stopPropagation();
+
   }
 }
 
