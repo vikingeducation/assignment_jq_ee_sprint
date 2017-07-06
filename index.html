@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Practice with Events and Effects</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+	<header>
+		<h1>Practice with Events and Effects</h1>
+	</header>
+	<main>
+		<fieldset class="section">
+			<legend><h2>Form Validation</h2></legend>
+			<h4>Instructions:</h4>
+			<ol>
+				<li>Set up a simple form which contains a text field, a text area, a password field, and a password confirmation field.</li>
+				<li>When the user types into a text field, display a counter next to the field listing how many characters are remaining (maximum 32). This should disappear if the text is completely removed.</li>
+				<li>Add the same for the text area at a maximum character count of 140.</li>
+				<li>Add the same for the password and confirmation at a maximum character count of 16</li>
+				<li>When the user begins typing in the password confirmation field, provide feedback indicating the confirmation doesn't match the password (until it does). If the user deletes all text from the confirmation field, this message should disappear as well.</li>
+				<li>When the user clicks "submit", verify that the following validations are met. If not, highlight the offending field in red and display a red error message next to it indicating what went wrong. You'll need to prevent the default behavior of this button.</li>
+			</ol>
+			<h4>Validations:</h4>
+			<ol>
+				<li>Text field -- 4-32 characters</li>
+				<li>Text area -- 4-140 characters</li>
+				<li>Password/confirmation -- 6-16 characters</li>
+				<li>Password -- must match confirmation</li>
+			</ol>
+			<form id="validation-form">
+				<label class="text-input">Text Input: 
+					<input type="text" name="text-input" maxlength="32">
+					<span class="input-error"></span>
+					<span class="toggle hide">characters remaining: </span>
+					<span class="toggle hide input">32</span>
+				</label>
+				<label class="text-input">Text Input: 
+					<input type="text" name="text-input" maxlength="32">
+					<span class="input-error"></span>
+					<span class="toggle hide">characters remaining: </span>
+					<span class="toggle hide input">32</span>
+				</label>
+
+
+
+
+
+				<label class="textarea-input">Text Area Input:<br>
+					<textarea class="textarea-input" type="text" name="textarea-input" maxlength="140"></textarea>
+					<span class="textarea-error"></span>
+					<span id="textarea-char-remain" class="toggle hide">characters remaining: </span>
+					<span id="num-textarea-char-remain" class="toggle hide input">140</span>
+				</label>
+
+
+
+
+
+				<label class="password">
+					<input id="password" type="password" name="password" minlength="6" maxlength="16" placeholder="Password">
+					<span class="toggle hide">characters remaining: </span>
+					<span id="pass-char-remain" class="toggle hide input">16</span>
+				</label>
+				<label class="pass-conf">
+					<input id="pass-conf" type="password" name="pass-conf" minlength="6" maxlength="16" placeholder="Confirm Password">
+					<span id="pass-error"></span>
+					<span id="match" class="toggle hide">match: </span>
+					<span id="no" class="hide fail">no</span>
+					<span id="yes" class="hide success">yes!</span>
+				</label>
+
+				<input id="submit-form" type="button" value="Submit">
+
+			</form>
+		</fieldset>
+
+		<fieldset class="section">
+			<legend><h2>The Dropdown</h2></legend>
+			<h4>Instructions:</h4>
+			<p>Build a simple form-style dropdown menu using any method you'd like. Don't style it any more than necessary. This is meant to replicate the functionality of a select form so do NOT use select tags to build it (we recommend lists or divs).</p>
+			<p>Note: Only add the minimum styling required. This isn't meant to look good, only functional</p>
+			<p>A few requirements:</p>
+			<ol>
+				<li>The top-level element should start out blank (so the menu has nothing selected yet).</li>
+				<li>It should contain at least 3 example elements within it to choose between</li>
+				<li>It should smoothly slide open and closed</li>
+				<li>The sub-elements should change background color when the menu is opened and they are hovered over</li>
+				<li>The sub-elements should be clickable (the mouse should be a pointer when hovering). When clicked, the menu closes and that element becomes the top-level element to indicate it has been selected.</li>
+				<li>(Optional) Make it so your hacked-together dropdown actually submits like a normal form element would. Consider how you might do so with hidden fields...</li>
+			</ol>
+			<div>
+				<p id="drop-header">My favorite pizza topping is</p>
+				<ul id="drop-list">
+					<li id="topping"><br></li>
+					<li class="drop-item hide">Sausage</li>
+					<li class="drop-item hide">Cheese</li>
+					<li class="drop-item hide">Bacon</li>
+				</ul>
+				<p class="left">.</p>
+			</div>
+			<div id="spacer"></div>
+		</fieldset>
+
+		<fieldset class="section">
+			<legend><h2>The Photo Tagging Box</h2></legend>
+			<h4>Instructions:</h4>
+			<p>On Facebook, when you hover your mouse over a photo, it often brings up a square "Photo tagging box" which allows you to select who is present in the photo from your list of friends. You'll build something like that here.</p>
+			<img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/photo_tagging_small.png" alt="photo tag example">
+			<ol>
+				<li>Build a simple Index.html file which displays a photo in it.</li>
+				<li>When the user's mouse moves over the photo, it should be in the center of a square "targeting" outline (which should stand out, so make it a noticeable color). This outline should not show unless the mouse is hovering over the photo.</li>
+				<li>When the user clicks, the targeting outline becomes fixed at that location and a simple drop-down menu slides down below it. Pre-populate this menu with a few sample names to choose from.</li>
+				<li>If the user clicks away from the dropdown, "cancel" the tagging and resume the process of having the targeting box follow the mouse on hover.</li>
+				<li>If the user selects a name from the list, assign that name to the now-fixed tag box. The name should be displayed somewhere next to this new tag box.</li>
+				<li>Resume the hover-targeting phase and allow the user to continue tagging locations in the photo. Previous tags should remain on the screen until the browser reloads and everything is reset.</li>
+				<li>(Optional) Add a "Remove Tag" link or "X" to each tag box which allows the user to remove it from the DOM.</li>
+				<li>(Optional) Make the existing tag boxes invisible until you hover over them.</li>
+			</ol>
+			<p><a href="phototagger.html">Click here</a> to view assignment.</p>
+		</fieldset>
+
+	</main>
+
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/form.js"></script>
+	<script type="text/javascript" src="js/drop.js"></script>
+</body>
+</html>
