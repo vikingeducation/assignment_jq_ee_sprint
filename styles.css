@@ -1,0 +1,167 @@
+/*
+  ========================================
+  /Form validation
+  ========================================
+*/
+
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.error-msg {
+	color:red;
+	display: inline-block;
+}
+
+
+
+.main {
+background-color: #edf0f5;
+	padding: 0;
+	margin: 0 0 0 0;
+	height:900px;
+	position: fixed;
+	width: 100%;
+	top:0;
+	padding-left: 40%;
+	position: absolute;
+
+}
+
+#textfield {
+	height:20px;
+	width: 145px;
+	margin-top: 70px;
+	padding-right: 12px;
+	margin-left: 31px;
+}
+
+
+#textarea {
+	height:20px;
+	width: 145px;
+	margin-top: 20px;
+	padding-right: 12px;
+}
+
+
+#password {
+	margin-top: 14px;
+	margin-left: -2px;
+	height:20px;
+	width: 155px;
+}
+
+#passwordconf {
+	margin-top: 14px;
+	margin-left: 6px;
+	height:20px;
+	width: 155px;
+}
+
+#submitbutton {
+	margin-top: 20px;
+	margin-left: 110px;
+}
+
+
+/*
+  ========================================
+  /Dropdown
+  ========================================
+*/
+
+
+.dropdown-list {
+    position: relative;
+    display: inline-block;
+}
+
+
+#top-item {
+	  background-color: #edf0f5;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: 2px solid black;
+    cursor: pointer;
+    width:200px;
+    height: 17px;
+}
+
+#dropdown-list {
+   display: none;
+   list-style: none;
+    position: absolute;
+    background-color: #D5D8DC;
+    width: 234px;
+
+}
+
+
+#dropdown-list li {
+	cursor: pointer;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+#dropdown-list li:hover {
+  background-color: lightgrey;
+}
+
+
+/*
+  ========================================
+  /Photo box
+  ========================================
+*/
+
+.tagbox {
+	height: 40px;
+	width: 40px;
+	border: 2px solid black;
+}
+
+
+#tooltip{
+	position:absolute;
+	border: 2px solid red;
+	width:80px;
+	height:80px;
+}
+
+#tag-dropdown {
+	position:absolute;
+	width: 80px;
+	height: 80px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
