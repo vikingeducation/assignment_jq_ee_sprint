@@ -1,0 +1,14 @@
+body {
+  margin-top: 50px;
+}
+
+.error {
+  box-shadow: 0 0 3px #CC0000;
+}
+
+#text-error,
+#textarea-error,
+#password-error,
+#passconf-message {
+  color: red;
+}
