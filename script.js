@@ -1,3 +1,6 @@
+
+//TODO: REFACTOR
+
 /* validations
 Text field -- 4-32 characters
 Text area -- 4-140 characters
@@ -134,7 +137,7 @@ var verify_form = function ( e ){
   //success
   if (tf && ta && pass && pass_match ){
     //do nothing
-    //alert("Success");
+    alert("Success");
   }else{
       //failure
     //alert("FAILURE ALL THE ERRORS FOR YOU");
@@ -146,43 +149,111 @@ var verify_form = function ( e ){
   }
 }
 
+var form_validation = function() {
+  //ADD SOME CHARACTER COUNTERS TO THE FORM INPUTS
+   var $inputs = $("input");
+
+   //add max char counts
+   var $counter = $("<p></p>", { text : "32"})
+     .addClass("counter");
+   $counter.insertAfter($inputs.get(0));
+   $counter = $("<p></p>", { text : "140"})
+     .addClass("counter");
+   $counter.insertAfter($inputs.get(1));
+   $counter = $("<p></p>", { text : "16"})
+     .addClass("counter");
+   $counter.insertAfter($inputs.get(2));
+   $counter = $("<p></p>", { text : "16"})
+     .addClass("counter");
+   $counter.insertAfter($inputs.get(3));
+
+   //create password error message
+
+     //it seems that that my styles are applied to dom object I insert with jQuery .. hmmm...
+
+
+   //add max char counts
+   $($inputs.get(0)).attr( {"max_characters" : "32" } );
+   $($inputs.get(1)).attr( {"max_characters" : "140" } );
+   $($inputs.get(2)).attr( {"max_characters" : "16" } );
+   $($inputs.get(3)).attr( {"max_characters" : "16" } );
+
+   //set up listeners
+   $inputs.each( counterHandler );
+   //var $passwords = $("[type='password']");
+   //$passwords.on("keypress", password_confirmation_handler );
+   $("#confirm_pass").on("keyup", password_confirmation_handler );
+   $("#submit").on("click", verify_form );
+
+}
+var drop_down = function() {
+  //make a list
+  var $ul = $('<ul></ul>')
+    .attr('id', 'slide');
+  $.each([
+    '',
+    'Ravenclaw',
+    'Slytherin',
+    'Gryffindor',
+    'Hufflepuff'
+  ], function( index, element ){
+    $("<li></li>")
+      .text(element)
+      .appendTo($ul)
+    });
+  $ul.children().not(":first-child").hide();
+  $ul.appendTo($("body"));
+  //delegate the event listener to the parent
+  $ul.on("click", function( e ) {
+    e.stopPropagation();
+    var $hidden = $("ul li").not(":first-child").filter(":hidden");
+
+
+    if ($hidden.length){
+      //menu is up
+      $hidden.slideDown(1000);
+    }else {
+      //menu is down
+      $("ul li").not(":first-child").filter(":visible").slideUp(1000)
+      var text = $( e.target ).text();
+      $("ul :first-child")
+        .hide()
+        .text(text)
+        .fadeIn(700)
+
+      //as the slide up animatino finishes, set the first-child text, hide it and fade it back in
+      /*setTimeout( function( e ){
+        var text = $( e.target ).text();
+        $("ul:first-child")
+          .hide()
+          .text(text)
+          .fadeIn(100)
+      }, 800)*/
+
+    }
+/*
+    $.each( $("ul li").not(":first-child"), function(index, element) {
+      console.log(element);
+
+    })*/
+  })
+  $ul.children().on("mouseenter", function( e ) {
+    e.stopPropagation();
+    $(e.target).addClass("onhover");
+  })
+  $ul.children().on("mouseleave", function( e ) {
+    e.stopPropagation();
+    $(e.target).removeClass("onhover");
+  })
+}
+
 
 // execute my jquery
-$(document).ready(function() {
+$(document).ready( function() {
 
- //ADD SOME CHARACTER COUNTERS TO THE FORM INPUTS
-  var $inputs = $("input");
-
-  //add max char counts
-  var $counter = $("<p></p>", { text : "32"})
-    .addClass("counter");
-  $counter.insertAfter($inputs.get(0));
-  $counter = $("<p></p>", { text : "140"})
-    .addClass("counter");
-  $counter.insertAfter($inputs.get(1));
-  $counter = $("<p></p>", { text : "16"})
-    .addClass("counter");
-  $counter.insertAfter($inputs.get(2));
-  $counter = $("<p></p>", { text : "16"})
-    .addClass("counter");
-  $counter.insertAfter($inputs.get(3));
-
-  //create password error message
-
-    //it seems that that my styles are applied to dom object I insert with jQuery .. hmmm...
+  form_validation();
+  drop_down();
 
 
-  //add max char counts
-  $($inputs.get(0)).attr( {"max_characters" : "32" } );
-  $($inputs.get(1)).attr( {"max_characters" : "140" } );
-  $($inputs.get(2)).attr( {"max_characters" : "16" } );
-  $($inputs.get(3)).attr( {"max_characters" : "16" } );
-
-  //set up listeners
-  $inputs.each( counterHandler );
-  //var $passwords = $("[type='password']");
-  //$passwords.on("keypress", password_confirmation_handler );
-  $("#confirm_pass").on("keyup", password_confirmation_handler );
-  $("#submit").on("click", verify_form );
 
 })

@@ -1,5 +1,13 @@
 /* examples */
 
+img {
+	height: 200px;
+	width: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
 
 fieldset input {
 	display: block;
@@ -11,4 +19,39 @@ fieldset input {
 	margin: 0;
 	margin-left:  10px;
 	display: none;
+}
+ul {
+	list-style-type: none;
+	width: auto;
+	overflow: visible;
+}
+li {
+	width: 200px;
+	height: 20px;
+	border: 1px solid black;
+	overflow: visible;
+}
+.onhover {
+	background-color: yellow;
+}
+.green{
+	background-color: green;
+}
+.red{
+	background-color: red;
+}
+.blue{
+	background-color: blue;
+}
+.box {
+	height: 40px;
+	width: 40px;
+}
+.small{
+	height: 20px;
+	width: 20px;
+}
+.large {
+	height: 60px;
+	width: 60px;
 }
