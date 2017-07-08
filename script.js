@@ -187,6 +187,7 @@ var form_validation = function() {
 
 }
 var drop_down = function() {
+
   //make a list
   var $ul = $('<ul></ul>')
     .attr('id', 'slide');
@@ -203,6 +204,7 @@ var drop_down = function() {
     });
   $ul.children().not(":first-child").hide();
   $ul.appendTo($("body"));
+
   //delegate the event listener to the parent
   $ul.on("click", function( e ) {
     e.stopPropagation();
@@ -251,9 +253,141 @@ var drop_down = function() {
 // execute my jquery
 $(document).ready( function() {
 
-  form_validation();
-  drop_down();
+  //form_validation();
+  //drop_down();
 
+  //
+
+  //make the tag box
+  $("<div></div>")
+    .addClass("on-mouse")
+    .addClass("photo-tag-box")
+    .appendTo($("body"))
+    .hide()
+    //.appendTo( $("#img-wrapper") )
+    //.appendTo($("#img-wrapper"))
+    //.appendTo( $(document) )
+    //.hide()
+
+
+
+//save this handler
+//on mouse over for the image add it to document
+  //and separately, show the div
+//on mouse leave for the image remove the handler
+
+
+//REFACTOR
+var follow_mouse_handler = function( e ) {
+  //console.log("HELLO MOVEMENT")
+  e.stopPropagation();
+  var $box = $(".on-mouse");
+
+  //center the box
+  var centerX = e.pageX - Number($box.css('width').replace("px", ""))/2;
+  var centerY = e.pageY - Number($box.css('height').replace("px", ""))/2;;
+  $box.css('top', centerY )
+    .css('left', centerX )
+
+    //check that mouse is still in the img ??
+      //find the x y for the event
+      var x = e.pageX;
+      var y = e.pageY;
+      //check that against the x y of the img-wrapper
+      var img_position = $("#img-wrapper").offset();
+      var left = img_position.left;
+      var right = img_position.left + Number($("#img-wrapper").css('width').replace("px", ""))
+      var top = img_position.top;
+      var bottom = img_position.top + Number($("#img-wrapper").css('height').replace("px", ""))
+      //console.log( `${left} : left, ${right}: right; ${x}:x`)
+      if ( x > right || x < left ){
+        //we're breaking out of the image
+        //drop the tag box
+        console.log("DROPBOX")
+        //$box.detach();
+        $box.hide()
+        $box.off();
+      }else if ( y > bottom || y < top ){
+        //we're breaking out of the image
+        //drop the tag box
+        console.log("DROPBOX")
+        $box.hide()
+        $box.off();
+        //$box.detach();
+      }else {
+        //we're within the img-wrapper still
+        //mouseleave events fire off all the time, ignore this one
+      }
+
+}
+//this handler will show the tag box
+$("#img-wrapper").on("mouseenter", function ( e ){
+  //$("#img-wrapper").on("mousemove", follow_mouse_handler );
+  var box = $(".on-mouse").show();
+  follow_mouse_handler( e );
+  $(".on-mouse").on("mousemove", follow_mouse_handler );
+  console.log("HELLO ENTER DIV")
+})
+$("#img-wrapper").on("mouseleave", function( e ){
+
+  console.log("HELLO LEAVE DIV");
+
+
+
+  //var box = $(".on-mouse").hide();
+  //$(".on-mouse").off("mousemove", follow_mouse_handler );
+  //$("body").off()
+})
+
+
+//old code
+/*
+var follow_mouse_handler = function( e ) {
+  var box = $(".on-mouse")
+  var centerX = e.pageX - Number(box.css('width').replace("px", ""))/2;
+  var centerY = e.pageY - Number(box.css('height').replace("px", ""))/2;;
+  box.css('top', centerY )
+    .css('left', centerX )
+}
+var mouse_enter_handler = function ( e ) {
+  $(document).on("mousemove", follow_mouse_handler );
+
+  //remove this listener
+  $(document).off("mouseover", )
+}
+var mouse_leave_handler = function ( e ){
+  console.log(e.target);
+  console.log(this);
+  console.log( this == e.target );
+  $(document).off("mousemove", follow_mouse_handler );
+}
+
+//make an invisible div slightly larger than the content
+//only respond to mouseleave events from this div
+$("#img-wrapper").on("mouseover", mouse_enter_handler);
+$("#img-wrapper").on("mouseleave", mouse_leave_handler );
+*/
+    //delegate this to body
+  /*$(document).on("mousemove", function( e ) {
+
+    var box = $(".on-mouse")
+    var centerX = e.pageX - Number(box.css('width').replace("px", ""))/2;
+    var centerY = e.pageY - Number(box.css('height').replace("px", ""))/2;;
+    box.css('top', centerY )
+      .css('left', centerX )
+  })*/
 
 
 })
+
+
+
+
+
+
+
+
+
+
+
+//
