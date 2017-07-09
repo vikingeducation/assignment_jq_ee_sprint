@@ -5,6 +5,15 @@
 .visible-now {
   opacity: 1; }
 
+.remove-tag {
+  background-color: white;
+  color: red;
+  border: 1px solid black;
+  float: right; }
+
+.fixed {
+  position: static; }
+
 #img-wrapper {
   background-color: blue;
   height: 540px;

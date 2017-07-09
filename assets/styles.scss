@@ -9,6 +9,16 @@ $img-width: 744px;
 	opacity: 1;
 }
 
+.remove-tag{
+	background-color: white;
+	color: red;
+	border: 1px solid black;
+	float: right;
+}
+.fixed {
+	position: static;
+}
+
 
 #img-wrapper{
 	background-color: blue;

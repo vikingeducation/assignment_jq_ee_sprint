@@ -265,6 +265,7 @@ $(document).ready( function() {
   //make the tag box
   $("<div></div>")
     .addClass("on-mouse")
+    .addClass("active-tag")
     .addClass("photo-tag-box")
     .appendTo("body")
     .hide()
@@ -343,7 +344,8 @@ var mouse_enter_handler = function ( e ){
           .insertBefore($box)
 
       $box.appendTo( $wrapper )
-        .css('position', 'static')
+        .addClass('fixed')
+        //.css('position', 'static')
 
       //remove stuff, after you get the position from box (otherwise it goes to 0, 0)
       $box.off()
@@ -351,7 +353,7 @@ var mouse_enter_handler = function ( e ){
 
       //
 
-    $("<ol></ol>").insertAfter($box)
+    var $ol = $("<ol></ol>").insertAfter($box)
       .hide()
 
     $.each( [
@@ -364,16 +366,20 @@ var mouse_enter_handler = function ( e ){
     ], function(index, element){
       //make it a list item and attach it to the drop down
       $("<li></li>").text(element)
-        .appendTo($(".photo-tag-box-wrapper ol"))
+        .appendTo($ol)
     })
     $(".photo-tag-box-wrapper ol").slideDown(400);
 
     //add a click listener on body to determine if canceled or if tagged
     $("body").on("click", function( e ){
       e.stopPropagation();
+
       if ($(".photo-tag-box-wrapper li").is(e.target)){
         console.log("Clicked a list item")
-        //clicked a list item, select it
+
+        //clicked a list item
+          //, select it
+        $(e.target).addClass(".choosen");
 
         //slide all the list items up except the selected one
         $(".photo-tag-box-wrapper li").not( $(e.target) ).slideUp(200);
@@ -384,29 +390,53 @@ var mouse_enter_handler = function ( e ){
         console.log("e.target: " + $(e.target))
 
         var $wrapper = $(e.target).parents().filter(".photo-tag-box-wrapper");
-        //$(e.target).parents().filter(".photo-tag-box").addClass("invisible-now");
 
-        //what was I doing??
-        //$wrapper.children().filter("div").addClass("invisible-now");
-        $wrapper.children().addClass("invisible-now");
-        //$(e.target)
-        //$wrapper.hide();
+        //add a remove tag button
+        $("<input>")
+          .addClass("remove-tag")
+          .attr('type', 'button')
+          .attr('value', 'Remove Tag')
+          .on("click", function( e ){
+            e.stopPropagation();
+            var $wrapper = $(e.target).parents().filter(".photo-tag-box-wrapper");
+            $wrapper.detach();
+            $wrapper.off();
+            $wrapper.children().off();
+          })
+          .appendTo($wrapper)
 
 
-        //IT WORKS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //make invisible until you hover over it
         $wrapper.hover(function(e){
           console.log(this)
           console.log("ENTERING WRAPPER")
+
           $(this).children().removeClass("invisible-now");
+          //only make the selected on seen
+          $(this).children().filter("li").not(".choosen").slideUp(100);
         }, function(e){
           //$wrapper.hide();
           console.log(this)
           console.log("LEAVING WRAPPER")
           $(this).children().addClass("invisible-now");
         })
-        //remove code later
-        //$( e.target ).hide();
+
+        //remove active-tag
+        $(".active-tag").removeClass("active-tag")
+
+        //destroy everything ?????
+
+        //resume tagging mode
+          //make a new box first
+          //make the tag box
+
+        $("<div></div>")
+          .addClass("on-mouse")
+          .addClass("active-tag")
+          .addClass("photo-tag-box")
+          .appendTo("body")
+          .hide()
+        mouse_enter_handler (e)
 
       }else {
         console.log("You clicked somewhere else!!!")
@@ -419,7 +449,18 @@ var mouse_enter_handler = function ( e ){
         $(this).off("click");
 
         //restart the tagging mode
-
+          //find the relevant photo-tag-box and addclass onmouse
+        var $tag_box = $(".active-tag")
+          //hacky fix
+          //take your wrapper and it's contents and discard them
+        var $old_wrapper = $tag_box.parent()
+        $old_wrapper.detach()
+        $old_wrapper.off()
+        $old_wrapper.children().off()
+        $tag_box.addClass("on-mouse")
+          .removeClass('fixed')
+          .appendTo('body')
+        mouse_enter_handler (e)
       }
     })
   })
