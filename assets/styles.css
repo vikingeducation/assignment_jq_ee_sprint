@@ -42,6 +42,23 @@ li {
 .onhover {
   background-color: yellow; }
 
+.photo-tag-box-wrapper {
+  position: absolute;
+  background: none; }
+  .photo-tag-box-wrapper ol {
+    width: inherit;
+    margin: 0;
+    padding: 0;
+    background-color: black; }
+  .photo-tag-box-wrapper li {
+    list-style: none;
+    width: inherit;
+    height: auto;
+    text-overflow: ellipsis;
+    color: white;
+    padding: 2px;
+    border: 1px solid white; }
+
 .on-mouse {
   position: absolute; }
 

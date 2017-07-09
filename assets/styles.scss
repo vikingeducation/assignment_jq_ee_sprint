@@ -52,14 +52,35 @@ li {
 .onhover {
 	background-color: yellow;
 }
+.photo-tag-box-wrapper {
+	position: absolute;
+	background: none;
+	ol {
+		width: inherit;
+		margin: 0;
+		padding: 0;
+		background-color: black;
+	}
+	li {
+		list-style: none;
+		width: inherit;
+		height: auto;
+		text-overflow: ellipsis;
+		color: white;
+		padding: 2px;
+		border: 1px solid white;
+	}
+}
 .on-mouse {
 	position: absolute;
 }
 .photo-tag-box{
 	display: block;
+	//position: absolute;
 	width: 150px;
 	height: 150px;
 	border: 5px solid green;
+
 }
 
 /*scrap styles */

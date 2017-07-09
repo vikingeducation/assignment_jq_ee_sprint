@@ -259,11 +259,20 @@ $(document).ready( function() {
   //
 
   //make the tag box
+  //$("<div></div>")
+    //.attr('id', 'anchor')
+    //.appendTo("body")
   $("<div></div>")
     .addClass("on-mouse")
     .addClass("photo-tag-box")
-    .appendTo($("body"))
+    //.appendTo( $("#anchor") )
+    .appendTo("body")
     .hide()
+    //.appendTo($("body"))
+    //.hide()
+
+
+
     //.appendTo( $("#img-wrapper") )
     //.appendTo($("#img-wrapper"))
     //.appendTo( $(document) )
@@ -275,6 +284,32 @@ $(document).ready( function() {
 //on mouse over for the image add it to document
   //and separately, show the div
 //on mouse leave for the image remove the handler
+
+
+//take a mouse event and find out if the mouse is still within the border of the image
+var in_image = function( e ){
+  //check that mouse is still in the img ??
+    //find the x y for the event
+    var x = e.pageX;
+    var y = e.pageY;
+    //check that against the x y of the img-wrapper
+    var img_position = $("#img-wrapper").offset();
+    var left = img_position.left;
+    var right = img_position.left + Number($("#img-wrapper").css('width').replace("px", ""))
+    var top = img_position.top;
+    var bottom = img_position.top + Number($("#img-wrapper").css('height').replace("px", ""))
+    //console.log( `${left} : left, ${right}: right; ${x}:x`)
+    if ( x > right || x < left ){
+      //we're breaking out of the image
+      return false;
+    }else if ( y > bottom || y < top ){
+      //we're breaking out of the image
+      return false;
+    }else {
+      //we're within the img-wrapper still
+      return true;
+    }
+}
 
 
 //REFACTOR
@@ -289,6 +324,25 @@ var follow_mouse_handler = function( e ) {
   $box.css('top', centerY )
     .css('left', centerX )
 
+
+  //check that mouse is still in the img ??
+  if ( in_image(e) ) {
+    console.log("IN IMAGE")
+    //we're within the img-wrapper still
+    //mouseleave events fire off all the time, ignore this one
+  }else {
+    console.log("OUT OF IMAGE")
+    //we're breaking out of the image
+    //drop the tag box
+    console.log("DROPBOX")
+    //$box.detach();
+    $box.hide()
+    $box.off();
+
+    //add listener for entry now
+    $("#img-wrapper").on("mouseenter", mouse_enter_handler)
+  }
+/*
     //check that mouse is still in the img ??
       //find the x y for the event
       var x = e.pageX;
@@ -317,20 +371,91 @@ var follow_mouse_handler = function( e ) {
       }else {
         //we're within the img-wrapper still
         //mouseleave events fire off all the time, ignore this one
-      }
+      }*/
 
 }
 //this handler will show the tag box
-$("#img-wrapper").on("mouseenter", function ( e ){
+// and add the click listener
+var mouse_enter_handler = function ( e ){
   //$("#img-wrapper").on("mousemove", follow_mouse_handler );
+
   var box = $(".on-mouse").show();
   follow_mouse_handler( e );
   $(".on-mouse").on("mousemove", follow_mouse_handler );
-  console.log("HELLO ENTER DIV")
-})
-$("#img-wrapper").on("mouseleave", function( e ){
 
+
+  //Entering tag select mode
+  $(".on-mouse").on("click", function( e ){
+    var $box = $(e.target);
+    console.log("CLICKED")
+
+
+    //add the drop_down
+      var top = $box.offset()['top']
+      var left = $box.offset()['left']
+
+      //wrap your photo-tag-box in a div
+      //make that wrapper have the same position
+      var $wrapper = $("<div></div>")
+      $wrapper.css('top', top)
+          .css('left', left)
+          .addClass('photo-tag-box-wrapper')
+          .insertBefore($box)
+
+      $box.appendTo( $wrapper )
+        .css('position', 'static')
+
+      //remove stuff, after you get the position from box (otherwise it goes to 0, 0)
+      $box.off()
+        .removeClass("on-mouse")
+
+      //
+
+    $("<ol></ol>").insertAfter($box)
+      .hide()
+    //$box.after($("<ol></ol>"))
+    //$(".photo-tag-box").after($("<ol></ol>"));
+    $.each( [
+      'Harry',
+      'Hermoine',
+      'Ronald Reginald Wesley',
+      'Ginny',
+      'Luna',
+      'Neville'
+    ], function(index, element){
+      //make it a list item and attach it to the drop down
+      $("<li></li>").text(element)
+        .appendTo($(".photo-tag-box-wrapper ol"))
+    })
+    $(".photo-tag-box-wrapper ol").slideDown(400);
+
+    //add a click listener on body to determine if canceled or if tagged
+    $("body").on("click", function( e ){
+      if ($(".photo-tag-box-wrapper li").is(e.target)){
+        console.log("Clicked a list item")
+        //clicked a list item, select it
+        
+      }else {
+        console.log("You clicked somewhere else!!!")
+        //clicked somewhere else, cancel the tag mode
+
+      }
+    })
+  })
+  console.log("HELLO ENTER DIV")
+
+  //remove this listener to avoid re-entry events
+  $("#img-wrapper").off("mouseenter");
+}
+
+$("#img-wrapper").on("mouseenter", mouse_enter_handler)
+
+//this does nothing, b/c if the cursor leaves the img-wrapper,
+//it will still have the tagger box under the pointer
+//so no mouseleave event is ever fired
+$("#img-wrapper").on("mouseleave", function( e ){
   console.log("HELLO LEAVE DIV");
+
 
 
 
