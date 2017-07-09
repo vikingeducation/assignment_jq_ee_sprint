@@ -1,4 +1,10 @@
 /* examples */
+.invisible-now {
+  opacity: 0; }
+
+.visible-now {
+  opacity: 1; }
+
 #img-wrapper {
   background-color: blue;
   height: 540px;
