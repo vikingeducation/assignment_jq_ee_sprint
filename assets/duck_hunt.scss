@@ -1,0 +1,50 @@
+$primary-background: #5397FD;
+
+body {
+  background-color: $primary-background;
+  cursor: crosshair;
+}
+.duck {
+  position: absolute;
+  top: 30px;
+  left: 100px;
+}
+.fx {
+  position: absolute;
+  z-index: 3;
+}
+
+#scoreboard {
+  background-color: black;
+  border: 1px solid grey;
+  color: white;
+  width: 100%;
+  height: 200px;
+  position: fixed;
+  bottom: 0;
+
+
+  #ammo{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    *{
+      margin-right: 5px;
+    }
+  }
+}
+
+.on-mouse {
+  position: absolute;
+}
+
+.cursor {
+  width: 25px;
+  height: 25px;
+}
+
+.center {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
