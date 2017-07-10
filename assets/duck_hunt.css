@@ -3,13 +3,14 @@ body {
   cursor: crosshair; }
 
 .duck {
-  position: absolute;
-  top: 30px;
-  left: 100px; }
+  position: absolute; }
 
 .fx {
   position: absolute;
   z-index: 3; }
+
+.dead {
+  z-index: -1; }
 
 #scoreboard {
   background-color: black;

@@ -6,12 +6,13 @@ body {
 }
 .duck {
   position: absolute;
-  top: 30px;
-  left: 100px;
 }
 .fx {
   position: absolute;
   z-index: 3;
+}
+.dead{
+  z-index: -1;
 }
 
 #scoreboard {

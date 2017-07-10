@@ -3,6 +3,7 @@
 //TODO: MAKE ducks fall
 //TODO: make ducks remove themselves from the duck array somehow
 
+var fps = 40;
 
 function DuckHunt() {
   this.ducks = [];
@@ -14,10 +15,40 @@ function DuckHunt() {
   this.$round = $(".center").children().last();
   this.$score = $("#scoreboard h2");
 
+
+  var right = window.innerWidth;
+  var bottom = window.innerHeight;
+
+  this.destinations = [
+    [3000, 1000],
+    [1000, 100],
+    [-100, -100]
+  ]
+  this.start_locations = [
+    [-10 , -10],
+    [-10, 100],
+    [right + 200, bottom / 3]
+  ]
+
+  //for testing purposes
+  this.fps = fps;
+  //this.fps = 60;
+
   //make duck
   this.make_duck = function() {
-    var duck = new Duck();
+    var i = Math.floor(Math.random() * this.destinations.length);
+
+    //position the duck somewhere interesting
+    var position = this.start_locations[i]
+    var duck = new Duck( position );
     this.ducks.push(duck);
+
+
+
+
+    //give it an interesting destination
+    duck.destination = this.destinations[i]
+
     $("body").append(duck.$me)
   }
   this.make_duck()
@@ -64,10 +95,12 @@ function DuckHunt() {
     var was_duck = null;
     if ( $(e.target).hasClass('duck') ){
       was_duck = true;
+      console.log("user shot duck")
     }else {
       was_duck = false;
+      console.log("user shot nothing")
+      console.log( $(e.target) )
     }
-
     if (was_duck){
       //find
       var dead_duck_index = i;
@@ -80,12 +113,15 @@ function DuckHunt() {
       this.score++;
       this.render_score();
 
+      //make a new duck
+      this.make_duck()
+
     }
     this.ammo--;
     this.render_ammo();
     if ( this.ammo == 0){
       //end the round
-      window.alert("Round Over!")
+      window.alert("Round Over")
     }
   }
 
@@ -93,11 +129,12 @@ function DuckHunt() {
   this.kill = function( index ){
     this.ducks[index].state = "dead"
     //make it drop down and then detach
-    this.score++;
-    this.render_score();
-    console.log( `dead duck = ${this.ducks[index]}` );
+    this.ducks[index].fall();
+    //console.log( `dead duck = ${this.ducks[index]}` );
   }
 
+
+  //shooting functionality
   //on click with the body
   $("body").on("click", function( e ){
     //make an explosion
@@ -119,7 +156,7 @@ function DuckHunt() {
     })
 
     //let the duck_hunt class handle all the heavy lifting
-    window.duck_hunt.user_shot( e.target )
+    window.duck_hunt.user_shot( e )
 
     //check that e.pageX & e.pageY is within the duck
 
@@ -135,7 +172,25 @@ function DuckHunt() {
           //else continue
   })
 
+  //movement
+  //setTimeout()
+  this.game = function() {
+    //console.log("HELLOOOOOOOOOOO")
+    var _this = duck_hunt;
+    //move ducks
+    for( var i = 0; i < _this.ducks.length; i++){
+      _this.ducks[i].move();
+    }
+  }
+  //setInterval( this.game, 1000 / this.fps )
+  //setInterval( this.game, 1000 / this.fps )
+  setInterval( this.game, 1000/this.fps)
 
+  //tutorial code
+  /*
+  $(".duck").attr("id", "animate")
+  myMove()
+  */
 
 
 
@@ -143,10 +198,84 @@ function DuckHunt() {
 
 }
 
-function Duck() {
+function Duck(position) {
   this.$me = $("<img src='assets/images/duck.png'>")
   this.$me.addClass("duck")
   this.state = "alive"
+    //set the speed to px/sec
+  var px_per_sec = 120;
+  this.speed = px_per_sec / window.fps
+  this.vx;
+  this.vy;
+    // this.destination = [x,y]
+  this.destination = [1000, 200];
+  //this.x and this.y is the top left point of the duck
+  this.x = position[0];
+  this.y = position[1];
+
+  this.move = function(){
+    //this will update my x and y as well
+    this.set_velocity();
+    this.x += this.vx;
+    this.y += this.vy;
+    this.render();
+  }
+  this.fall = function() {
+    this.destination[1] = window.innerHeight - 100;
+    this.destination[0] = this.getx();
+    this.$me.addClass('dead')
+  }
+
+  //TODO: consider adding the
+
+  this.set_velocity = function(){
+    this.x = this.getx();
+    this.y = this.gety();
+    var deltax = Math.abs(this.destination[0] - this.x);
+    var deltay = Math.abs(this.destination[1] - this.y);
+    if (deltax < 2){
+      this.x = this.destination[0];
+      this.vx = 0;
+    }
+    if (deltay < 2) {
+      this.y = this.destination[1];
+      this.vy = 0;
+    }
+
+    if ( this.x > this.destination[0] ){
+      this.vx = -this.speed;
+    }else if ( this.x < this.destination[0] ){
+      this.vx = this.speed;
+    }else {
+      this.vx = 0;
+    }
+    if ( this.y > this.destination[1] ){
+      this.vy = -this.speed;
+    }else if ( this.y < this.destination[1] ){
+      this.vy = this.speed;
+    }else{
+      this.vy = 0;
+    }
+  }
+
+  this.getx = function(){
+    //var width = this.$me.eq(0).width();
+    //this.x = parseFloat(this.$me.css('left')) + width / 2;
+    this.x = parseFloat(this.$me.css('left'))
+    return this.x;
+  }
+  this.gety = function(){
+    //var height = this.$me.eq(0).height();
+    //this.y = parseFloat(this.$me.css('top')) + height / 2;
+    this.y = parseFloat(this.$me.css('top'))
+    return this.y;
+  }
+  this.render = function() {
+    //console.log( this.$me.css('top'))
+    //console.log( this.$me.css('left'))
+    this.$me.css( 'top', this.y );
+    this.$me.css( 'left', this.x );
+  }
   //var $duck = $("<img src='assets/images/duck.png'>")
 
   //set coordinates
@@ -172,13 +301,5 @@ $(document).ready( function() {
   //start game
   duck_hunt = new DuckHunt();
 
-  //var $ammo = $("#ammo").children().first()
-
-  //var $round = $(".center").children().last()
-  //$round.text('Round: 1')
-
-  //make duck
-  //var $duck = $("<img src='assets/images/duck.png'>")
-  //$("body").append($duck)
-
+  //setInterval( window.duck_hunt.game, 1000 / 20 )
 })
