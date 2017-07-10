@@ -1,0 +1,123 @@
+/* examples */
+$img-height: 500px;
+$img-width: 744px;
+
+.invisible-now {
+	opacity: 0;
+}
+.visible-now {
+	opacity: 1;
+}
+
+.remove-tag{
+	background-color: white;
+	color: red;
+	border: 1px solid black;
+	float: right;
+}
+.fixed {
+	position: static;
+}
+
+
+#img-wrapper{
+	background-color: blue;
+	height: $img-height + 40px;
+	width: $img-width + 40px;
+	position: absolute;
+  top: 5%;
+  left: 5%;
+	img {
+		height: $img-height;
+		width: $img-width;
+		margin: auto;
+
+	}
+}
+
+.center-children {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+
+fieldset input {
+	display: block;
+	float: left;
+}
+.counter {
+	display: inline;
+	float: left;
+	margin: 0;
+	margin-left:  10px;
+	display: none;
+}
+ul {
+	list-style-type: none;
+	width: auto;
+	overflow: visible;
+}
+li {
+	width: 200px;
+	height: 20px;
+	border: 1px solid black;
+	overflow: visible;
+}
+.onhover {
+	background-color: yellow;
+}
+.photo-tag-box-wrapper {
+	position: absolute;
+	background: none;
+	ol {
+		width: inherit;
+		margin: 0;
+		padding: 0;
+		background-color: black;
+	}
+	li {
+		list-style: none;
+		width: inherit;
+		height: auto;
+		text-overflow: ellipsis;
+		color: white;
+		padding: 2px;
+		border: 1px solid white;
+	}
+}
+.on-mouse {
+	position: absolute;
+}
+.photo-tag-box{
+	display: block;
+	//position: absolute;
+	width: 150px;
+	height: 150px;
+	border: 5px solid green;
+
+}
+
+/*scrap styles */
+.green{
+	background-color: green;
+}
+.red{
+	background-color: red;
+}
+.blue{
+	background-color: blue;
+}
+.box {
+	height: 40px;
+	width: 40px;
+}
+.small{
+	height: 20px;
+	width: 20px;
+}
+.large {
+	height: 60px;
+	width: 60px;
+}
