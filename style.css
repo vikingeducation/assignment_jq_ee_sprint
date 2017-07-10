@@ -1,0 +1,103 @@
+body {
+	background-color: #FFFFFF;
+	color: black;
+	display: block;
+}
+
+form {
+	background-color: #F2FFFF;
+	display: block;
+	width: 500px;
+	height: auto;
+	padding: 100px;
+	margin: auto;
+	box-shadow: 10px 10px 20px 20px  #09060A;
+}
+.count {
+	display: none;
+	width: 30px;
+	height: 30px;
+	border: 2px dashed black;
+	padding: 5px;
+	position: relative;
+}
+.count1 {
+	display: none;
+	width: 30px;
+	height: 30px;
+	border: 2px dashed black;
+	padding: 5px;
+	position: relative;
+}
+.count2 {
+	display: none;
+	width: 30px;
+	border: 2px dashed black;
+	padding: 5px;
+	height: 30px;
+	position: relative;
+}
+.count3 {
+	display: none;
+	width: 30px;
+	border: 2px dashed black;
+	padding: 5px;
+	height: 30px;
+	position: relative;
+}
+
+input {
+	width: 400px;
+	padding: 20px;
+	height: 20px;
+	margin: 10px;
+	border-radius: 7px;
+	border: 1px solid black;
+}
+
+textarea {
+	padding: 20px;
+	margin: 10px;
+	border-radius: 7px;
+	border: 1px solid black;
+	width: 400px;
+	height: 100px;
+}
+
+#submit {
+	box-shadow: 0 5px 5px 0 #000000;
+}
+
+/*PHOTO-TAGGER */
+.image {
+	display: block;
+	background-repeat: no-repeat;
+	background-image: url(photo.jpg);
+	background-size: cover;
+	border: 1px solid black;
+	height: 800px;
+	width: 600px;
+	margin: auto;
+}
+
+.dropdown{
+	position: absolute;
+	border-top-left-radius: 10px 10px;
+	display: none;
+	background-color: black;
+	color: white;
+	width: 150px;
+	height: 100px;
+	overflow-y: scroll;
+}
+
+ul {
+	list-style-type: none;
+	padding: 10px;
+}
+
+li {
+	height: 20px;
+	border-bottom: 1px solid white;
+}
+
