@@ -1,0 +1,83 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.form1-div {
+  width: 100%;
+}
+
+.form1 {
+  width: 500px;
+  margin: 100px auto;
+}
+
+.form1 * {
+  width: 295px;
+  margin: 10px 0;
+}
+
+.counter {
+  color: red;
+}
+
+.password-match-alert {
+  color: red;
+}
+
+.error {
+  background: red;
+  color: white;
+  border: 2px solid black;
+}
+
+.dropdown-div ol li {
+  border: 1px solid grey;
+  background: linear-gradient(lightblue, white);
+  cursor: pointer;
+}
+
+.dropdown-div ol li:hover {
+  background: linear-gradient(lightgreen, white);
+}
+
+.photo {
+  margin: 140px;
+  width: 400px;
+  height: auto;
+  position: absolute;
+}
+
+.photo img {
+  width: 100%;
+}
+
+.tagging-boxes {
+  width: 100px;
+  height: 120px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.tagging-boxes ul {
+  list-style-type: none;
+  position: relative;
+  top: 128px;
+  border: 1px solid black;
+  display: none;
+}
+
+.tag-li li {
+background: linear-gradient(yellow, white);
+border-top: 1px solid black;
+display: none;
+}
+
+.tag-first-li {
+  background: white;
+  border: 1px solid black;
+  color: blue;
+  display: none;
+}
