@@ -1,66 +1,23 @@
 // FORM-PAGE
 $(function() {
-	$('.text').keyup(function() {
-	var count = $(this).val();
-		var character = count.length;
-		var max = 32;
-		$('.count')
-		.html(max - character)
-		.show();
-		if(character === 0){
-			$('.count').hide();
-		}
-	});
-	$('.text').mouseleave(function() {
-		$('.count').hide();
-	});
-	$('.password').keyup(function() {
-	var count = $(this).val();
-		var character = count.length;
-		var max = 16;
-		$('.count2')
-		.html(max - character)
-		.show();
-		if(character === 0){
-			$('.count2').hide();
-		}
-	});
-	$('.password').mouseleave(function() {
-		$('.count2').hide();
-	});
-	$('.passwordconf').keyup(function() {
-	var count = $(this).val();
-		var character = count.length;
-		var max = 16;
-		$('.count3')
-		.html(max - character)
-		.show();
-		if(character === 0){
-			$('.count3').hide();
-		}
-	});
-	$('.passwordconf').mouseleave(function() {
-		$('.count3').hide();
-	});
+    $('.input').keyup( function() {
+	  var identifier = $(this).attr('data-panelid');
+	  var chooser = "." + "count" + $(this).attr('data-panelid');
+      var max = $(this).attr('data-panelid');
+	  var count = $(this).val();
+	  var character = count.length;
+	  $(chooser)
+	    .html(max - character)
+	    .show();
+	  if( character === 0) {
+		  $(chooser).hide();
+	    }
+    });
 
-		$('textarea').keyup(function() {
-	var count = $(this).val();
-		var character = count.length;
-		var max = 140;
+    $('.input').mouseleave( function() {
+    	$(chooser).hide();
+    });
 
-		$('.count1')
-		.html(max - character)
-		.show();
-		if(character === 0){
-			$('.count1').hide();
-		}
-	});
-
-	$('textarea').mouseleave(function() {
-		$('.count1').hide();
-	});
-		
-	
 		alert("hi");
 
 		$('#submit').click(function() {
@@ -89,28 +46,63 @@ $(function() {
 					$('.password').css('background-color', 'green');
 				}
 
+				// DROP-DOWN
+
+				
+				$('.top').click(function() {
+					$('.slidedown').slideToggle(500);
+				});
+
+				$('.id').click( function() {
+					var identifier = $(this).attr('data-panelid');
+				    var chooser = "." + "content" + $(this).attr('data-panelid');
+					$('id').css({
+						'display': "flex",
+						"justify-content": "space-around",
+						"flex-direction": "row"
+					});
+					$(chooser).slideToggle(1000);
+				});
+
+
+				$('li').mouseover( function () {
+					$(this).css('background-color', 'blue');
+				});
+
+				$('li').mouseleave( function() {
+					$(this).css('background-color',"white");
+				});
+
+				$('li').click(function() {
+					var identifier = $(this).attr('data-panelid');
+				    var chooser = "." + "content" + $(this).attr('data-panelid');
+					$(this).siblings().slideToggle();
+				});
+
 			// PHOTO-TAGGER
 
-			$('ul').hover( function() {
-				$(this).css('background-color', 'blue');
-			});
 
-			$('.image').mouseover( function() {
+			$('.image').mousemove( function() {
 				$('.dropdown')
 				.show(100)
-				.css( {position:"absolute", top:event.pageY, left: event.pageX});
+				.css( {'position':'absolute', 'top':event.pageY - 70, 'left':event.pageX - 70,
+						'display': 'flex', 'flex-direction': 'row', 'flex-wrap' : ' wrap', 'height': '100px'});
+				$('.container').hide();
 			});
 
-			$('.image').mouseleave( function() {
-				$('.dropdown').hide(100);
+			$('.image').mouseout(function() {
+				$('dropdown').hide(200);
 			});
 
-			$( ".image").click( function(event) {
-  				$(".dropdown").css( {position:"fixed", top:event.pageY, left: event.pageX});
+			$('.image').click(function() {
+				$('.dropdown')
+				.css({'position':'fixed',
+			         'display': 'flex',
+			         'justify-content': 'space-around', 
+			         'flex-direction': 'row'});
+				$('.container').slideToggle(500);
 			});
 
-			$('ul').click(function() {
-				$(this).val();
-			})
+
 });
 

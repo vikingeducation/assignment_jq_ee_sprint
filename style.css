@@ -13,34 +13,30 @@ form {
 	margin: auto;
 	box-shadow: 10px 10px 20px 20px  #09060A;
 }
-.count {
+.count32 {
 	display: none;
 	width: 30px;
 	height: 30px;
-	border: 2px dashed black;
 	padding: 5px;
 	position: relative;
 }
-.count1 {
+.count140 {
 	display: none;
 	width: 30px;
 	height: 30px;
-	border: 2px dashed black;
 	padding: 5px;
 	position: relative;
 }
-.count2 {
+.count16 {
 	display: none;
 	width: 30px;
-	border: 2px dashed black;
 	padding: 5px;
 	height: 30px;
 	position: relative;
 }
-.count3 {
+.count16 {
 	display: none;
 	width: 30px;
-	border: 2px dashed black;
 	padding: 5px;
 	height: 30px;
 	position: relative;
@@ -68,11 +64,115 @@ textarea {
 	box-shadow: 0 5px 5px 0 #000000;
 }
 
+/* DROPDOWN */
+
+.maine {
+	display: block;
+	margin: auto;
+	width: 500px;
+	height: 500px;
+	background-color: #000000;
+	color: white;
+}
+
+.Dropdown {
+	position: relative;
+	border: 2px solid white;
+	margin: auto;
+	display: block;
+	justify-content: space-around;
+	flex-direction: column;
+	width: 300px;
+	height: 70px;
+}
+
+.slidedown{
+	display: none;
+	position: relative;
+	border: 2px solid white;
+	margin: auto;
+	flex-direction: column;
+	width: 300px;
+	height: 0;
+}
+
+.content0 {
+	display: none;
+	background-color: white;
+	color: black;
+	height: 90px;
+	text-align: center;
+
+}
+
+
+.id {
+
+	display: block;
+	width: 300px;
+	height: 40px;
+
+}
+
+.content1 {
+	text-align: center;
+	height: 80px;
+	display: none;
+	background-color: white;
+	color: black;
+}
+
+.content2 {
+	text-align: center;
+	height: 80px;
+	display: none;
+	background-color: white;
+	color: black;
+}
+
+.content3 {
+	text-align: center;
+	height: 80px;
+	display: none;
+	background-color: white;
+	color: black;
+}
+
+
+ul {
+	list-style-type: none;
+}
+
+
+li {
+	cursor: pointer;
+	height: 22.8px;
+}
+
+
+h2 {
+	height: 25px;
+	text-align: center;
+}
+
+.top {
+	border-bottom: 2px solid blue;
+	height: 50px;
+}
+
 /*PHOTO-TAGGER */
+.big{
+	width: 1000px;
+	height: 1000px;
+	border: 1px solid black;
+
+}
+
 .image {
 	display: block;
 	background-repeat: no-repeat;
 	background-image: url(photo.jpg);
+	background-position: center;
 	background-size: cover;
 	border: 1px solid black;
 	height: 800px;
@@ -80,24 +180,31 @@ textarea {
 	margin: auto;
 }
 
-.dropdown{
-	position: absolute;
-	border-top-left-radius: 10px 10px;
-	display: none;
-	background-color: black;
-	color: white;
-	width: 150px;
+.target {
+	width: 100px;
 	height: 100px;
-	overflow-y: scroll;
+	background-color: transparent;
+}
+.container {
+	display: block;
+	border: 5px solid yellow;
+	width: 110px;
+	background-color: white;
+	color: black;
+	height: 250px;
 }
 
-ul {
-	list-style-type: none;
-	padding: 10px;
+.dropdown {
+	display: none;
+	color: white;
+	width: 100px;
+	border: 5px solid yellow;
+	height: 380px;
 }
 
-li {
+div {
 	height: 20px;
-	border-bottom: 1px solid white;
+	padding: none;
+	margin-top:none;
 }
 
