@@ -2,8 +2,8 @@
 $(function() {
     $('.input').keyup( function() {
 	  var identifier = $(this).attr('data-panelid');
-	  var chooser = "." + "count" + $(this).attr('data-panelid');
-      var max = $(this).attr('data-panelid');
+	  var chooser = "." + "count" + identifier;
+      var max = identifier;
 	  var count = $(this).val();
 	  var character = count.length;
 	  $(chooser)
@@ -15,36 +15,45 @@ $(function() {
     });
 
     $('.input').mouseleave( function() {
-    	$(chooser).hide();
+    	var identifier = $(this).attr('data-panelid');
+	    var chooser = "." + "count" + identifier;
+    	$(chooser).hide(100);
     });
 
 		alert("hi");
 
-		$('#submit').click(function() {
-			var counter = $('input').val();
-			var character = counter.length;
-			function confirm(value){
-				if(character < 4){
-					$(value).css('background-color', 'red');
-					$('#submit').hide();
-				} else if(character > max) {
-					$(value).css('background-color', 'red');
-					alert('too much');
-				}
-			}
-			confirm('.text');
-			confirm('.password');
-			confirm('.passwordconf');
-			confirm('textarea');
 
+		$('#passwordconf').keyup( function() {
+			var password = $('#password').val();
+			var passwordConf = $('#passwordconf').val();
+			if(password !== passwordConf) {
+				var identifier = $(this).attr('data-panelid');
+	            var chooser = "." + "count" + identifier;
+	            $(chooser)
+	            .html("<p>passwords don't match</p>")
+	            .show();
+	            if( passwordConf.length === 0){
+	            	$(chooser).hide();
+	            }
+			} 
 		});
 
-			var password = $('.password').val();
-			var passwordConf = $('.passwordconf').val();
 
-				if(password !== passwordConf){
-					$('.password').css('background-color', 'green');
-				}
+		// doesn't work
+		$('form').submit(function() {
+			var password = $('#password').val();
+			var passwordConf = $('#passwordconf').val();
+		    var identifier = $(this).attr('data-panelid');
+            var max = identifier;
+	        var chooser = "." + "count" + identifier;
+	        var lessThan = $.trim($(".input").val()).length;
+	        var match = password !== passwordConf;
+    	   if (lessThan < 4  || lessThan > max  || match || password === '' || passwordConf === "") {
+    	   	alert('');
+    	   	return false;
+    	   }
+    	});
+
 
 				// DROP-DOWN
 
@@ -61,7 +70,7 @@ $(function() {
 						"justify-content": "space-around",
 						"flex-direction": "row"
 					});
-					$(chooser).slideToggle(1000);
+					$(chooser).slideToggle(500);
 				});
 
 
@@ -90,7 +99,7 @@ $(function() {
 				$('.container').hide();
 			});
 
-			$('.image').mouseout(function() {
+			$('.image').mouseleave(function() {
 				$('dropdown').hide(200);
 			});
 
@@ -100,7 +109,16 @@ $(function() {
 			         'display': 'flex',
 			         'justify-content': 'space-around', 
 			         'flex-direction': 'row'});
-				$('.container').slideToggle(500);
+				$('.container')
+				.slideToggle(500);
+			});
+
+			$('li').click(function() {
+				var name = $(this).text();
+				$('.target').text(name);
+				$('lia').mouseout( function() {
+					$('dropdown').hide(200);
+				});
 			});
 
 
