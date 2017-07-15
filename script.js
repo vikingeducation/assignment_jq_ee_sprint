@@ -60,6 +60,12 @@ $(function() {
 				
 				$('.top').click(function() {
 					$('.slidedown').slideToggle(500);
+					if ($('.top').html() == "<h2>Click to hide dropdown</h2>") { 
+					   $('.top').html("<h2>Click to view dropdown</h2>"); 
+					} else {
+					   $('.top').html("<h2>Click to hide dropdown</h2>");
+
+					}
 				});
 
 				$('.id').click( function() {
