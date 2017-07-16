@@ -106,12 +106,12 @@ $(function() {
 			});
 
 			$('.image').mouseleave(function() {
-				$('dropdown').hide(200);
+				$('.dropdown').fadeOut();	
 			});
 
 			$('.image').click(function() {
 				$('.dropdown')
-				.css({'position':'fixed',
+				.css({'position':'fixed', 'top':event.pageY - 70, 'left':event.pageX - 70,
 			         'display': 'flex',
 			         'justify-content': 'space-around', 
 			         'flex-direction': 'row'});
