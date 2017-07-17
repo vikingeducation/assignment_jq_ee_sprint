@@ -1,0 +1,98 @@
+/*form styles*/
+form {
+	width: 400px;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
+}
+
+/*inputs*/
+form input, form textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+
+/*buttons*/
+form .action-button {
+	width: 100px;
+	background: #27AE60;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+form .action-button:hover, form .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+.error-field {
+  border: 1px solid red;
+}
+
+.error-msg {
+  color: red;
+  font-weight: bold;
+}
+
+.hidden {
+	display: none;
+}
+
+.dropdown {
+	width: 250px;
+	margin: 100px auto 0 auto;
+}
+.dropdown ul {
+	padding: 0;
+	background-color: #eee;
+	width: 200px;
+	border-radius: 3px;
+	position: relative;
+	top: -15px;
+	border: 1px solid #ddd;
+}
+
+/*list items*/
+.dropdown li {
+	list-style-type: none;
+}
+
+/*links*/
+.dropdown a {
+	color: black;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 27px;
+	display: block;
+	padding: 0 15px;
+	/*transition for smooth hover animation*/
+	transition: all 0.15s;
+}
+
+/*Lets hide the non active LIs by default*/
+.dropdown ul ul {
+	display: none;
+}
+.dropdown li.active ul {
+	display: block;
+}
+
+/*hover effect on links*/
+.dropdown ul ul li a:hover {
+	background: #ccc;
+	border-left: 5px solid lightgreen;
+}
+
+.dropdown h3	{
+	text-align: center;
+}
