@@ -1,0 +1,68 @@
+body {
+  font-family: "Helvetica";
+  color: #111;
+}
+
+.container {
+  margin: 0 auto;
+  width: 1200;
+  border: 1px solid black;
+}
+
+.photo {
+  padding: 10px;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.photo img {
+  width: inherit;
+}
+
+.tag {
+  position: relative;
+  bottom: 22em;
+  left: 40em;
+
+  height: 150px;
+  width: 100px;
+}
+
+.tag .frame {
+  height: 50%;
+  border: 2px solid red;
+}
+
+.tag .people {
+  font-size: 14px;
+  font-weight: 600px;
+  border: 1px solid red;
+  background-color: white;
+  border-bottom: 2px solid red;
+  height: 50%;
+  padding: 5px;
+  overflow-y: scroll;;
+}
+
+.tag ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag li {
+  line-height: 1.3em;
+}
+
+.tag li:hover {
+  background-color: #eee;
+}
+
+.tag a {
+  color: #111;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
