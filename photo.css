@@ -1,6 +1,7 @@
-#box {
-  border: 2px solid black;
+.box, .fixed-box {
+  border: 3px solid blue;
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
 }
