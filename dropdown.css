@@ -1,0 +1,22 @@
+body {
+  margin-top: 50px;
+}
+
+#choices {
+  display: none;
+}
+
+ul {
+  border: 1px solid black;
+}
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+li.option:hover {
+  background-color: red;
+}
