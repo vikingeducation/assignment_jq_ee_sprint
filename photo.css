@@ -5,3 +5,8 @@
   height: 60px;
   pointer-events: none;
 }
+
+.options {
+  position: absolute;
+  list-style-type: none;
+}
