@@ -1,12 +1,27 @@
-.box, .fixed-box {
+li {
+  cursor: pointer;
+}
+
+.box {
+  pointer-events: none;
+}
+
+.box, .temp-box, .fixed-box {
   border: 3px solid blue;
   position: absolute;
   width: 60px;
   height: 60px;
-  pointer-events: none;
 }
 
 .options {
+  color: black;
+  font-weight: bold;
   position: absolute;
   list-style-type: none;
+}
+
+.selected {
+  position: absolute;
+  color: black;
+  font-weight: bold;
 }
