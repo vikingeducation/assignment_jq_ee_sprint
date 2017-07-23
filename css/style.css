@@ -1,0 +1,48 @@
+/*JQuery classes*/
+.error {
+  background-color: red;
+  padding: 10px;
+}
+
+.error-text {
+  background-color: red;
+}
+
+.error-subtle {
+  background-color: red;
+  padding: 6px;
+  opacity: 0.3;
+}
+
+.success {
+  background-color: green;
+  padding: 10px;
+  opacity: 0.7;
+}
+
+.popout {
+  padding: 10px;
+}
+
+.flex-outer {
+  padding: 0px;
+}
+.flex-outer .pass-conf {
+  margin-top: 0px;
+}
+.flex-outer li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.flex-outer input, .flex-outer textarea, .flex-outer button {
+  height: 26px;
+  width: 250px;
+  margin: 7px 0;
+}
+.flex-outer textarea, .flex-outer .submit {
+  height: 52px;
+}
