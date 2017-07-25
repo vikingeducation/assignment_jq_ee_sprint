@@ -1,34 +1,33 @@
-// "use strict";
+"use strict";
 $( document ).ready(function() {
 
-  var name = {
-    field: 'input[name="Name"]',
-    output: '#name-counter',
-    charMin: 4,
-    charMax: 5
-  }
-
-  var description = {
-    field: 'textarea[name="Description"]',
-    output: '#description-counter',
-    charMin: 4,
-    charMax: 5
-  }
-
-  var password = {
-    field: 'input[name="Password"]',
-    output: '#password-counter',
-    charMin: 6,
-    charMax: 16
-  }
-
-  var passwordConfirmation = {
-    field: 'input[name="Password Confirmation"]',
-    output: '#pw-confirm-counter',
-    validator: '#pw-validator',
-    charMin: 6,
-    charMax: 16
-  }
+  var allFields = {
+    name: {
+      field: 'input[name="Name"]',
+      output: '#name-counter',
+      charMin: 4,
+      charMax: 5
+    },
+    description: {
+      field: 'textarea[name="Description"]',
+      output: '#description-counter',
+      charMin: 4,
+      charMax: 5
+    },
+    password: {
+      field: 'input[name="Password"]',
+      output: '#password-counter',
+      charMin: 6,
+      charMax: 16
+    },
+    passwordConfirmation: {
+      field: 'input[name="Password Confirmation"]',
+      output: '#pw-confirm-counter',
+      validator: '#pw-validator',
+      charMin: 6,
+      charMax: 16
+    }
+  };
 
   var textCounterDowner = function(input){
     $('fieldset').on('keyup', input.field, function(){
