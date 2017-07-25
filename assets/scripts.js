@@ -62,7 +62,26 @@ $( document ).ready(function() {
     };
   });
 
+  var validations = {
+    charCount: function(input){
+      var actualCount = $( input.field ).val().length;
 
+      if((actualCount < input.charMin )||(actualCount > input.charMax)){
+        $( input.field ).addClass('active-error');
+        $( 'section#errors' )
+            .show()
+            .append('<li>'+ $(input.field).attr('name')+ ' only allows ' + input.charMin + ' to ' + input.charMax + " characters. You've entered " + actualCount + ".</li>");
+      }
+    }//charCount
+  };
+
+
+  $( 'input:submit' ).on('click', function(){
+    validations.charCount(name);
+    validations.charCount(description);
+    validations.charCount(password);
+    validations.charCount(passwordConfirmation);
+  });
 
 
 
