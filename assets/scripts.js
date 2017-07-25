@@ -69,17 +69,27 @@ $( document ).ready(function() {
       }
     },
 
-    passwordMatch: function(input){
-      console.log("TBD");
+    passwordMatch: function(password, passwordConfirmation){
+      var $pw = $( password.field );
+      var $pwc = $( passwordConfirmation.field );
+
+      if($pw.val() !== $pwc.val()){
+        $pwc.addClass('active-error');
+        $( 'section#errors' )
+            .show()
+            .append('<li>Password Confirmation does not match Password.</li>');
+      }
     }
   };//validations
 
 
   $( 'input:submit' ).on('click', function(){
+
     $.each(allFields, function(index, element) {
       validations.charCount(element);
-      validations.passwordMatch(element);
     });
+
+    validations.passwordMatch(allFields.password, allFields.passwordConfirmation);
   });
 
 
