@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 $( document ).ready(function() {
 
   var charLimits = {
@@ -29,6 +29,15 @@ $( document ).ready(function() {
   // $.each($textFieldInput, function(index, element) {
   //   console.log(element);
   // });
+
+  // When the user begins typing in the password confirmation field, provide feedback indicating the confirmation doesn't match the password (until it does). If the user deletes all text from the confirmation field, this message should disappear as well.
+
+  $('fieldset').on('keyup', 'input[name=passwordy-again]', function(){
+
+    if( $('input[name=passwordy-again]').val() !== $( 'input[name=passwordy]' ).val() ){
+      $( '#pw-validator' ).text('passwords do not match').fadeOut(1000);
+    };
+  });
 
 
 
