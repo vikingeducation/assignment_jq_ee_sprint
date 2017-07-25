@@ -6,13 +6,13 @@ $( document ).ready(function() {
       field: 'input[name="Name"]',
       output: '#name-counter',
       charMin: 4,
-      charMax: 5
+      charMax: 32
     },
     description: {
       field: 'textarea[name="Description"]',
       output: '#description-counter',
       charMin: 4,
-      charMax: 5
+      charMax: 140
     },
     password: {
       field: 'input[name="Password"]',
@@ -34,10 +34,10 @@ $( document ).ready(function() {
       var $inputCharCount = $(this).val().length;
       var $remainingChars = input.charMax - $inputCharCount;
 
-      if($inputCharCount <= input.charMax ){
-        $( input.output ).text($remainingChars + ' remaining');
+      if($inputCharCount === input.charMax ) {
+        $( input.output ).text('');
       } else {
-        $( input.output ).text("exceeded");
+        $( input.output ).text($remainingChars + ' remaining');
       };
     });
   };
