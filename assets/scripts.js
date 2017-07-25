@@ -42,15 +42,10 @@ $( document ).ready(function() {
     });
   };
 
-  textCounterDowner(name);
-  textCounterDowner(description);
-  textCounterDowner(password);
-  textCounterDowner(passwordConfirmation);
+  $.each(allFields, function(index, element) {
+    textCounterDowner(element);
+  });
 
-
-  // $.each($textFieldInput, function(index, element) {
-  //   console.log(element);
-  // });
 
   // When the user begins typing in the password confirmation field, provide feedback indicating the confirmation doesn't match the password (until it does). If the user deletes all text from the confirmation field, this message should disappear as well.
 
@@ -62,6 +57,7 @@ $( document ).ready(function() {
   });
 
   var validations = {
+
     charCount: function(input){
       var actualCount = $( input.field ).val().length;
 
@@ -71,15 +67,19 @@ $( document ).ready(function() {
             .show()
             .append('<li>'+ $(input.field).attr('name')+ ' only allows ' + input.charMin + ' to ' + input.charMax + " characters. You've entered " + actualCount + ".</li>");
       }
-    }//charCount
-  };
+    },
+
+    passwordMatch: function(input){
+      console.log("TBD");
+    }
+  };//validations
 
 
   $( 'input:submit' ).on('click', function(){
-    validations.charCount(name);
-    validations.charCount(description);
-    validations.charCount(password);
-    validations.charCount(passwordConfirmation);
+    $.each(allFields, function(index, element) {
+      validations.charCount(element);
+      validations.passwordMatch(element);
+    });
   });
 
 
