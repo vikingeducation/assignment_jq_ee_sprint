@@ -1,29 +1,52 @@
 // "use strict";
 $( document ).ready(function() {
 
-  var charLimits = {
-    text: 32,
-    textarea: 140,
-    password: 16
-  };
+  var name = {
+    field: 'input[name="Name"]',
+    output: '#name-counter',
+    charMin: 4,
+    charMax: 5
+  }
 
-  var textCounterDowner = function(inputField, fieldLimit, outputField){
-    $('fieldset').on('keyup', inputField, function(){
+  var description = {
+    field: 'textarea[name="Description"]',
+    output: '#description-counter',
+    charMin: 4,
+    charMax: 5
+  }
+
+  var password = {
+    field: 'input[name="Password"]',
+    output: '#password-counter',
+    charMin: 6,
+    charMax: 16
+  }
+
+  var passwordConfirmation = {
+    field: 'input[name="Password Confirmation"]',
+    output: '#pw-confirm-counter',
+    validator: '#pw-validator',
+    charMin: 6,
+    charMax: 16
+  }
+
+  var textCounterDowner = function(input){
+    $('fieldset').on('keyup', input.field, function(){
       var $inputCharCount = $(this).val().length;
-      var $remainingChars = fieldLimit - $inputCharCount;
+      var $remainingChars = input.charMax - $inputCharCount;
 
-      if($inputCharCount <= fieldLimit ){
-        $( outputField ).text($remainingChars + ' remaining');
+      if($inputCharCount <= input.charMax ){
+        $( input.output ).text($remainingChars + ' remaining');
       } else {
-        $( outputField ).text("exceeded");
+        $( input.output ).text("exceeded");
       };
     });
   };
 
-  textCounterDowner('input:text', charLimits.text, '#text-counter');
-  textCounterDowner('textarea', charLimits.textarea, '#textarea-counter');
-  textCounterDowner('input[name=passwordy]', charLimits.password, '#password-counter');
-  textCounterDowner('input[name=passwordy-again]', charLimits.password, '#pw-confirm-counter');
+  textCounterDowner(name);
+  textCounterDowner(description);
+  textCounterDowner(password);
+  textCounterDowner(passwordConfirmation);
 
 
   // $.each($textFieldInput, function(index, element) {
