@@ -1,26 +1,29 @@
 "use strict";
 $( document ).ready(function() {
 
-  // var $textFieldInput = $('input:text');
-  var $textFieldLimit = 32;
-  // var $textAreaInput = $('textarea');
-  var $textAreaLimit = 140;
+  var charLimits = {
+    text: 32,
+    textarea: 140,
+    password: 16
+  };
 
-  var textCounterDowner = function(inputField, fieldLimit, outputId){
+  var textCounterDowner = function(inputField, fieldLimit, outputField){
     $('fieldset').on('keyup', inputField, function(){
       var $inputCharCount = $(this).val().length;
       var $remainingChars = fieldLimit - $inputCharCount;
 
       if($inputCharCount <= fieldLimit ){
-        $( outputId ).text($remainingChars + ' remaining');
-      }else{
-        $( outputId ).text("exceeded");
+        $( outputField ).text($remainingChars + ' remaining');
+      } else {
+        $( outputField ).text("exceeded");
       };
     });
   };
 
-  textCounterDowner('input:text', $textFieldLimit, '#text-field-counter');
-  textCounterDowner('textarea', $textAreaLimit, '#text-area-counter');
+  textCounterDowner('input:text', charLimits.text, '#text-counter');
+  textCounterDowner('textarea', charLimits.textarea, '#textarea-counter');
+  textCounterDowner('input[name=passwordy]', charLimits.password, '#password-counter');
+  textCounterDowner('input[name=passwordy-again]', charLimits.password, '#pw-confirm-counter');
 
 
   // $.each($textFieldInput, function(index, element) {
