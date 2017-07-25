@@ -47,6 +47,7 @@ $( document ).ready(function() {
   });
 
 
+  // ------------------ WIP ---------------------//
   // When the user begins typing in the password confirmation field, provide feedback indicating the confirmation doesn't match the password (until it does). If the user deletes all text from the confirmation field, this message should disappear as well.
 
   $('fieldset').on('keydown', 'input[name="Password Confirmation"]', function(){
@@ -55,6 +56,7 @@ $( document ).ready(function() {
       $( '#pw-validator' ).text('passwords do not match').fadeOut(1000);
     };
   });
+  // --------------------------------------------//
 
   var validations = {
 
@@ -90,6 +92,23 @@ $( document ).ready(function() {
     });
 
     validations.passwordMatch(allFields.password, allFields.passwordConfirmation);
+  });
+
+
+
+  $( '#dropdown' ).on('click', '#selected', function(){
+    $( '#dropdown li' ).not('#selected').slideToggle(300);
+  });
+
+  $( '#dropdown' ).on('click', 'li:not(#selected)', function(){
+    $( '#selected' )
+        .removeAttr('id', 'selected')
+        .appendTo('#dropdown');
+    $(this).attr('id', 'selected');
+    $( '#dropdown' )
+        .prepend($(this))
+        .children().not('#selected')
+        .slideUp(300);
   });
 
 
