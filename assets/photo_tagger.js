@@ -27,7 +27,16 @@ $( document ).ready(function() {
                  top:   (e.pageY - (boxSize / 2)),
                  left:  (e.pageX - (boxSize / 2))
               });
-
+        // on click of that box
+        $('div.photo-container').on('click', $tagBox, function(e){
+          console.log('test');
+          // // get click locations (X,Y) and stop following
+          // $('div.photo-container').off("mousemove", $tagBox);
+          // $tagBox.css({
+          //          top:   (e.pageY - (boxSize / 2)),
+          //          left:  (e.pageX - (boxSize / 2))
+          //       });
+        });//close click
       });//close mousemove
 
 
