@@ -1,0 +1,36 @@
+:root {
+  --box-dimension: 100px;
+}
+
+.photo-container {
+  margin: 0 auto;
+  width: 438px;
+  border: 1px solid red;
+  overflow: auto;
+}
+
+img {
+  z-index: 0;
+
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+.tag-box {
+  width: var(--box-dimension);
+  min-height: var(--box-dimension);
+  border: 2px solid yellow;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+select {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /*display: none;*/
+}
