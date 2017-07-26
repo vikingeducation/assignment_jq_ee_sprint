@@ -18,6 +18,23 @@ $( document ).ready(function() {
                     .css('top', (e.pageY - (boxSize / 2)) )
                     .css('left', (e.pageX - (boxSize / 2)) );
 
+      // insert new box in that location
+      $(this).parent().append($tagBox);
+
+      // on mousemove, follow the cursor with the div
+      $('div.photo-container').on('mousemove', $tagBox, function(e){
+        $tagBox.css({
+                 top:   (e.pageY - (boxSize / 2)),
+                 left:  (e.pageX - (boxSize / 2))
+              });
+
+      });//close mousemove
+
+
+      // when the cursor leaves, hide the box
+      // $('div.photo-container').on('mouseout', $tagBox, function(e){
+      //   $tagBox.css('display', 'none');
+      // });
 
 
     });// close mouseenter
