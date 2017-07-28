@@ -11,9 +11,9 @@ var inputs = {
 
 //jquery
 
-//text counter
-$(document).ready(function(){
 
+$(document).ready(function(){
+//text counter
   //Blank function that counts fields
   function counter(field, max, count){
     $(field).keyup(function(){
@@ -33,29 +33,38 @@ $(document).ready(function(){
   counter('#textarea', inputs.textarea, '#textareacounter')
   counter('#password', inputs.password, '#passwordcounter')
   counter('#passwordconfirm', inputs.password, '#passwordconfirmcounter')
-/*
-//text field counter
-  $('#textfield').keyup(function(){
-    var len = [32 - $(this).val().length];
-    if(len == 32){
-      $("#textfieldcounter").text('')
-    } else {
-      $('#textfieldcounter').text(len);
-    };
-  });
-//text area counter
-  $('#textarea').keyup(function(){
-    var len = [140 - $(this).val().length];
-    if(len == 140){
-      $("#textareacounter").text('')
-    } else {
-      $('#textareacounter').text(len);
-    };
-  });
-*/
 
+//Check if password matches
+  $('#passwordconfirm').keyup(checkMatch);
 
-
-
+  //check if validations are met
+  $('#submit').click(
+      textfieldvalidation
+  );
 
 });
+
+var match = false;
+function checkMatch(){
+  var password = $('#password').val();
+  var passwordconfirm = $('#passwordconfirm').val();
+
+
+  if (passwordconfirm == ""){
+    $('#matchMaker').text('');
+  } else if (password != passwordconfirm){
+    $('#matchMaker').text("passwords don't match bro");
+  } else {
+    $('#matchMaker').text('passwords match');
+    return match = true;
+  }
+};
+
+
+//textfieldvalidation
+function textfieldvalidation(){
+  var textnum = Number($('#textfieldcounter').html())
+  if(textnum > 28 || textnum < 0){
+    $('#textfield').addClass('redBox');
+  }
+}
