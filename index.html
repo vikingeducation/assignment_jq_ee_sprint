@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>   
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">        
+    <title>Practice with Events and Effects</title>      
+    <meta name="viewport" content="width=device-width, initial-scale=1">            
+    <link rel="stylesheet" href="styles.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>    
+  </head>
+  
+  <body>
+  
+  	<h2>Form Validation &amp; Dropdown</h2>
+    
+  	<form action="#" method="get">
+    
+    	<fieldset>
+    		<input type="text" id="text" name="text" class="counter" maxlength="32" data-minlength="4" placeholder="Enter text">
+        <label for="text" class="hidden">32 characters left</label>
+      </fieldset>
+      
+      <fieldset>
+	      <textarea id="textarea" name="textarea" rows="5" class="counter" maxlength="140" data-minlength="4" placeholder="Enter text"></textarea>
+        <label for="textarea" class="hidden">140 characters left</label>
+      </fieldset>
+      
+      <fieldset>
+      	<input type="password" name="password" id="password" class="counter" maxlength="16" data-minlength="6" placeholder="Enter password">
+        <label for="password" class="hidden">16 characters left</label>
+      </fieldset>
+      
+      <fieldset>
+      	<input type="password" name="passwordConfirm" id="passwordConfirm" class="counter" maxlength="16" data-minlength="6" placeholder="Confirm password">
+        <label for="passwordConfirm" class="hidden">16 characters left</label>
+      </fieldset>
+    
+    	<fieldset>
+        <ul id="dropdown">
+        	<li class="clearfix"><span id="selection"></span><span id="arrow">&#x25bc;</span></li>
+          <li>
+          	<ul id="options">
+              <li>John</li>
+              <li>Paul</li>
+              <li>George</li>
+              <li>Ringo</li>
+          	</ul>
+          </li>
+        </ul>
+        <input id="choice" name="choice" type="hidden" value="">
+      </fieldset>
+      
+      <fieldset>
+      	<input type="submit">
+      </fieldset>
+      
+    </form>
+    
+    <h2 id="photoboxtitle">Photo Tagging Box</h2>
+    
+    <div id="marvel">
+    	<div id="zone">
+	    	<img src="marvel.jpg" alt="marvel superheroes">
+        <div id="capture">
+        	<div></div>
+          <ul>
+          	<li>The Hulk</li>
+          	<li>Iron Man</li>
+          	<li>Wolverine</li>
+          	<li>Spiderman</li>
+          	<li>Thor</li>
+          	<li>Captain America</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+
+</html>
