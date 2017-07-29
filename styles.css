@@ -1,0 +1,163 @@
+
+.clearfix:before,
+.clearfix:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+/*********************************************************/	
+/*                    Form Validation                    */
+/*********************************************************/	
+
+form fieldset {
+	border: none;
+}
+
+.hidden {
+	display: none;
+}
+
+.error {
+	color: red;
+}
+
+.error-highlight {
+	border-color: red;
+	background-color: #ffc0c0;
+}
+
+/*********************************************************/	
+/*                     Dropdown menu                     */
+/*********************************************************/	
+
+#dropdown {
+	width: 160px;
+	border: 1px solid #444;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+ul li {
+	cursor: pointer;
+	background-color: #ddd;
+	display: block;
+	padding: 2px;
+}
+
+#options li {
+	border-top: 1px solid #444;
+}
+
+#dropdown > li:nth-child(2) {
+	padding: 0;
+}
+
+#dropdown > li {
+	background-color: rgb(238, 238, 238);
+}
+
+#dropdown > li span:last-child {
+	float: right;
+}
+
+#options li:hover {
+	background-color: #eee;
+}
+
+/*********************************************************/	
+/*                     Photo Tagging                     */
+/*********************************************************/	
+
+#photoboxtitle {
+	text-align: center;
+	margin: 20px 0 0 0;
+}
+
+#marvel {
+	margin: 0 auto 30px auto;
+	padding: 2% 5% 10% 5%;
+}
+
+#marvel img {
+	display: block;
+	width: 100%;
+}
+
+#zone {
+	position: relative;
+	overflow: hidden;
+}
+
+.hover {
+	cursor: pointer;
+}
+
+#capture {
+	display: none;
+	box-sizing: border-box;
+	position: absolute;
+	border: 8px solid red;
+	background-color: transparent;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+#capture div {
+	width: 15%;
+	height: 25%;
+	background-color: transparent;
+	margin: 0;
+	padding: 0;
+}
+
+#capture ul {
+	display: none;
+	border-top: 8px solid red;
+}
+
+#capture li {
+	background-color: white;
+}
+
+#capture li:hover {
+	background-color: #ddd;
+}
+
+.name-box {
+	box-sizing: border-box;
+	position: absolute;
+	border: 8px solid green;
+	background-color: transparent;
+	top: 0;
+	left: 0;
+	color: black;
+}
+
+.name-box div {
+	width: 15%;
+	height: 25%;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+.name-box p {
+	background-color: green;
+	margin: 0;
+	padding: 0;
+	border: none;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
