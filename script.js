@@ -110,7 +110,7 @@ $(document).ready(function() {
 	function toggleDropdown() {
 		
 		$('#options').slideToggle('fast', function() {
-			$arrow = $('#arrow').eq(0);
+			var	$arrow = $('#arrow').eq(0);
 			if ($arrow.html().charCodeAt(0) == 0x25bc) {
 				$arrow.html(String.fromCodePoint(0x25b2));
 			}
