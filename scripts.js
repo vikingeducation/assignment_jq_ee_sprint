@@ -1,18 +1,9 @@
 
-var inputs = {
-  textfieldmin: 4,
-  textfield: 32,
-  textareamin: 4,
-  textarea: 140,
-  passwordmin: 6,
-  password: 16,
-};
-
-
 //jquery
 
-
 $(document).ready(function(){
+
+
 //text counter
   //Blank function that counts fields
   function counter(field, max, count){
@@ -29,21 +20,45 @@ $(document).ready(function(){
 
   //Fill up that blank function with values to count the fields
   //fuck yeah object orientation
-  counter('#textfield', inputs.textfield, '#textfieldcounter')
-  counter('#textarea', inputs.textarea, '#textareacounter')
-  counter('#password', inputs.password, '#passwordcounter')
-  counter('#passwordconfirm', inputs.password, '#passwordconfirmcounter')
+  counter('#textfield', 32, '#textfieldcounter')
+  counter('#textarea', 140, '#textareacounter')
+  counter('#password', 16, '#passwordcounter')
+  counter('#passwordconfirm', 16, '#passwordconfirmcounter')
 
-//Check if password matches
+//Check if password matches with every key
   $('#passwordconfirm').keyup(checkMatch);
 
-  //check if validations are met
-  $('#submit').click(
-      textfieldvalidation
+
+//BlANK VALIDATION FUNCTION
+//so proud of this
+  function maxMinValidation(fieldCounter, min, field, errorbox, errormessage){
+    var textNum = Number($(fieldCounter).html())
+    if(textNum > min || textNum < 0){
+      $(field).addClass('redBox');
+      $(errorbox).text(errormessage);
+    } else {
+      $(field).removeClass('redBox');
+      $(errorbox).text('');
+    }
+  }
+
+//check if validations are met
+/*I discovered in order to pass arguments into click
+you need an anonymous function*/
+  $('#submit').click(function(){
+    maxMinValidation('#textfieldcounter', 28, '#textfield', '#errortextfield', 'must be 4-32 characters'),
+    maxMinValidation('#textareacounter', 136, '#textarea', '#errortextarea', 'must be 4-140 characters'),
+    maxMinValidation('#passwordcounter', 10, '#password', '#errorpassword', 'must be 6-16 characters'),
+    maxMinValidation('#passwordconfirmcounter', 10, '#passwordconfirm', '#errorconfirm', 'must be 6-16 characters')
+  }
   );
 
-});
 
+
+});//end document ready
+
+
+//check if passwords match function
 var match = false;
 function checkMatch(){
   var password = $('#password').val();
@@ -59,12 +74,3 @@ function checkMatch(){
     return match = true;
   }
 };
-
-
-//textfieldvalidation
-function textfieldvalidation(){
-  var textnum = Number($('#textfieldcounter').html())
-  if(textnum > 28 || textnum < 0){
-    $('#textfield').addClass('redBox');
-  }
-}
