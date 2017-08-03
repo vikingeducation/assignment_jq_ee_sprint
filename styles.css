@@ -51,7 +51,7 @@ border: 0;
 	margin-right: auto;
 	width: 500px;
 	background-color: lightblue;
-	margin-top: 200px;
+	margin-top: 50px;
 
 }
 
@@ -79,4 +79,32 @@ border: 0;
 
 .redBox {
 	background-color: red;
+}
+/*dropdown styles*/
+
+#dropdown {
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: lightgreen;
+}
+
+#dropdown li {
+	padding: 10px;
+}
+
+.hoverBackground {
+	background-color: lightgrey;
+}
+
+/*photo tagger styles*/
+
+.photo {
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	margin-top: 50px;
+	margin-bottom: 100px;
 }
