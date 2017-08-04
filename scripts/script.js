@@ -125,7 +125,30 @@ $(window).on("load", function() {
   }
 );
 
+  $("div").on("click","img",function(event){
+    //Setting box
+    var boxStyle = {
+      "background-color": "transparent",
+      "position": "absolute",
+      "left": event.pageX-70,
+      "top": event.pageY-70,
+      "border": "4px solid red",
+      "height": "140px",
+      "width": "140px"
+    };
+    var listForBox = {
+      "width": "100%"
 
+    }
+    if ($("span")) {
+      $("span").remove();
+    }
+    $("<span>").css(boxStyle).appendTo('div');
+    //$("span").after($("ul")
+    //  .text(maxTotal - counted + " remaing")
+    //  .attr("id", inputIdName)
+    //)
+  })
 
 
 
