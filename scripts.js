@@ -101,14 +101,82 @@ menuSlide()
 //Select li item adn hide others
 $('.li').click(function(){
   $mainSelect.text($(this).text());
-  $("li").slideToggle();
+  $(".li").slideToggle();
 })
-
+//add background-color to hover selection
 $('.li').hover(
   function(){$(this).addClass('hoverBackground')},
   function(){$(this).removeClass('hoverBackground')}
 );
 
+
+/*=============
+PHOTO TAGGER
+==============*/
+
+//box
+var $box = $('.box2')
+$box.hide();
+
+//optionsBox
+var $optionsBox = $('.optionsBox2')
+$optionsBox.hide();
+
+//tagBox
+var $tagBox = $('<div></div>')
+  .addClass('tagBox');
+$('.photo').append($tagBox);
+$tagBox.hide();
+
+//follow mouse with box https://stackoverflow.com/questions/3385936/jquery-follow-the-cursor-with-a-div
+function moveBox(){
+  $('.photo').on('mousemove', function(e){
+    $box.offset({
+      left: e.pageX,
+      top: e.pageY
+    });
+  });
+};
+
+//show box when mouse hovers
+$('.photo').hover(
+  function(){
+    $box.show();
+    //$optionsBox.show();
+    moveBox();
+  },
+  function(){
+    $box.hide();
+  }
+)
+
+//click to tag
+$('.photo').click( function(e) {
+
+//when click show optionsBox
+    $optionsBox.show();
+    $optionsBox.offset({
+      left: e.pageX,
+      top: e.pageY + 40
+    })
+//when click sticky a new box
+    $tagBox.show();
+    $box.hide();
+    $tagBox.offset({
+      left: e.pageX,
+      top: e.pageY - 20
+    })
+});
+
+//select a name for
+$('.friend').on('click', function(e){
+  e.stopPropagation();
+  $($tagBox).text($(this).text());
+  $($optionsBox).hide();
+})
+
+// I still can only add one tag at a time
+//it looks like shit
 
 
 });//end document ready
