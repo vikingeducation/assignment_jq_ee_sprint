@@ -1,0 +1,19 @@
+.highlightedText {
+  background-color: red;
+  color: #EEEEEE; }
+
+#form2 li {
+  border: 1px solid #111111;
+  list-style: none;
+  height: 20px;
+  width: 80px; }
+
+#dropdownImage li {
+  border: 1px solid #111111;
+  list-style: none; }
+
+img {
+  pointer-events: none;
+  width: 100%; }
+
+/*# sourceMappingURL=style.css.map */
