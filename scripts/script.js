@@ -1,3 +1,4 @@
+//-----------------Problem 1 functions
 //Return text length
 function textCount ($item) {
   var counter = $item.val().length;
@@ -34,6 +35,7 @@ function validateInput($item, minVal, maxVal){
 
 $(window).on("load", function() {
 
+//-----------Problem 1 form validation------------
   //Name char counter
   $inputName = $("input[type='text'][name='name']");
   var inputIdName = "textCounter";
@@ -125,33 +127,82 @@ $(window).on("load", function() {
   }
 );
 
-  $("div").on("click","img",function(event){
-    //Setting box
-    var boxStyle = {
-      "background-color": "transparent",
-      "position": "absolute",
-      "left": event.pageX-70,
-      "top": event.pageY-70,
-      "border": "4px solid red",
-      "height": "140px",
-      "width": "140px"
-    };
-    var listForBox = {
-      "width": "100%"
 
-    }
-    if ($("span")) {
-      $("span").remove();
-    }
-    $("<span>").css(boxStyle).appendTo('div');
-    //$("span").after($("ul")
-    //  .text(maxTotal - counted + " remaing")
-    //  .attr("id", inputIdName)
-    //)
+
+  //-----------Problem 2 'The dropdown'--------------------
+  function moveHandler(event) {
+
+    $("#imageToTag").on("mousemove", function (event) {
+
+
+      var drawnBoxCss = {
+        "position": "absolute",
+        "left": event.pageX-70 + "px",
+        "top": event.pageY-70 + "px",
+        "background-color": "transparent",
+        "border": "4px solid red",
+        "height": "140px",
+        "width": "140px",
+        "padding-top": "144px"
+      }
+      $("#dropdownImage > li").hide();
+      $("#dropdownImage").css(drawnBoxCss);
+
+    });
+
+
+    $("#dropdownImage").on("mouseup",function(event){
+      event.stopPropagation();
+
+      $("#imageToTag").off("mousemove");
+      var tempLoc = {
+        "background-color": "white"
+      }
+
+      $allLiDropdown = $("#dropdownImage").find("li");
+      $allLiDropdown.css(tempLoc);
+      $allLiDropdown.show();
+
+      $onlyImage = $("#imageToTag").not($allLiDropdown);
+
+      $onlyImage.on("mouseup",function(event){
+        event.stopPropagation();
+        moveHandler(this);
+      })
+
+      $allLiDropdown.hover(function(){
+        $(this).css("background-color", "yellow");
+        }, function(){
+        $(this).css("background-color", "white");
+        })
+
+      $allLiDropdown.on("mousedown", function(event){
+        event.stopPropagation();
+        $allLiDropdown.hide();
+        $(event.target).show();
+        $("#dropdownImage").clone(false).removeAttr("id").appendTo("body");
+        moveHandler(this);
+    })
+    });
+
+  }
+  $("#imageToTag").before("<p class=stopTagging>X - to stop Tagging<p>");
+  $(".stopTagging").css(
+    "margin-left", "90%"
+    )
+
+    function ToStopTagging () {
+  $(".stopTagging").on("mousedown", function(event){
+    event.stopPropagation();
+    return false;
   })
+}
 
-
-
+  var x = true;
+  while (x){
+    x = ToStopTagging();
+    moveHandler(this);
+  }
 
 
 });
