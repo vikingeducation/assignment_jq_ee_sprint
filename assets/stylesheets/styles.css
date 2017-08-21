@@ -1,26 +1,20 @@
+/* jQuery Selectors */
+.validation {
+
+}
+
+.warn-shadow {
+  box-shadow: 1px 1px 3px 3px #ce0808,
+}
+
+.success-shadow {
+  box-shadow: 1px 1px 3px 3px #31ce41,
+}
 /*
-=================================
-Base rules
-=================================
-*/
+.hidden {
+  height: 0px
+}
 
-
-
-
-
-
-/*
-=================================
-Layout rules
-=================================
-*/
-
-
-
-
-
-/*
-=================================
-Module rules
-=================================
-*/
+.show {
+  height: auto
+}
