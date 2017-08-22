@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form Validation</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script src="validation_script.js"></script>
+  </head>
+  <body>
+    <form action="#">
+      <table>
+        <tr id="row1">
+          <td>
+            Text field:<br>
+            <input type="text" id="text-field" maxlength="32">
+          </td>
+          <td>
+            <span class="text-count hidden"></span>
+          </td>
+        </tr>
+        <tr id="row2">
+          <td>
+            Text area:<br>
+            <textarea id="text-area" maxlength="140"></textarea>
+          </td>
+          <td>
+            <span class="text-area-count hidden"></span>
+        </tr>
+        <tr id="row3">
+          <td>
+            Password:<br>
+            <input id="password" name="pass" type="password" maxlength="16">
+          </td>
+          <td>
+            <span class="pass-count hidden"></span>
+          </td>
+        </tr>
+        <tr id="row4">
+          <td>
+            Confirm password:<br>
+            <input id="c-password" name="cpass" type="password" maxlength="16">
+          </td>
+          <td>
+            <span class="c-pass-count hidden"></span>
+          </td>
+          <td>
+            <span class="c-pass-match hidden"></span>
+          </td>
+        </tr>
+        <tr id="row5">
+          <td>
+            <input id="submit" type="submit" value="Submit">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

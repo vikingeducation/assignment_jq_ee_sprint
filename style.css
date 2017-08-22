@@ -1,0 +1,70 @@
+/*FORM VALIDATION*/
+
+.hidden {
+  display: none;
+}
+
+.field-error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+}
+
+/*DROPDOWN MENU*/
+
+body {
+  width: 80%;
+  margin: 50px auto;
+  /*text-align: center;*/
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.drop-bar {
+  background-color: #FF6F69;
+  color: white;
+  width: 300px;
+  max-height: 42px;
+  padding: 12px 0;
+  cursor: pointer;
+  display: block;
+}
+
+.drop-bar:hover, .drop-bar:focus {
+  background-color: #C70039;
+}
+
+.option {
+    color: white;
+    padding: 12px 0;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+}
+
+.option-selected {
+  background-color: #FF6F69;
+  color: white;
+  padding: 12px 0;
+  width: 300px;
+  max-height: 42px;
+  display: block;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #FF6F69;
+  width: 100%;
+}
+
+.dropdown-content div:hover, .dropdown-content div:focus {
+    background-color: #C70039;
+}
