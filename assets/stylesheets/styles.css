@@ -1,15 +1,31 @@
 /* jQuery Selectors */
-.validation {
-
+body {
+  line-height: 2em;
 }
 
 .warn-shadow {
-  box-shadow: 1px 1px 3px 3px #ce0808,
+  box-shadow: 1px 1px 3px 3px #ce0808
 }
 
 .success-shadow {
-  box-shadow: 1px 1px 3px 3px #31ce41,
+  box-shadow: 1px 1px 3px 3px #31ce41
 }
+
+#selection {
+  border: 3px black;
+}
+
+img {
+  height: 549px;
+  width: 825px;
+  cursor: crosshair;
+}
+
+cursor {
+  border: 3px 3px 3px 3px black;
+  padding: 25px;
+}
+
 /*
 .hidden {
   height: 0px
