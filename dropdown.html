@@ -10,13 +10,15 @@
     <script src="dropdown_script.js"></script>
   </head>
   <body>
-    <div class="dropdown">
-      <div class="drop-bar"></div>
-      <div class="dropdown-content">
-        <div class="option">Today</div>
-        <div class="option">This Week</div>
-        <div class="option">This Month</div>
-      </div>
-    </div>
+    <form action="#">
+      <div id="display"></div>
+      <input type="hidden" id="option-selected">
+      <ul id="dropdown-content">
+        <li>Today</li>
+        <li>This Week</li>
+        <li>This Month</li>
+        <li>This Year</li>
+      </ul>
+    </form>
   </body>
 </html>
