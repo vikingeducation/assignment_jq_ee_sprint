@@ -28,11 +28,13 @@ cursor {
   padding: 25px;
 }
 
-/*
-.hidden {
-  height: 0px
+.menu {
+  border: medium solid black;
+  width: 100px;
+  text-align: center;
+  margin-left: 10px;
 }
 
-.show {
-  height: auto
+.selected-option {
+  background-color: lightgray;
 }
