@@ -1,6 +1,6 @@
 $( document ).ready( function(){
 
-  $(document).on('mousemove', 'img', function(e) {
+  $( document ).bind('mousemove', 'img', function(e) {
 
     $( '#selection' ).css({
       left: e.pageX +20,

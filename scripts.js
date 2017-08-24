@@ -29,14 +29,23 @@ validation.displayCharsLeft('input[id="pass-two"]', 16, '.counter-four');
 
 // Tests for length and password matching
 var tests = {
+  removeFormatting: function( element ) {
+    if ($(element).hasClass( 'success-shadow' )) {
+      $( element ).removeClass( 'success-shadow' );
+    }
+    if ($(element).hasClass( 'warn-shadow' )) {
+      $( element ).removeClass( 'warn-shadow' );
+    }
+  },
+
   testLength: function( element, maxText, counter ) {
     var inputLength = $( element ).val().length;
-    var $warnText = $('<p>Your text is too long. Please shorten your text and try again.</p>')
+    var $warnText = $('<p>Your text is too long. Please shorten your text and try again.</p>');
 
     // If the input length is too long
     if (inputLength > maxText) {
       // And it already has the success shadow
-      if ($( element ).hasClass( 'success-shadow ')) {
+      if ($( element ).hasClass( 'success-shadow' )) {
         // Remove the success shadow
         $( element ).removeClass( 'success-shadow' );
       }
@@ -53,7 +62,7 @@ var tests = {
       }
       // Add the success shadow and remove the warning text
       $( element ).addClass( 'success-shadow' );
-      $( counter )
+      //$( counter ).remove( $warnText );
     }
   },
 
@@ -87,6 +96,10 @@ var tests = {
 
   $( 'button' ).on('click', function( ) {
     event.preventDefault();
+    tests.removeFormatting('input[id="text-one"]');
+    tests.removeFormatting('textarea[id="text-two"]');
+    tests.removeFormatting('input[id="pass-one"]');
+    tests.removeFormatting('input[id="pass-two"]');
     tests.testLength('input[id="text-one"]', 32, '.counter-one');
     tests.testLength('textarea[id="text-two"]', 140, '.counter-two');
     tests.testLength('input[id="pass-one"]', 16, '.counter-three');

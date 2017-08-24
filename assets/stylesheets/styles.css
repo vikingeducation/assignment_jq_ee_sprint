@@ -12,7 +12,9 @@ body {
 }
 
 #selection {
-  border: 3px black;
+  border: 3px solid black;
+  width: 50px;
+  height: 50px;
 }
 
 img {
