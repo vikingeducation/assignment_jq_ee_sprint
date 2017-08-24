@@ -113,6 +113,7 @@ $(document).ready(function() {
     var selectedText = $clickedOption.parent().prev().html();
     $clickedOption.parent().prev().html(optionText);
     $clickedOption.html(selectedText);
+    $(".option-list").slideToggle(1000);
 
   });
 

@@ -38,3 +38,7 @@ cursor {
 .selected-option {
   background-color: lightgray;
 }
+
+.option:hover {
+  background-color: yellow;
+}
