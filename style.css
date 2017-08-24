@@ -23,8 +23,6 @@ div {
   display: none;
   background-color: #FF6F69;
   color: white;
-  /*min-width: 300px;
-  min-height: 40px;*/
   list-style: none;
   padding: 0;
   margin: 0;
@@ -51,10 +49,58 @@ div {
   min-height: 20px;
 }
 
-.hidden {
-  display: none;
-}
-
 .option-active {
   background-color: #C70039;
+}
+
+/*PHOTO TAGGING*/
+
+#image-container {
+  position: relative;
+  display: block;
+  width: 1027px;
+  height: 576px;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+.outline {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+}
+
+.outline-moving {
+  border: 2px solid red;
+}
+
+.outline-fixed {
+  border: 2px solid darkred;
+  z-index: 10;
+}
+
+.dropdown-names {
+  position: relative;
+  width: 150px;
+  top: 150px;
+  left: -2px;
+  border: inherit;
+}
+
+.dropdown-names ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #FF6F69;
+  color: white;
+}
+
+li {
+  cursor: pointer;
+}
+
+.remove-tag {
+  color: white;
+  text-decoration: underline;
+  border-top: 2px solid darkred;
 }

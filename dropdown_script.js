@@ -14,5 +14,5 @@ $(document).ready(function() {
     $("#display").text($(this).text());
     $("#option-selected").val($(this).text());
     $("#dropdown-content").slideToggle(500);
-  })
+  });
 });
