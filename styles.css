@@ -1,0 +1,19 @@
+form fieldset {
+	border: none;
+}
+
+.hidden-count {
+	display: none;
+}
+
+.hidden-password {
+	display: none;
+}
+
+.error {
+	color: red;
+}
+
+.error-highlight {
+	border-color: red;
+}
