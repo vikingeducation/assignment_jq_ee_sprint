@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DC, Lesson 40: Practice with Events and Effects</title>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+			integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			crossorigin="anonymous"></script>
+	<script src="script.js"></script>		
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<!--
+1.	Set up a simple form which contains a text field, a text area, a password field, and a password confirmation field.
+-->
+
+	<form action="#" method="get">
+		<fieldset>
+			<input type="text" name="textfield" id="textfield" class="count validate" placeholder="Textfield" data-minlength="4" maxlength="32">
+			<!--DC: if use label and nest input, then label used to label the input-->
+			<!--DC: since label doesn't nest input, match "label for" with input id"-->
+			<label for="textfield" class="hidden-count">32 characters remaining</label>
+		</fieldset>
+
+		<fieldset>
+			<textarea name="textarea" id="textarea" class="count validate" rows="10" cols="30" placeholder="Textarea" data-minlength="4" maxlength="140" ></textarea>
+			<label for="textarea" class="hidden-count">140 characters remaining</label>
+		</fieldset>
+
+		<fieldset>
+			<input type="password" name="password1" id="password1" placeholder="Password" class="count validate" data-minlength="6" maxlength="16">
+			<label for="password1" class="hidden-count">16 characters remaining</label>
+		</fieldset>
+
+		<fieldset>
+			<input type="password" name="password2" id="password2" placeholder="Confirm Password" class="count validate password" data-minlength="6" maxlength="16">
+			<label for="password2" class="hidden-count">16 characters remaining</label>
+		</fieldset>
+
+		<fieldset>
+			<input type="submit" value="Submit">
+			<input type="reset" value="Reset">
+		</fieldset>
+	</form>
+
+</body>
+</html>
