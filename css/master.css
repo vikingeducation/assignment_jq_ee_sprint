@@ -46,3 +46,17 @@ li#sub:hover {
 .active {
   background:
 }
+
+/*===========PHOTO TAGGING=======*/
+
+img {
+  width: 500px;
+}
+
+div.tag-box {
+  border: 3px solid #fff;
+  border-radius: 3px;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+}

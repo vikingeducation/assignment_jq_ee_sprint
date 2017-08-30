@@ -81,4 +81,28 @@ $(document).ready(function() {
       };
     }
   });
+
+
+  $("img").on('mousemove', function(e) {
+    $("div.tag-box").css({
+      left: e.pageX - 40,
+      top: (e.pageY - 40)
+    });
+    $("img").on('click', function(e) {
+      $("div.tag-box").css({
+        left: e.pageX - 40,
+        top: (e.pageY - 40)
+      });
+    });
+  });
+
+
+
+
+
+
+
+
+
+
 })
