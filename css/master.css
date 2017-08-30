@@ -1,0 +1,9 @@
+div.sign-wrapper {
+  width: 500px;
+  margin: 150px auto;
+}
+
+.error-message {
+  color: red;
+  display: block;
+}
