@@ -1,3 +1,6 @@
+
+/*===========FORM===========*/
+
 div.sign-wrapper {
   width: 500px;
   margin: 150px auto;
@@ -6,4 +9,40 @@ div.sign-wrapper {
 .error-message {
   color: red;
   display: block;
+}
+
+/*===========DROPDOWN=======*/
+
+div.dropdown-wrapper {
+  text-align: center;
+  background: #77bf67;
+  max-width: 250px;
+  border-radius: 3px;
+  min-height: 22px;
+}
+
+li#main-ex {
+  font-weight: bold;
+}
+
+li {
+  font-size: 18px;
+  padding: 2px 8px;
+}
+
+ul {
+  text-align: left;
+  list-style: none;
+  display: inline;
+  margin: 0;
+}
+
+li#sub:hover {
+  background: #318e42;
+  color: #fff;
+  cursor: pointer;
+}
+
+.active {
+  background:
 }

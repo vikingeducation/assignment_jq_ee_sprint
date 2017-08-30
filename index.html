@@ -14,40 +14,68 @@
 
 
 
-<div class="sign-wrapper">
-<h1>The Form Validation</h1>
-  <form class="sign-up" action="index.html" method="post">
-    <fieldset>
+  <div class="sign-wrapper">
+    <h1>The Form Validation</h1>
+    <form class="sign-up" action="index.html" method="post">
+      <fieldset>
 
-      <div class="form-group">
-        <label for="text-field">Text Field</label>
-        <input type="text" id="text-field" class="form-control" placeholder="Counter Field" maxlength="32">
-        <span class="counter"></span>
-        <span class="error-message" id="text-field"></span>
-      </div>
+        <div class="form-group">
+          <label for="text-field">Text Field</label>
+          <input type="text" id="text-field" class="form-control" placeholder="Counter Field" maxlength="32">
+          <span class="counter"></span>
+          <span class="error-message" id="text-field"></span>
+        </div>
 
-      <div class="form-group">
-        <label for="text-area">Text Area</label>
-        <textarea id="text-area" rows="4" class="form-control"></textarea>
-        <span class="error-message" id="text-area"></span>
-      </div>
+        <div class="form-group">
+          <label for="text-area">Text Area</label>
+          <textarea id="text-area" rows="4" class="form-control"></textarea>
+          <span class="error-message" id="text-area"></span>
+        </div>
 
-      <div class="form-group">
-        <input type="password" id="password" class="form-control" placeholder="Password">
-        <span class="error-message" id="password"></span>
-      </div>
+        <div class="form-group">
+          <input type="password" id="password" class="form-control" placeholder="Password">
+          <span class="error-message" id="password"></span>
+        </div>
 
-      <div class="form-group">
-        <input type="password" id="password-conf" class="form-control" placeholder="Password Confirmation">
-        <span class="error-message" id="password-conf"></span>
-      </div>
+        <div class="form-group">
+          <input type="password" id="password-conf" class="form-control" placeholder="Password Confirmation">
+          <span class="error-message" id="password-conf"></span>
+        </div>
 
-      <span class="error-message"></span>
-      <button type="submit" name="button" class="btn btn-primary">Sign Up</button>
-    </fieldset>
+        <span class="error-message"></span>
+        <button type="submit" name="button" class="btn btn-primary">Sign Up</button>
+      </fieldset>
 
-  </form>
-</div>
+    </form>
+<br><br><br><br>
+    <h1>The Dropdown</h1>
+    <h3>Book Categories</h3>
+    <div class="dropdown-wrapper">
+
+      <ul id="main">
+        <li id="temp"></li>
+        <li id="main-ex">Science Fiction</li>
+        <ul id="sub">
+          <li id="sub">World</li>
+          <li id="sub">American</li>
+          <li id="sub">Polish</li>
+        </ul>
+        <li id="main-ex">Drama</li>
+        <ul id="sub">
+          <li id="sub">Contemporary</li>
+          <li id="sub">Suspence</li>
+          <li id="sub">Theatrical</li>
+        </ul>
+        <li id="main-ex">Romance</li>
+        <ul id="sub">
+          <li id="sub">Portugese</li>
+          <li id="sub">Brazilian</li>
+          <li id="sub">American</li>
+        </ul>
+      </ul>
+    </div>
+
+  </div>
 
 
 

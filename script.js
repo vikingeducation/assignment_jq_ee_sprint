@@ -60,4 +60,25 @@ var validateLength = {
   }
 };
 
-$(document).ready(function() { validateLength.init() });
+$(document).ready(function() {
+
+  // validateLength.init();
+
+  $("div.dropdown-wrapper").click(function() {
+    if ( $("li#main-ex").is(":hidden") ) {
+      $("ul").slideDown( "slow", function() {
+        $("ul#sub").hide();
+      });
+    } else {
+      if ( $('li#main-ex').data('clicked') ) {
+        if ( $("li#sub").is(":hidden") ) {
+          $("ul#sub").slideDown( "slow");
+        } else {
+          $("ul#sub").hide();
+        }
+      } else {
+        $("ul#main").hide();
+      };
+    }
+  });
+})
