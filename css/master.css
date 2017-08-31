@@ -21,8 +21,9 @@ div.dropdown-wrapper {
   min-height: 22px;
 }
 
-li#main-ex {
+li.main-ex {
   font-weight: bold;
+  display: none;
 }
 
 li {
@@ -37,7 +38,7 @@ ul {
   margin: 0;
 }
 
-li#sub:hover {
+li.sub:hover {
   background: #318e42;
   color: #fff;
   cursor: pointer;
@@ -56,7 +57,29 @@ img {
 div.tag-box {
   border: 3px solid #fff;
   border-radius: 3px;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   position: absolute;
+}
+
+div.tag-box-dropdown {
+  background-color: #e5b9b9;
+  width: 60px;
+  min-height: 20px;
+  margin-top: 60px;
+  position: relative;
+  display: none;
+}
+
+ul#tagging li {
+  font-size: 12px;
+  padding: 2px 2px;
+  display: none;
+}
+
+ul#tagging {
+  text-align: left;
+  list-style: none;
+  margin: 0;
+  display: none;
 }
