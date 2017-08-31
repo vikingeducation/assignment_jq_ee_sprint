@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="form.js"></script>
+    <script src="dropdown.js"></script>
+    <script src="https://use.fontawesome.com/12522b9cea.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+          <h3 class="card-header">Practice with Events and Effects</h3>
+          <div class="card-block">
+            <h4 class="card-title">The Form Validation</h4>
+            <form class="form form-vertical">
+
+                <div class="form-group col-lg-6">
+                  <input type="text" class="form-control" placeholder="Username" id="username-input">
+                </div>
+
+                <div class="form-group col-lg-6">
+                  <input type="password" class="form-control" placeholder="Password" id="password-input">
+                </div>
+
+                <div class="form-group col-lg-6">
+                  <input type="password" class="form-control" placeholder="Confirm Password" id="confirm-password-input">
+                </div>
+
+
+                <div class="form-group col-lg-6">
+                  <textarea class="form-control" rows="5" placeholder="Comments" id="textarea-input"></textarea>
+                </div>
+
+                <div class="form-group col-lg-6">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+
+            <hr>
+            <h4 class="card-title"> The Dropdown</h4>
+            <div class="col-lg-6">
+              <div class="card select">
+                <div class="card-header add-card-border" id="selected">
+                  <span id="currently-selected">Select</span>
+                  <i class="fa fa-caret-down pull-right" aria-hidden="true"></i>
+                </div>
+
+                <div class="card-block add-card-border" id="dropdown-body">
+                  <ul id="dropdown-options">
+                    <li>First Item</li>
+                    <hr class="list-divider">
+                    <li>Second Item</li>
+                    <hr class="list-divider">
+                    <li>Third Item</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
