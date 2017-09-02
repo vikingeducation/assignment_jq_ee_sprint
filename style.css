@@ -1,0 +1,106 @@
+/*FORM VALIDATION*/
+
+.hidden {
+  display: none;
+}
+
+.field-error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+}
+
+/* DROPDOWN MENU */
+
+div {
+  border: 1px solid black;
+  display: inline-block;
+}
+
+#dropdown-content {
+  display: none;
+  background-color: #FF6F69;
+  color: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 200px;
+}
+
+#dropdown-content li {
+  display: block;
+  width: 100%;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+#display {
+  background-color: #FF6F69;
+  color: white;
+  cursor: pointer;
+  width: 200px;
+  height: 40px;
+}
+
+#dropdown-selected {
+  min-width: 300px;
+  min-height: 20px;
+}
+
+.option-active {
+  background-color: #C70039;
+}
+
+/*PHOTO TAGGING*/
+
+#image-container {
+  position: relative;
+  display: block;
+  width: 1027px;
+  height: 576px;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+.outline {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+}
+
+.outline-moving {
+  border: 2px solid red;
+}
+
+.outline-fixed {
+  border: 2px solid darkred;
+  z-index: 10;
+}
+
+.dropdown-names {
+  position: relative;
+  width: 150px;
+  top: 150px;
+  left: -2px;
+  border: inherit;
+}
+
+.dropdown-names ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #FF6F69;
+  color: white;
+}
+
+li {
+  cursor: pointer;
+}
+
+.remove-tag {
+  color: white;
+  text-decoration: underline;
+  border-top: 2px solid darkred;
+}
