@@ -1,0 +1,45 @@
+#follower {
+  border: 7px solid whitesmoke;
+  width: 100px;
+  height: 100px;
+}
+
+body {
+  pointer-events: none;
+}
+
+img {
+  pointer-events: auto;
+  height: 549px;
+  width: 825px;
+  cursor: crosshair;
+}
+
+.container {
+  width: 825px;
+  height: 549px;
+}
+
+.tag {
+  position: absolute;
+  border: 7px solid whitesmoke;
+  width: 100px;
+  height: 100px;
+  z-index: 5;
+}
+
+ul {
+  background-color: gray;
+  width: 100px;
+  border: 7px solid gray;
+  display: none;
+  position: absolute;
+}
+
+li {
+  color: white;
+  background-color: gray;
+  width: 100px;
+  text-align: center;
+  height: 30px;
+}

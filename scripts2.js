@@ -35,26 +35,34 @@ $(document).ready(function() {
   };
 
   var selectName = function(xPos, yPos) {
-    $("ul").on("click touchstart", ".name", function() {
-      $(this).appendTo(".container").children(".tag").last();
-      $(this).css({
+    $(document).off("click touchstart", selectFace);
+    // Then on click, select li name and display
+    $("li").on("click touchstart", function() {
+      var nameSelection = $(this).clone();
+      console.log(nameSelection);
+      $(".tag").last().append(nameSelection);
+      $(nameSelection).css({
         left: xPos - 55,
         top: yPos + 55
       });
+      $(document).on("click touchstart", "img", selectFace);
     });
   };
 
   $(document).on("click touchstart", "img", function() {
+    selectFace();
+  });
+
+  var selectFace = function() {
     new Tag(event.pageX, event.pageY);
     displayNames(event.pageX, event.pageY);
     selectName(event.pageX, event.pageY);
-  });
 
-  $(document).on("mouseleave", "img", function() {
-    $(".container").children(".tag").hide();
-  });
-
-  $(document).on("mouseenter", "img", function() {
-    $(".container").children(".tag").show();
-  });
+    $(document).on("mouseleave", "img", function() {
+      $(".container").children(".tag").hide();
+    });
+    $(document).on("mouseenter", "img", function() {
+      $(".container").children(".tag").show();
+    });
+  };
 });
