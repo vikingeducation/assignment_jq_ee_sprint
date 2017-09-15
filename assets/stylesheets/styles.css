@@ -1,0 +1,27 @@
+/* jQuery Selectors */
+body {
+  line-height: 2em;
+}
+
+.warn-shadow {
+  box-shadow: 1px 1px 3px 3px #ce0808
+}
+
+.success-shadow {
+  box-shadow: 1px 1px 3px 3px #31ce41
+}
+
+.menu {
+  border: medium solid black;
+  width: 100px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.selected-option {
+  background-color: lightgray;
+}
+
+.option:hover {
+  background-color: yellow;
+}

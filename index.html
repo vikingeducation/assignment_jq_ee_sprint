@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+
+  <title>Practice with Events and Effects</title>
+
+  <link rel="stylesheet" href="assets\stylesheets\reset.css">
+  <link rel="stylesheet" href="assets\stylesheets\styles.css">
+</head>
+
+<body>
+  <form class = "validation">
+    <div class = "form-group">
+      <label>Text
+        <input type="text" id="text-one">
+      </label>
+      <div class="counter-one"></div>
+    </div>
+    <div class = "form-group">
+    <label>Text Area
+      <textarea id ="text-two"></textarea>
+    </label>
+      <div class="counter-two"></div>
+    </div>
+    <div class = "form-group">
+    <label>Password
+      <input type="password" id="pass-one">
+    </label>
+      <div class="counter-three"></div>
+    </div>
+    <div class = "form-group">
+    <label>Password Confirmation
+      <input type="password" id="pass-two">
+    </label>
+      <div class="counter-four"></div>
+    </div>
+    <div id="password-errors"></div>
+    <button>Submit</button>
+  </form>
+
+  <div class="menu">
+      <div class="selected-option">Select</div>
+      <div class="option-list">
+        <div class="option">Red</div>
+        <div class="option">Blue</div>
+        <div class="option">Green</div>
+      </div>
+    </div>
+
+<script src = "scripts.js"></script>
+</body>
+</html>
