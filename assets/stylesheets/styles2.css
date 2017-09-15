@@ -2,10 +2,10 @@
   border: 7px solid whitesmoke;
   width: 100px;
   height: 100px;
+  pointer-events: none;
 }
 
 body {
-  pointer-events: none;
 }
 
 img {

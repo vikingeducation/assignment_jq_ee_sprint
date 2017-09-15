@@ -35,23 +35,22 @@ $(document).ready(function() {
   };
 
   var selectName = function(xPos, yPos) {
-    $(document).off("click touchstart", selectFace);
+    $(document).off("click touchstart", "img", selectFace);
     // Then on click, select li name and display
+    $("img").on("click touchstart", function() {
+      $(document).on("click touchstart", "img", selectFace);
+    });
     $("li").on("click touchstart", function() {
       var nameSelection = $(this).clone();
-      console.log(nameSelection);
       $(".tag").last().append(nameSelection);
       $(nameSelection).css({
         left: xPos - 55,
         top: yPos + 55
       });
+
       $(document).on("click touchstart", "img", selectFace);
     });
   };
-
-  $(document).on("click touchstart", "img", function() {
-    selectFace();
-  });
 
   var selectFace = function() {
     new Tag(event.pageX, event.pageY);
@@ -65,4 +64,5 @@ $(document).ready(function() {
       $(".container").children(".tag").show();
     });
   };
+  $(document).on("click touchstart", "img", selectFace);
 });
