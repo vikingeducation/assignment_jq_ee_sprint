@@ -1,6 +1,8 @@
 "use strict";
 
 
+// THE FORM VALIDATION
+
 let checkChars = {
 
 	maxValue: 0,
@@ -64,16 +66,6 @@ let checkChars = {
 
 		return;
 	},
-
-	// setMin: function(inputType, currentValue) {
-	// 	if (inputType === "textField" || inputType === "textArea") {
-	// 		this.minValue = 4;
-	// 	} else if (inputType === "password" || inputType === "passwordConfirmation") {
-	// 		this.minValue = 6;
-	// 	} else {
-	// 		this.minValue = 0;
-	// 	}
-	// },
 
 	checkPasswordMatch: function(inputType, currentValue) {
 
@@ -173,6 +165,54 @@ setTimeout(function() {
 	});
 
 }, 0);
+
+
+
+// THE DROPDOWN
+
+let $selectList = $('.select-list');
+let $selectLine = $('.select-line');
+let listToggle = true;
+
+$selectList.hide();
+
+setTimeout(function() {
+	$selectLine.click(function(event) {
+		if (listToggle === true) {
+			$selectList.slideDown();
+			listToggle = false;
+		} else {
+			$selectList.slideUp();
+			listToggle = true;
+		}
+		
+	});
+
+}, 0);
+
+setTimeout(function() {
+	$selectList.click(function(event) {
+		$('#select-line-text').text(event.target.textContent);
+		$selectList.slideUp();
+		listToggle = true;
+	});
+
+}, 0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
