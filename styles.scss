@@ -1,0 +1,132 @@
+.notify-red {
+	color: red;
+}
+
+.dropdown {
+	display: flex;
+	flex-direction: column;
+	
+	width: 250px;
+	cursor: pointer;
+	
+	.select-line {
+		display: flex;
+		flex-flow: row nowrap;
+		border-style: solid;
+		border-width: 1px;
+
+		#select-line-text {
+			flex-basis: 90%;
+		}
+	}
+
+	.select-list {
+		display: flex;
+		flex-flow: column nowrap;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		
+		:hover {
+			background: yellow;
+		}
+
+		li {
+			border-style: solid;
+			border-width: 1px;
+		}
+	}
+}
+
+.photo-div {
+	display: flex;
+	width: 900px;
+	height: 588px;
+	margin: 0;
+	padding: 0;
+}
+
+.photo-div-2 {
+	display: flex;
+	width: 900px;
+	height: 588px;
+	margin: 0;
+	padding: 0;
+}
+
+.photo-box {
+	pointer-events: none;
+	position: absolute;
+	box-sizing: border-box;
+	height: 100px;
+	width: 100px;
+	margin: 0;
+	padding: 0;
+	border-style: solid;
+	border-width: 5px;
+	border-color: red;
+}
+
+.photo-box-fixed {
+	position: absolute;
+	box-sizing: border-box;
+	height: 100px;
+	width: 100px;
+	margin: 0;
+	padding: 0;
+	border-style: solid;
+	border-width: 5px;
+	border-color: green;
+
+	.photo-names-list {
+		display: flex;
+		box-sizing: border-box;
+		flex-flow: column nowrap;
+		list-style-type: none;
+		width: 100px;
+		margin: 90px 0 0 -5px;
+		padding: 0;
+		border-style: solid;
+		border-width: 5px;
+		border-color: green;
+		background: green;
+		color: #fff;
+		cursor: pointer;
+		font-family: sans-serif;
+		text-align: center;
+		
+		:hover {
+			background: #fff;
+			color: green;
+		}
+	}
+}
+
+.photo-box-permanent {
+	position: absolute;
+	box-sizing: border-box;
+	height: 100px;
+	width: 100px;
+	margin: 0;
+	padding: 0;
+	border-style: solid;
+	border-width: 5px;
+	border-color: green;
+
+	.photo-name {
+		display: flex;
+		box-sizing: border-box;
+		flex-flow: column nowrap;
+		list-style-type: none;
+		width: 100px;
+		margin: 90px 0 0 -5px;
+		padding: 0;
+		border-style: solid;
+		border-width: 5px;
+		border-color: green;
+		background: green;
+		color: #fff;
+		font-family: sans-serif;
+		text-align: center;
+	}
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <script src="https://use.fontawesome.com/5ede2dc3f1.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Form Validation</h1>
+  <div class="form-div">
+    <form class="the-form">
+      Text Field: 
+      <input type="text" name="textField"><span class="notify notify-text-field"></span><br><br>
+      Text Area: 
+      <textarea name="textArea"></textarea><span class="notify notify-text-area"></span><br><br>
+      Password:
+      <input type="password" name="password"><span class="notify notify-password"></span><br><br>
+      Password Confirmation:
+      <input type="password" name="passwordConfirmation"><span class="notify notify-password-confirmation"></span><span class="password-notify"></span><br><br>
+      <input type="submit" id="submit-button" value="Click Me!"><br><br>
+    </form>
+  </div>
+
+  <h1>The Dropdown</h1>
+  <div class="dropdown">
+    <div class="select-line">
+      <div id="select-line-text"></div>
+      <i class="fa fa-chevron-down" aria-hidden="true"></i>
+    </div>
+    <ul class="select-list">
+      <li>Item #1</li>
+      <li>Item #2</li>
+      <li>Item #3</li>
+    </ul>
+    <br><br>
+
+  </div>
+
+  <h1>The Photo Tagging Box</h1>
+  <div class="photo-div">
+    <div class="photo-box"></div>
+    <div class="photo-box-fixed">
+      <ul class="photo-names-list">
+        <li>Steve</li>
+        <li>Swee</li>
+        <li>Martha</li>
+      </ul>
+    </div>
+    <img class="the-image" src="success_silhouette_small.jpg">
+  </div>
+
+  <script src="/scripts.js"></script>
+</body>
+
+</html>
