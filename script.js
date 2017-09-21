@@ -33,17 +33,29 @@
 //
 //
 // });
+//
 
 var validateLength = {
-  init: function (){
-    $("form.sign-up").submit(
-      validateLength.messageOfValidation(4,16, "Text Field", 0 ),
-      validateLength.messageOfValidation(4,140, "Text Area", 1 ),
-      validateLength.messageOfValidation(6,16, "Password", 2 ),
+  init: function(){
+    $("form.sign-up").submit( function(event) {
+      validateLength.messageOfValidation(4,16, "Text Field", 0, event );
+      validateLength.messageOfValidation(4,140, "Text Area", 1, event );
+      validateLength.messageOfValidation(6,16, "Password", 2, event )
       validateLength.passwordConfirmation
+    }
     );
   },
-  messageOfValidation: function(min, max, fieldType, fieldNumber) {
+  counter: function(maxText) {
+    $('input#text-field').keyup(function() {
+    maxText = 32 - $(this).val().length;
+    if (maxText >= 0 && maxText <= 31) {
+      $( ".counter" ).text(maxText).show();
+    } else if (maxText === 32) {
+      $( ".counter" ).hide();
+    }
+  });
+},
+  messageOfValidation: function(min, max, fieldType, fieldNumber, event) {
     if ( $("input:eq(" + fieldNumber + ")").val().length > max) {
       $(".error-message:eq(" + fieldNumber + ")").text(fieldType + " cannot be longer than " + max).show();
       event.preventDefault();
@@ -62,69 +74,8 @@ var validateLength = {
 
 $(document).ready(function() {
 
-  // validateLength.init();
+  validateLength.init();
+  var maxText = 32;
+  validateLength.counter(maxText)
 
-  $("div.dropdown-wrapper").click(function() {
-    if ( $("li.main-ex").is(":hidden") ) {
-      $("#main").slideDown('slow');
-      // $("ul.main").slideDown( "slow", function() {
-      //   $("ul#sub").hide();
-      // });
-    } else {
-      $("#main").slideUp('slow');
-    }
-  });
-
-
-
-
-
-
-
-
-  var mode = "some";
-
-  $("img").on('mousemove', function(e) {
-    $("div.tag-box").css({
-      left: e.pageX - 30,
-      top: (e.pageY - 30)
-    });
-  });
-
-  $("div.tag-box").on('click', function(e) {
-    if ( mode === 'some') {
-      $("div.tag-box-dropdown").show();
-      mode = "x";
-    } else {
-      $("div.tag-box-dropdown").hide();
-      mode = "some";
-    }
-  });
-
-
-  //   $("div.sign-wrapper").append(
-  //
-  //   );
-  //   $("div.tag-box-dropdown").css({
-  //     left: e.pageX,
-  //     top: (e.pageY - 60)
-  //   });
-  //   $("div.tag-box").slideDown( "slow");
-  // });
-  // if ($(".tag-box").is(e.target) || $("div.tag-box-dropdown").is(e.target) ) {
-  //   $("div.sign-wrapper").append(
-  //     $("div.tag-box")
-  //   );
-  //   $("div.tag-box-dropdown").css({
-  //     left: e.pageX,
-  //     top: (e.pageY - 60)
-  //   });
-  //   $("div.tag-box").slideDown( "slow");
-  // })
-
-
-
-
-
-
-})
+});

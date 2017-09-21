@@ -34,7 +34,7 @@ li {
 ul {
   text-align: left;
   list-style: none;
-  display: inline;
+  float: left;
   margin: 0;
 }
 
