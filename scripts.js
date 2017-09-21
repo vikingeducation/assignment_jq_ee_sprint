@@ -204,6 +204,7 @@ setTimeout(function() {
 // THE PHOTO TAGGING BOX
 
 let fixedIsOn = false;
+let photoId = 0;
 
 $('.photo-box').hide();
 $('.photo-box-fixed').hide();
@@ -216,12 +217,10 @@ $('.photo-div').mouseenter(function() {
 
 
 $('.photo-div').mousemove(function(event) {
-	//if (fixedIsOn === false) {	
-		$('.photo-box').css({
-			'left': (event.pageX - 50) + 'px',
-			'top': (event.pageY - 50) + 'px'
-		});
-	//}
+	$('.photo-box').css({
+		'left': (event.pageX - 50) + 'px',
+		'top': (event.pageY - 50) + 'px'
+	});
 });
 
 
@@ -237,20 +236,27 @@ setTimeout(function() {
 		$('.photo-box-fixed').css({
 			'left': (event.pageX - 50) + 'px',
 			'top': (event.pageY - 50) + 'px'
-		});
-		
+		});		
 	});
 }, 0);
 
+setTimeout(function() {
+	$('.photo-names-list li').click(function(event) {
+		let selectedName = event.target.textContent;
+		let photoBoxPosition = $('.photo-box-fixed').position();
+		photoId += 1;
 
+		$('<div class="photo-box-permanent ' + photoId + '"></div>')
+			.insertBefore($('.photo-box'))
+			.css({
+				'left': (photoBoxPosition.left) + 'px',
+				'top': (photoBoxPosition.top) + 'px'
+			})
+			.html("<p class='photo-name'>" + selectedName + "</p>");
 
+		$('.photo-box-fixed').hide();
+		$('.photo-box').show();
+		fixedIsOn = !fixedIsOn;
 
-
-
-
-
-
-
-
-
-
+	});
+}, 0);
