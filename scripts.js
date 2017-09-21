@@ -203,30 +203,35 @@ setTimeout(function() {
 
 // THE PHOTO TAGGING BOX
 
+let fixedIsOn = false;
+
 $('.photo-box').hide();
 $('.photo-box-fixed').hide();
 
 $('.photo-div').mouseenter(function() {
-	$('.photo-box').show();
+	if (fixedIsOn === false) {
+		$('.photo-box').show();
+	}
 });
 
 
 $('.photo-div').mousemove(function(event) {
-	console.log("X-axis: " + event.pageX + ", Y-axis: " + event.pageY);
-	
-	$('.photo-box').css({
-		'left': (event.pageX - 50) + 'px',
-		'top': (event.pageY - 50) + 'px'
-	});
+	//if (fixedIsOn === false) {	
+		$('.photo-box').css({
+			'left': (event.pageX - 50) + 'px',
+			'top': (event.pageY - 50) + 'px'
+		});
+	//}
 });
 
 
-$('.photo-div').mouseleave(function() { //YOUAREHERE  - problem is that once mouse enters .photo-div, it is technically over .photo-box & therefore leaving .photo-div won't work/is irrelevant
+$('.photo-div').mouseleave(function() {
 	$('.photo-box').hide();
 });
 
 setTimeout(function() {
-	$('.photo-box').click(function(event) {
+	$('.photo-div img').click(function(event) {
+		fixedIsOn = !fixedIsOn;
 		$('.photo-box').toggle();
 		$('.photo-box-fixed').toggle();
 		$('.photo-box-fixed').css({
@@ -236,15 +241,6 @@ setTimeout(function() {
 		
 	});
 }, 0);
-
-setTimeout(function() {
-	$('.photo-div img').click(function(event) {
-		$('.photo-box').toggle();
-		$('.photo-box-fixed').toggle();
-		
-	});
-}, 0);
-
 
 
 
