@@ -13,40 +13,34 @@ div.sign-wrapper {
 
 /*===========DROPDOWN=======*/
 
-div.dropdown-wrapper {
-  text-align: center;
+div.temp, ul#main {
   background: #77bf67;
-  max-width: 250px;
+  width: 200px;
   border-radius: 3px;
-  min-height: 22px;
+  min-height: 30px;
 }
 
 li.main-ex {
   font-weight: bold;
-  display: none;
 }
 
-li {
+li, div.temp {
   font-size: 18px;
   padding: 2px 8px;
-}
-
-ul {
-  text-align: left;
   list-style: none;
-  float: left;
-  margin: 0;
 }
 
-li.sub:hover {
+ul#main, ul.sub {
+  display: none;
+  padding-left: 0;
+}
+
+li:hover, div.temp:hover {
   background: #318e42;
   color: #fff;
   cursor: pointer;
 }
 
-.active {
-  background:
-}
 
 /*===========PHOTO TAGGING=======*/
 
