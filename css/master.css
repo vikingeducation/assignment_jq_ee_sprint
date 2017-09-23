@@ -54,23 +54,40 @@ div.tag-box {
   width: 60px;
   height: 60px;
   display: none;
+  position: absolute;
 }
 
 
 div.tag-box-dropdown {
   background-color: #fff;
   width: 64px;
-  min-height: 20px;
-  top: 66px;
+  /*min-height: 20px;*/
+  top: 46px;
   position: relative;
   display: none;
 }
 
-li {
+div.fixed-box {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  z-index: 10;
+}
+
+ul#tagging li {
   font-size: 12px;
 }
 
 ul#tagging {
   text-align: left;
   list-style: none;
+  padding-left: 0;
+}
+
+ul#tagging  li:hover {
+  background: #ccc;
+  color: #111;
+  cursor: pointer;
 }
