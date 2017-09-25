@@ -22,7 +22,7 @@ $(document).ready(function() {
     });
     $newBox.appendTo( $('div.sign-wrapper') );
     $newDropdownBox.hide().appendTo($newBox);
-    $('ul#tagging').appendTo($newDropdownBox);
+    $('<ul id="tagging"></ul>').appendTo($newDropdownBox);
     $('<li>Andrea</li>').appendTo($('ul#tagging'));
     $('<li>Darek</li>').appendTo($('ul#tagging'));
     $('<li>Mirek</li>').appendTo($('ul#tagging'));
@@ -31,16 +31,13 @@ $(document).ready(function() {
     // $("div.tag-box-dropdown").appendTo( $('div.fixed-box') );
     $("div.tag-box-dropdown").slideDown(400);
 
-    $("div.fixed-box").mouseleave( function(e) {
-      $("div.tag-box").remove();
-    });
   });
 
   $("li").click(function() {
-    $("div.tag-box-dropdown").slideUp(400);
+    $newDropdownBox.slideUp(400);
     var $name = $("<div></div>").addClass('name');
     $name.text( $(this).text() );
-    $name.appendTo( $('div.fixed-box') );
+    $name.appendTo( $newBox );
     $newBox.addClass('test-box').removeClass('fixed-box');
     $newDropdownBox.remove();
   });
