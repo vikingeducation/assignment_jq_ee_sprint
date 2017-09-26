@@ -53,7 +53,6 @@ div.tag-box {
   border-radius: 3px;
   width: 60px;
   height: 60px;
-  display: none;
   position: absolute;
 }
 
@@ -61,29 +60,27 @@ div.tag-box {
 div.tag-box-dropdown {
   background-color: #fff;
   width: 64px;
-  /*min-height: 20px;*/
-  top: 46px;
-  position: relative;
-  display: none;
+  min-height: 20px;
+  top: 64px;
+  position: absolute;
 }
 
-div.fixed-box {
-  position: absolute;
-  width: 60px;
+/*div.fixed-box {*/
+  /*width: 60px;
   height: 60px;
   border: 2px solid #fff;
   border-radius: 3px;
-}
+}*/
 
-div.test-box {
+/*div.test-box {
   position: absolute;
   width: 60px;
   height: 60px;
   border: 2px solid #0e2;
   border-radius: 3px;
-}
+}*/
 
-div.name {
+/*div.name {
   background-color: #fff;
   color: #000;
   font-size: 12px;
@@ -92,7 +89,7 @@ div.name {
   width: 60px;
   position: relative;
   border: 2px solid #0e2;
-}
+}*/
 
 ul#tagging li {
   font-size: 12px;
@@ -107,5 +104,4 @@ ul#tagging {
 ul#tagging  li:hover {
   background: #ccc;
   color: #111;
-  cursor: pointer;
 }
