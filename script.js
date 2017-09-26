@@ -84,3 +84,15 @@ $(document).ready(function(){
          $(this).slideDown();
     })
 });
+
+//photo tagging
+$("#imageHolder img").click(function (e) {
+  var offset = $(this).offset();
+  var position = {
+    left: e.clientX - offset.left - 50,
+    top: e.clientY - offset.top - 50
+  }
+  var append = $('<div class="tag"><div class="box"></div></div>').draggable({containment: "parent"}).css({"position":"absolute","top":position.top,"left":position.left});
+  $(this).parent().append(append);
+
+});
