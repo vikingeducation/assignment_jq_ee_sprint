@@ -1,0 +1,47 @@
+#tail {
+    position: absolute;
+    float: left;
+    width: 100px;
+    height: 100px;
+    border: solid;
+}
+
+#imageHolder {
+  position:relative;
+  border:dashed 2px #7E7E7E;
+  min-width:300px;
+  min-height:300px;
+  box-shadow:0 0 5px #000;
+  cursor:pointer;
+  float:left;
+  overflow:hidden;
+}
+
+.tag {
+  position:absolute;
+}
+
+.box {
+  border:solid 3px red;
+  width:100px;
+  height:100px;
+  float:left;
+}
+
+.container-fluid{
+  float: left;
+}
+
+.relative {
+  position: relative;
+}
+
+.dropdown {
+  background-color: white;
+  text-align: center;
+  margin-top: 3px;
+}
+
+#title {
+  position: absolute;
+}
