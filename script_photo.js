@@ -1,22 +1,20 @@
 $(document).ready(function() {
 
-  var $mouseBox = $("div.tag-box").css('pointer-events', 'none');
-  var $newBox = $("<div>").addClass('fixed-box');
+  // if (clicker == "no") {
+    var $mouseBox = $("div.tag-box").css('pointer-events', 'none');
+  // } else {
+  //   var $mouseBox = $("div.tag-box");
+  // }
   var clicker = "no"
-  // var names = ["Johnny", "Maria", "Alex", "Sylwester"];
-  // var $listNames =  $.each(names, function(index, el){
-  //                   $('<li>' + el + '</li>')
-  //                 });
-  // var $dropDownWrapper = $('div').addClass('tag-box-dropdown');
-  // var $unordList = $('ul#tagging');
-  // var $newDropdownBox = $("<div></div>").addClass('tag-box-dropdown');
+  var $choosenName = $('<div>').addClass('choosen');
 
   $("#img-container img").mousemove( function(e) {
-    if (clicker != "yes") {
+    if (clicker == "no") {
       $mouseBox.css({
         left: e.clientX - 30,
         top: e.clientY - 30
       });
+      $("div.tag-box-dropdown").hide();
     }
   });
 
@@ -33,16 +31,33 @@ $(document).ready(function() {
   });
 
   $('img').click( function(e) {
-    // var $dropdown = $listNames.appendTo($unordList).appendTo($dropDownWrapper);
     var offset = $("div.tag-box").offset();
     $mouseBox.css({
       left: offset.left,
       top: offset.top
     });
-    clicker = "yes"
-    // $mouseBox.appendTo( $('div.sign-wrapper') );
+    clicker = "yes";
     $("div.tag-box-dropdown").slideToggle();
+    $mouseBox = $("div.tag-box").css('pointer-events', 'auto');
+
+
+    $('li').click( function(e){
+      console.log("are you working?");
+      $("div.tag-box-dropdown").slideUp();
+      $choosenName.text( $(this).text() );
+      // $choosenName.appendTo($mouseBox);
+      // $choosenName.css({
+      //   left: offset.left,
+      //   top: offset.top
+      // });
+    });
+    // if () {
+    //
+    // } else {
+    //
+    // }
   });
+
 
 
   // $("div.tag-box").on('click', function(e) {

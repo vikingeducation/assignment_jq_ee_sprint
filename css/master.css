@@ -65,30 +65,11 @@ div.tag-box-dropdown {
   position: absolute;
 }
 
-/*div.fixed-box {*/
-  /*width: 60px;
-  height: 60px;
-  border: 2px solid #fff;
-  border-radius: 3px;
-}*/
-
-/*div.test-box {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  border: 2px solid #0e2;
-  border-radius: 3px;
-}*/
-
-/*div.name {
+/*div.choosen {
   background-color: #fff;
-  color: #000;
-  font-size: 12px;
-  top: 60px;
-  left: -2px;
-  width: 60px;
-  position: relative;
-  border: 2px solid #0e2;
+  width: 64px;
+  top: 64px;
+  position: absolute;
 }*/
 
 ul#tagging li {
@@ -101,7 +82,7 @@ ul#tagging {
   padding-left: 0;
 }
 
-ul#tagging  li:hover {
+li:hover {
   background: #ccc;
   color: #111;
 }
