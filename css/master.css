@@ -65,12 +65,15 @@ div.tag-box-dropdown {
   position: absolute;
 }
 
-/*div.choosen {
+div.choosen {
   background-color: #fff;
   width: 64px;
-  top: 64px;
+  left: -2px;
+  top: 62px;
   position: absolute;
-}*/
+  font-size: 13px;
+  padding-left: 3px;
+}
 
 ul#tagging li {
   font-size: 12px;
