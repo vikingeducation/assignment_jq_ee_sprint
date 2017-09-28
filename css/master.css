@@ -48,20 +48,12 @@ img {
   width: 500px;
 }
 
-div.tag-box {
+
+div.tag-box, div.fixed-box, div.mouse-box {
   border: 2px solid #fff;
   border-radius: 3px;
   width: 60px;
   height: 60px;
-  position: absolute;
-}
-
-
-div.tag-box-dropdown {
-  background-color: #fff;
-  width: 64px;
-  min-height: 20px;
-  top: 64px;
   position: absolute;
 }
 
@@ -74,6 +66,15 @@ div.choosen {
   font-size: 13px;
   padding-left: 3px;
 }
+
+div.tag-box-dropdown {
+  background-color: #fff;
+  width: 64px;
+  min-height: 20px;
+  top: 64px;
+  position: absolute;
+}
+
 
 ul#tagging li {
   font-size: 12px;
