@@ -3,18 +3,16 @@ $(document).ready(function() {
   // var $mouseBox = $("div.tag-box").css('pointer-events', 'none');
   var $mouseBox = $("div.mouse-box");
   var $clickedBox = $("div.tag-box").hide();
-  // $("div.tag-box-dropdown").css('pointer-events', 'auto');
-  // var clicker = "no";
-  var $choosenName = $('<div>').addClass('choosen');
+  var clicker = "no";
   $("div.tag-box-dropdown").hide();
 
   $("#img-container img").mousemove( function(e) {
-    // if (clicker == "no") {
+    if (clicker == "no") {
       $mouseBox.css({
         left: e.clientX - 30,
         top: e.clientY - 30
       });
-    // }
+    }
   });
 
   // $('#img-container img').mouseenter(function(e) {
@@ -30,6 +28,7 @@ $(document).ready(function() {
   // });
 
   $mouseBox.on('click', function(e) {
+    // clicker = "yes";
     var offset = $mouseBox.offset();
     $mouseBox.hide();
     $clickedBox.css({
@@ -44,37 +43,21 @@ $(document).ready(function() {
       $mouseBox.show();
     })
 
-    // $mouseBox.hide();
-    // $mouseBox.css({
-    //   left: offset.left,
-    //   top: offset.top
-    // });
-    // clicker = "yes";
-
     $('li').click( function(e){
       $("div.tag-box-dropdown").slideUp();
-      $fixedBox = $clickedBox.clone();
+      var $fixedBox = $clickedBox.clone();
       // var $fixedBox = $("<div class='tag-box fixed'></div>");
       $fixedBox.find("div.tag-box-dropdown").remove();
       $fixedBox.addClass('fixed-box');
       $fixedBox.appendTo( $('div.sign-wrapper') );
+      var $choosenName = $('<div>').addClass('choosen');
       $choosenName.text( $(this).text() );
       $choosenName.appendTo('div.tag-box.fixed-box');
       $fixedBox.removeClass('tag-box');
       $(this).remove();
       $mouseBox.show();
-      // $mouseBox = $mouseBox.clone();
-      // clicker = "no";
+      clicker = "no";
     });
-
-    // $('img').click( function(e) {
-    //   if (clicker == "yes") {
-    //     $mouseBox.css({
-    //       left: e.clientX - 30,
-    //       top: e.clientY - 30
-    //     });
-    //   }
-    // });
 
   });
 
