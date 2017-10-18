@@ -61,10 +61,22 @@ $(document).ready(function() {
     $('.dropdown').hide();
   	$('#drop').click(function(){
   		$('.dropdown').slideToggle(400);
-  		
-
-
   	});
+    $('.dropdown a').hover(function(){
+      $(this).css({"background-color": "blue", 'color':'white'})},
+      function(){$(this).css({"background-color": "white", 'color': 'black'})
+    });
+  
+    $('#dropd a').click(function(e){
+      $('#drop').text($(this).text());
+      $(this).hide();
+      $('.dropdown').slideUp(400);
+      $(this).show();
+      e.preventDefault();
+
+
+    });
+
   
     emailct ("input[name='email']", '.emchars', 32);
     emailct ("textarea[name='biography']", '.biochars', 140);
