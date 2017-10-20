@@ -82,15 +82,24 @@ $(document).ready(function() {
    $('img').mousemove(function(event){
    
     var offset = $('img').offset();
-    var mouseX = event.pageX - $('img').offset().left;
-    var mouseY = event.pageY - $('img').offset().top;
-    targetWidth = $('#clickablePh').outerWidth();
-    targetHeight = $('clickablePh').outerHeight();
-    targetX = mouseX - targetWidth/2;
-    targetY = mouseY - targetHeight/2;
-    inputX = mouseX+targetWidth/2;
-    inputY = mouseY-targetHeight/2;
-    $('#tag-input').css({left: inputX, top: inputY}).show()
+    var mouseX = event.pageX - $('#clickablePh').offset().left;
+    var mouseY = event.pageY - $('#clickablePh').offset().top;
+    var targetWidth = $('#tag-target').outerWidth();
+    var targetHeight = $('#tag-target').outerHeight();
+    var targetX = mouseX - targetWidth/2;
+    var targetY = mouseY - targetHeight/2;
+    var inputX = mouseX-25;
+    var inputY = mouseY+35;
+    $('#tag-target').css({left: targetX, top: targetY}).show()
+    $('#tag-input').css({left: inputX, top: inputY})
+    
+
+
+   });
+
+   $('#tag-target').click(function(e){
+    $('tag-input').slideToggle(400).show();
+
 
    });
 

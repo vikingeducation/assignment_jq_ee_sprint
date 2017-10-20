@@ -16,26 +16,34 @@ button {
 #clickablePh {
 	
 	position: relative;
+	
 	display: block;
 	box-shadow: 0px 0px 10px #bbb;
+	height: 100px;
+	width: 100px;
+	margin: 0px;
+
 }
 #tag-input {
-	z-index: 200;
+	z-index: 2;
 	position: absolute;
-	padding: 0px;
+
 	width: 100px;
 	display: none;
-	
+	top: 0px;
+	left: 0px;
 
 }
 
 #tag-target {
-	z-index: 200;
+	z-index: 2;
 	position: absolute;
 	border: 4px solid white;
-	height: 50px;
-	width: 70px;
-	display: block;
+	height: 70px;
+	width: 100px;
+	top: 0px;
+	left: 0px;
+	display: none;
 
 }
 #tag-target, #clickablePh img {cursor: crosshair;}
@@ -43,6 +51,8 @@ button {
 
 #clickablePh img {position: absolute;}
 
-
+#friends {
+	position: absolute;
+}
 
 
