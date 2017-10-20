@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
 
  function emailct (ele, ele1, max) {
@@ -74,17 +76,32 @@ $(document).ready(function() {
       $(this).show();
       e.preventDefault();
 
-
     });
+ 
+   $("#clickablePh").css({width: $("img").outerWidth(), height: $("img").outerHeight()});
+   $('img').mousemove(function(event){
+   
+    var offset = $('img').offset();
+    var mouseX = event.pageX - $('img').offset().left;
+    var mouseY = event.pageY - $('img').offset().top;
+    targetWidth = $('#clickablePh').outerWidth();
+    targetHeight = $('clickablePh').outerHeight();
+    targetX = mouseX - targetWidth/2;
+    targetY = mouseY - targetHeight/2;
+    inputX = mouseX+targetWidth/2;
+    inputY = mouseY-targetHeight/2;
+    $('#tag-input').css({left: inputX, top: inputY}).show()
+
+   });
 
   
     emailct ("input[name='email']", '.emchars', 32);
     emailct ("textarea[name='biography']", '.biochars', 140);
     emailct ("input[name='pass']", '.passchars', 16);
     emailct ("input[name='passconfirm']", '.passconfchars', 16);
-    recheck("input[name='email']", 4, ".error1")
-    recheck("textarea[name='biography']", 4, ".error2")
-    recheck("input[name='passconfirm']", 6, ".error4")
+    recheck("input[name='email']", 4, ".error1");
+    recheck("textarea[name='biography']", 4, ".error2");
+    recheck("input[name='passconfirm']", 6, ".error4");
 
 });
 

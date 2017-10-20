@@ -12,3 +12,37 @@ button {
 
 
 }
+
+#clickablePh {
+	
+	position: relative;
+	display: block;
+	box-shadow: 0px 0px 10px #bbb;
+}
+#tag-input {
+	z-index: 200;
+	position: absolute;
+	padding: 0px;
+	width: 100px;
+	display: none;
+	
+
+}
+
+#tag-target {
+	z-index: 200;
+	position: absolute;
+	border: 4px solid white;
+	height: 50px;
+	width: 70px;
+	display: block;
+
+}
+#tag-target, #clickablePh img {cursor: crosshair;}
+
+
+#clickablePh img {position: absolute;}
+
+
+
+
