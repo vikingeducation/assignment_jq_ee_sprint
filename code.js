@@ -1,7 +1,7 @@
 
-
 $(document).ready(function() {
-
+  var tagCounter = 0;
+  var targetX, targetY, tagValue;
  function emailct (ele, ele1, max) {
     	$(ele).keyup(function(){
     		var eml = $(this).val().length;
@@ -77,33 +77,62 @@ $(document).ready(function() {
       e.preventDefault();
 
     });
- 
    $("#clickablePh").css({width: $("img").outerWidth(), height: $("img").outerHeight()});
    $('img').mousemove(function(event){
-   
+    
     var offset = $('img').offset();
     var mouseX = event.pageX - $('#clickablePh').offset().left;
     var mouseY = event.pageY - $('#clickablePh').offset().top;
     var targetWidth = $('#tag-target').outerWidth();
     var targetHeight = $('#tag-target').outerHeight();
-    var targetX = mouseX - targetWidth/2;
-    var targetY = mouseY - targetHeight/2;
-    var inputX = mouseX-25;
-    var inputY = mouseY+35;
-    $('#tag-target').css({left: targetX, top: targetY}).show()
+        targetX = mouseX - targetWidth/2;
+        targetY = mouseY - targetHeight/2;
+        inputX = mouseX-25;
+      inputY = mouseY+35;
+    $('#tag-target').css({left: targetX, top: targetY}).show();
     $('#tag-input').css({left: inputX, top: inputY})
+
+   });
+   
+  $('#clickablePh').mouseleave(function(){
+ $('#tag-target').hide()
+  $('#tag-input').hide();
+
+  });
+  $('#tag-target').click(function(e){
+          $('#tag-input').slideToggle(400);
+          e.preventDefault();
+
+    })
+  function getName(){
+$('#dropd1 li').click(function(e){
+  var index = $(this).index();
+   tagValue = $(this).text();
+   tagging()
+});
+}
+
+  $('a').click(function(e){
+    e.preventDefault();
+  })
+  $('.dropdown1 a').hover(function(){
+    $(this).css({"background-color": "red"})},
+    function(){$(this).css({"background-color":"transparent"})
+
+  });
+
+  function tagging(){
+
+  $("#clickablePh").append('<div id="mark-' + tagCounter + '" class="selection" style="left:' + targetX + 'px; top:' + targetY + 'px;"><span>'+ tagValue +'</span></div>')
+   tagCounter++;
+   
+  }
+
+    $('#clickablePh').hover(function(){
+    $('.selection').show()
     
-
-
-   });
-
-   $('#tag-target').click(function(e){
-    $('tag-input').slideToggle(400).show();
-
-
-   });
-
-  
+  })
+    getName();
     emailct ("input[name='email']", '.emchars', 32);
     emailct ("textarea[name='biography']", '.biochars', 140);
     emailct ("input[name='pass']", '.passchars', 16);
