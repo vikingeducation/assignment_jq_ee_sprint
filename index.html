@@ -6,12 +6,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="styles.css">
-<script src="script.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="script.js"></script>
 
 </head>
 <body>
+<main>
 
+  <div id="form">
+    <form action="#">
+      <label for="name">Your Name</label>
+      <input id="name" name="name" type="text" maxlength="32" required>
+        <div class="counter">
+        </div>
+
+      <label for="about-you">Tell us a little about yourself</label>
+      <textarea id="about-you" name="about-you" maxlength="140" required></textarea>
+        <div class="counter">
+        </div>
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" placeholder="Password" maxlength="16" required>
+        <div class="counter">
+        </div>
+
+      <label for="confirmation">Confirm Password</label>
+      <input id="confirm" name="confirmation" type="password" placeholder="Confirm Password" maxlength="16" required>
+        <div class="counter">
+        </div>
+        
+      <input id="submit" type="submit">
+    </form>
+  </div>
+
+  <div id="dropdown">
+    <ul>Dropdown
+      <li>Option 1</li>
+      <li>Option 2</li>
+      <li>Option 3</li>
+      <li>Option 4</li>
+    </ul>
+  </div>
+
+</main>
 
 
 

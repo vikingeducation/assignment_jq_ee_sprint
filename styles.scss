@@ -1,0 +1,16 @@
+
+form {
+  display: flex;
+  flex-direction: column;
+  input {
+    flex: 1;
+  }
+  #submit {
+    width: 100px;
+    height: auto;
+  }
+}
+
+#dropdown {
+
+}

@@ -1,0 +1,10 @@
+form {
+  display: flex;
+  flex-direction: column; }
+  form input {
+    flex: 1; }
+  form #submit {
+    width: 100px;
+    height: auto; }
+
+/*# sourceMappingURL=styles.css.map */
