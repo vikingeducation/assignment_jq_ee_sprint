@@ -11,6 +11,40 @@ form {
   }
 }
 
-#dropdown {
+p {
+  color: red;
+}
 
+.hidden {
+  display: none;
+}
+
+.error {
+  border-color: red;
+  color: red;
+}
+
+.dropDown {
+  border: 2px solid black;
+  text-align: center;
+  width: 300px;
+  height: auto;
+  padding-left: 0;
+  ul {
+    display: flex;
+    align-items: flex-start;
+  }
+  li {
+    flex: 1;
+    list-style: none;
+    text-align: center;
+  }
+}
+
+.hover {
+  background: #4286f4;
+}
+
+.selected {
+  background: #4286f4;
 }

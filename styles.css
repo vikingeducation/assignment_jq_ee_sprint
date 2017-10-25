@@ -7,4 +7,34 @@ form {
     width: 100px;
     height: auto; }
 
+p {
+  color: red; }
+
+.hidden {
+  display: none; }
+
+.error {
+  border-color: red;
+  color: red; }
+
+.dropDown {
+  border: 2px solid black;
+  text-align: center;
+  width: 300px;
+  height: auto;
+  padding-left: 0; }
+  .dropDown ul {
+    display: flex;
+    align-items: flex-start; }
+  .dropDown li {
+    flex: 1;
+    list-style: none;
+    text-align: center; }
+
+.hover {
+  background: #4286f4; }
+
+.selected {
+  background: #4286f4; }
+
 /*# sourceMappingURL=styles.css.map */
