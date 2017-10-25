@@ -1,0 +1,82 @@
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+#container {
+	height: 100%;
+	width: 100%;
+}
+
+#gameboard {
+	width: 51%;
+	height:66.67vh;
+	position: relative;
+
+	
+
+
+	
+}
+
+.red {
+	height: 50%;
+	width: 49%;
+	background-color: red;
+	float: left;
+	border-style:solid;
+	border-width: 1px;
+	border-color: black;
+
+	
+
+	
+	
+}
+
+.green {
+	height: 50%;
+	width: 49%;
+	background-color: green;
+	float: left;
+	border-style:solid;
+	border-width: 1px;
+	border-color: black;
+
+	
+
+}
+
+.blue {
+
+	background-color: blue;
+	height: 50%;
+	width: 49%;
+	float: left;
+border-style:solid;
+	border-width: 1px;
+	border-color: black;
+
+	
+	
+}
+
+.yellow {
+
+	background-color: yellow;
+	height: 50%;
+	width: 49%;
+	float: left;
+	border-style:solid;
+	border-width: 1px;
+
+	
+	
+}
+
+.highlighted {
+	background-color: white;
+
+}
+
