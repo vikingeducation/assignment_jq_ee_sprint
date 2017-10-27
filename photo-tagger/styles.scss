@@ -1,8 +1,9 @@
-#magic {
+.magic {
   border: 3px solid red;
   width: 50px;
   height: 50px;
   position: absolute;
+  pointer-events: none;
 }
 
 #container {
@@ -12,13 +13,36 @@
   display: none;
 }
 
-.stamp {
-  @extend #magic;
+.new {
+  border: 3px solid blue;
   position: absolute;
+  .spacer {
+    width: 50px;
+    height: 50px;
+  }
 }
 
-.new {
+.confirmed {
+  @extend .new;
 }
 
 .dropDown {
+  position: relative;
+  background: white;
+  list-style: none;
+  padding-left: 0;
+  ul {
+    display: flex;
+    align-items: flex-start;
+  }
+  li {
+    flex: 1;
+    list-style: none;
+    text-align: center;
+    border: 2px solid black;
+  }
+}
+
+.selected {
+  background: #4286f4;
 }
