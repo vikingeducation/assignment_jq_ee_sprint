@@ -1,0 +1,11 @@
+.photo-box:hover{
+  cursor:pointer;
+}
+
+#tag-frame{
+  height:150px;
+  width:150px;
+  border:10px black solid;
+  z-index:1;
+  position:absolute;
+}
