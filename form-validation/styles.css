@@ -1,0 +1,28 @@
+label{
+  display:block;
+}
+
+.characters{
+  display:inline-block;
+}
+
+.error-message{
+  display:block;
+  color:red;
+}
+
+#submit-input{
+  display:none;
+}
+
+.visible{
+  visibility: visible;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+.error-field{
+  border:1px solid red;
+}

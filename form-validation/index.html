@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <form>
+    <label>Text: </label>
+    <span class="input-field">
+      <input id="text-field" type="text" />
+      <div class="characters" id="text-char">
+      </div>
+      <div class="error-message hidden">default message</div>
+    </span>
+    <label>Text Area: </label>
+    <span class="input-field">
+      <textarea id="textarea-field"></textarea>
+      <div class="characters" id="textarea-char">
+      </div>
+      <div class="error-message hidden">default message</div>
+    </span>
+    <label>Password: </label>
+    <span class="input-field">
+      <input id="password-field" type="password">
+      <div class="characters" id="password-char">
+      </div>
+      <div class="error-message hidden">default message</div>
+    </span>
+    <label>Password Confirmation: </label>
+    <span class="input-field">
+      <input id="password-confirmation-field" type="password">
+      <div class="characters" id="password-confirmation-char">
+      </div>
+      <div class="error-message hidden">default message</div>
+    </span>
+    <div>
+      <button type="button" id="submit-button">Submit</button>
+      <button id="submit-input"></button>
+    </div>
+  </form>
+  <script src="script.js"></script>
+</body>
+</html>

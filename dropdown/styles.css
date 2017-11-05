@@ -1,0 +1,19 @@
+.item{
+  border: 1px black solid;
+  height:40px;
+}
+
+.item:hover{
+  cursor:pointer;
+}
+.menu-item:hover{
+  background-color:grey;
+}
+
+.dropdown-box{
+  width:100px;
+}
+
+.dropdown-menu{
+  display:none;
+}
