@@ -24,6 +24,11 @@
   border:10px green solid;
   z-index:2;
   position:absolute;
+  opacity: 0;
+}
+
+.tagged:hover{
+  opacity:1;
 }
 
 #name-menu{
