@@ -3,9 +3,58 @@
 }
 
 #tag-frame{
-  height:150px;
-  width:150px;
+  height:160px;
+  width:160px;
   border:10px black solid;
   z-index:1;
   position:absolute;
+}
+
+.potential-tag{
+  height:160px;
+  width:160px;
+  border:10px blue solid;
+  z-index:2;
+  position:absolute;
+}
+
+.tagged{
+  height:170px;
+  width:160px;
+  border:10px green solid;
+  z-index:2;
+  position:absolute;
+}
+
+#name-menu{
+  position:absolute;
+  top:170px;
+  background-color: white;
+}
+
+.menu-item{
+  padding:2px;
+  border:black 1px solid;
+}
+
+.menu-item:hover{
+  background-color: grey;
+}
+
+.name-tag{
+  position:absolute;
+  background-color: green;
+  color:white;
+  width:100%;
+  bottom:-10px;
+}
+
+.close-button{
+  position: absolute;
+  right:-15px;
+  top:-15px;
+  color:white;
+  background-color: green;
+  padding:5px;
+  border-radius: 100px;
 }
