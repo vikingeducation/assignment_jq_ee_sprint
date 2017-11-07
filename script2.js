@@ -36,6 +36,8 @@ function tagPart(event){
 	$('#dropList li').show();
 	$('img').click(function(eventQ){
 		eventQ.stopPropagation();
+		$('img').off();
+		$('#mouseFollow').off();
 		$('#dropList').hide();
 		$('#dropList li').hide();
 		$('#dropList').off();
@@ -148,6 +150,7 @@ function enterMouseFunction(event){
 	});
 	$('#mouseFollow').click(function(event3){
 		event3.stopPropagation();
+		$('#mouseFollow').off();
 		tagPart(event3);
 	});
 }
