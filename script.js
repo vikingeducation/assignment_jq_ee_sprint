@@ -60,6 +60,7 @@ $(document).ready(function() {
     event.preventDefault();
   });
 
+  //moves dropdown on click
   $("#dropSelect").click(function(){
     if($("li").is(":hidden")){
       $("li").slideDown(600);
@@ -71,6 +72,7 @@ $(document).ready(function() {
     }
   });
 
+  //changes color of dropdown selection when hovered over
   $("li").hover(function(){
     $(this).addClass("hover");
   },
