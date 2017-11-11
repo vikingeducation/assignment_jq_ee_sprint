@@ -1,0 +1,14 @@
+input, textarea {
+  padding: 10px;
+  border: 1px solid;
+  margin: 5px;
+  font-family: Georgia;
+}
+
+.problem {
+  color: red;
+}
+
+.count {
+
+}
