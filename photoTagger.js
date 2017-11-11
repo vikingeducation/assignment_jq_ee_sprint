@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-$(".selectorBox").on("mousemove", function(e) {
+$("#image1").on("mousemove", function(e) {
     $(".selectorBox").css({
       left: e.pageX - 25,
       top: e.pageY - 25
@@ -16,7 +16,7 @@ $("#image1")
     $(".selectorBox").addClass("hidden");
   })
   .click(function() {
-    $(".nameSelection").appendTo(document.body).slideDown("slow");
+    $(".nameSelection").slideDown("slow");
   })
 
 });

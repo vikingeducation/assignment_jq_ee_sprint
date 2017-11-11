@@ -15,6 +15,7 @@
   border: 2px solid blue;
   width: 40px;
   height: 40px;
+  position: absolute;
 }
 
 .nameSelection {
@@ -22,8 +23,15 @@
   list-style: none;
   text-align: center;
   width: 150px;
+  position: relative;
+}
+
+.nameSelection {
+  display: flex;
+  align-items: flex-start;
 }
 
 .nameSelection li {
+  flex: 1;
   border: 1px solid black;
 }
