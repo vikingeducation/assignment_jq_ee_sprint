@@ -1,0 +1,29 @@
+.hover {
+  background: #62f442;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+#image1 {
+  max-width: 1000px;
+}
+
+.selectorBox {
+  border: 2px solid blue;
+  width: 40px;
+  height: 40px;
+}
+
+.nameSelection {
+  background: white;
+  list-style: none;
+  text-align: center;
+  width: 150px;
+}
+
+.nameSelection li {
+  border: 1px solid black;
+}
