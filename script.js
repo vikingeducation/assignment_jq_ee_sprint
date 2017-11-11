@@ -60,4 +60,22 @@ $(document).ready(function() {
     event.preventDefault();
   });
 
+  $("#dropSelect").click(function(){
+    if($("li").is(":hidden")){
+      $("li").slideDown(600);
+    } else {
+      $("li").click(function(){
+        $("li:not(.first)").slideUp(600);
+        $("li.first").html($(this).html());
+      });
+    }
+  });
+
+  $("li").hover(function(){
+    $(this).addClass("hover");
+  },
+    function(){
+    $(this).removeClass("hover");
+  })
+
 });
