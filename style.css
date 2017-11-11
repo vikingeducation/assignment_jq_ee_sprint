@@ -1,0 +1,26 @@
+input, textarea {
+  padding: 10px;
+  border: 1px solid;
+  margin: 5px;
+  font-family: Georgia;
+}
+
+.problem, p {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+.dropMenu {
+  border: 1px solid black;
+  text-align: center;
+  width: 500px;
+  list-style: none;
+}
+
+.hover {
+  background: #62f442;
+  cursor: pointer;
+}

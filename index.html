@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Austin Smith - Jquery Practice with Events and Effects</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="script.js"> </script>
+</head>
+<body>
+	<!-- this div contains the form for #1 -->
+	<div class="container">
+		<form id="theForm">
+			<fieldset>
+			  <legend>Practice Form</legend>
+			  Name:<br>
+			  <input id="name" type="text" placeholder="Name" maxlength="32" minlength="4" required>
+				<div class="counter">
+        </div>
+			  Description:<br>
+			  <textarea id="description" rows="3" cols="15" placeholder="Write a description here..." maxlength="140" minlength="4" required></textarea>
+				<div class="counter">
+        </div>
+				Password:<br>
+				<input id="password" type="password" placeholder="password" maxlength="16" minlength="6" required>
+				<div class="counter">
+        </div>
+				Confirm Password:<br>
+				<input id="confirm" type="password" placeholder="confirm password" maxlength="16" minlength="6" required>
+				<div class="counter">
+        </div>
+				<p class="hidden">Does not match.</p>
+				<input type="submit" value="Submit" id="submit">
+				<div></div>
+			</fieldset>
+		</form>
+	</div>
+	<br>
+	<!-- this unordered list creates the dropdown menu -->
+	<ul id="dropSelect">
+		<li class="dropMenu first">Make a Selection</li>
+		<li class="dropMenu hidden">Example #1</li>
+		<li class="dropMenu hidden">Example #2</li>
+		<li class="dropMenu hidden">Example #3</li>
+	</ul>
+  <br>
+</body>
+</html>

@@ -1,0 +1,37 @@
+.hover {
+  background: #62f442;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+#image1 {
+  max-width: 1000px;
+}
+
+.selectorBox {
+  border: 2px solid blue;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+}
+
+.nameSelection {
+  background: white;
+  list-style: none;
+  text-align: center;
+  width: 150px;
+  position: relative;
+}
+
+.nameSelection {
+  display: flex;
+  align-items: flex-start;
+}
+
+.nameSelection li {
+  flex: 1;
+  border: 1px solid black;
+}
