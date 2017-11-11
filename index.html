@@ -11,23 +11,25 @@
 		<form id="theForm">
 			<fieldset>
 			  <legend>Practice Form</legend>
-			  <div id="name">
-					Name:<br>
-			    <input type="text" placeholder="Name" maxlength="32" minlength="4">
-			  </div>
-			  <div id="description">
-					Description:<br>
-					<textarea rows="3" cols="15" placeholder="Write a description here..." maxlength="140" minlength="4"></textarea>
-			  </div>
-			  <div id="password">
-					Password:<br>
-					<input type="password" placeholder="password" maxlength="16" minlength="6">
-			  </div>
-			  <div id="confirm">
-					Confirm Password:<br>
-					<input type="password" placeholder="confirm password" maxlength="16" minlength="6">
-			  </div>
-				<input type="submit" value="Submit">
+			  Name:<br>
+			  <input id="name" type="text" placeholder="Name" maxlength="32" minlength="4" required>
+				<div class="counter">
+        </div>
+			  Description:<br>
+			  <textarea id="description" rows="3" cols="15" placeholder="Write a description here..." maxlength="140" minlength="4" required></textarea>
+				<div class="counter">
+        </div>
+				Password:<br>
+				<input id="password" type="password" placeholder="password" maxlength="16" minlength="6" required>
+				<div class="counter">
+        </div>
+				Confirm Password:<br>
+				<input id="confirm" type="password" placeholder="confirm password" maxlength="16" minlength="6" required>
+				<div class="counter">
+        </div>
+				<p class="hidden">Does not match.</p>
+				<input type="submit" value="Submit" id="submit">
+				<div></div>
 			</fieldset>
 		</form>
 	</div>

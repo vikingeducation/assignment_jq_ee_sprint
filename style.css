@@ -5,10 +5,10 @@ input, textarea {
   font-family: Georgia;
 }
 
-.problem {
+.problem, p {
   color: red;
 }
 
-.count {
-
+.hidden {
+  display: none;
 }
