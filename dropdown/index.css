@@ -1,0 +1,24 @@
+#dropdown{
+	border:1px solid black;
+	width: 500px;
+}
+
+#dropdown header{
+	background: blue;
+	color: white;
+	height: 40px;
+}
+
+#dropdown div{
+	border:1px solid black;
+	cursor: pointer;
+	height: 40px;
+
+
+}
+
+#dropdown div:hover{
+background: blue;
+color: white;
+}
+
