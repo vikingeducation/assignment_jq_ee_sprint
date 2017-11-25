@@ -7,28 +7,39 @@
   <title>jQuery Events and Effects Sprint</title>
 
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script type="text/javascript" src="scripts.js"></script>
 </head>
 
 <body>
-  <form id=form1 action="/">
+  <form name="basicForm">
+
     <!-- Text Field -->
-    <input type="text" name="text-field" placeholder="Text field"><br />
+    <label for="txtfield">Text field</label>
+    <input type="text" id="txtfield" name="txtfield" placeholder="4-32 characters" maxlength="32">
+    <span class="hide"></span>
+    <span id="txtFieldError" class="hide">Length must be between 4 - 32 characters</span><br />
 
     <!-- Text area -->
-    <textarea name="text-area" placeholder="Text area"></textarea><br />
+    <label for="txtarea">Text area</label>
+    <textarea name="txtarea" id="txtarea" placeholder="4-140 characters" maxlength="140"></textarea>
+    <span class="hide"></span>
+    <span id="txtAreaError" class="hide">Length must be between 4 - 140 characters</span><br />
 
     <!-- Password -->
-    <label for="password">Password</label>
-    <input type="password" name="password" placeholder="Password" required><br />
+    <label for="passwrd">Password: 6-16 characters</label>
+    <input type="password" id="pass" name="passwrd" placeholder="Password" maxlength="16">
+    <span class="hide"></span>
+    <span id="passError" class="hide">Length must be between 6 - 16 characters</span><br />
 
     <!-- Password confirmation-->
-    <label for="password-conf">Confirm Password</label>
-    <input type="password" name="password-conf" placeholder="Retype Password" required>
-
+    <label for="passwordConf">Confirm Password</label>
+    <input type="password" id="passConf" name="passwordConf" placeholder="Retype Password" maxlength="16">
+    <span class="hide"></span>
+    <span id="errorMsg" class="hide">Confirmation doesn't match the password</span><br />
 
     <!--Submit button -->
-    <button type="button">Submit</button>
+    <input type="submit" value="Submit">
   </form>
 
 </body>

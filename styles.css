@@ -3,5 +3,19 @@ form {
 }
 
 input, textarea {
-  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.hide {
+   display: none;
+   padding-left: 5px;
+}
+
+.red {
+  background-color: red;
+}
+
+.error {
+  color: red;
+  display: inline;
 }
