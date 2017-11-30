@@ -1,0 +1,33 @@
+.clearfix:before,
+.clearfix:after {
+  content: ' ';
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+form {
+  padding: 50px 50px;
+}
+
+input, textarea {
+  margin-top: 10px;
+}
+
+.hide {
+   display: none;
+   padding-left: 5px;
+}
+
+.red {
+  background-color: red;
+}
+
+.error {
+  color: red;
+  display: inline;
+}

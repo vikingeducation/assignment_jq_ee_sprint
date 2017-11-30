@@ -1,0 +1,28 @@
+.clearfix:before,
+.clearfix:after {
+  content: ' ';
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+#desserts {
+  width: 90px;
+  list-style: none;
+}
+
+ul li {
+  border: 1px solid black;
+  height: 20px;
+}
+.hide {
+  display: none;
+}
+
+a {
+  display: inline-block;
+}

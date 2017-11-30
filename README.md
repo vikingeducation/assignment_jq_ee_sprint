@@ -1,4 +1,3 @@
 assignment_jq_ee_sprint
-=======================
 
-jQSFX
+Holly's assignment for jQuery Events and Effects
