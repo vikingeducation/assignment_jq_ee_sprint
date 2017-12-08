@@ -1,4 +1,20 @@
-@import "reset"
+@import "reset";
 
+.container {
+  padding: 20px;
+  width: 100%;
+}
 
+label:after {
+  content: '';
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: inline;
+}
 
