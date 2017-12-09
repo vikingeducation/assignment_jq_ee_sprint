@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script defer src="assets/scripts.js"></script>
+  </head>
+  <body>
+    <section class="form-validation">
+      <form action="#" method="post">
+
+        <!-- Name Div -->
+        <div class="input">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" class="user-input" placeholder="Enter between 4-32 characters">
+
+          <!-- Counter Span -->
+          <span class="hidden"></span>
+
+          <!-- Error Span -->
+          <span class="hidden"></span>
+        </div>
+
+        <!-- Message Div -->
+        <div class="input">
+          <label for="message">Message:</label>
+          <textarea id="message" name="user_message" class="user-input" 
+            placeholder="Enter between 4-140 characters"></textarea>
+
+          <!-- Counter Span -->
+          <span class="hidden"></span>
+
+          <!-- Error Span -->
+          <span class="hidden"></span>
+        </div>
+
+        <!-- Password Div -->
+        <div class="input">
+          <label for="password">Password:</label>
+          <input type="password" id="password" class="user-input"  name="password"
+          placeholder="Enter between 6-16 characters">
+
+          <!-- Counter Span -->
+          <span class="hidden"></span>
+
+          <!-- Error Span -->
+          <span class="hidden"></span>
+        </div>
+
+        <!-- Password Confirmation Div -->
+        <div class="input">
+          <label for="cpassword">Confirm Password:</label>
+          <input type="password" id="cpassword" class="user-input"  name="confirm_password" placeholder="Both passwords must match">
+
+          <!-- Counter Span -->
+          <span class="hidden"></span>
+
+          <!-- Error Span -->
+          <span class="hidden"></span>
+        </div>
+
+        <!-- Button Div -->
+        <div>
+          <button type="submit" id="validator">Submit</button>
+        </div>
+
+      </form>
+    </section>
+  </body>
+</html>
