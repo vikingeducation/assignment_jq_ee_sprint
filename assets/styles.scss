@@ -1,59 +1,24 @@
 @import "reset";
+@import "form-validation";
+@import "dropdown-menu";
 
-/* Container */
-.form-validation {
-  padding: 40px;
-  width: 100%;
+/* Layout */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 30px;
 }
 
-/* Labels */
-label:after {
-  content: '';
-  display: block;
+section {
+  margin: 0 auto;
+  width: 33%;
 }
 
-.hidden {
-  display: none;
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
-
-.show {
-  color: grey;
-  display: block;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-.error {
-  color: red;
-}
-
-/* Inputs */
-.input {
-  margin: 10px auto;
-}
-
-.user-input {
-  font-size: 14px;
-  margin-top: .5rem;
-  text-indent: 10px;
-  width: 20rem;
-}
-
-input {
-  height: 2rem;
-}
-
-textarea {
-  height: 5rem;
-}
-
-/* Button */
-button {
-  border-radius: 3px;
-  font-size: 14px;
-  height: 2rem;
-  width: 5rem;
-}
-
 
 

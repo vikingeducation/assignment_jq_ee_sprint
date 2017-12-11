@@ -1,0 +1,51 @@
+/* Labels */
+label:after {
+  content: '';
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  color: grey;
+  display: block;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.error {
+  color: red;
+}
+
+/* Inputs */
+.input {
+  margin: 10px auto;
+}
+
+.user-input {
+  font-size: 14px;
+  margin-top: .5rem;
+  text-indent: 10px;
+  width: 20rem;
+}
+
+input {
+  height: 2rem;
+}
+
+textarea {
+  height: 5rem;
+}
+
+/* Button */
+button {
+  border-radius: 3px;
+  font-size: 14px;
+  height: 2rem;
+  width: 5rem;
+}
+
+
+

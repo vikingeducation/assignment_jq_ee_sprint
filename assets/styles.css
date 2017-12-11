@@ -45,11 +45,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/* Container */
-.form-validation {
-  padding: 40px;
-  width: 100%; }
-
 /* Labels */
 label:after {
   content: '';
@@ -89,5 +84,47 @@ button {
   font-size: 14px;
   height: 2rem;
   width: 5rem; }
+
+/* Dropdown Menu */
+.dropdown {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 50%; }
+
+li {
+  padding: 3px 5px;
+  text-align: right; }
+
+li:first-of-type {
+  padding: 3px 0; }
+
+li:hover {
+  background-color: #B9CFF6;
+  cursor: pointer; }
+
+.arrow {
+  margin-left: 5px; }
+
+.hidden {
+  display: none; }
+
+.show-menu {
+  display: block; }
+
+/* Layout */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 30px; }
+
+section {
+  margin: 0 auto;
+  width: 33%; }
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem; }
 
 /*# sourceMappingURL=styles.css.map */
