@@ -1,3 +1,5 @@
+'use strict'
+
 $(document).ready( () => {
 
   /**
@@ -10,9 +12,6 @@ $(document).ready( () => {
     TEXT_AREA_MAX: 140,
     PASSWORD_MAX: 16,
 
-    /**
-    * Calculate remaining characters
-    */
     getRemainingChars ( inputType, strLen ) {
 
       // Check type of input
@@ -25,9 +24,6 @@ $(document).ready( () => {
       }
     },
 
-    /**
-     * Display remaining characters
-     */
     displayRemaining ( eventTarget, remainingChars ) {
 
       // Update span content
@@ -42,9 +38,6 @@ $(document).ready( () => {
         .attr( 'class', 'show' );
     },
 
-    /**
-     * Input event handler
-     */
      inputHandler ( eventObject ) {
 
       // get event target
@@ -72,9 +65,6 @@ $(document).ready( () => {
       }
     },
 
-    /**
-     * Error display
-     */
     displayError ( eventObject, errorMsg ) {
       $( eventObject )
         .next()
@@ -84,9 +74,6 @@ $(document).ready( () => {
         .addClass( 'error' );
     },
 
-    /**
-     * Error clear
-     */
     clearError ( eventObject ) {
       $(eventObject)
         .next()
@@ -94,9 +81,6 @@ $(document).ready( () => {
         .attr( 'class', 'hidden' );
     },
 
-    /**
-     * Password Checker
-     */
     passwordChecker ( eventObject ) {
 
       // get first password
@@ -114,7 +98,7 @@ $(document).ready( () => {
         .value;
 
       // compare values
-      if( firstPass !== secondPass ){
+      if( ( secondPass.length !== 0 ) && ( firstPass !== secondPass )){
         // display error
         formObj.displayError( eventObject.target, `Passwords don\'t match!` );
       } else {
@@ -127,9 +111,6 @@ $(document).ready( () => {
 
     },
 
-    /**
-     * Character Count Checker
-     */
     countChecker ( textObject, min, max ) {
       // get name length
       let textLength = textObject
@@ -147,9 +128,6 @@ $(document).ready( () => {
       }
     },
 
-    /**
-     * Submit Checker
-     */
     submitChecker ( eventObject ) {
 
       eventObject.preventDefault();
@@ -167,25 +145,75 @@ $(document).ready( () => {
   };
 
   /**
-   * Event handlers
+   * THE DROPDOWN
    */
+  const dropdownObj = {
+
+    updateFirstLI ( eventObject, text ) {
+      let firstLI = $( eventObject.target )
+        .parent()
+        .children()
+        [0];
+
+      firstLI.innerHTML = `${text}<span class="arrow">&#x25BC;</span>`;
+    },
+
+    openMenu ( eventObject ) {
+      // get selection text
+      let innerText = $(eventObject.target)
+        .first()
+        [0]
+        .innerText;
+
+      // Toggle menu
+      $(eventObject.target)
+        .parent()
+        .children('.hidden')
+        .slideToggle(300);
+      
+      // If select is not first LI
+      if($(eventObject)[0].target.className === 'hidden'){
+        dropdownObj.updateFirstLI( eventObject, innerText );
+      }
+    }
+
+  };
+
+  /**
+   * THE PHOTO TAGGING BOX
+   */
+  const phototagObj = {
+
+  };
 
   const eventHandlers = {
-    /**
-     * Form validation
-     */
     init () {
-      // text input event
+      /**
+       * Form validation
+       */
+      // Text input event
       $('.input').on( 'keyup', formObj.inputHandler );
-      // password input event
+      // Password input event
       $( '#cpassword' ).on( 'keyup', formObj.passwordChecker );
-      // submit event
+      // Submit event
       $( '#validator' ).click( formObj.submitChecker );
+
+      /**
+       * Dropdown effects
+       */
+      $('#menu').click( dropdownObj.openMenu );
+
+      /**
+       * Phototagging effects
+       */
+
     }
 
   };
   
-  // Register event handlers
+  /**
+   * Register event handlers
+   */
   eventHandlers.init();
 
 });
