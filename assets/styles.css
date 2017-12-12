@@ -114,17 +114,38 @@ li:hover {
 
 /* Layout */
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding: 30px; }
+  box-sizing: border-box;
+  padding: 30px;
+  width: 100%; }
 
 section {
-  margin: 0 auto;
-  width: 33%; }
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 70%; }
 
 h1 {
   font-size: 2rem;
   margin-bottom: 1rem; }
+
+/* Photo Tagging Box */
+.img-box {
+  position: relative; }
+  .img-box img {
+    height: auto;
+    width: 100%; }
+  .img-box .hover-box {
+    border: 3px solid #66FF66;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    pointer-events: none; }
+  .img-box .tag-box {
+    border: 3px solid red;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    pointer-events: none; }
 
 /*# sourceMappingURL=styles.css.map */

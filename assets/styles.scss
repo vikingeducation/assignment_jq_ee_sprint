@@ -3,17 +3,18 @@
 @import "dropdown-menu";
 
 /* Layout */
-
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  box-sizing: border-box;
   padding: 30px;
+  width: 100%;
 }
 
 section {
-  margin: 0 auto;
-  width: 33%;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 70%;
 }
 
 h1 {
@@ -21,4 +22,29 @@ h1 {
   margin-bottom: 1rem;
 }
 
+/* Photo Tagging Box */
+.img-box {
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  .hover-box {
+    border: 3px solid #66FF66;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .tag-box {
+    border: 3px solid red;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  position: relative;
+}
 
