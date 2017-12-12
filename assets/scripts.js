@@ -29,8 +29,8 @@ $(document).ready( () => {
       // Update span content
       eventTarget
         .next()
-        [0]
-        .innerHTML = `Remaining characters: ${ remainingChars }`; 
+        .first()
+        .html(`Remaining characters: ${ remainingChars }`);
 
       // Display span
       eventTarget
@@ -47,8 +47,8 @@ $(document).ready( () => {
       let inputType = eventTarget[0].type;  
 
       // get string length
-      let strLen = eventTarget[0]
-        .value
+      let strLen = eventTarget
+        .val()
         .length;
 
       // get remaining characters 
@@ -88,14 +88,13 @@ $(document).ready( () => {
         .parent()
         .prev()
         .children()
-        .eq( 1 )
-        [0]
-        .value;
+        .eq( 1 ) 
+        .val();
 
       // get second password
       let secondPass = $( eventObject.target )
-        [0]
-        .value;
+        .first()
+        .val();
 
       // compare values
       if( ( secondPass.length !== 0 ) && ( firstPass !== secondPass )){
@@ -106,19 +105,20 @@ $(document).ready( () => {
         $( eventObject.target )
           .next()
           .next()
+          .text('')
           .attr( 'class', 'hidden' );
       }
 
     },
 
     countChecker ( textObject, min, max ) {
-      // get name length
+      // get text length
       let textLength = textObject
-        [0]
-        .value
+        .first()
+        .val()
         .length;
 
-      // check if between 4-32 characters
+      // check if between min and max counts
       if( (textLength >= min) && (textLength <= max) ){
         //clear any existing error
         formObj.clearError( textObject );
@@ -133,13 +133,14 @@ $(document).ready( () => {
       eventObject.preventDefault();
 
       // Check name
-      formObj.countChecker( $( '#name' ), 4, 32 );
+      formObj.countChecker( $( '#name' ), 4, formObj.TEXT_FIELD_MAX );
 
       // Check message
-      formObj.countChecker( $( '#message' ), 4, 140 );
+      formObj.countChecker( $( '#message' ), 4, formObj.TEXT_AREA_MAX );
 
-      // Check password
-      formObj.countChecker( $( '#password' ), 6, 16 );
+      // Check passwords
+      formObj.countChecker( $( '#password' ), 6, formObj.PASSWORD_MAX );
+      formObj.countChecker( $( '#cpassword' ), 6, formObj.PASSWORD_MAX );
     }
 
   };
@@ -150,20 +151,20 @@ $(document).ready( () => {
   const dropdownObj = {
 
     updateFirstLI ( eventObject, text ) {
-      let firstLI = $( eventObject.target )
+      // Get first LI
+      let firstLI  = $( eventObject.target )
         .parent()
         .children()
-        [0];
+        .first();
 
-      firstLI.innerHTML = `${text}<span class="arrow">&#x25BC;</span>`;
+      // Change inner HTML
+      firstLI.html( `${text}<span class="arrow">&#x25BC;</span>` );
     },
 
     openMenu ( eventObject ) {
-      // get selection text
+      // Get selection text
       let innerText = $(eventObject.target)
-        .first()
-        [0]
-        .innerText;
+        .text();
 
       // Toggle menu
       $(eventObject.target)
@@ -171,10 +172,11 @@ $(document).ready( () => {
         .children('.hidden')
         .slideToggle(300);
       
-      // If select is not first LI
-      if($(eventObject)[0].target.className === 'hidden'){
+      // If target is not first LI
+      if($(eventObject.target).attr('class') === 'hidden'){
         dropdownObj.updateFirstLI( eventObject, innerText );
       }
+
     }
 
   };
@@ -183,29 +185,105 @@ $(document).ready( () => {
    * THE PHOTO TAGGING BOX
    */
   const phototagObj = {
+    heroes: ['Black Widow', 'Nick Fury', 'Iron Man', 'The Hulk', 'Captain America',
+      'Thor', 'Hawkeye'],
+
+    clickTag ( eventObject ) {
+      // Get containing div
+      let div = $( eventObject.target )
+        .parent();
+
+      // Construct box
+      let box = $('<div>')
+        .addClass('tag-box')
+        .css({
+          'left': (eventObject.pageX - eventObject.data.left - 50) + 'px',
+          'top': (eventObject.pageY - eventObject.data.top - 50) + 'px'
+        });
+
+      // Display dropdown
+      let dropdown = $('<ul>');
+
+      // Fill dropdown with names
+      phototagObj.heroes.forEach( hero => {
+        let listItem = $('<li>')
+          .text(hero);
+
+        dropdown.append(listItem); 
+      });
+
+      // Add dropdown to box
+      box.append( dropdown );
+
+      // Add box to div
+      div.append( box );
+    },
+
+    updatePosition ( eventObject ) {
+      // Update position
+      // -50px is to center the box around the cursor
+      $( '.hover-box' )
+      .css({
+        'left': (eventObject.pageX - eventObject.data.left -50) + 'px',
+        'top': (eventObject.pageY - eventObject.data.top -50) + 'px'
+      });
+
+    },
+
+    showBox ( eventObject ) {
+      // Get containing div
+      let div = $( eventObject.target )
+        .parent();
+
+      // Get photo offset
+      let offset = $('img').offset();
+
+      // Construct box
+      let box = $('<div>')
+        .addClass('hover-box');
+
+      // Add box to div
+      div.append( box );
+
+      // Follow mouse
+      $( 'img' ).on( 'mousemove', offset, phototagObj.updatePosition );
+
+      // Tag on click
+      $( 'img' ).click( offset, phototagObj.clickTag );
+    },
+
+    removeBox( eventObject ) {
+      // Get container div
+      let div = $( eventObject.target )
+        .parent();
+
+      // Remove box
+      div.find( '.hover-box' ).remove();
+    }
 
   };
 
   const eventHandlers = {
     init () {
-      /**
+      /*
        * Form validation
        */
       // Text input event
-      $('.input').on( 'keyup', formObj.inputHandler );
+      $( '.input' ).on( 'keyup', formObj.inputHandler );
       // Password input event
       $( '#cpassword' ).on( 'keyup', formObj.passwordChecker );
       // Submit event
       $( '#validator' ).click( formObj.submitChecker );
 
-      /**
+      /*
        * Dropdown effects
        */
-      $('#menu').click( dropdownObj.openMenu );
+      $( '#menu' ).click( dropdownObj.openMenu );
 
-      /**
+      /*
        * Phototagging effects
        */
+      $( 'img' ).hover( phototagObj.showBox, phototagObj.removeBox );
 
     }
 
