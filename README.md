@@ -2,6 +2,8 @@
 
 Assignment for [Viking Code School][1]
 
+View it at: <https://ksc23.github.io/assignment_jq_ee_sprint/>
+
 ## The Form Validation
 
 Fulfills the following requirements:
@@ -44,5 +46,7 @@ over the photo
    new tag box
 5. Previous tags should remain on the screen until the browser reloads and
    everything is reset  
+
+<https://ksc23.github.io/assignment_jq_ee_sprint/>
 
 [1]: http://www.vikingcodeschool.com
