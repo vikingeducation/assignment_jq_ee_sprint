@@ -184,39 +184,115 @@ $(document).ready( () => {
   /**
    * THE PHOTO TAGGING BOX
    */
-  const phototagObj = {
-    heroes: ['Black Widow', 'Nick Fury', 'Iron Man', 'The Hulk', 'Captain America',
+  const photoObj = {
+
+    container: $('div.img-box'),
+
+    heroes: ['Black Widow', 'Nick Fury', 'Iron Man', 'The Hulk', 'Capt America',
       'Thor', 'Hawkeye'],
 
-    clickTag ( eventObject ) {
-      // Get containing div
-      let div = $( eventObject.target )
-        .parent();
+    offset: $( 'img' ).offset(),
 
-      // Construct box
-      let box = $('<div>')
-        .addClass('tag-box')
+    cancelDropdown( eventObject ) {
+        // Remove dropdown
+        photoObj.container
+          .find('.tag-dropdown')
+          .remove();
+
+        // Remove unlabeled tag boxes
+        if( $('.tag-box')
+          .last()
+          .next()
+          .hasClass('label') === false) {
+
+            $( '.tag-box' )
+              .last()
+              .remove();
+        }
+
+      // Remove clicktag handler
+      $( this ).off( 'click', photoObj.clickTag );
+
+      // Remove cancel dropdown handler
+      $( this ).off( 'click', photoObj.cancelDropdown );
+
+    },
+
+    selectLI ( eventObject ) {
+
+      let ul = $( this ).parent();
+      
+      let text = $( this ).text();
+
+      // Get coordinates of UL
+      let left = ul.css('left');
+      let top = ul.css('top');
+
+      // Create label
+      let label = $('<div>')
+        .addClass('label')
+        .text( text )
         .css({
-          'left': (eventObject.pageX - eventObject.data.left - 50) + 'px',
-          'top': (eventObject.pageY - eventObject.data.top - 50) + 'px'
+          'left': left,
+          'top': top
         });
 
-      // Display dropdown
-      let dropdown = $('<ul>');
+      // Replace ul with label
+      photoObj.container.children('ul').replaceWith(label);
 
-      // Fill dropdown with names
-      phototagObj.heroes.forEach( hero => {
+    },
+
+    createDropdown( left, top ) {
+
+      // Create ul
+      let dropdown = $('<ul>')
+        // Add styles
+        .addClass('tag-dropdown')
+        // Add position
+        .css({
+          'left': left,
+          'top': top 
+          })
+        // Add event listener
+        .on( 'click', 'li', photoObj.selectLI );
+
+      // Fill dropdown with heroes
+      photoObj.heroes.forEach( hero => {
         let listItem = $('<li>')
           .text(hero);
 
         dropdown.append(listItem); 
       });
 
-      // Add dropdown to box
-      box.append( dropdown );
+      return dropdown;
+    },
 
-      // Add box to div
-      div.append( box );
+    clickTag ( eventObject ) {
+      // Set coordinates
+      let left = (eventObject.pageX - photoObj.offset.left - 50) + 'px';
+      let top = (eventObject.pageY - photoObj.offset.top - 50) + 'px';
+      
+      // Construct tag box
+      let tagBox  = $('<div>')
+        .addClass('tag-box')
+        .css({
+          'left': left,
+          'top': top
+        });
+
+      // Create dropdown
+      let dropdown = photoObj.createDropdown ( left, 
+          // set top position of dropdown to be right below click box
+        (eventObject.pageY - photoObj.offset.top + 60 ) + 'px' );
+      
+      // Add click box & dropdown to container
+      photoObj.container
+        .append( tagBox )
+        .append( dropdown );
+
+      // Event listener for canceling dropdown selection
+      $( 'img' ).on( 'click', photoObj.cancelDropdown ); 
+
     },
 
     updatePosition ( eventObject ) {
@@ -224,41 +300,31 @@ $(document).ready( () => {
       // -50px is to center the box around the cursor
       $( '.hover-box' )
       .css({
-        'left': (eventObject.pageX - eventObject.data.left -50) + 'px',
-        'top': (eventObject.pageY - eventObject.data.top -50) + 'px'
+        'left': (eventObject.pageX - photoObj.offset.left -50) + 'px',
+        'top': (eventObject.pageY - photoObj.offset.top -50) + 'px'
       });
-
     },
 
     showBox ( eventObject ) {
-      // Get containing div
-      let div = $( eventObject.target )
-        .parent();
-
-      // Get photo offset
-      let offset = $('img').offset();
 
       // Construct box
       let box = $('<div>')
         .addClass('hover-box');
 
       // Add box to div
-      div.append( box );
+      photoObj.container.append( box );
 
       // Follow mouse
-      $( 'img' ).on( 'mousemove', offset, phototagObj.updatePosition );
+      $( 'img' ).on( 'mousemove', photoObj.updatePosition );
 
-      // Tag on click
-      $( 'img' ).click( offset, phototagObj.clickTag );
+      // Add tag event handler
+      $( 'img' ).on( 'click', photoObj.clickTag );
+
     },
 
     removeBox( eventObject ) {
-      // Get container div
-      let div = $( eventObject.target )
-        .parent();
-
       // Remove box
-      div.find( '.hover-box' ).remove();
+      photoObj.container.find( '.hover-box' ).remove();
     }
 
   };
@@ -283,7 +349,7 @@ $(document).ready( () => {
       /*
        * Phototagging effects
        */
-      $( 'img' ).hover( phototagObj.showBox, phototagObj.removeBox );
+      $( 'img' ).hover( photoObj.showBox, photoObj.removeBox );
 
     }
 
