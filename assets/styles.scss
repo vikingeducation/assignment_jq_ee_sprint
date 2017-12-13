@@ -1,6 +1,7 @@
 @import "reset";
 @import "form-validation";
 @import "dropdown-menu";
+@import "photo-tagging";
 
 /* Layout */
 .container {
@@ -22,29 +23,4 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* Photo Tagging Box */
-.img-box {
-  img {
-    height: auto;
-    width: 100%;
-  }
-
-  .hover-box {
-    border: 3px solid #66FF66;
-    height: 100px;
-    width: 100px;
-    position: absolute;
-    pointer-events: none;
-  }
-
-  .tag-box {
-    border: 3px solid red;
-    height: 100px;
-    width: 100px;
-    position: absolute;
-    pointer-events: none;
-  }
-
-  position: relative;
-}
 

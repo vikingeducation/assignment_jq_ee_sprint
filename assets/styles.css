@@ -112,23 +112,6 @@ li:hover {
 .show-menu {
   display: block; }
 
-/* Layout */
-.container {
-  box-sizing: border-box;
-  padding: 30px;
-  width: 100%; }
-
-section {
-  border: 1px solid grey;
-  border-radius: 5px;
-  margin: 20px auto;
-  padding: 20px;
-  width: 70%; }
-
-h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem; }
-
 /* Photo Tagging Box */
 .img-box {
   position: relative; }
@@ -145,7 +128,41 @@ h1 {
     border: 3px solid red;
     height: 100px;
     width: 100px;
-    position: absolute;
-    pointer-events: none; }
+    position: absolute; }
+
+.tag-dropdown {
+  background: white;
+  height: 100px;
+  position: absolute;
+  width: 100px; }
+  .tag-dropdown li {
+    background: white; }
+  .tag-dropdown li:hover {
+    background-color: #B9CFF6;
+    cursor: pointer; }
+
+.label {
+  background: white;
+  height: 16px;
+  width: 100px;
+  pointer-events: none;
+  position: absolute; }
+
+/* Layout */
+.container {
+  box-sizing: border-box;
+  padding: 30px;
+  width: 100%; }
+
+section {
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 70%; }
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem; }
 
 /*# sourceMappingURL=styles.css.map */
