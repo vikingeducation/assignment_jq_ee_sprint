@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script defer src="assets/scripts.js"></script>
+    <script defer src="assets/js/scripts.js"></script>
   </head>
   <body>
     <main class="container">
@@ -17,51 +17,41 @@
         <!-- Name Div -->
         <div class="input">
           <label for="name">Name:</label>
-          <input type="text" id="name" name="name" class="user-input" placeholder="Enter between 4-32 characters">
+          <input type="text" id="name" name="name" class="user-input"
+          data-min="4" data-max="32">
 
-          <!-- Counter Span -->
-          <span class="hidden"></span>
-
-          <!-- Error Span -->
-          <span class="hidden"></span>
+          <span class="hidden js-counter"></span>
+          <span class="hidden error"></span>
         </div>
 
         <!-- Message Div -->
         <div class="input">
           <label for="message">Message:</label>
-          <textarea id="message" name="user_message" class="user-input" 
-            placeholder="Enter between 4-140 characters"></textarea>
+          <textarea id="message" name="user_message" class="user-input"
+            data-min="4" data-max="140"></textarea>
 
-          <!-- Counter Span -->
-          <span class="hidden"></span>
-
-          <!-- Error Span -->
-          <span class="hidden"></span>
+          <span class="hidden js-counter"></span>
+          <span class="hidden error"></span>
         </div>
 
         <!-- Password Div -->
         <div class="input">
           <label for="password">Password:</label>
-          <input type="password" id="password" class="user-input"  name="password"
-          placeholder="Enter between 6-16 characters">
+          <input type="password" id="password" class="user-input"
+          name="password" data-min="6" data-max="16">
 
-          <!-- Counter Span -->
-          <span class="hidden"></span>
-
-          <!-- Error Span -->
-          <span class="hidden"></span>
+          <span class="hidden js-counter"></span>
+          <span class="hidden error"></span>
         </div>
 
         <!-- Password Confirmation Div -->
         <div class="input">
           <label for="cpassword">Confirm Password:</label>
-          <input type="password" id="cpassword" class="user-input"  name="confirm_password" placeholder="Both passwords must match">
+          <input type="password" id="cpassword" class="user-input"
+          name="confirm_password" data-min="6" data-max="16">
 
-          <!-- Counter Span -->
-          <span class="hidden"></span>
-
-          <!-- Error Span -->
-          <span class="hidden"></span>
+          <span class="hidden js-counter"></span>
+          <span class="hidden error"></span>
         </div>
 
         <!-- Button Div -->

@@ -1,120 +1,103 @@
 'use strict'
 
 $(document).ready( () => {
-
+ 
   /**
    * THE FORM VALIDATION
    */
   const formObj = {
 
-    // Max character lengths
-    TEXT_FIELD_MAX: 32,
-    TEXT_AREA_MAX: 140,
-    PASSWORD_MAX: 16,
+    remainingChars ( $target, strLen ) {
+      // Get max
+      let max = $target.data( 'max' );
 
-    getRemainingChars ( inputType, strLen ) {
-
-      // Check type of input
-      if ( inputType === 'text') {
-        return formObj.TEXT_FIELD_MAX - strLen;
-      } else if ( inputType === 'textarea' ) {
-        return formObj.TEXT_AREA_MAX - strLen;
-      } else {
-        return formObj.PASSWORD_MAX - strLen;
-      }
+      return max - strLen;
     },
 
-    displayRemaining ( eventTarget, remainingChars ) {
-
-      // Update span content
-      eventTarget
-        .next()
-        .first()
-        .html(`Remaining characters: ${ remainingChars }`);
-
-      // Display span
-      eventTarget
-        .next()
-        .attr( 'class', 'show' );
+    updateCount ( e, chars ) {
+      // Update span content 
+      e
+        .next( '.js-counter' )
+        .html(`Remaining characters: ${ chars }`)
     },
 
-     inputHandler ( eventObject ) {
+     inputHandler ( e ) {
 
       // get event target
-      let eventTarget = $( eventObject.target ).first();
-
-      // get input type
-      let inputType = eventTarget[0].type;  
+      let $target = $( this );
 
       // get string length
-      let strLen = eventTarget
+      let strLen = $target
         .val()
         .length;
 
-      // get remaining characters 
-      let remainingChars = formObj.getRemainingChars( inputType, strLen );
-
-      // display remaining chars if not empty
       if ( strLen > 0 ) {
-        formObj.displayRemaining ( eventTarget, remainingChars );
+        // Get remaining chars
+        let remainingChars = formObj.remainingChars( $target, strLen );
+
+        // Display remaining
+        formObj.updateCount ( $target, remainingChars );
+
+        $target
+          .next( '.js-counter' )
+          .removeClass('hidden')
+          .addClass('show');
+
       } else {
         // hide if empty
-        eventTarget
-          .next()
-          .attr( 'class', 'hidden' );
+        $target
+        .next( '.js-counter' )
+        .removeClass('show')
+        .addClass('hidden');
       }
     },
 
-    displayError ( eventObject, errorMsg ) {
-      $( eventObject )
-        .next()
-        .next()
+    displayError ( e , errorMsg ) {
+      $( e )
+        .siblings('.error')
         .text( errorMsg )
-        .attr( 'class', 'show' )
-        .addClass( 'error' );
+        .removeClass('hidden')
+        .addClass( 'show' );
     },
 
-    clearError ( eventObject ) {
-      $(eventObject)
-        .next()
-        .next()
-        .attr( 'class', 'hidden' );
+    clearError ( e ) {
+      $( e )
+        .siblings('.error')
+        .text('')
+        .removeClass('show')
+        .addClass('hidden');
     },
 
-    passwordChecker ( eventObject ) {
+    passwordChecker ( e ) {
+      // Get target
+      let $target = $( this );
 
       // get first password
-      let firstPass = $( eventObject.target )
-        .parent()
-        .prev()
-        .children()
-        .eq( 1 ) 
+      let firstPass = $( '#password' )
         .val();
 
       // get second password
-      let secondPass = $( eventObject.target )
-        .first()
+      let secondPass = $target 
         .val();
 
       // compare values
-      if( ( secondPass.length !== 0 ) && ( firstPass !== secondPass )){
+      if( ( secondPass.length > 0 ) && ( firstPass !== secondPass )){
         // display error
-        formObj.displayError( eventObject.target, `Passwords don\'t match!` );
+        formObj.displayError( $target, `Passwords don\'t match!` );
       } else {
         // clear error
-        $( eventObject.target )
-          .next()
-          .next()
-          .text('')
-          .attr( 'class', 'hidden' );
+        formObj.clearError( $target );
       }
 
     },
 
-    countChecker ( textObject, min, max ) {
+    countChecker ( textObject ) {
+      // get min and max
+      let min = +textObject.data('min');
+      let max = +textObject.data('max');
+
       // get text length
       let textLength = textObject
-        .first()
         .val()
         .length;
 
@@ -124,23 +107,22 @@ $(document).ready( () => {
         formObj.clearError( textObject );
       } else {
         // display error
-        formObj.displayError( $(textObject), `Input must be between ${min} and ${max} characters` );
+        formObj.displayError( textObject, `Input must be between ${min} and ${max} characters` );
       }
     },
 
-    submitChecker ( eventObject ) {
+    submitChecker ( e ) {
 
-      eventObject.preventDefault();
+      e.preventDefault();
 
       // Check name
-      formObj.countChecker( $( '#name' ), 4, formObj.TEXT_FIELD_MAX );
+      formObj.countChecker( $( '#name' ) );
 
       // Check message
-      formObj.countChecker( $( '#message' ), 4, formObj.TEXT_AREA_MAX );
+      formObj.countChecker( $( '#message' ) );
 
-      // Check passwords
-      formObj.countChecker( $( '#password' ), 6, formObj.PASSWORD_MAX );
-      formObj.countChecker( $( '#cpassword' ), 6, formObj.PASSWORD_MAX );
+      // Check password
+      formObj.countChecker( $( '#password' ) );
     }
 
   };
@@ -335,7 +317,7 @@ $(document).ready( () => {
        * Form validation
        */
       // Text input event
-      $( '.input' ).on( 'keyup', formObj.inputHandler );
+      $( '.user-input' ).on( 'keyup', formObj.inputHandler );
       // Password input event
       $( '#cpassword' ).on( 'keyup', formObj.passwordChecker );
       // Submit event
