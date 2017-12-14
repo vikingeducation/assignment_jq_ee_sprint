@@ -1,0 +1,166 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/*Labels */
+label:after {
+  content: '';
+  display: block; }
+
+.hidden {
+  display: none; }
+
+.show {
+  color: grey;
+  display: block;
+  font-size: 12px;
+  margin-top: 5px; }
+
+.error {
+  color: red; }
+
+/* Inputs */
+.input {
+  margin: 10px auto; }
+
+.user-input {
+  font-size: 14px;
+  margin-top: .5rem;
+  text-indent: 10px;
+  width: 20rem; }
+
+input {
+  height: 2rem; }
+
+textarea {
+  height: 5rem; }
+
+/* Button */
+button {
+  border-radius: 3px;
+  font-size: 14px;
+  height: 2rem;
+  width: 5rem; }
+
+/* Dropdown Menu */
+.dropdown {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 50%; }
+
+li {
+  padding: 3px 5px;
+  text-align: right; }
+
+li:first-of-type {
+  padding: 3px 0; }
+
+li:hover {
+  background-color: #B9CFF6;
+  cursor: pointer; }
+
+.arrow {
+  margin-left: 5px; }
+
+.hidden {
+  display: none; }
+
+.show-menu {
+  display: block; }
+
+/* Photo Tagging Box */
+.img-box {
+  position: relative; }
+  .img-box img {
+    height: auto;
+    width: 100%; }
+  .img-box .hover-box {
+    border: 3px solid #66FF66;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    pointer-events: none; }
+  .img-box .tag-box {
+    border: 3px solid red;
+    height: 100px;
+    width: 100px;
+    position: absolute; }
+
+.tag-dropdown {
+  background: white;
+  position: absolute;
+  width: 100px; }
+  .tag-dropdown li {
+    background: white; }
+  .tag-dropdown li:hover {
+    background-color: #B9CFF6;
+    cursor: pointer; }
+
+.label {
+  background: white;
+  height: 16px;
+  width: 100px;
+  position: absolute; }
+
+/* Layout */
+.container {
+  box-sizing: border-box;
+  padding: 30px;
+  width: 100%; }
+
+section {
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 70%; }
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem; }
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,26 @@
+@import "reset";
+@import "form-validation";
+@import "dropdown-menu";
+@import "photo-tagging";
+
+/* Layout */
+.container {
+  box-sizing: border-box;
+  padding: 30px;
+  width: 100%;
+}
+
+section {
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 70%;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+

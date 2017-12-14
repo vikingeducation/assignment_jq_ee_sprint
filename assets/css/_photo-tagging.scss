@@ -1,0 +1,48 @@
+/* Photo Tagging Box */
+.img-box {
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  .hover-box {
+    border: 3px solid #66FF66;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .tag-box {
+    border: 3px solid red;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+  }
+
+  position: relative;
+}
+
+.tag-dropdown {
+  background: white;
+  position: absolute;
+  width: 100px;
+
+  li {
+    background: white;
+  }
+
+  li:hover {
+    background-color: #B9CFF6;
+    cursor: pointer;
+  }
+}
+
+.label {
+    background: white;
+    height: 16px;
+    width: 100px;
+    position: absolute;
+}
+
+

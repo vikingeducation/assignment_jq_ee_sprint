@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script defer src="assets/js/scripts.js"></script>
+  </head>
+  <body>
+    <main class="container">
+    <!-- FORM VALIDATION -->
+    <section class="form-validation">
+      <h1>Form Validation</h1>
+      <form action="#" method="post">
+
+        <!-- Name Div -->
+        <div class="input">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" class="user-input"
+          data-min="4" data-max="32">
+
+          <span class="hidden js-counter"></span>
+          <span class="hidden error"></span>
+        </div>
+
+        <!-- Message Div -->
+        <div class="input">
+          <label for="message">Message:</label>
+          <textarea id="message" name="user_message" class="user-input"
+            data-min="4" data-max="140"></textarea>
+
+          <span class="hidden js-counter"></span>
+          <span class="hidden error"></span>
+        </div>
+
+        <!-- Password Div -->
+        <div class="input">
+          <label for="password">Password:</label>
+          <input type="password" id="password" class="user-input"
+          name="password" data-min="6" data-max="16">
+
+          <span class="hidden js-counter"></span>
+          <span class="hidden error"></span>
+        </div>
+
+        <!-- Password Confirmation Div -->
+        <div class="input">
+          <label for="cpassword">Confirm Password:</label>
+          <input type="password" id="cpassword" class="user-input"
+          name="confirm_password" data-min="6" data-max="16">
+
+          <span class="hidden js-counter"></span>
+          <span class="hidden error"></span>
+        </div>
+
+        <!-- Button Div -->
+        <div>
+          <button type="submit" id="validator">Submit</button>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- THE DROPDOWN -->
+    <section>
+      <h1>Dropdown Menu</h1>
+      <div class="dropdown">
+        <ul id="menu">
+          <li>&nbsp;<span class="arrow">&#x25BC;</span></li>
+          <li class="hidden">Tiger</li>
+          <li class="hidden">Bear</li>
+          <li class="hidden">Wolf</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- THE PHOTO TAGGING BOX -->
+    <section class="photo-tagging-box">
+      <h1>Photo Tagging Box</h1>
+      <div class="img-box">
+        <img src="assets/images/avengers.jpg" alt="The Avengers">
+      </div>
+    </section>
+    </main>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
