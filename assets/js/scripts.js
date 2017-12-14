@@ -5,38 +5,38 @@ $(document).ready( () => {
   /**
    * THE FORM VALIDATION
    */
-  const formObj = {
+  const FORM = {
 
-    remainingChars ( $target, strLen ) {
+    _remainingChars ( $target, strLen ) {
       // Get max
       let max = $target.data( 'max' );
 
       return max - strLen;
     },
 
-    updateCount ( e, chars ) {
+    _updateCount ( e, chars ) {
       // Update span content 
       e
         .next( '.js-counter' )
         .html(`Remaining characters: ${ chars }`)
     },
 
-     inputHandler ( e ) {
+    _checkInput ( e ) {
 
-      // get event target
+      // Get event target
       let $target = $( this );
 
-      // get string length
+      // Get string length
       let strLen = $target
         .val()
         .length;
 
       if ( strLen > 0 ) {
         // Get remaining chars
-        let remainingChars = formObj.remainingChars( $target, strLen );
+        let remainingChars = FORM._remainingChars( $target, strLen );
 
         // Display remaining
-        formObj.updateCount ( $target, remainingChars );
+        FORM._updateCount ( $target, remainingChars );
 
         $target
           .next( '.js-counter' )
@@ -44,7 +44,7 @@ $(document).ready( () => {
           .addClass('show');
 
       } else {
-        // hide if empty
+        // Hide if empty
         $target
         .next( '.js-counter' )
         .removeClass('show')
@@ -52,7 +52,7 @@ $(document).ready( () => {
       }
     },
 
-    displayError ( e , errorMsg ) {
+    _displayError ( e , errorMsg ) {
       $( e )
         .siblings('.error')
         .text( errorMsg )
@@ -60,7 +60,7 @@ $(document).ready( () => {
         .addClass( 'show' );
     },
 
-    clearError ( e ) {
+    _clearError ( e ) {
       $( e )
         .siblings('.error')
         .text('')
@@ -68,61 +68,61 @@ $(document).ready( () => {
         .addClass('hidden');
     },
 
-    passwordChecker ( e ) {
+    _checkPasswords ( e ) {
       // Get target
       let $target = $( this );
 
-      // get first password
+      // Get first password
       let firstPass = $( '#password' )
         .val();
 
-      // get second password
+      // Get second password
       let secondPass = $target 
         .val();
 
-      // compare values
+      // Compare values
       if( ( secondPass.length > 0 ) && ( firstPass !== secondPass )){
-        // display error
-        formObj.displayError( $target, `Passwords don\'t match!` );
+        // Display error
+        FORM._displayError( $target, `Passwords don\'t match!` );
       } else {
-        // clear error
-        formObj.clearError( $target );
+        // Clear error
+        FORM._clearError( $target );
       }
 
     },
 
-    countChecker ( textObject ) {
-      // get min and max
+    _checkCount ( textObject ) {
+      // Get min and max
       let min = +textObject.data('min');
       let max = +textObject.data('max');
 
-      // get text length
+      // Get text length
       let textLength = textObject
         .val()
         .length;
 
-      // check if between min and max counts
+      // Check if between min and max counts
       if( (textLength >= min) && (textLength <= max) ){
-        //clear any existing error
-        formObj.clearError( textObject );
+        // Clear any existing error
+        FORM._clearError( textObject );
       } else {
-        // display error
-        formObj.displayError( textObject, `Input must be between ${min} and ${max} characters` );
+        // Display error
+        FORM._displayError( textObject, `Input must be between ${min} and ${max} characters` );
       }
     },
 
-    submitChecker ( e ) {
+    _checkSubmit ( e ) {
 
       e.preventDefault();
 
       // Check name
-      formObj.countChecker( $( '#name' ) );
+      FORM._checkCount( $( '#name' ) );
 
       // Check message
-      formObj.countChecker( $( '#message' ) );
+      FORM._checkCount( $( '#message' ) );
 
       // Check password
-      formObj.countChecker( $( '#password' ) );
+      FORM._checkCount( $( '#password' ) );
     }
 
   };
@@ -130,11 +130,11 @@ $(document).ready( () => {
   /**
    * THE DROPDOWN
    */
-  const dropdownObj = {
+  const DROPDOWN = {
 
-    updateFirstLI ( eventObject, text ) {
+    _updateFirstLI ( e, text ) {
       // Get first LI
-      let firstLI  = $( eventObject.target )
+      let firstLI  = $( e.target )
         .parent()
         .children()
         .first();
@@ -143,20 +143,20 @@ $(document).ready( () => {
       firstLI.html( `${text}<span class="arrow">&#x25BC;</span>` );
     },
 
-    openMenu ( eventObject ) {
+    _openMenu ( e ) {
       // Get selection text
-      let innerText = $(eventObject.target)
+      let innerText = $( e.target )
         .text();
 
       // Toggle menu
-      $(eventObject.target)
+      $( e.target )
         .parent()
         .children('.hidden')
         .slideToggle(300);
       
       // If target is not first LI
-      if($(eventObject.target).attr('class') === 'hidden'){
-        dropdownObj.updateFirstLI( eventObject, innerText );
+      if($( e.target ).attr('class') === 'hidden'){
+        DROPDOWN._updateFirstLI( e, innerText );
       }
 
     }
@@ -166,18 +166,25 @@ $(document).ready( () => {
   /**
    * THE PHOTO TAGGING BOX
    */
-  const photoObj = {
+  const PHOTOTAGGER = {
 
-    container: $('div.img-box'),
+    _container: $('div.img-box'),
 
-    heroes: ['Black Widow', 'Nick Fury', 'Iron Man', 'The Hulk', 'Capt America',
-      'Thor', 'Hawkeye'],
+    _heroes: [
+      'Black Widow',
+      'Nick Fury',
+      'Iron Man',
+      'The Hulk',
+      'Capt America',
+      'Thor',
+      'Hawkeye'
+    ],
 
-    offset: $( 'img' ).offset(),
+    _offset: $( 'img' ).offset(),
 
-    cancelDropdown( eventObject ) {
+    _cancelDropdown( e ) {
         // Remove dropdown
-        photoObj.container
+        PHOTOTAGGER._container
           .find('.tag-dropdown')
           .remove();
 
@@ -193,14 +200,14 @@ $(document).ready( () => {
         }
 
       // Remove clicktag handler
-      $( this ).off( 'click', photoObj.clickTag );
+      $( 'img' ).off( 'click', PHOTOTAGGER._clickTag );
 
       // Remove cancel dropdown handler
-      $( this ).off( 'click', photoObj.cancelDropdown );
+      $( 'img' ).off( 'click', PHOTOTAGGER._cancelDropdown );
 
     },
 
-    selectLI ( eventObject ) {
+    _selectLI ( e ) {
 
       let ul = $( this ).parent();
       
@@ -220,11 +227,15 @@ $(document).ready( () => {
         });
 
       // Replace ul with label
-      photoObj.container.children('ul').replaceWith(label);
+      PHOTOTAGGER._container.children('ul').replaceWith(label);
+
+      // Remove selection from heroes
+      let idx = $( this ).attr( 'data' );
+      PHOTOTAGGER._heroes.splice( idx, 1);
 
     },
 
-    createDropdown( left, top ) {
+    _createDropdown( left, top ) {
 
       // Create ul
       let dropdown = $('<ul>')
@@ -236,12 +247,13 @@ $(document).ready( () => {
           'top': top 
           })
         // Add event listener
-        .on( 'click', 'li', photoObj.selectLI );
+        .on( 'click', 'li', PHOTOTAGGER._selectLI );
 
       // Fill dropdown with heroes
-      photoObj.heroes.forEach( hero => {
+      PHOTOTAGGER._heroes.forEach( (hero, idx) => {
         let listItem = $('<li>')
-          .text(hero);
+          .text(hero)
+          .attr('data', idx);
 
         dropdown.append(listItem); 
       });
@@ -249,10 +261,10 @@ $(document).ready( () => {
       return dropdown;
     },
 
-    clickTag ( eventObject ) {
+    _clickTag ( e ) {
       // Set coordinates
-      let left = (eventObject.pageX - photoObj.offset.left - 50) + 'px';
-      let top = (eventObject.pageY - photoObj.offset.top - 50) + 'px';
+      let left = ( e.pageX - PHOTOTAGGER._offset.left - 50) + 'px';
+      let top = ( e.pageY - PHOTOTAGGER._offset.top - 50) + 'px';
       
       // Construct tag box
       let tagBox  = $('<div>')
@@ -263,50 +275,53 @@ $(document).ready( () => {
         });
 
       // Create dropdown
-      let dropdown = photoObj.createDropdown ( left, 
+      let dropdown = PHOTOTAGGER._createDropdown ( left, 
           // set top position of dropdown to be right below click box
-        (eventObject.pageY - photoObj.offset.top + 60 ) + 'px' );
+        (e.pageY - PHOTOTAGGER._offset.top + 60 ) + 'px' );
       
       // Add click box & dropdown to container
-      photoObj.container
+      PHOTOTAGGER._container
         .append( tagBox )
         .append( dropdown );
 
       // Event listener for canceling dropdown selection
-      $( 'img' ).on( 'click', photoObj.cancelDropdown ); 
+      $( 'img' ).on( 'click', PHOTOTAGGER._cancelDropdown ); 
+
+      // Remove tag event handler
+      $( 'img' ).off( 'click', PHOTOTAGGER._clickTag );
 
     },
 
-    updatePosition ( eventObject ) {
+    _updatePosition ( e ) {
       // Update position
       // -50px is to center the box around the cursor
       $( '.hover-box' )
       .css({
-        'left': (eventObject.pageX - photoObj.offset.left -50) + 'px',
-        'top': (eventObject.pageY - photoObj.offset.top -50) + 'px'
+        'left': (e.pageX - PHOTOTAGGER._offset.left -50) + 'px',
+        'top': (e.pageY - PHOTOTAGGER._offset.top -50) + 'px'
       });
     },
 
-    showBox ( eventObject ) {
+    _showBox ( ) {
 
       // Construct box
       let box = $('<div>')
         .addClass('hover-box');
 
       // Add box to div
-      photoObj.container.append( box );
+      PHOTOTAGGER._container.append( box );
 
       // Follow mouse
-      $( 'img' ).on( 'mousemove', photoObj.updatePosition );
+      $( 'img' ).on( 'mousemove', PHOTOTAGGER._updatePosition );
 
       // Add tag event handler
-      $( 'img' ).on( 'click', photoObj.clickTag );
+      $( 'img' ).on( 'click', PHOTOTAGGER._clickTag );
 
     },
 
-    removeBox( eventObject ) {
+    _removeBox( ) {
       // Remove box
-      photoObj.container.find( '.hover-box' ).remove();
+      PHOTOTAGGER._container.find( '.hover-box' ).remove();
     }
 
   };
@@ -317,21 +332,21 @@ $(document).ready( () => {
        * Form validation
        */
       // Text input event
-      $( '.user-input' ).on( 'keyup', formObj.inputHandler );
+      $( '.user-input' ).on( 'keyup', FORM._checkInput );
       // Password input event
-      $( '#cpassword' ).on( 'keyup', formObj.passwordChecker );
+      $( '#cpassword' ).on( 'keyup', FORM._checkPasswords );
       // Submit event
-      $( '#validator' ).click( formObj.submitChecker );
+      $( '#validator' ).click( FORM._checkSubmit );
 
       /*
        * Dropdown effects
        */
-      $( '#menu' ).click( dropdownObj.openMenu );
+      $( '#menu' ).click( DROPDOWN._openMenu );
 
       /*
        * Phototagging effects
        */
-      $( 'img' ).hover( photoObj.showBox, photoObj.removeBox );
+      $( 'img' ).hover( PHOTOTAGGER._showBox, PHOTOTAGGER._removeBox );
 
     }
 
