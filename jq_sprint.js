@@ -1,15 +1,16 @@
+
 /*
   cd Documents/Viking/JS/jq_sprint
 
   https://www.vikingcodeschool.com/dashboard#/falling-in-love-with-javascript/practice-with-events-and-effects
 
-  https://www.w3schools.com/js/js_validation.asp
-
   TODO
   form submission - should verify limits, password matches, and handle errors
 */
 
-document.getElementById("myForm").addEventListener("input", function(action) {
+var theForm = document.getElementById("myForm");
+
+theForm.addEventListener("input", function(action) {
   var subject = action.target;
   var characters = subject.value.length;
 
@@ -27,7 +28,7 @@ document.getElementById("myForm").addEventListener("input", function(action) {
     var counter = document.getElementById("counterIC");
     if (
       document.getElementsByClassName("IB")[0].value ===
-      document.getElementsByClassName("IC")[0].value
+      subject.value
     ) {
       var message = "match";
     } else {
@@ -46,56 +47,53 @@ document.getElementById("myForm").addEventListener("input", function(action) {
   Password/confirmation -- 6-16 characters
   Password -- must match confirmation
 
-  1. get each value
+  - change the html contents of the display elements
+   1. blank if good
 
-  2. check each value against conditions above (may bypass 1 & 2 by grabbing
-  the value of the input display element to the user)
+   2. if bad show error and make both error and that field red
 
-  3. if conditions are met grab a new as of yet not created html element and
-  add a message about successful submission, otherwise return false and modify
-  the display element(s) with an appropriate error, likely better to send to a
-  different page by adding "action="/success.html"" to the form element and
-  copying the main html page but add a success message to the success.html file
+  - if all fields are good blank everything out (as in include input fields),
+  and either reveal or unhide an html element under the submit button
 */
 
-function validateForm() {
+theForm.addEventListener("submit", function(pressed) {
+  pressed.preventDefault();
+
   var inputs = document.forms[0];
 
   if (inputs[0].value.length > 3 && inputs[0].value.length < 33) {
     console.log("val 1 good")
   } else {
     console.log("val 1 bad")
-    return false;
+    document.getElementById("counterIA").innerHTML = "length error, must be longer than 4 and shorter than 32 characters"
   }
 
   if (inputs[1].value.length > 3 && inputs[1].value.length < 141) {
     console.log("val 2 good")
   } else {
     console.log("val 2 bad")
-    return false;
   }
 
   if (inputs[3].value.length > 5 && inputs[3].value.length < 17) {
     console.log("val 3 good")
   } else {
     console.log("val 3 bad")
-    return false;
   }
 
   if (inputs[4].value.length > 5 && inputs[4].value.length < 17) {
     console.log("val 4 good")
   } else {
     console.log("val 4 bad")
-    return false;
   }
 
   if (inputs[3].value === inputs[4].value) {
     console.log("val 3 & 4 match")
   } else {
     console.log("val 3 & 4 dont match")
-    return false;
   }
-}
+
+});
+
 
 
 
