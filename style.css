@@ -6,3 +6,11 @@
 form {
   width: 99%;
 }
+
+.invalid {
+  border: 2px dashed red;
+}
+
+.error {
+  color: red;
+}
