@@ -4,6 +4,8 @@
 
   https://www.vikingcodeschool.com/dashboard#/falling-in-love-with-javascript/practice-with-events-and-effects
 
+  https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation
+
   TODO
   form submission - should verify limits, password matches, and handle errors
 */
@@ -62,34 +64,38 @@ theForm.addEventListener("submit", function(pressed) {
   var inputs = document.forms[0];
 
   if (inputs[0].value.length > 3 && inputs[0].value.length < 33) {
-    console.log("val 1 good")
+    var c0 = document.getElementById("counterIA")
+    c0.innerHTML = "";
   } else {
-    console.log("val 1 bad")
-    document.getElementById("counterIA").innerHTML = "length error, must be longer than 4 and shorter than 32 characters"
+    c0.innerHTML = "length error, must be longer than 3 and shorter than 33 characters"
   }
 
   if (inputs[1].value.length > 3 && inputs[1].value.length < 141) {
-    console.log("val 2 good")
+    var c1 = document.getElementById("counterT1")
+    c1.innerHTML = "";
   } else {
-    console.log("val 2 bad")
+    c1.innerHTML = "length error, must be longer than 3 and shorter than 141 characters"
   }
 
   if (inputs[3].value.length > 5 && inputs[3].value.length < 17) {
-    console.log("val 3 good")
+    var c3 = document.getElementById("counterIB")
+    c3.innerHTML = "";
   } else {
-    console.log("val 3 bad")
+    c3.innerHTML = "length error, must be longer than 5 and shorter than 17 characters"
   }
 
   if (inputs[4].value.length > 5 && inputs[4].value.length < 17) {
-    console.log("val 4 good")
+    var c4 = document.getElementById("counterIC")
+    c4.innerHTML = "";
   } else {
-    console.log("val 4 bad")
+    c4.innerHTML = "length error, must be longer than 5 and shorter than 17 characters"
   }
 
   if (inputs[3].value === inputs[4].value) {
-    console.log("val 3 & 4 match")
+    var c2 = document.getElementById("confirm")
+    c2.innerHTML = "";
   } else {
-    console.log("val 3 & 4 dont match")
+    c2.innerHTML = "match error, passwords dont match"
   }
 
 });
