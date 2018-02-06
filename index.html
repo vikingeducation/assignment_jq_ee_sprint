@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--
-      <script src="jq_sprint.js" defer></script>
+      <script src="form_validation.js" defer></script>
     -->
     <script src="test.js" defer></script>
     <link rel="stylesheet" href="style.css">
@@ -13,19 +13,19 @@
 
   <body>
 
-    <h1>JQ Sprint</h1>
+    <h1>Form Validation</h1>
 
     <form id="myForm" name="myForm" method="post">
       <input class="IA" type="text" placeholder=" text" miny="4" maxy="32" fault="msgIA">
-        <p id="msgIA"></p>
+        <span id="msgIA"></span>
       <textarea class="T1" placeholder=" textarea" miny="4" maxy="140" fault="msgT1"></textarea>
-        <p id="msgT1"></p>
+        <span id="msgT1"></span>
       <fieldset>
         <input class="IB" type="password" placeholder=" password" miny="6" maxy="16" fault="msgIB" twin="IC">
-          <p id="msgIB"></p>
+          <span id="msgIB"></span>
         <input class="IC" type="password" placeholder=" password confirm" miny="6" maxy="16" fault="msgIC" twin="IB">
-          <p id="msgIC"></p>
-          <p id="confirm"></p>
+          <span id="msgIC"></span>
+          <span id="confirm"></span>
       </fieldset>
         <input type="submit" value="Submit">
     </form>
