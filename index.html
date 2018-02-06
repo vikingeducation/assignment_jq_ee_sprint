@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="jq_sprint.js" defer></script>
+    <!--
+      <script src="jq_sprint.js" defer></script>
+    -->
+    <script src="test.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <title>JQ Sprint</title>
   </head>
@@ -13,15 +16,15 @@
     <h1>JQ Sprint</h1>
 
     <form id="myForm" name="myForm" method="post">
-      <input class="IA" type="text" placeholder=" text" name="IA" size="50">
-        <p id="counterIA"></p>
-      <textarea class="T1" placeholder=" textarea" name="T1" cols="150" rows="4"></textarea>
-        <p id="counterT1"></p>
+      <input class="IA" type="text" placeholder=" text" miny="4" maxy="32" fault="msgIA">
+        <p id="msgIA"></p>
+      <textarea class="T1" placeholder=" textarea" miny="4" maxy="140" fault="msgT1"></textarea>
+        <p id="msgT1"></p>
       <fieldset>
-        <input class="IB" type="password" placeholder=" password" name="IB" size="50">
-          <p id="counterIB"></p>
-        <input class="IC" type="password" placeholder=" password confirm" name="IC" size="50">
-          <p id="counterIC"></p>
+        <input class="IB" type="password" placeholder=" password" miny="6" maxy="16" fault="msgIB" twin="IC">
+          <p id="msgIB"></p>
+        <input class="IC" type="password" placeholder=" password confirm" miny="6" maxy="16" fault="msgIC" twin="IB">
+          <p id="msgIC"></p>
           <p id="confirm"></p>
       </fieldset>
         <input type="submit" value="Submit">

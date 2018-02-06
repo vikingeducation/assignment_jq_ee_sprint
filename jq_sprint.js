@@ -8,16 +8,16 @@ theForm.addEventListener("input", function(action) {
 
   if (subject.classList.contains("IA")) {
     var limit = 32;
-    var counter = document.getElementById("counterIA");
+    var msg = document.getElementById("msgIA");
   } else if (subject.classList.contains("T1")) {
     var limit = 140;
-    var counter = document.getElementById("counterT1");
+    var msg = document.getElementById("msgT1");
   } else if (subject.classList.contains("IB")) {
     var limit = 16;
-    var counter = document.getElementById("counterIB");
+    var msg = document.getElementById("msgIB");
   } else if (subject.classList.contains("IC")) {
     var limit = 16;
-    var counter = document.getElementById("counterIC");
+    var msg = document.getElementById("msgIC");
     if (document.getElementsByClassName("IB")[0].value === subject.value) {
       var message = "match";
       document.getElementsByClassName("IB")[0].classList.remove("invalid");
@@ -28,9 +28,9 @@ theForm.addEventListener("input", function(action) {
     document.getElementById("confirm").innerHTML = "passwords " + message;
   }
 
-    counter.classList.remove("error");
+    msg.classList.remove("error");
     var remaining = limit - characters;
-    counter.innerHTML = "characters left: " + remaining;
+    msg.innerHTML = "characters left: " + remaining;
 });
 
 theForm.addEventListener("submit", function(pressed) {
@@ -39,7 +39,7 @@ theForm.addEventListener("submit", function(pressed) {
 
   if (inputs[0].value.length < 4 || inputs[0].value.length > 32) {
     inputs[0].classList.add("invalid");
-    var box = document.getElementById("counterIA");
+    var box = document.getElementById("msgIA");
     box.innerHTML = "Error: length less that 4 characters"
     box.classList.add("error");
     stop = true;
@@ -47,7 +47,7 @@ theForm.addEventListener("submit", function(pressed) {
 
   if (inputs[1].value.length < 4 || inputs[1].value.length > 140) {
     inputs[1].classList.add("invalid");
-    var box = document.getElementById("counterT1");
+    var box = document.getElementById("msgT1");
     box.innerHTML = "Error: length less that 4 characters"
     box.classList.add("error");
     stop = true;
@@ -55,7 +55,7 @@ theForm.addEventListener("submit", function(pressed) {
 
   if (inputs[3].value.length < 6 || inputs[3].value.length > 16) {
     inputs[3].classList.add("invalid");
-    var box = document.getElementById("counterIB");
+    var box = document.getElementById("msgIB");
     box.innerHTML = "Error: length less that 6 characters"
     box.classList.add("error");
     stop = true;
@@ -63,7 +63,7 @@ theForm.addEventListener("submit", function(pressed) {
 
   if (inputs[4].value.length < 6 || inputs[4].value.length > 16) {
     inputs[4].classList.add("invalid");
-    var box = document.getElementById("counterIC");
+    var box = document.getElementById("msgIC");
     box.innerHTML = "Error: length less that 6 characters"
     box.classList.add("error");
     stop = true;
