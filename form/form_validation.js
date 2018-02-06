@@ -1,12 +1,14 @@
+
 var theForm = document.getElementById("myForm");
 
 theForm.addEventListener("input", function(action) {
   var subject = action.target;
   var box = document.getElementById(subject.getAttribute("fault"));
 
-  box.classList.remove("error");
   subject.classList.remove("invalid");
 
+  box.classList.remove("error");
+  
   box.innerHTML =
     "characters left: " + (subject.getAttribute("maxy") - subject.value.length);
 
