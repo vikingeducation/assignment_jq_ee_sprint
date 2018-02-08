@@ -2,13 +2,13 @@
 var theForm = document.getElementById("myForm");
 
 theForm.addEventListener("input", function(action) {
-  var subject = action.target;
-  var box = document.getElementById(subject.getAttribute("fault"));
+  var subject = action.target,
+      box = document.getElementById(subject.getAttribute("fault"));
 
   subject.classList.remove("invalid");
 
   box.classList.remove("error");
-  
+
   box.innerHTML =
     "characters left: " + (subject.getAttribute("maxy") - subject.value.length);
 
@@ -36,9 +36,9 @@ theForm.addEventListener("input", function(action) {
 });
 
 theForm.addEventListener("submit", function(pressed) {
-  var indexy = 0;
-  var inputs = document.forms[0];
-  var stop = false;
+  var indexy = 0,
+      inputs = document.forms[0],
+      stop = false;
 
   while (indexy < inputs.length) {
     if (inputs[indexy].classList.contains("cut")) {
