@@ -10,21 +10,23 @@ body {
 }
 
 input, textarea {
-  width: 99%;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  width: 97%;
+  margin: 15px 0px 15px 1.5%;
+}
+
+span {
+  margin-left: 2.5%;
 }
 
 p {
-  margin: 0px;
+  margin: 10px 0px 15px 2.5%;
   padding: 0px;
-  margin-top: 10px;
-  margin-bottom: 15px;
 }
 
 input[type="submit"] {
   margin: 0px;
   padding: 0px;
+  margin-left: 1.5%;
 }
 
 .invalid {
