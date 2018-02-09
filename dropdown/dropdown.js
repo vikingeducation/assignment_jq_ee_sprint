@@ -9,7 +9,10 @@
   https://stackoverflow.com/questions/19222300/slidetoggle-and-li-repeated-clicking-reorder-the-list
 */
 
-$("ul").click(function(action) {
-  action.preventDefault();
-  $('ul').children().slidetoggle(1800);
+$("li").click(function(selected) {
+  var list = $("ul");
+  list.children().slideToggle(1800);
+
+  list.prepend(this);
+
 });
