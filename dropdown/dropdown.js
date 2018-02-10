@@ -7,21 +7,27 @@
   https://stackoverflow.com/questions/19222300/slidetoggle-and-li-repeated-clicking-reorder-the-list
 */
 
-$("li").click(function(selected) {
-  var list = $("ul");
-  var self = $(this);
-  var test = 0;
-  list.children().slideToggle(1800, function() {
-    test += 1
-    console.log("adding" + test)
-    if (test === 4) {
-      console.log("super broke")
-      fix()
-    }
+$(document).ready(function() {
+  var _li = $("li");
+
+  $(".empty").siblings().slideUp(1);
+
+  _li.click(function(selected) {
+    var self = $(this),
+        others = self.siblings(),
+        count = others.length;
+
+    others.slideToggle(1000, function() {
+      count--;
+      if (count === 0) {
+        self.prependTo("ul");
+      }
+    });
   });
 
-  function fix() {
-    console.log("mega broke")
-    list.prepend(self);
-  }
+  _li.hover(function() {
+
+    }
+  )
+
 });

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="jquery-3.2.1.min.js" defer></script>
-    <script src="dropdown.js" defer></script>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="dropdown.js"></script>
     <link rel="stylesheet" href="style_dropdown.css">
     <title>Dropdown</title>
   </head>
@@ -14,24 +14,27 @@
       Dropdown
     </h1>
 
-    <span>Click below</span>
+    <span>
+      Click the box below to show options for selection, and click your selected option to
+      choose again
+    </span>
 
     <div>
 
       <ul>
-        <li>
+        <li class="empty">
           &nbsp;
         </li>
 
-        <li>
+        <li class="green">
           Yes
         </li>
 
-        <li>
+        <li class="red">
           No
         </li>
 
-        <li>
+        <li class="blue">
           Maybe
         </li>
       </ul>
