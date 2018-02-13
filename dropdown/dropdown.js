@@ -1,15 +1,3 @@
-/*
-  cd Documents/Viking/JS/jq_sprint/dropdown
-
-  https://www.vikingcodeschool.com/dashboard#/falling-in-love-with-javascript/practice-with-events-and-effects
-
-  TODO form submission
-
-  https://api.jquery.com/jQuery.post/
-
-  using jQueries .post() create a function that after a user make their choice
-  that option is grabbed, submit'ed to "the server", and console.log'ed
-*/
 
 $(document).ready(function() {
   var part = $("li");
@@ -29,15 +17,6 @@ $(document).ready(function() {
         self.prependTo("ul");
       }
     });
-
-    $.post("#",
-    { "choice": self },
-    function(test, argy) {
-      console.log(test)
-      console.log(argy)
-      console.log(self)
-    });
-
   });
 
   part.hover(
@@ -59,6 +38,6 @@ $(document).ready(function() {
         "background-color": "initial",
         cursor: "initial"
       });
-    });
-
+    }
+  );
 });
