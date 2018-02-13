@@ -3,17 +3,22 @@
 
   https://www.vikingcodeschool.com/dashboard#/falling-in-love-with-javascript/practice-with-events-and-effects
 
-  https://stackoverflow.com/questions/19222300/slidetoggle-and-li-repeated-clicking-reorder-the-list
+  TODO form submission
+
+  https://api.jquery.com/jQuery.post/
+
+  using jQueries .post() create a function that after a user make their choice
+  that option is grabbed, submit'ed to "the server", and console.log'ed
 */
 
 $(document).ready(function() {
-  var _li = $("li");
+  var part = $("li");
 
   $(".empty")
     .siblings()
     .slideUp(1);
 
-  _li.click(function(selected) {
+  part.click(function(selected) {
     var self = $(this),
       others = self.siblings(),
       count = others.length;
@@ -24,9 +29,18 @@ $(document).ready(function() {
         self.prependTo("ul");
       }
     });
+
+    $.post("#",
+    { "choice": self },
+    function(test, argy) {
+      console.log(test)
+      console.log(argy)
+      console.log(self)
+    });
+
   });
 
-  _li.hover(
+  part.hover(
     function() {
       var unfanned = $(this)
         .siblings()
@@ -45,6 +59,6 @@ $(document).ready(function() {
         "background-color": "initial",
         cursor: "initial"
       });
-    }
-  );
+    });
+
 });
