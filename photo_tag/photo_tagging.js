@@ -7,12 +7,10 @@
   https://1stwebdesigner.com/image-tagging-tutorial/
 
   https://stackoverflow.com/questions/22833253/simple-image-tagging-page-like-facebook-image-tag#23129551
-
-  https://stackoverflow.com/questions/3385936/jquery-follow-the-cursor-with-a-div#3385953
 */
 
 $(document).ready(function() {
-  $("body").append($('<div/>').addClass('target'));
+  $("body").append('<div class="target"></div>');
 
   $("#pic").mousemove(function(action) {
     $(".target").css({
@@ -21,8 +19,20 @@ $(document).ready(function() {
     });
   });
 
-  $("").click(function(selected) {
-    
+  $(window).mouseleave(function() {
+    $(".target").hide();
   });
+
+  $(window).mouseenter(function() {
+    $(".target").show();
+  });
+
+  /*
+
+  $("").click(function(selected) {
+
+  });
+
+  */
 
 });
