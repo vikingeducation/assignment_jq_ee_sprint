@@ -28,6 +28,15 @@ $(document).ready(function() {
     $(".target")
       .addClass("tagger")
       .removeClass("target");
+
+
+
+    $("list").removeClass("hide").show();
+
+    $("tagger").prepend( $( "list" ) );
+
+
+
   });
 });
 
