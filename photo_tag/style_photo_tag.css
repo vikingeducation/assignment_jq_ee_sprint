@@ -15,7 +15,14 @@ body, html {
 
 .target {
   position: absolute;
-  border: 12px dashed blue;
+  border: 8px dashed blue;
+  height: 25px;
+  width: 25px;
+}
+
+.tagger {
+  position: absolute;
+  border: 8px solid green;
   height: 25px;
   width: 25px;
 }
