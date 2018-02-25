@@ -1,0 +1,361 @@
+nav {
+  padding: 50px;
+  text-align: center;
+}
+nav > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  background: #ddd;
+  border-radius: 5px;
+}
+nav > ul > li {
+  float: left;
+  width: 150px;
+  height: 65px;
+  line-height: 65px;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+nav > ul > li:hover {
+  background: #d5d5d5;
+  border-radius: 5px;
+}
+
+ul.dropMenu {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  width: 100%;
+  padding: 0;
+}
+ul.dropMenu li {
+  background: #666;
+  color: rgba(255, 255, 255, 0.7);
+}
+ul.dropMenu li:hover {
+  background: #606060;
+}
+ul.dropMenu li:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
+li:hover > ul.dropMenu {
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+li:hover > ul.dropMenu li {
+  opacity: 0;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+}
+li:hover > ul.dropMenu li:nth-child(1) {
+  -webkit-animation-name: fold-out;
+          animation-name: fold-out;
+  -webkit-animation-duration: 120ms;
+          animation-duration: 120ms;
+  -webkit-animation-delay: 0ms;
+          animation-delay: 0ms;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+li:hover > ul.dropMenu li:nth-child(2) {
+  -webkit-animation-name: fold-out;
+          animation-name: fold-out;
+  -webkit-animation-duration: 120ms;
+          animation-duration: 120ms;
+  -webkit-animation-delay: 60ms;
+          animation-delay: 60ms;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+li:hover > ul.dropMenu li:nth-child(3) {
+  -webkit-animation-name: fold-out;
+          animation-name: fold-out;
+  -webkit-animation-duration: 120ms;
+          animation-duration: 120ms;
+  -webkit-animation-delay: 120ms;
+          animation-delay: 120ms;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+li:hover > ul.dropMenu li:nth-child(4) {
+  -webkit-animation-name: fold-out;
+          animation-name: fold-out;
+  -webkit-animation-duration: 120ms;
+          animation-duration: 120ms;
+  -webkit-animation-delay: 180ms;
+          animation-delay: 180ms;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fold-out {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotateX(-90deg) translateY(10px);
+            transform: rotateX(-90deg) translateY(10px);
+  }
+  60% {
+    -webkit-transform: rotateX(15deg);
+            transform: rotateX(15deg);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: rotateX(0deg) translateY(0px);
+            transform: rotateX(0deg) translateY(0px);
+  }
+}
+
+@keyframes fold-out {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotateX(-90deg) translateY(10px);
+            transform: rotateX(-90deg) translateY(10px);
+  }
+  60% {
+    -webkit-transform: rotateX(15deg);
+            transform: rotateX(15deg);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: rotateX(0deg) translateY(0px);
+            transform: rotateX(0deg) translateY(0px);
+  }
+}
+li > ul.dropMenu {
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+li > ul.dropMenu li {
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+}
+li > ul.dropMenu li:nth-child(4) {
+  -webkit-animation-name: fold-in;
+          animation-name: fold-in;
+  -webkit-animation-duration: 120ms;
+          animation-duration: 120ms;
+  -webkit-animation-delay: 0ms;
+          animation-delay: 0ms;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+li > ul.dropMenu li:nth-child(3) {
+  -webkit-animation-name: fold-in;
+          animation-name: fold-in;
+  -webkit-animation-duration: 120ms;
+          animation-duration: 120ms;
+  -webkit-animation-delay: 60ms;
+          animation-delay: 60ms;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+li > ul.dropMenu li:nth-child(2) {
+  -webkit-animation-name: fold-in;
+          animation-name: fold-in;
+  -webkit-animation-duration: 120ms;
+          animation-duration: 120ms;
+  -webkit-animation-delay: 120ms;
+          animation-delay: 120ms;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+li > ul.dropMenu li:nth-child(1) {
+  -webkit-animation-name: fold-in;
+          animation-name: fold-in;
+  -webkit-animation-duration: 120ms;
+          animation-duration: 120ms;
+  -webkit-animation-delay: 180ms;
+          animation-delay: 180ms;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fold-in {
+  0% {
+    -webkit-transform: rotateX(0deg) translateY(0px);
+            transform: rotateX(0deg) translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: rotateX(-90deg) translateY(10px);
+            transform: rotateX(-90deg) translateY(10px);
+  }
+}
+
+@keyframes fold-in {
+  0% {
+    -webkit-transform: rotateX(0deg) translateY(0px);
+            transform: rotateX(0deg) translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: rotateX(-90deg) translateY(10px);
+            transform: rotateX(-90deg) translateY(10px);
+  }
+}
+
+
+
+
+
+.tagger {
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  z-index: 3;
+}
+
+.tagger .frame {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  padding: 0px;
+  border: 5px;
+  border-style: solid;
+  border-color: red;
+}
+
+.tagger .name {
+  display: none;
+  position: relative;
+  top: -5px;
+  height: 90px;
+  width: 90px;
+  padding: 5px;
+  border: 5px;
+  border-style: solid;
+  border-color: red;
+  background-color: white;
+}
+
+.tagger .name ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  display: inline-block;
+}
+
+
+
+.tagging {
+  position: absolute;
+  z-index: 3;
+}
+
+.tagging .frame {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  padding: 0px;
+  border: 5px;
+  border-style: solid;
+  border-color: red;
+}
+
+.tagging .name {
+  position: relative;
+  top: -5px;
+  height: 90px;
+  width: 90px;
+  padding: 5px;
+  border: 5px;
+  border-style: solid;
+  border-color: red;
+  background-color: white;
+}
+
+.tagging .name ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  display: inline-block;
+}
+
+
+
+.tagged {
+  position: absolute;
+  z-index: 5;
+}
+
+.xBox {
+  z-index: 5;
+  position: relative;
+  top: 15px;
+  left: calc(100% - 15px);
+  border-radius: 50%;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  padding: 0px;
+  background-color: green;
+  text-align: center;
+}
+
+.xBox span {
+  display: inline-block;
+}
+
+.tagged .frame {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  padding: 0px;
+  border: 5px;
+  border-style: solid;
+  border-color: green;
+}
+
+.tagged .name {
+  position: relative;
+  top: -5px;
+  height: 15px;
+  width: 100px;
+  padding: 0px;
+  border: 5px;
+  border-style: solid;
+  border-color: green;
+  background-color: green;
+  display: inline-block;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+.container {
+  overflow: hidden;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  display: inline-block;
+}
