@@ -10,8 +10,8 @@ $(document).ready(function() {
 
   $("#pic").mousemove(function(action) {
     $(".target").css({
-      top: action.pageY - 25 + "px",
-      left: action.pageX - 25 + "px"
+      top: action.pageY - 50 + "px",
+      left: action.pageX - 50 + "px"
     });
   });
 
@@ -32,6 +32,11 @@ $(document).ready(function() {
   $(".list").removeClass("hide");
 
   $(".tagger").append($(".list"));
+
+  /*
+    needs to be possible to undo/delete tags - and to return to targeting mode
+    after an option has been selected
+  */
 
   });
 });
