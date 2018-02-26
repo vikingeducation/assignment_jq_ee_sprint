@@ -23,8 +23,8 @@ body, html {
 .tagger {
   position: absolute;
   border: 8px solid green;
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
 }
 
 .list {

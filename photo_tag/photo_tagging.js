@@ -29,13 +29,9 @@ $(document).ready(function() {
       .addClass("tagger")
       .removeClass("target");
 
+  $(".list").removeClass("hide");
 
-
-    $("list").removeClass("hide").show();
-
-    $("tagger").prepend( $( "list" ) );
-
-
+  $(".tagger").append($(".list"));
 
   });
 });
