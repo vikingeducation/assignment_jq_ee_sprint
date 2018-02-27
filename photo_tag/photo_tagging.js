@@ -1,4 +1,3 @@
-
 /*
   cd Documents/Viking/JS/jq_sprint/photo_tag
 
@@ -24,24 +23,28 @@ $(document).ready(function() {
     }
   );
 
-  $(".target").click(function(selected) {
+  $(".target").click(function() {
     $(".target")
       .addClass("tagger")
       .removeClass("target");
 
-  $(".list").removeClass("hide");
+    $(".list").removeClass("hide");
 
-  $(".tagger").append($(".list"));
+    $(".tagger").append($(".list"));
 
-  /*
-    needs to be possible to undo/delete tags - and to return to targeting mode
-    after an option has been selected
+    $("#pic").click(function() {
+      $(".tagger")
+        .addClass("target")
+        .removeClass("tagger");
+
+      $(".list").addClass("hide");
+    });
+
+    /*
+    needs to be possible to return to targeting mode after an option has been
+    selected
   */
-
   });
 });
-
-
-
 
 // spacing
