@@ -1,3 +1,4 @@
+
 /*
   cd Documents/Viking/JS/jq_sprint/photo_tag
 
@@ -40,11 +41,18 @@ $(document).ready(function() {
       $(".list").addClass("hide");
     });
 
-    /*
-    needs to be possible to return to targeting mode after an option has been
-    selected
-  */
+    if ($(".list").val() != "blank") {
+      $("body").append('<div class="target"></div>');
+    }
+
+/*
+  needs to be possible to return to targeting mode after an option has been
+  selected, and allow for multiple tags to be added
+*/
+
   });
 });
+
+
 
 // spacing
