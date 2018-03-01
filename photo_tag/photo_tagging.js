@@ -47,7 +47,11 @@ $(document).ready(function() {
 
 /*
   needs to be possible to return to targeting mode after an option has been
-  selected, and allow for multiple tags to be added
+  selected, and allow for multiple tags to be added - likely means list
+  element / tag / css assigned to relevant elements will have to be created
+  on the fly rather than through classes / pre-built elements and name
+  associated with tag should probably be turned into a new static element
+  rather than the current select
 */
 
   });
