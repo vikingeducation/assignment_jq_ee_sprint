@@ -6,10 +6,19 @@
 */
 
 $(document).ready(function() {
-  $("body").append('<div class="target"></div>');
+  var pic = $("#pic");
 
-  $("#pic").mousemove(function(action) {
-    $(".target").css({
+  $("body").append('<div id="target"></div>');
+
+  $("#target").css({
+    position: "absolute",
+    border: 8 + "px dashed blue",
+    height: 50 + "px",
+    width: 50 + "px"
+  });
+
+  pic.mousemove(function(action) {
+    $("#target").css({
       top: action.pageY - 50 + "px",
       left: action.pageX - 50 + "px"
     });
@@ -17,37 +26,45 @@ $(document).ready(function() {
 
   $(window).hover(
     function() {
-      $(".target").show();
+      $("#target").show();
     },
     function() {
-      $(".target").hide();
+      $("#target").hide();
     }
   );
 
-  $(".target").click(function() {
-    $(".target")
-      .addClass("tagger")
-      .removeClass("target");
-
-    $(".list").removeClass("hide");
-
-    $(".tagger").append($(".list"));
-
-    $("#pic").click(function() {
-      $(".tagger")
-        .addClass("target")
-        .removeClass("tagger");
-
-      $(".list").addClass("hide");
+  $("#target").click(function(action) {
+    $("#target").css({
+      border: 8 + "px solid green"
     });
 
-    if ($(".list").val() != "blank") {
-      $("body").append('<div class="target"></div>');
+    $("#list").removeClass("hide");
+
+    $("#target").append($("#list"));
+
+    $("#target").attr("id", "tag");
+
+    pic.click(function() {
+      $("#list").addClass("hide");
+
+      $("#tag").css({
+        border: 8 + "px dashed blue"
+      });
+
+      $("#tag").attr("id", "target");
+    });
+
+    console.log($("#list").val())
+    console.log($("#list").hasClass("hide"))
+
+    if ($("#list").val() = "blank" || $("#list").hasClass("hide")) {
+    } else {
+      $("body").append('<div id="target"></div>');
     }
 
 /*
-  needs to be possible to return to targeting mode after an option has been
-  selected, and allow for multiple tags to be added - likely means list
+  needs to be possible to return to $("#target")ing mode after an option has been
+  selected, and allow for multiple tags to be added - likely means $("#list")
   element / tag / css assigned to relevant elements will have to be created
   on the fly rather than through classes / pre-built elements and name
   associated with tag should probably be turned into a new static element

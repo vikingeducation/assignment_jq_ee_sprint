@@ -13,21 +13,7 @@ body, html {
   background-size: cover;
 }
 
-.target {
-  position: absolute;
-  border: 8px dashed blue;
-  height: 50px;
-  width: 50px;
-}
-
-.tagger {
-  position: absolute;
-  border: 8px solid green;
-  height: 50px;
-  width: 50px;
-}
-
-.list {
+#list {
   position: absolute;
   border: 6px solid green;
   background-color: white;
@@ -37,3 +23,22 @@ body, html {
 .hide {
   display: none;
 }
+
+/*
+to be deleted
+
+.tagger {
+  position: absolute;
+  border: 8px solid green;
+  height: 50px;
+  width: 50px;
+}
+
+#target {
+  position: absolute;
+  border: 8px dashed blue;
+  height: 50px;
+  width: 50px;
+}
+
+*/
