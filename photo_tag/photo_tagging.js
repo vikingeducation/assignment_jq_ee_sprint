@@ -6,9 +6,9 @@
 */
 
 $(document).ready(function() {
-  var pic = $("#pic");
+  $("body").append('<div id="target" class="tagger"></div>');
 
-  $("body").append('<div id="target"></div>');
+// not broken because of listener assignment, but because of target as ID instead of class
 
   $("#target").css({
     position: "absolute",
@@ -17,7 +17,7 @@ $(document).ready(function() {
     width: 50 + "px"
   });
 
-  pic.mousemove(function(action) {
+  $("#pic").mousemove(function(action) {
     $("#target").css({
       top: action.pageY - 50 + "px",
       left: action.pageX - 50 + "px"
@@ -33,7 +33,7 @@ $(document).ready(function() {
     }
   );
 
-  $("#target").click(function(action) {
+  $(".tagger").click(function() {
     $("#target").css({
       border: 8 + "px solid green"
     });
@@ -44,7 +44,7 @@ $(document).ready(function() {
 
     $("#target").attr("id", "tag");
 
-    pic.click(function() {
+    $("#pic").click(function() {
       $("#list").addClass("hide");
 
       $("#tag").css({
@@ -54,17 +54,14 @@ $(document).ready(function() {
       $("#tag").attr("id", "target");
     });
 
-    console.log($("#list").val())
-    console.log($("#list").hasClass("hide"))
-
-    if ($("#list").val() = "blank" || $("#list").hasClass("hide")) {
+    if ($("#list").val() == "blank" || $("#list").hasClass("hide")) {
     } else {
       $("body").append('<div id="target"></div>');
     }
 
 /*
-  needs to be possible to return to $("#target")ing mode after an option has been
-  selected, and allow for multiple tags to be added - likely means $("#list")
+  needs to be possible to return to targeting mode after an option has been
+  selected, and allow for multiple tags to be added - likely means list
   element / tag / css assigned to relevant elements will have to be created
   on the fly rather than through classes / pre-built elements and name
   associated with tag should probably be turned into a new static element
