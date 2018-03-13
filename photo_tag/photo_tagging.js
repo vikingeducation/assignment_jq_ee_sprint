@@ -16,8 +16,8 @@ $(document).ready(function() {
   $(".list").css({
     position: "absolute",
     border: 6 + "px solid green",
-    "background-color": "white",
-    "margin-top": 50 + "px",
+    backgroundColor: "white",
+    marginTop: 50 + "px",
     display: "none"
   });
 
@@ -56,12 +56,11 @@ $(document).ready(function() {
     $(".tagger").append($(".list"));
 
     $(".tagger").attr("class", "tag");
-
-    if ($(".list").val() == "blank") {
-    } else {
-      $("body").append('<div class="tagger"></div>');
-    }
   });
+
+  if ($(".list").val() != "blank") {
+    $("body").append('<div class="tagger"></div>');
+  }
 
   $("#pic").click(function() {
     $(".list").css("display", "none");
