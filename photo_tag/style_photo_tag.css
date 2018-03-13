@@ -13,19 +13,21 @@ body, html {
   background-size: cover;
 }
 
-#list {
-  position: absolute;
-  border: 6px solid green;
-  background-color: white;
-  margin-top: 50px;
-}
+
+
+/*
+to be deleted
 
 .hide {
   display: none;
 }
 
-/*
-to be deleted
+.list {
+  position: absolute;
+  border: 6px solid green;
+  background-color: white;
+  margin-top: 50px;
+}
 
 .tagger {
   position: absolute;
