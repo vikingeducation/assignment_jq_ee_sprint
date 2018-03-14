@@ -26,6 +26,8 @@ $(document).ready(function() {
   );
 
   function createTagger() {
+    $(".tagger").detach();
+
     $("body").append('<div class="tagger"></div>');
 
     $(".tagger").css({
@@ -102,14 +104,14 @@ $(document).ready(function() {
   $("#pic").click(function() {
     $(".list").css("display", "none");
 
-    $(".tag").css({
+    $(".list").parent().css({
       position: "absolute",
       border: 8 + "px dashed blue",
       height: 50 + "px",
       width: 50 + "px"
     });
 
-    $(".tag").attr("class", "tagger");
+    $(".list").parent().attr("class", "tagger");
   });
 
   createTagger();
