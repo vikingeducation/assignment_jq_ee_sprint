@@ -8,7 +8,7 @@
 */
 
 $(document).ready(function() {
-  $(".list").css({
+  $("#list").css({
     position: "absolute",
     border: 6 + "px solid green",
     backgroundColor: "white",
@@ -18,56 +18,58 @@ $(document).ready(function() {
 
   $(window).hover(
     function() {
-      $(".tagger").show();
+      $("#tagger").show();
     },
     function() {
-      $(".tagger").hide();
+      $("#tagger").hide();
     }
   );
 
   function createTagger() {
-    $(".tagger").detach();
+    $("#tagger").detach();
 
-    $("body").append('<div class="tagger"></div>');
+    $("body").append('<div id="tagger"></div>');
 
-    $(".tagger").css({
+    $("#tagger").css({
       position: "absolute",
       border: 8 + "px dashed blue",
       height: 50 + "px",
       width: 50 + "px",
     });
 
-    $(".tagger").click(function(action) {
+    $("#tagger").click(function(action) {
       action.stopPropagation();
 
-      $(".tagger").css({
+      $("#tagger").css({
         position: "absolute",
         border: 8 + "px solid green",
         height: 50 + "px",
         width: 50 + "px"
       });
 
-      $(".tagger").append($(".list"));
+      $("#tagger").append($("#list"));
 
-      $(".list").css("display", "initial");
+      $("#list").css("display", "initial");
 
-      $(".tagger").attr("class", "tag");
+      $("#tagger").attr("id", "tag");
+
+      //$("#tagger").attr("id");
     });
   }
 
   $("#pic").mousemove(function(action) {
-    $(".tagger").css({
+    $("#tagger").css({
       top: action.pageY - 50 + "px",
       left: action.pageX - 50 + "px"
     });
   });
 
-  $(".list").click(function(trigger) {
+  $("#list").click(function(trigger) {
     trigger.stopPropagation();
 
-    if ($(".list").val() != "blank") {
-      var parent = $(".list").parent(),
-          name = $(".list").val();
+    if ($("#list").val() != "blank") {
+      var parent = $("#list").parent(),
+          name = $("#list").val();
 
       parent.prepend('<span></span>');
 
@@ -75,7 +77,7 @@ $(document).ready(function() {
 
       label.html(name);
 
-      $(".list").css("display", "none");
+      $("#list").css("display", "none");
 
       label.css({
         position: "absolute",
@@ -87,9 +89,7 @@ $(document).ready(function() {
         opacity: "inherit"
       });
 
-      parent.addClass("locked");
-
-      $(".locked").append('<span class="remove">&#935</span>');
+      parent.append('<span class="remove">&#935</span>');
 
       $(".remove").css({
         position: "absolute",
@@ -101,9 +101,15 @@ $(document).ready(function() {
         opacity: "inherit"
       });
 
-      $(".remove").click(function() {
-        $(".remove").parent().detach();
+      $(".remove").click(function(source) {
+        var root = $(source.target);
+
+        var parent = $(root.parent());
+
+        parent.detach();
       });
+
+      parent.addClass("locked");
 
       $(".locked").hover(
         function() {
@@ -119,16 +125,16 @@ $(document).ready(function() {
   });
 
   $("#pic").click(function() {
-    $(".list").css("display", "none");
+    $("#list").css("display", "none");
 
-    $(".list").parent().css({
+    $("#list").parent().css({
       position: "absolute",
       border: 8 + "px dashed blue",
       height: 50 + "px",
       width: 50 + "px"
     });
 
-    $(".list").parent().attr("class", "tagger");
+    $("#list").parent().attr("id", "tagger");
   });
 
   createTagger();
