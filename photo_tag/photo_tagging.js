@@ -3,13 +3,6 @@
   cd Documents/Viking/JS/jq_sprint/photo_tag
 
   https://www.vikingcodeschool.com/dashboard#/falling-in-love-with-javascript/practice-with-events-and-effects
-
-  needs to be possible to return to targeting mode after an option has been
-  selected, and allow for multiple tags to be added - likely means list
-  element / tag / css assigned to relevant elements will have to be created
-  on the fly rather than through classes / pre-built elements and name
-  associated with tag should probably be turned into a new static element
-  rather than the current select
 */
 
 $(document).ready(function() {
@@ -21,22 +14,6 @@ $(document).ready(function() {
     display: "none"
   });
 
-  $("body").append('<div class="tagger"></div>');
-
-  $(".tagger").css({
-    position: "absolute",
-    border: 8 + "px dashed blue",
-    height: 50 + "px",
-    width: 50 + "px"
-  });
-
-  $("#pic").mousemove(function(action) {
-    $(".tagger").css({
-      top: action.pageY - 50 + "px",
-      left: action.pageX - 50 + "px"
-    });
-  });
-
   $(window).hover(
     function() {
       $(".tagger").show();
@@ -46,32 +23,63 @@ $(document).ready(function() {
     }
   );
 
-  $(".tagger").click(function() {
+  function createTagger() {
+    $("body").append('<div class="tagger"></div>');
+
     $(".tagger").css({
-      border: 8 + "px solid green"
+      position: "absolute",
+      border: 8 + "px dashed blue",
+      height: 50 + "px",
+      width: 50 + "px",
     });
 
-    $(".list").css("display", "initial");
+    $(".tagger").click(function(action) {
+      action.stopPropagation();
 
-    $(".tagger").append($(".list"));
+      $(".tagger").css({
+        position: "absolute",
+        border: 8 + "px solid green",
+        height: 50 + "px",
+        width: 50 + "px"
+      });
 
-    $(".tagger").attr("class", "tag");
+      $(".list").css("display", "initial");
+
+      $(".tagger").append($(".list"));
+
+      $(".tagger").attr("class", "tag");
+    });
+  }
+
+  $("#pic").mousemove(function(action) {
+    $(".tagger").css({
+      top: action.pageY - 50 + "px",
+      left: action.pageX - 50 + "px"
+    });
   });
 
-  if ($(".list").val() != "blank") {
-    $("body").append('<div class="tagger"></div>');
-  }
+  $(".list").click(function(trigger) {
+    trigger.stopPropagation();
+
+    if ($(".list").val() != "blank") {
+      createTagger();
+    }
+  });
 
   $("#pic").click(function() {
     $(".list").css("display", "none");
 
     $(".tag").css({
-      border: 8 + "px dashed blue"
+      position: "absolute",
+      border: 8 + "px dashed blue",
+      height: 50 + "px",
+      width: 50 + "px"
     });
 
     $(".tag").attr("class", "tagger");
   });
 
+  createTagger();
 });
 
 
