@@ -43,9 +43,9 @@ $(document).ready(function() {
         width: 50 + "px"
       });
 
-      $(".list").css("display", "initial");
-
       $(".tagger").append($(".list"));
+
+      $(".list").css("display", "initial");
 
       $(".tagger").attr("class", "tag");
     });
@@ -62,6 +62,25 @@ $(document).ready(function() {
     trigger.stopPropagation();
 
     if ($(".list").val() != "blank") {
+      var parent = $(".list").parent(),
+          name = $(".list").val();
+
+      parent.prepend('<span></span>');
+
+      var label = $(".list").parent().children("span");
+
+      label.html(name);
+
+      $(".list").css("display", "none");
+
+      label.css({
+        position: "absolute",
+        border: 6 + "px solid green",
+        backgroundColor: "white",
+        marginTop: 50 + "px",
+        padding: 7 + "px"
+      });
+
       createTagger();
     }
   });
