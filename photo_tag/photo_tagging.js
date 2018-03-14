@@ -71,7 +71,7 @@ $(document).ready(function() {
 
       parent.prepend('<span></span>');
 
-      var label = $(".list").parent().children("span");
+      var label = parent.children("span");
 
       label.html(name);
 
@@ -82,18 +82,35 @@ $(document).ready(function() {
         border: 6 + "px solid green",
         backgroundColor: "white",
         marginTop: 50 + "px",
+        marginLeft: -4 + "px",
         padding: 7 + "px",
         opacity: "inherit"
       });
 
       parent.addClass("locked");
 
+      $(".locked").append('<span class="remove">&#935</span>');
+
+      $(".remove").css({
+        position: "absolute",
+        border: 4 + "px solid green",
+        backgroundColor: "black",
+        color: "red",
+        marginTop: -28 + "px",
+        marginLeft: 39 + "px",
+        opacity: "inherit"
+      });
+
+      $(".remove").click(function() {
+        $(".remove").parent().detach();
+      });
+
       $(".locked").hover(
         function() {
           $(".locked").css("opacity", "1");
         },
         function() {
-          $(".locked").css("opacity", "0");
+          $(".locked").css("opacity", ".4");
         }
       );
 
