@@ -1,0 +1,38 @@
+
+* {
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input, textarea {
+  width: 97%;
+  margin: 15px 0px 15px 1.5%;
+}
+
+span {
+  margin-left: 2.5%;
+}
+
+p {
+  margin: 10px 0px 15px 2.5%;
+  padding: 0px;
+}
+
+input[type="submit"] {
+  margin: 0px;
+  padding: 0px;
+  margin-left: 1.5%;
+}
+
+.invalid {
+  border: 2px dashed red;
+}
+
+.error {
+  color: red;
+}
