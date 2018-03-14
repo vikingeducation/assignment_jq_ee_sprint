@@ -1,12 +1,4 @@
 
-/*
-  cd Documents/Viking/JS/jq_sprint/photo_tag
-
-  https://www.vikingcodeschool.com/dashboard#/falling-in-love-with-javascript/practice-with-events-and-effects
-
-  1. switch to using ID's instead of classes
-*/
-
 $(document).ready(function() {
   $("#list").css({
     position: "absolute",
@@ -34,7 +26,7 @@ $(document).ready(function() {
       position: "absolute",
       border: 8 + "px dashed blue",
       height: 50 + "px",
-      width: 50 + "px",
+      width: 50 + "px"
     });
 
     $("#tagger").click(function(action) {
@@ -52,8 +44,6 @@ $(document).ready(function() {
       $("#list").css("display", "initial");
 
       $("#tagger").attr("id", "tag");
-
-      //$("#tagger").attr("id");
     });
   }
 
@@ -69,9 +59,9 @@ $(document).ready(function() {
 
     if ($("#list").val() != "blank") {
       var parent = $("#list").parent(),
-          name = $("#list").val();
+        name = $("#list").val();
 
-      parent.prepend('<span></span>');
+      parent.prepend("<span></span>");
 
       var label = parent.children("span");
 
@@ -127,18 +117,19 @@ $(document).ready(function() {
   $("#pic").click(function() {
     $("#list").css("display", "none");
 
-    $("#list").parent().css({
-      position: "absolute",
-      border: 8 + "px dashed blue",
-      height: 50 + "px",
-      width: 50 + "px"
-    });
+    $("#list")
+      .parent()
+      .css({
+        position: "absolute",
+        border: 8 + "px dashed blue",
+        height: 50 + "px",
+        width: 50 + "px"
+      });
 
-    $("#list").parent().attr("id", "tagger");
+    $("#list")
+      .parent()
+      .attr("id", "tagger");
   });
 
   createTagger();
 });
-
-
-// spacing
