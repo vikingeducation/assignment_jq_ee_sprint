@@ -3,6 +3,8 @@
   cd Documents/Viking/JS/jq_sprint/photo_tag
 
   https://www.vikingcodeschool.com/dashboard#/falling-in-love-with-javascript/practice-with-events-and-effects
+
+  1. switch to using ID's instead of classes
 */
 
 $(document).ready(function() {
@@ -78,8 +80,20 @@ $(document).ready(function() {
         border: 6 + "px solid green",
         backgroundColor: "white",
         marginTop: 50 + "px",
-        padding: 7 + "px"
+        padding: 7 + "px",
+        opacity: "inherit"
       });
+
+      parent.addClass("locked");
+
+      $(".locked").hover(
+        function() {
+          $(".locked").css("opacity", "1");
+        },
+        function() {
+          $(".locked").css("opacity", "0");
+        }
+      );
 
       createTagger();
     }
