@@ -1,7 +1,7 @@
 assignment_jq_ee_sprint
 =======================
 
-jQSFX
+This is a practice app when I was first learning jquery, I have come a long way.
 
 Gregory Alford
 
