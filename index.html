@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Viking Project jQuery</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="scripts.js"></script>
+    <script src="scripts_spec.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+      .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+    <div class="w3-container">
+      <h2>Viking Code School Dynamic jQuery Assignment</h2>
+      <p>Practice with Events and Effects:</p>
+
+      <div class="w3-bar w3-light-grey">
+        <div class="w3-dropdown-hover">
+          <button class="w3-button">Dropdown</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="https://www.vikingcodeschool.com" class="w3-bar-item w3-button">Viking Code School</a>
+            <a href="https://www.w3schools.com" class="w3-bar-item w3-button">W3 Schools</a>
+            <a href="https://jquery.com" class="w3-bar-item w3-button">jQuery Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form action="/">
+      <fieldset>
+        <label for="first-name">First Name</label>
+        <input type="text" name="first-name" placeholder="First name" maxlength="32">
+        <br>
+        <br>
+        <label for="last-name">Last Name</label>
+        <input type="text" name="last-name" placeholder="Last name" maxlength="32">
+        <br>
+        <br>
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required maxlength="32">
+        <br>
+        <br>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" maxlength="16" required>
+        <br>
+        <br>
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" maxlength="16" required>
+        <br>
+        <br>
+        <table>
+          <tr>
+            <td colspan="4" style="text-align:center;">NOTES
+              <br/>
+              <textarea class="sam_notes maxed" placeholder="Enter max characters 140" maxlength="140" name="sam_notes" style="height:100px;width:90%;margin:0 auto;"></textarea>
+              <br/> <span style="font:normal 11px sans-serif;color:#B00400;">
+               <span class='counter_msg'></span>
+              </span>
+            </td>
+          </tr>
+        </table>
+        <input type="submit" value="Submit">
+      </fieldset>
+
+      <div class="w3-display-container" id="imgtag">
+        <img src="https://www.w3schools.com/w3css/img_snowtops.jpg" />
+      </div>
+      <div id="taglist">
+        <span class="tagtitle">List of Tags</span>
+        <ol>
+        </ol>
+      </div>
+    </form>
+  </body>
+
+</html>
+  
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
